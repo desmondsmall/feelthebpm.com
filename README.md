@@ -47,10 +47,9 @@ generated `<script>`-loadable mirror (`window.SONGS=[…]`) so `index.html` work
 fallback — but both are written from the same array by the pipeline and CI fails the
 deploy if they drift out of sync, so treat `.json` as authoritative.
 
-The shipped dataset is **facts + one derived score** only. Raw provider signals
-used to compute popularity (Songsterr per-instrument views, Deezer rank) and the
-per-song confidence tag (whose values name the source provider) are computed at
-build time but deliberately **not** included in `songs.json` / `songs.js` — so the
+The shipped dataset is **facts + one derived score** only. The raw provider signals
+used to compute popularity (Songsterr per-instrument views, Deezer rank) are computed
+at build time but deliberately **not** included in `songs.json` / `songs.js` — so the
 published file redistributes no provider-specific data. To inspect those signals,
 re-run the pipeline or check `pipeline/cache/`.
 

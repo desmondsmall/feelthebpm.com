@@ -1,5 +1,5 @@
 {
-  "_comment": "Canonical BPM for songs Deezer lacks (bpm:0) OR returns a clear half/double-tempo artifact. Key = 'artist|title'; punctuation/case are normalized at load, so 'AC/DC|...' matches. These get bpm_confidence:'override'. Deezer's classic-rock BPM coverage is sparse, so the rock canon lives here.",
+  "_comment": "Canonical BPM for songs Deezer lacks (bpm:0) OR returns a clear half/double-tempo artifact. Key = 'artist|title'; punctuation/case are normalized at load, so 'AC/DC|...' matches. Deezer's classic-rock BPM coverage is sparse, so the rock canon lives here.",
   "overrides": {
     "the white stripes|seven nation army": 124,
     "adele|rolling in the deep": 105,

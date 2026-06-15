@@ -6,6 +6,13 @@ import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// global fetch is required (Node 18+; stable since 21). Fail loud rather than throw a
+// cryptic `ReferenceError: fetch is not defined` halfway through. See .nvmrc (pins 22).
+if (typeof fetch !== 'function') {
+  console.error(`This pipeline needs Node 18+ for global fetch (you have ${process.version}). See .nvmrc.`);
+  process.exit(1);
+}
+
 const HERE = dirname(fileURLToPath(import.meta.url));
 // the deployable surface — pipeline output (songs.json/songs.js) lands here; nginx serves this dir
 const SITE = join(HERE, '..', 'public');
@@ -13,7 +20,16 @@ if (!existsSync(SITE)) mkdirSync(SITE, { recursive: true });
 const CACHE = join(HERE, 'cache');
 if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
 
-const SONGS_PER_ARTIST = 6;
+// ---- tunables ----------------------------------------------------------
+const SONGS_PER_ARTIST = 6;        // top-N popular songs kept per Songsterr artist
+const SONGSTERR_PAGE = 40;         // Songsterr /api/songs hits to scan per artist
+const DEEZER_SEARCH_LIMIT = 5;     // Deezer search hits to consider when matching
+const MB_SEARCH_LIMIT = 25;        // MusicBrainz recordings to scan for the earliest year
+const POP_VIEWS_CEIL = 500_000;    // Songsterr view count that maps to popularity 100
+const POP_RANK_CEIL = 1_000_000;   // Deezer rank that maps to popularity 100
+const MAX_FETCH_ATTEMPTS = 3;      // tries before getJson gives up (returns null, caches nothing)
+const DEFAULT_PACE_MS = 250;       // polite delay after a live (uncached) fetch
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const readJson = (p) => JSON.parse(readFileSync(p, 'utf8'));
 
@@ -56,14 +72,20 @@ const cleanTitle = (t) => {
 // opts.headers: extra request headers (e.g. MusicBrainz requires a real User-Agent).
 // opts.pace: ms to sleep after a LIVE (uncached) call, to respect rate limits.
 async function getJson(url, opts = {}) {
-  const { headers = {}, pace = 250 } = opts;
+  const { headers = {}, pace = DEFAULT_PACE_MS } = opts;
   const f = join(CACHE, createHash('md5').update(url).digest('hex') + '.json');
   if (existsSync(f)) return JSON.parse(readFileSync(f, 'utf8'));
-  for (let attempt = 0; attempt < 3; attempt++) {
+  for (let attempt = 0; attempt < MAX_FETCH_ATTEMPTS; attempt++) {
     try {
       const res = await fetch(url, { headers: { Accept: 'application/json', ...headers } });
-      if (res.status === 429 || res.status === 503) { await sleep(2000 * (attempt + 1)); continue; }
+      // Never cache a failure. Back off and retry on rate-limit (429/503) AND any other
+      // non-OK status — otherwise a transient 500 / a stray 404 body would be written to
+      // cache and silently poison this song on every future run (cache key is just the URL).
+      if (!res.ok) { await sleep(2000 * (attempt + 1)); continue; }
       const j = await res.json();
+      // Deezer & MusicBrainz return an error envelope ({error:...}) with HTTP 200; treat
+      // that as a failure too, so it isn't cached as if it were real data.
+      if (j && j.error) { await sleep(800 * (attempt + 1)); continue; }
       writeFileSync(f, JSON.stringify(j));
       // be polite — paces live calls only (cached fetches don't sleep). 250ms keeps us
       // far under GetSongBPM's 3000/hour limit; MusicBrainz needs ~1100ms (1 req/sec).
@@ -78,7 +100,7 @@ async function getJson(url, opts = {}) {
 
 // ---- Songsterr: discover popular songs per artist ----------------------
 async function songsterrForArtist(name, genre) {
-  const url = `https://www.songsterr.com/api/songs?pattern=${encodeURIComponent(name)}&size=40`;
+  const url = `https://www.songsterr.com/api/songs?pattern=${encodeURIComponent(name)}&size=${SONGSTERR_PAGE}`;
   const data = await getJson(url);
   if (!Array.isArray(data)) return [];
   const want = norm(name);
@@ -107,7 +129,7 @@ async function songsterrForArtist(name, genre) {
 async function deezerEnrich(c) {
   const q = `${c.artist} ${c.title}`;
   const search = await getJson(
-    `https://api.deezer.com/search/track?q=${encodeURIComponent(q)}&limit=5`
+    `https://api.deezer.com/search/track?q=${encodeURIComponent(q)}&limit=${DEEZER_SEARCH_LIMIT}`
   );
   const results = search?.data || [];
   const wantA = norm(c.artist);
@@ -190,7 +212,7 @@ const MB_BASE = 'https://musicbrainz.org/ws/2';
 const MB_UA = 'feelthebpm/1.0 ( https://feelthebpm.com )';
 async function musicbrainzYear(c) {
   const query = `artist:"${c.artist}" AND recording:"${c.title}"`;
-  const url = `${MB_BASE}/recording?query=${encodeURIComponent(query)}&limit=25&fmt=json`;
+  const url = `${MB_BASE}/recording?query=${encodeURIComponent(query)}&limit=${MB_SEARCH_LIMIT}&fmt=json`;
   const data = await getJson(url, { headers: { 'User-Agent': MB_UA }, pace: 1100 });
   const recs = data?.recordings || [];
   const wantA = norm(c.artist), wantT = norm(c.title);
@@ -212,7 +234,48 @@ async function musicbrainzYear(c) {
 const lognorm = (v, max) =>
   Math.max(0, Math.min(1, Math.log10((v || 0) + 1) / Math.log10(max)));
 const popularity = (views, rank) =>
-  Math.round(100 * Math.max(lognorm(views, 500000), lognorm(rank, 1000000)));
+  Math.round(100 * Math.max(lognorm(views, POP_VIEWS_CEIL), lognorm(rank, POP_RANK_CEIL)));
+
+// ---- enrich one candidate ----------------------------------------------
+// Turn a discovered candidate into a finished song record, or return null if we can't
+// find a trustworthy BPM (the caller logs those as gaps). Exclusions are filtered by the
+// caller before this runs, so every candidate reaching here is one we intend to keep.
+// `overrides` is the normalized artist|title -> bpm table. Returns { record, yearSource }.
+async function enrichCandidate(c, overrides) {
+  const enr = await deezerEnrich(c);
+  let bpm = enr?.bpm || 0;
+  let keyOf = null, timeSig = null, gsbYear = null;
+  const ov = overrides[key(c.artist, c.title)];
+  if (ov) bpm = ov;
+  // GetSongBPM fallback: only when Deezer AND override both came up empty
+  if (!bpm) {
+    const gsb = await getsongbpmEnrich(c);
+    if (gsb?.bpm) {
+      bpm = gsb.bpm;
+      keyOf = gsb.key_of; timeSig = gsb.time_sig; gsbYear = gsb.year;
+    }
+  }
+  if (!bpm) return null; // can't tempo it -> gap (quality over quantity)
+  // year: prefer MusicBrainz's original-release year (Deezer's is reissue-inflated).
+  // Only looked up for songs we're keeping, to minimize MB calls (1 req/sec).
+  const mbYear = await musicbrainzYear(c);
+  const fallbackYear = enr?.year ?? gsbYear ?? null;
+  const record = {
+    artist: c.artist,
+    title: c.title,
+    bpm,
+    genre: c.genre,
+    year: mbYear ?? fallbackYear,
+    isrc: enr?.isrc ?? null,
+    key_of: keyOf,
+    time_sig: timeSig,
+    // popularity is a derived 0–100 blend computed at build time; the raw source
+    // signals (Songsterr views, Deezer rank) are intentionally NOT shipped — only
+    // this neutral score is, so the published file redistributes no provider data.
+    popularity: popularity(c.songsterr_views, enr?.deezer_rank),
+  };
+  return { record, yearSource: mbYear ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
+}
 
 // ---- main --------------------------------------------------------------
 (async () => {
@@ -261,47 +324,18 @@ const popularity = (views, rank) =>
   let yearFromMB = 0, yearFromDeezer = 0; // year-source tally (for the build summary)
   for (const c of candidates.values()) {
     i++;
+    const k = key(c.artist, c.title);
     // drop multi-tempo / rubato songs up front (no single meaningful BPM to anchor to).
     // Done before any network call — no point enriching a song we're discarding.
-    if (excludeSet.has(key(c.artist, c.title))) { excluded.push(key(c.artist, c.title)); continue; }
-    const enr = await deezerEnrich(c);
-    let bpm = enr?.bpm || 0;
-    let keyOf = null, timeSig = null, gsbYear = null;
-    const ov = overrides[key(c.artist, c.title)];
-    if (ov) bpm = ov;
-    // GetSongBPM fallback: only when Deezer AND override both came up empty
-    if (!bpm) {
-      const gsb = await getsongbpmEnrich(c);
-      if (gsb?.bpm) {
-        bpm = gsb.bpm;
-        keyOf = gsb.key_of; timeSig = gsb.time_sig; gsbYear = gsb.year;
-      }
+    if (excludeSet.has(k)) { excluded.push(k); continue; }
+    const enriched = await enrichCandidate(c, overrides);
+    if (!enriched) {
+      gaps.push(k); // couldn't find a trustworthy BPM
+    } else {
+      out.push(enriched.record);
+      if (enriched.yearSource === 'musicbrainz') yearFromMB++;
+      else if (enriched.yearSource === 'deezer') yearFromDeezer++;
     }
-    if (!bpm) {
-      gaps.push(key(c.artist, c.title));
-      if (i % 25 === 0) console.error(`  [${i}/${candidates.size}]`);
-      continue; // skip songs we can't tempo (quality over quantity)
-    }
-    // year: prefer MusicBrainz's original-release year (Deezer's is reissue-inflated).
-    // Only looked up for songs we're keeping, to minimize MB calls (1 req/sec).
-    const mbYear = await musicbrainzYear(c);
-    const fallbackYear = enr?.year ?? gsbYear ?? null;
-    if (mbYear) yearFromMB++; else if (fallbackYear) yearFromDeezer++;
-    out.push({
-      artist: c.artist,
-      title: c.title,
-      bpm,
-      genre: c.genre,
-      year: mbYear ?? fallbackYear,
-      isrc: enr?.isrc ?? null,
-      key_of: keyOf,
-      time_sig: timeSig,
-      // popularity is a derived 0–100 blend computed at build time; the raw
-      // source signals (Songsterr views, Deezer rank) are intentionally NOT
-      // shipped — only this neutral score is. Likewise bpm_confidence
-      // (whose values name providers) stays out of the published dataset.
-      popularity: popularity(c.songsterr_views, enr?.deezer_rank),
-    });
     if (i % 25 === 0) console.error(`  [${i}/${candidates.size}]`);
   }
 

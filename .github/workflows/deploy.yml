@@ -28,6 +28,8 @@ jobs:
           node -e '
             const s = require("./public/songs.json");
             if (!Array.isArray(s) || s.length === 0) throw new Error("songs.json empty");
+            // Raw signals / provider-naming fields must never ship in the public dataset.
+            // bpm_confidence is not emitted today but is pre-banned so it cannot leak if added.
             const banned = ["songsterr_views", "deezer_rank", "bpm_confidence"];
             for (const r of s) {
               for (const b of banned) if (b in r) throw new Error("service field leaked: " + b);
