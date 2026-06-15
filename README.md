@@ -30,13 +30,19 @@ Each song in `public/songs.json` / `public/songs.js` (written there by the pipel
   "title": "Seven Nation Army",
   "bpm": 124,
   "genre": "rock",
-  "year": 2003,
+  "year": 2003,                   // original release year (MusicBrainz; Deezer fallback)
   "isrc": "USVT10300001",
   "key_of": null,                 // musical key  (only from GetSongBPM gap-filler)
   "time_sig": null,               // time signature (only from GetSongBPM gap-filler)
   "popularity": 98               // 0–100, derived blend (see below)
 }
 ```
+
+`songs.json` is canonical (the source of truth CI validates); `songs.js` is a
+generated `<script>`-loadable mirror (`window.SONGS=[…]`) so `index.html` works on
+`file://` with no server. The page loads `.js` and only fetches `.json` as a
+fallback — but both are written from the same array by the pipeline and CI fails the
+deploy if they drift out of sync, so treat `.json` as authoritative.
 
 The shipped dataset is **facts + one derived score** only. Raw provider signals
 used to compute popularity (Songsterr per-instrument views, Deezer rank) and the
@@ -56,7 +62,16 @@ results cached to `pipeline/cache/` so re-runs are instant):
 2. **Curated cross-genre list** (`pipeline/extra_songs.json`) — fills what Songsterr
    covers poorly (hip-hop, electronic, R&B, disco, reggae), genre-tagged by hand.
 3. **Deezer** (`api.deezer.com`) — the BPM source of record (audio-analysis tempo) plus
-   year / ISRC / popularity rank. Free, no auth.
+   ISRC / popularity rank. Free, no auth.
+4. **MusicBrainz** (`musicbrainz.org/ws/2`) — the **year** source of record. Deezer's
+   `release_date` reports whichever release it matched (often a remaster/compilation), so
+   old songs come back with inflated years (*The Boxer* → 2025). MusicBrainz exposes a
+   recording's earliest release date — the real original year. We search by artist+title
+   and take the minimum first-release-date across **exact-title** matches, so live/
+   remaster/edit recordings (which carry their own later dates) are ignored. Deezer's year
+   is kept only as a fallback when MusicBrainz has no match. Free, no auth — but requires a
+   descriptive `User-Agent` and allows ~1 request/sec, so the first run is slow (~8–10 min);
+   responses cache to `pipeline/cache/`, so re-runs are instant.
 
 **Override table** (`pipeline/bpm_overrides.json`) handles two known Deezer weaknesses:
 - *Coverage gaps* — Deezer returns `bpm: 0` for much of the classic-rock canon
@@ -73,6 +88,9 @@ and logged to `pipeline/gaps.json` — review that file to grow the override tab
   songs to `pipeline/extra_songs.json` (anything else), then re-run the pipeline.
 - **Fix a tempo:** add `"artist|title": bpm` to `pipeline/bpm_overrides.json`
   (punctuation/case are normalized, so `"AC/DC|Back in Black"` matches).
+- **Drop a multi-tempo song:** add `"artist|title"` to `pipeline/exclude.json`. Songs with
+  no single meaningful tempo (multi-movement or rubato — Bohemian Rhapsody, Stairway, Free
+  Bird…) make poor "feel this BPM" anchors, so they're dropped even if they have a BPM.
 - **GetSongBPM gap-filler (wired, dormant):** any song Deezer can't tempo falls through to
   GetSongBPM, which also returns musical key + time signature. Off until you provide a free
   key (register at getsongbpm.com/api — requires a visible backlink):
@@ -83,7 +101,8 @@ and logged to `pipeline/gaps.json` — review that file to grow the override tab
 
 ## Sources & attribution
 
-BPM from Deezer audio analysis; popularity & song discovery from Songsterr. Both are
-free public endpoints; this is a personal/educational project. If you ship it publicly,
-review each provider's ToS (Deezer restricts long-term caching; GetSongBPM requires a
+BPM from Deezer audio analysis; original-release year from MusicBrainz; popularity & song
+discovery from Songsterr. All are free public endpoints; this is a personal/educational
+project. If you ship it publicly, review each provider's ToS (Deezer restricts long-term
+caching; MusicBrainz requires a descriptive User-Agent + ~1 req/sec; GetSongBPM requires a
 visible backlink).

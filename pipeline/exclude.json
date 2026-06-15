@@ -1,0 +1,18 @@
+{
+  "_comment": "Songs with NO single meaningful tempo — multi-movement or heavily rubato — dropped from the dataset because they're useless as a 'what does X BPM feel like' anchor: there's no stable pulse to memorize, and any single number (Deezer's or a curated override) represents only one section. Key = 'artist|title', normalized at load like bpm_overrides.json. Applied as a final filter, so a song here is dropped even if it has a BPM or an override. Hand-maintained — the set of famous tempo-shifting songs is small and well-known. Excluded songs are logged to gaps.json under an 'excluded:' marker on each run.",
+  "exclude": [
+    "queen|bohemian rhapsody",
+    "led zeppelin|stairway to heaven",
+    "lynyrd skynyrd|free bird",
+    "guns n' roses|november rain",
+    "radiohead|paranoid android",
+    "metallica|master of puppets",
+
+    "_below: obvious multi-tempo songs not presently in the set; harmless no-ops until they appear",
+    "the beatles|a day in the life",
+    "the beatles|happiness is a warm gun",
+    "pink floyd|shine on you crazy diamond",
+    "green day|jesus of suburbia",
+    "the who|won't get fooled again"
+  ]
+}

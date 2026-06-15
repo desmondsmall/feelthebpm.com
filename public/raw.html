@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Raw data — Tempo</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --line: #262b36; --fg: #e6e9ef;
+    --dim: #8b93a3; --accent: #6ea8fe; --hi: #1d2230;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  header {
+    position: sticky; top: 0; z-index: 3; background: var(--bg);
+    padding: 14px 16px 10px; border-bottom: 1px solid var(--line);
+  }
+  h1 { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
+  h1 a { color: var(--dim); text-decoration: none; font-weight: 400; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  input, select {
+    background: var(--panel); color: var(--fg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 6px 9px; font: inherit;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  #q { flex: 1 1 240px; min-width: 200px; }
+  .bpm-range { display: flex; align-items: center; gap: 4px; color: var(--dim); }
+  .bpm-range input { width: 64px; }
+  #count { color: var(--dim); margin-left: auto; white-space: nowrap; }
+  button.reset {
+    background: var(--panel); color: var(--dim); border: 1px solid var(--line);
+    border-radius: 6px; padding: 6px 10px; cursor: pointer; font: inherit;
+  }
+  button.reset:hover { color: var(--fg); border-color: var(--accent); }
+
+  .genres { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    background: var(--panel); color: var(--dim); border: 1px solid var(--line);
+    border-radius: 999px; padding: 4px 11px; cursor: pointer; font: inherit; line-height: 1;
+  }
+  .chip:hover { color: var(--fg); border-color: var(--accent); }
+  .chip.on { background: var(--hi); color: var(--accent); border-color: var(--accent); }
+
+  .wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 6px 12px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  th {
+    position: sticky; top: 0; z-index: 2; background: var(--panel);
+    cursor: pointer; user-select: none; font-weight: 600; color: var(--dim);
+  }
+  th:hover { color: var(--fg); }
+  th .arrow { color: var(--accent); margin-left: 4px; font-size: 11px; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr:hover { background: var(--hi); }
+  td.dim { color: var(--dim); }
+  mark { background: #5a4a00; color: #ffe07a; border-radius: 2px; }
+  .empty { padding: 40px 16px; text-align: center; color: var(--dim); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Raw dataset · <a href="index.html">&larr; back to app</a></h1>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search artist, title, genre, ISRC, key…" autocomplete="off" />
+    <span class="bpm-range">BPM <input id="bmin" type="number" placeholder="min" /> – <input id="bmax" type="number" placeholder="max" /></span>
+    <button class="reset" id="reset" type="button">Reset</button>
+    <span id="count"></span>
+  </div>
+  <div class="genres" id="genres"></div>
+</header>
+
+<div class="wrap">
+  <table>
+    <thead><tr id="head"></tr></thead>
+    <tbody id="body"></tbody>
+  </table>
+</div>
+<div class="empty" id="empty" hidden>No matching songs.</div>
+
+<script src="songs.js"></script>
+<script>
+(function () {
+  let SONGS = window.SONGS || [];
+  const ready = SONGS.length ? Promise.resolve(SONGS)
+    : fetch('songs.json').then(r => r.json()).then(d => (SONGS = d)).catch(() => (SONGS = []));
+
+  // column definition: key, label, numeric?
+  const COLS = [
+    { k: 'artist',     label: 'Artist',  num: false },
+    { k: 'title',      label: 'Title',   num: false },
+    { k: 'bpm',        label: 'BPM',     num: true  },
+    { k: 'genre',      label: 'Genre',   num: false },
+    { k: 'year',       label: 'Year',    num: true  },
+    { k: 'popularity', label: 'Pop.',    num: true  },
+    { k: 'key_of',     label: 'Key',     num: false },
+    { k: 'time_sig',   label: 'Time',    num: false },
+    { k: 'isrc',       label: 'ISRC',    num: false },
+  ];
+
+  const $ = id => document.getElementById(id);
+  const q = $('q'), genres = $('genres'), bmin = $('bmin'), bmax = $('bmax');
+  const head = $('head'), body = $('body'), count = $('count'), empty = $('empty');
+
+  let sortKey = 'popularity', sortDir = -1; // default: most popular first
+  const active = new Set(); // selected genres (empty = all)
+
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const hl = (s, term) => {
+    s = esc(s);
+    if (!term) return s;
+    const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+    return s.replace(re, '<mark>$1</mark>');
+  };
+
+  function buildHead() {
+    head.innerHTML = COLS.map(c =>
+      `<th data-k="${c.k}" class="${c.num ? 'num' : ''}">${c.label}<span class="arrow"></span></th>`
+    ).join('');
+    head.querySelectorAll('th').forEach(th => th.addEventListener('click', () => {
+      const k = th.dataset.k;
+      if (sortKey === k) sortDir = -sortDir;
+      else { sortKey = k; sortDir = COLS.find(c => c.k === k).num ? -1 : 1; }
+      render();
+    }));
+  }
+
+  function buildGenres() {
+    genres.innerHTML = [...new Set(SONGS.map(s => s.genre).filter(Boolean))].sort()
+      .map(g => `<button class="chip" type="button" data-g="${esc(g)}">${esc(g)}</button>`).join('');
+    genres.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (chip) toggleGenre(chip.dataset.g);
+    });
+  }
+
+  function toggleGenre(g) {
+    if (active.has(g)) active.delete(g); else active.add(g);
+    syncChips();
+    render();
+  }
+
+  function syncChips() {
+    genres.querySelectorAll('.chip').forEach(c =>
+      c.classList.toggle('on', active.has(c.dataset.g)));
+  }
+
+  function filtered() {
+    const term = q.value.trim().toLowerCase();
+    const lo = bmin.value === '' ? -Infinity : +bmin.value;
+    const hi = bmax.value === '' ? Infinity : +bmax.value;
+    return SONGS.filter(s => {
+      if (active.size && !active.has(s.genre)) return false;
+      if (s.bpm < lo || s.bpm > hi) return false;
+      if (term) {
+        const hay = [s.artist, s.title, s.genre, s.isrc, s.key_of, s.time_sig, s.year, s.bpm]
+          .join(' ').toLowerCase();
+        if (!hay.includes(term)) return false;
+      }
+      return true;
+    });
+  }
+
+  function sortRows(rows) {
+    const c = COLS.find(c => c.k === sortKey);
+    return rows.sort((a, b) => {
+      let x = a[sortKey], y = b[sortKey];
+      if (c.num) { x = x ?? -Infinity; y = y ?? -Infinity; return (x - y) * sortDir; }
+      x = (x ?? '').toString().toLowerCase(); y = (y ?? '').toString().toLowerCase();
+      return x < y ? -sortDir : x > y ? sortDir : 0;
+    });
+  }
+
+  function render() {
+    head.querySelectorAll('th').forEach(th =>
+      th.querySelector('.arrow').textContent = th.dataset.k === sortKey ? (sortDir > 0 ? '▲' : '▼') : '');
+    const term = q.value.trim();
+    const rows = sortRows(filtered());
+    body.innerHTML = rows.map(s => '<tr>' + COLS.map(c => {
+      const v = s[c.k];
+      const cls = (c.num ? 'num ' : '') + (v == null || v === '' ? 'dim' : '');
+      const disp = v == null || v === '' ? '—' : hl(v, term);
+      const tag = c.k === 'genre' && v ? ` data-g="${esc(v)}" style="cursor:pointer"` : '';
+      return `<td class="${cls.trim()}"${tag}>${disp}</td>`;
+    }).join('') + '</tr>').join('');
+    empty.hidden = rows.length > 0;
+    count.textContent = `${rows.length} / ${SONGS.length} songs`;
+  }
+
+  function reset() {
+    q.value = ''; active.clear(); syncChips(); bmin.value = ''; bmax.value = '';
+    sortKey = 'popularity'; sortDir = -1; render();
+  }
+
+  ready.then(() => {
+    buildHead(); buildGenres(); render();
+    [q, bmin, bmax].forEach(el => el.addEventListener('input', render));
+    body.addEventListener('click', e => {
+      const cell = e.target.closest('td[data-g]');
+      if (cell) toggleGenre(cell.dataset.g);
+    });
+    $('reset').addEventListener('click', reset);
+  });
+})();
+</script>
+</body>
+</html>

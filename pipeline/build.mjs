@@ -53,18 +53,21 @@ const cleanTitle = (t) => {
 };
 
 // ---- cached fetch ------------------------------------------------------
-async function getJson(url) {
+// opts.headers: extra request headers (e.g. MusicBrainz requires a real User-Agent).
+// opts.pace: ms to sleep after a LIVE (uncached) call, to respect rate limits.
+async function getJson(url, opts = {}) {
+  const { headers = {}, pace = 250 } = opts;
   const f = join(CACHE, createHash('md5').update(url).digest('hex') + '.json');
   if (existsSync(f)) return JSON.parse(readFileSync(f, 'utf8'));
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const res = await fetch(url, { headers: { Accept: 'application/json' } });
-      if (res.status === 429) { await sleep(2000 * (attempt + 1)); continue; }
+      const res = await fetch(url, { headers: { Accept: 'application/json', ...headers } });
+      if (res.status === 429 || res.status === 503) { await sleep(2000 * (attempt + 1)); continue; }
       const j = await res.json();
       writeFileSync(f, JSON.stringify(j));
-      // be polite — paces live calls (only uncached fetches sleep). 250ms keeps us
-      // far under GetSongBPM's 3000/hour limit even in a worst case.
-      await sleep(250);
+      // be polite — paces live calls only (cached fetches don't sleep). 250ms keeps us
+      // far under GetSongBPM's 3000/hour limit; MusicBrainz needs ~1100ms (1 req/sec).
+      await sleep(pace);
       return j;
     } catch (e) {
       await sleep(800 * (attempt + 1));
@@ -175,6 +178,36 @@ async function getsongbpmEnrich(c) {
   return { bpm: Math.round(tempo), key_of: keyOf, time_sig: timeSig, year };
 }
 
+// ---- MusicBrainz: ORIGINAL release year --------------------------------
+// Deezer's release_date tracks the *matched* release (often a remaster/comp), so old
+// songs get stamped with recent years. MusicBrainz exposes a recording's earliest
+// release date, which is the real original year. We search by artist+title and take
+// the minimum first-release-date across exact-title matches (so live/remaster/edit
+// recordings — which carry their own later dates — are ignored).
+// Policy: MB requires a descriptive User-Agent and allows ~1 req/sec (we pace 1100ms).
+// Docs: https://musicbrainz.org/doc/MusicBrainz_API  ·  rate limit: /doc/MusicBrainz_API/Rate_Limiting
+const MB_BASE = 'https://musicbrainz.org/ws/2';
+const MB_UA = 'feelthebpm/1.0 ( https://feelthebpm.com )';
+async function musicbrainzYear(c) {
+  const query = `artist:"${c.artist}" AND recording:"${c.title}"`;
+  const url = `${MB_BASE}/recording?query=${encodeURIComponent(query)}&limit=25&fmt=json`;
+  const data = await getJson(url, { headers: { 'User-Agent': MB_UA }, pace: 1100 });
+  const recs = data?.recordings || [];
+  const wantA = norm(c.artist), wantT = norm(c.title);
+  let best = null;
+  for (const r of recs) {
+    const credit = (r['artist-credit'] || []).map((x) => x.name).join(' ');
+    const a = norm(credit), t = norm(r.title);
+    const artistOk = a.includes(wantA) || wantA.includes(a);
+    if (!artistOk || t !== wantT) continue;     // exact title -> skip "(Live)/(Remaster)/(Edit)"
+    const d = r['first-release-date'];
+    if (!d) continue;
+    const y = Number(String(d).slice(0, 4));
+    if (y > 1900 && (best === null || y < best)) best = y;
+  }
+  return best;
+}
+
 // ---- popularity blend (0..100) -----------------------------------------
 const lognorm = (v, max) =>
   Math.max(0, Math.min(1, Math.log10((v || 0) + 1) / Math.log10(max)));
@@ -193,6 +226,13 @@ const popularity = (views, rank) =>
     const [a, t] = k.split('|');
     overrides[key(a, t)] = v;
   }
+  // exclusion list: songs with no single meaningful tempo (multi-movement / rubato).
+  // normalized the same way so 'queen|bohemian rhapsody' matches the candidate key.
+  const excludeSet = new Set(
+    readJson(join(HERE, 'exclude.json')).exclude
+      .filter((k) => !k.startsWith('_'))
+      .map((k) => { const [a, t] = k.split('|'); return key(a, t); })
+  );
 
   // 1. gather candidates
   const candidates = new Map();
@@ -216,9 +256,14 @@ const popularity = (views, rank) =>
   // 2. enrich
   const out = [];
   const gaps = [];
+  const excluded = [];
   let i = 0;
+  let yearFromMB = 0, yearFromDeezer = 0; // year-source tally (for the build summary)
   for (const c of candidates.values()) {
     i++;
+    // drop multi-tempo / rubato songs up front (no single meaningful BPM to anchor to).
+    // Done before any network call — no point enriching a song we're discarding.
+    if (excludeSet.has(key(c.artist, c.title))) { excluded.push(key(c.artist, c.title)); continue; }
     const enr = await deezerEnrich(c);
     let bpm = enr?.bpm || 0;
     let keyOf = null, timeSig = null, gsbYear = null;
@@ -237,12 +282,17 @@ const popularity = (views, rank) =>
       if (i % 25 === 0) console.error(`  [${i}/${candidates.size}]`);
       continue; // skip songs we can't tempo (quality over quantity)
     }
+    // year: prefer MusicBrainz's original-release year (Deezer's is reissue-inflated).
+    // Only looked up for songs we're keeping, to minimize MB calls (1 req/sec).
+    const mbYear = await musicbrainzYear(c);
+    const fallbackYear = enr?.year ?? gsbYear ?? null;
+    if (mbYear) yearFromMB++; else if (fallbackYear) yearFromDeezer++;
     out.push({
       artist: c.artist,
       title: c.title,
       bpm,
       genre: c.genre,
-      year: enr?.year ?? gsbYear ?? null,
+      year: mbYear ?? fallbackYear,
       isrc: enr?.isrc ?? null,
       key_of: keyOf,
       time_sig: timeSig,
@@ -278,6 +328,8 @@ const popularity = (views, rank) =>
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
   writeFileSync(join(HERE, 'gaps.json'), JSON.stringify(gaps, null, 2));
   console.error(`\nDeduped ${nDropped} arrangement variant(s).`);
+  console.error(`Excluded ${excluded.length} multi-tempo song(s) via exclude.json: ${excluded.join(', ') || '(none matched)'}`);
+  console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
   console.error(`Done. ${deduped.length} songs -> songs.json`);
   console.error(`${gaps.length} BPM gaps -> pipeline/gaps.json (add to bpm_overrides.json)`);
 })();
