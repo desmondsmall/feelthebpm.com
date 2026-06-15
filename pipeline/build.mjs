@@ -145,7 +145,17 @@ async function deezerEnrich(c) {
       if (!best || (r.rank || 0) > (best.rank || 0)) best = r;
     }
   }
-  if (!best) best = results[0]; // fall back to top hit
+  // No strict match: trust Deezer's own #1 hit, but ONLY if it lines up on at least artist
+  // OR title. That tolerates artist aliases (2Pac/Tupac, a feat. credit) and title suffixes
+  // (remaster, "(Live)") where the track is still right — while refusing a top hit that
+  // matches neither, which would stamp an unrelated track's tempo on the song. A genuinely
+  // unrelated result returns null and falls through to override / GetSongBPM / the gaps list.
+  if (!best && results[0]) {
+    const a = norm(results[0].artist?.name), t = norm(results[0].title);
+    const related =
+      a.includes(wantA) || wantA.includes(a) || t.includes(wantT) || wantT.includes(t);
+    if (related) best = results[0];
+  }
   if (!best) return null;
   const track = await getJson(`https://api.deezer.com/track/${best.id}`);
   if (!track || track.error) return null;
@@ -278,7 +288,7 @@ async function enrichCandidate(c, overrides) {
 }
 
 // ---- main --------------------------------------------------------------
-(async () => {
+async function main() {
   const artists = readJson(join(HERE, 'artists.json')).artists;
   const extra = readJson(join(HERE, 'extra_songs.json')).songs;
   // normalize override keys so punctuation (AC/DC, Guns N' Roses) matches candidate keys
@@ -376,4 +386,11 @@ async function enrichCandidate(c, overrides) {
   console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
   console.error(`Done. ${deduped.length} songs -> songs.json`);
   console.error(`${gaps.length} BPM gaps -> pipeline/gaps.json (add to bpm_overrides.json)`);
-})();
+}
+
+// Fail loud and non-zero on any unhandled error, so a broken run can't masquerade as a
+// successful build (writing nothing) or surface as a bare unhandled-rejection trace.
+main().catch((e) => {
+  console.error('\nBuild failed:', e?.stack || e);
+  process.exit(1);
+});
