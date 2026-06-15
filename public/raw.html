@@ -96,8 +96,6 @@
     { k: 'genre',      label: 'Genre',   num: false },
     { k: 'year',       label: 'Year',    num: true  },
     { k: 'popularity', label: 'Pop.',    num: true  },
-    { k: 'key_of',     label: 'Key',     num: false },
-    { k: 'time_sig',   label: 'Time',    num: false },
     { k: 'isrc',       label: 'ISRC',    num: false },
   ];
 
@@ -156,7 +154,7 @@
       if (active.size && !active.has(s.genre)) return false;
       if (s.bpm < lo || s.bpm > hi) return false;
       if (term) {
-        const hay = [s.artist, s.title, s.genre, s.isrc, s.key_of, s.time_sig, s.year, s.bpm]
+        const hay = [s.artist, s.title, s.genre, s.isrc, s.year, s.bpm]
           .join(' ').toLowerCase();
         if (!hay.includes(term)) return false;
       }

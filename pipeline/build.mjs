@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 // global fetch is required (Node 18+; stable since 21). Fail loud rather than throw a
 // cryptic `ReferenceError: fetch is not defined` halfway through. See .nvmrc (pins 22).
@@ -64,6 +64,7 @@ const cleanTitle = (t) => {
   s = s.replace(ARR_REPL, ' ');
   let prev;
   do { prev = s; s = s.replace(ARR_TRAIL, ''); } while (s !== prev); // strip stacked trailing words
+  s = s.replace(/\s+v\d+\s*$/i, '');  // Songsterr version markers ("Let It Happen v1" -> "Let It Happen")
   s = s.replace(/\s*[-–—|]+\s*$/, '').replace(/\s+/g, ' ').trim();
   return s || (t || '').trim();
 };
@@ -172,11 +173,11 @@ async function deezerEnrich(c) {
 
 // ---- GetSongBPM: gap-filler for songs Deezer can't tempo --------------
 // Free but requires an API key (+ mandatory backlink to getsongbpm.com). Dormant unless
-// GETSONGBPM_API_KEY is set. Bonus: also returns musical key + time signature + year.
-// API base is api.getsong.co (per docs, changed 2024-09); auth via api_key param.
+// GETSONGBPM_API_KEY is set. We take only tempo + year (key/time-sig are available but
+// unused — not part of the app). API base is api.getsong.co (per docs, changed 2024-09).
 // Limit: 3000 req/hour — we only call it on Deezer gaps, so well under.
-// Response shapes (per docs): /search/ -> { search: [ {id,title,tempo,key_of,time_sig,artist:{name},album:{year}} ] }
-//                             /song/   -> { song: { tempo:"220", key_of:"Em", time_sig:"4/4", album:{year} } }
+// Response shapes (per docs): /search/ -> { search: [ {id,title,tempo,artist:{name},album:{year}} ] }
+//                             /song/   -> { song: { tempo:"220", album:{year} } }
 const GSB_BASE = 'https://api.getsong.co';
 const GSB_KEY = process.env.GETSONGBPM_API_KEY || '';
 async function getsongbpmEnrich(c) {
@@ -192,22 +193,18 @@ async function getsongbpmEnrich(c) {
     return (a.includes(wantA) || wantA.includes(a)) && (t.includes(wantT) || wantT.includes(t));
   }) || results[0];
   let tempo = Number(hit.tempo) || 0;       // tempo can be a string ("220")
-  let keyOf = hit.key_of || null;
-  let timeSig = hit.time_sig || null;
   let year = Number(hit.album?.year) || null;
-  // search occasionally omits fields — fall back to the /song/ detail endpoint
-  if ((!tempo || !keyOf) && hit.id) {
+  // search occasionally omits the tempo — fall back to the /song/ detail endpoint
+  if (!tempo && hit.id) {
     const detail = await getJson(`${GSB_BASE}/song/?api_key=${GSB_KEY}&id=${hit.id}`);
     const song = detail?.song;
     if (song) {
       tempo = Number(song.tempo) || tempo;
-      keyOf = song.key_of || keyOf;
-      timeSig = song.time_sig || timeSig;
       year = year || Number(song.album?.year) || null;
     }
   }
   if (!tempo) return null;
-  return { bpm: Math.round(tempo), key_of: keyOf, time_sig: timeSig, year };
+  return { bpm: Math.round(tempo), year };
 }
 
 // ---- MusicBrainz: ORIGINAL release year --------------------------------
@@ -254,7 +251,7 @@ const popularity = (views, rank) =>
 async function enrichCandidate(c, overrides) {
   const enr = await deezerEnrich(c);
   let bpm = enr?.bpm || 0;
-  let keyOf = null, timeSig = null, gsbYear = null;
+  let gsbYear = null;
   const ov = overrides[key(c.artist, c.title)];
   if (ov) bpm = ov;
   // GetSongBPM fallback: only when Deezer AND override both came up empty
@@ -262,7 +259,7 @@ async function enrichCandidate(c, overrides) {
     const gsb = await getsongbpmEnrich(c);
     if (gsb?.bpm) {
       bpm = gsb.bpm;
-      keyOf = gsb.key_of; timeSig = gsb.time_sig; gsbYear = gsb.year;
+      gsbYear = gsb.year;
     }
   }
   if (!bpm) return null; // can't tempo it -> gap (quality over quantity)
@@ -277,8 +274,6 @@ async function enrichCandidate(c, overrides) {
     genre: c.genre,
     year: mbYear ?? fallbackYear,
     isrc: enr?.isrc ?? null,
-    key_of: keyOf,
-    time_sig: timeSig,
     // popularity is a derived 0–100 blend computed at build time; the raw source
     // signals (Songsterr views, Deezer rank) are intentionally NOT shipped — only
     // this neutral score is, so the published file redistributes no provider data.
@@ -287,18 +282,25 @@ async function enrichCandidate(c, overrides) {
   return { record, yearSource: mbYear ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
 }
 
+// Load bpm_overrides.json into a normalized { "norm-artist|norm-title": bpm } map.
+// Punctuation/case are normalized via key() so 'AC/DC|...' matches candidate keys;
+// comment/section keys (leading '_') and non-numeric values are skipped.
+function loadOverrides() {
+  const raw = readJson(join(HERE, 'bpm_overrides.json')).overrides;
+  const overrides = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (k.startsWith('_') || typeof v !== 'number') continue;
+    const [a, t] = k.split('|');
+    overrides[key(a, t)] = v;
+  }
+  return overrides;
+}
+
 // ---- main --------------------------------------------------------------
 async function main() {
   const artists = readJson(join(HERE, 'artists.json')).artists;
   const extra = readJson(join(HERE, 'extra_songs.json')).songs;
-  // normalize override keys so punctuation (AC/DC, Guns N' Roses) matches candidate keys
-  const rawOverrides = readJson(join(HERE, 'bpm_overrides.json')).overrides;
-  const overrides = {};
-  for (const [k, v] of Object.entries(rawOverrides)) {
-    if (k.startsWith('_') || typeof v !== 'number') continue; // skip comment/section keys
-    const [a, t] = k.split('|');
-    overrides[key(a, t)] = v;
-  }
+  const overrides = loadOverrides();
   // exclusion list: songs with no single meaningful tempo (multi-movement / rubato).
   // normalized the same way so 'queen|bohemian rhapsody' matches the candidate key.
   const excludeSet = new Set(
@@ -388,9 +390,16 @@ async function main() {
   console.error(`${gaps.length} BPM gaps -> pipeline/gaps.json (add to bpm_overrides.json)`);
 }
 
+// Reusable pieces for sibling tools (e.g. pipeline/eval-gsb.mjs) — exported so the eval
+// runs the EXACT production matching logic instead of a drifting reimplementation.
+export { norm, key, getJson, deezerEnrich, getsongbpmEnrich, loadOverrides };
+
+// Run the build only when invoked directly (node pipeline/build.mjs), not when imported.
 // Fail loud and non-zero on any unhandled error, so a broken run can't masquerade as a
 // successful build (writing nothing) or surface as a bare unhandled-rejection trace.
-main().catch((e) => {
-  console.error('\nBuild failed:', e?.stack || e);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((e) => {
+    console.error('\nBuild failed:', e?.stack || e);
+    process.exit(1);
+  });
+}

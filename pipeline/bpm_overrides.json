@@ -62,6 +62,32 @@
     "miley cyrus|flowers": 118,
     "outkast|hey ya": 160,
     "the chainsmokers|closer": 95,
-    "eric clapton|tears in heaven": 80
+    "eric clapton|tears in heaven": 80,
+
+    "_top100_recognizable_deezer_bpm0": "added with the cross-genre top-100 batch; Deezer returns bpm:0 for these, so canonical published tempos live here",
+    "gloria gaynor|i will survive": 117,
+    "haddaway|what is love": 124,
+    "britney spears|...baby one more time": 93,
+    "kanye west|gold digger": 93,
+    "bruno mars|just the way you are": 109,
+    "adele|someone like you": 134,
+    "pharrell williams|happy": 160,
+    "taylor swift|shake it off": 160,
+    "the weeknd|can't feel my face": 108,
+    "dua lipa|levitating": 103,
+    "olivia rodrigo|drivers license": 144,
+    "the kid laroi|stay": 170,
+    "glass animals|heat waves": 81,
+
+    "_top100_double_tempo_corrections": "added with the top-100 batch; Deezer reported ~2x (or 1.5x) the real tempo for these — corrected to the feel tempo",
+    "eagles|hotel california": 75,
+    "tears for fears|everybody wants to rule the world": 112,
+    "george michael|faith": 96,
+    "coolio|gangsta's paradise": 80,
+    "natalie imbruglia|torn": 96,
+    "avril lavigne|complicated": 78,
+    "shakira|hips don't lie": 100,
+    "sia|cheap thrills": 90,
+    "luis fonsi|despacito": 89
   }
 }

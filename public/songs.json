@@ -6,9 +6,16 @@
     "genre": "metal",
     "year": 1992,
     "isrc": "GBCHB1800082",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
+  },
+  {
+    "artist": "Eagles",
+    "title": "Hotel California",
+    "bpm": 75,
+    "genre": "rock",
+    "year": 1993,
+    "isrc": "USEE11300353",
+    "popularity": 100
   },
   {
     "artist": "Bill Withers",
@@ -17,8 +24,15 @@
     "genre": "soul",
     "year": 1971,
     "isrc": "USSM10000372",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Avril Lavigne",
+    "title": "Complicated",
+    "bpm": 78,
+    "genre": "pop",
+    "year": 2002,
+    "isrc": "USAR10200223",
     "popularity": 99
   },
   {
@@ -28,8 +42,6 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "GBF088500681",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -39,8 +51,24 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USRE11300314",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 100
+  },
+  {
+    "artist": "Coolio",
+    "title": "Gangsta's Paradise",
+    "bpm": 80,
+    "genre": "hip-hop",
+    "year": 1995,
+    "isrc": "USTB10400128",
+    "popularity": 100
+  },
+  {
+    "artist": "Glass Animals",
+    "title": "Heat Waves",
+    "bpm": 81,
+    "genre": "indie",
+    "year": 2020,
+    "isrc": "GBUM72000433",
     "popularity": 100
   },
   {
@@ -50,8 +78,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBUM71029618",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -61,8 +87,6 @@
     "genre": "rock",
     "year": 1995,
     "isrc": "GBAAW9500190",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -72,8 +96,6 @@
     "genre": "hip-hop",
     "year": 1994,
     "isrc": "USSM10017351",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -83,9 +105,16 @@
     "genre": "indie",
     "year": 2013,
     "isrc": "GBCEL1300362",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Lorde",
+    "title": "Royals",
+    "bpm": 85,
+    "genre": "pop",
+    "year": 2012,
+    "isrc": "NZUM71200031",
+    "popularity": 99
   },
   {
     "artist": "Coldplay",
@@ -94,8 +123,6 @@
     "genre": "pop",
     "year": 2001,
     "isrc": "GBAYE0000267",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -105,8 +132,6 @@
     "genre": "rock",
     "year": 1995,
     "isrc": "GBAAW9500189",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -116,8 +141,6 @@
     "genre": "rock",
     "year": 1997,
     "isrc": "USRW29600001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -127,8 +150,6 @@
     "genre": "pop",
     "year": 2002,
     "isrc": "USJAY0300086",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -138,8 +159,6 @@
     "genre": "hip-hop",
     "year": 2008,
     "isrc": "USUM70840511",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -149,8 +168,6 @@
     "genre": "funk",
     "year": 1988,
     "isrc": "USSM17700629",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -160,9 +177,16 @@
     "genre": "rock",
     "year": 1964,
     "isrc": "USQX91402206",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
+  },
+  {
+    "artist": "Luis Fonsi",
+    "title": "Despacito",
+    "bpm": 89,
+    "genre": "pop",
+    "year": 2017,
+    "isrc": "USUM71607007",
+    "popularity": 99
   },
   {
     "artist": "SZA",
@@ -171,8 +195,6 @@
     "genre": "r&b",
     "year": 2022,
     "isrc": "USRC12204584",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -182,8 +204,6 @@
     "genre": "pop",
     "year": 2012,
     "isrc": "USUM71303060",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -193,8 +213,6 @@
     "genre": "rock",
     "year": 1999,
     "isrc": "USWB19900674",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -204,8 +222,6 @@
     "genre": "pop",
     "year": 2016,
     "isrc": "USAT21601930",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -215,8 +231,15 @@
     "genre": "r&b",
     "year": 2007,
     "isrc": "USJAY0700190",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Sia",
+    "title": "Cheap Thrills",
+    "bpm": 90,
+    "genre": "pop",
+    "year": 2015,
+    "isrc": "USRC11600201",
     "popularity": 99
   },
   {
@@ -226,8 +249,6 @@
     "genre": "rock",
     "year": 1972,
     "isrc": "USC4R0817604",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -237,8 +258,6 @@
     "genre": "hip-hop",
     "year": 2002,
     "isrc": "USIR10300033",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -248,8 +267,6 @@
     "genre": "pop",
     "year": 2006,
     "isrc": "USSM10603631",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -259,8 +276,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "GBUM71106457",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -270,8 +285,6 @@
     "genre": "country",
     "year": 2002,
     "isrc": "USDJ20200650",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -281,8 +294,6 @@
     "genre": "alternative",
     "year": 1993,
     "isrc": "GBAYE9200070",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -292,8 +303,6 @@
     "genre": "hip-hop",
     "year": 2006,
     "isrc": "USUG10702629",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -303,8 +312,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM16800249",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -314,8 +321,6 @@
     "genre": "hip-hop",
     "year": 2004,
     "isrc": "USMC10400902",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -325,8 +330,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM19801941",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -336,9 +339,25 @@
     "genre": "hip-hop",
     "year": 1999,
     "isrc": "USIR19905031",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Britney Spears",
+    "title": "...Baby One More Time",
+    "bpm": 93,
+    "genre": "pop",
+    "year": 1999,
+    "isrc": "USJI19810404",
+    "popularity": 100
+  },
+  {
+    "artist": "Kanye West",
+    "title": "Gold Digger",
+    "bpm": 93,
+    "genre": "hip-hop",
+    "year": 2005,
+    "isrc": "USUM70500143",
+    "popularity": 98
   },
   {
     "artist": "The Beatles",
@@ -347,8 +366,6 @@
     "genre": "rock",
     "year": 1968,
     "isrc": "GBAYE0601654",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -358,8 +375,6 @@
     "genre": "rock",
     "year": 1986,
     "isrc": "AUAP08000046",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -369,8 +384,6 @@
     "genre": "electronic",
     "year": 1993,
     "isrc": "GBAJH0602207",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -380,8 +393,6 @@
     "genre": "pop",
     "year": 2017,
     "isrc": "GBAHS1700024",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -391,8 +402,6 @@
     "genre": "pop",
     "year": 2002,
     "isrc": "USJAY0300080",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -402,8 +411,6 @@
     "genre": "electronic",
     "year": 2005,
     "isrc": "USQX91601347",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -413,8 +420,6 @@
     "genre": "hip-hop",
     "year": 2000,
     "isrc": "USLF20000357",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -424,8 +429,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USSM11912587",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -435,8 +438,6 @@
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB10002399",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -446,8 +447,6 @@
     "genre": "rock",
     "year": 1983,
     "isrc": "NLF057790025",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -457,8 +456,6 @@
     "genre": "grunge",
     "year": 1991,
     "isrc": "USAM19104304",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -468,8 +465,6 @@
     "genre": "hip-hop",
     "year": 2003,
     "isrc": "USWB10403683",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -479,8 +474,6 @@
     "genre": "soul",
     "year": 1972,
     "isrc": "USSM17200084",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -490,8 +483,6 @@
     "genre": "pop",
     "year": 2017,
     "isrc": "GBAHS1600463",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -501,8 +492,15 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USSM17800444",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Natalie Imbruglia",
+    "title": "Torn",
+    "bpm": 96,
+    "genre": "pop",
+    "year": 1998,
+    "isrc": "GBARL9700412",
     "popularity": 99
   },
   {
@@ -512,8 +510,6 @@
     "genre": "rock",
     "year": 1990,
     "isrc": "USSM19922509",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -523,8 +519,15 @@
     "genre": "hip-hop",
     "year": 1994,
     "isrc": "USBB40580814",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 98
+  },
+  {
+    "artist": "George Michael",
+    "title": "Faith",
+    "bpm": 96,
+    "genre": "pop",
+    "year": 1987,
+    "isrc": "GBARL1000855",
     "popularity": 98
   },
   {
@@ -534,8 +537,6 @@
     "genre": "indie",
     "year": 2001,
     "isrc": "USRC10100762",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -545,8 +546,6 @@
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB19900690",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -556,8 +555,6 @@
     "genre": "indie",
     "year": 2012,
     "isrc": "GBCEL1300363",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -567,8 +564,6 @@
     "genre": "r&b",
     "year": 2008,
     "isrc": "USSM10803760",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -578,8 +573,6 @@
     "genre": "pop",
     "year": 2022,
     "isrc": "USUG12205736",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -589,8 +582,6 @@
     "genre": "rock",
     "year": 1965,
     "isrc": "GBUM71505917",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -600,8 +591,15 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "USRE10602613",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 98
+  },
+  {
+    "artist": "Ace of Base",
+    "title": "The Sign",
+    "bpm": 97,
+    "genre": "pop",
+    "year": 1993,
+    "isrc": "SEVJH0803404",
     "popularity": 98
   },
   {
@@ -611,8 +609,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USQX90900781",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -622,9 +618,16 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USMC17446153",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Tame Impala",
+    "title": "Borderline",
+    "bpm": 98,
+    "genre": "indie",
+    "year": 2019,
+    "isrc": "AUUM71900956",
+    "popularity": 99
   },
   {
     "artist": "Arctic Monkeys",
@@ -633,8 +636,6 @@
     "genre": "indie",
     "year": 2013,
     "isrc": "GBCEL1300372",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -644,8 +645,6 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "USVR19300003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -655,8 +654,6 @@
     "genre": "soul",
     "year": 1977,
     "isrc": "USSM10207844",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -666,8 +663,6 @@
     "genre": "country",
     "year": 1969,
     "isrc": "USSM19902102",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -677,8 +672,15 @@
     "genre": "r&b",
     "year": 2003,
     "isrc": "USSM10305425",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Backstreet Boys",
+    "title": "I Want It That Way",
+    "bpm": 99,
+    "genre": "pop",
+    "year": 1999,
+    "isrc": "USJI19910614",
     "popularity": 99
   },
   {
@@ -688,8 +690,6 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "USRE10602904",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -699,8 +699,6 @@
     "genre": "rock",
     "year": 1978,
     "isrc": "USWB19900863",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -710,8 +708,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USGF19960703",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -721,8 +717,6 @@
     "genre": "funk",
     "year": 1974,
     "isrc": "USMO10000310",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -732,8 +726,15 @@
     "genre": "pop",
     "year": 2015,
     "isrc": "USUM71516760",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Shakira",
+    "title": "Hips Don't Lie",
+    "bpm": 100,
+    "genre": "pop",
+    "year": 2005,
+    "isrc": "USSM10600677",
     "popularity": 99
   },
   {
@@ -743,8 +744,6 @@
     "genre": "rock",
     "year": 2009,
     "isrc": "GBUM70817519",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -754,8 +753,6 @@
     "genre": "rock",
     "year": 2000,
     "isrc": "USAT21300892",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -765,8 +762,6 @@
     "genre": "metal",
     "year": 1989,
     "isrc": "USEE10170113",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -776,8 +771,6 @@
     "genre": "disco",
     "year": 1977,
     "isrc": "SEAYD7601020",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -787,8 +780,6 @@
     "genre": "rock",
     "year": 1987,
     "isrc": "GBUM70713138",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -798,8 +789,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USJT11200004",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -809,8 +798,6 @@
     "genre": "rock",
     "year": 1994,
     "isrc": "USWB19500363",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -820,8 +807,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -831,8 +816,6 @@
     "genre": "pop",
     "year": 2006,
     "isrc": "USSM10603627",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -842,8 +825,6 @@
     "genre": "metal",
     "year": 2005,
     "isrc": "USSM10501327",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -853,8 +834,6 @@
     "genre": "pop",
     "year": 1995,
     "isrc": "USSM19501031",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -864,8 +843,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "USSM18700225",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -875,9 +852,16 @@
     "genre": "funk",
     "year": 1975,
     "isrc": "USSM17400660",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
+  },
+  {
+    "artist": "Dua Lipa",
+    "title": "Levitating",
+    "bpm": 103,
+    "genre": "pop",
+    "year": 2020,
+    "isrc": "GBAHT1901299",
+    "popularity": 99
   },
   {
     "artist": "Bob Marley",
@@ -886,8 +870,15 @@
     "genre": "reggae",
     "year": 1979,
     "isrc": "USIR28000016",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Los del Río",
+    "title": "Macarena",
+    "bpm": 103,
+    "genre": "pop",
+    "year": 1996,
+    "isrc": "ES5109500538",
     "popularity": 99
   },
   {
@@ -897,8 +888,6 @@
     "genre": "indie",
     "year": 2004,
     "isrc": "GBCEL0501181",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -908,8 +897,6 @@
     "genre": "rock",
     "year": 2004,
     "isrc": "USRE10400664",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -919,8 +906,6 @@
     "genre": "rock",
     "year": 1983,
     "isrc": "USWB10901938",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -930,8 +915,6 @@
     "genre": "rock",
     "year": 1966,
     "isrc": "USSM16501152",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -941,8 +924,6 @@
     "genre": "hip-hop",
     "year": 1999,
     "isrc": "USIR10000448",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -952,8 +933,6 @@
     "genre": "pop",
     "year": 2024,
     "isrc": "USUM72403305",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -963,8 +942,6 @@
     "genre": "rock",
     "year": 1994,
     "isrc": "GBAAW9400021",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -974,8 +951,6 @@
     "genre": "indie",
     "year": 2001,
     "isrc": "USRC10100765",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -985,8 +960,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBN9X1900031",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -996,8 +969,6 @@
     "genre": "metal",
     "year": 1986,
     "isrc": "GBCHB1800027",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1007,8 +978,6 @@
     "genre": "indie",
     "year": 1984,
     "isrc": "GBCRL1100089",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1018,8 +987,6 @@
     "genre": "indie",
     "year": 1983,
     "isrc": "GBCRL0800302",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1029,8 +996,6 @@
     "genre": "disco",
     "year": 1977,
     "isrc": "NLF057790034",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1040,8 +1005,6 @@
     "genre": "soul",
     "year": 1964,
     "isrc": "USAT20804257",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1051,8 +1014,6 @@
     "genre": "rock",
     "year": 2013,
     "isrc": "USAT21300009",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1062,8 +1023,6 @@
     "genre": "country",
     "year": 1981,
     "isrc": "USSM19917137",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1073,8 +1032,6 @@
     "genre": "hip-hop",
     "year": 2007,
     "isrc": "USUM70741299",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1084,8 +1041,6 @@
     "genre": "pop",
     "year": 2010,
     "isrc": "GBBKS1000335",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1095,8 +1050,6 @@
     "genre": "metal",
     "year": 1980,
     "isrc": "GBAJE7000079",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1106,8 +1059,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400007",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1117,8 +1068,15 @@
     "genre": "r&b",
     "year": 2003,
     "isrc": "USAR10301423",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Camila Cabello",
+    "title": "Havana",
+    "bpm": 105,
+    "genre": "pop",
+    "year": 2017,
+    "isrc": "USSM11706905",
     "popularity": 99
   },
   {
@@ -1128,8 +1086,6 @@
     "genre": "grunge",
     "year": 1992,
     "isrc": "USSM19100674",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1139,8 +1095,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "NLF057790024",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1150,8 +1104,6 @@
     "genre": "punk",
     "year": 2004,
     "isrc": "USRE10400992",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1161,8 +1113,6 @@
     "genre": "soul",
     "year": 1975,
     "isrc": "USMO16490001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1172,8 +1122,6 @@
     "genre": "grunge",
     "year": 1991,
     "isrc": "USSM19100673",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1183,8 +1131,6 @@
     "genre": "electronic",
     "year": 1987,
     "isrc": "GBAJH9800141",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1194,8 +1140,6 @@
     "genre": "funk",
     "year": 1976,
     "isrc": "USMO17682657",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1205,8 +1149,6 @@
     "genre": "rock",
     "year": 1981,
     "isrc": "AUAP08000041",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1216,8 +1158,6 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "USWB10601591",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1227,8 +1167,6 @@
     "genre": "hip-hop",
     "year": 1998,
     "isrc": "USTB10300119",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1238,8 +1176,6 @@
     "genre": "pop",
     "year": 1999,
     "isrc": "USSM10801200",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -1249,8 +1185,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USWWW0202465",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
   },
   {
@@ -1260,8 +1194,15 @@
     "genre": "pop",
     "year": 2014,
     "isrc": "GBAHS1400094",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "The Weeknd",
+    "title": "Can't Feel My Face",
+    "bpm": 108,
+    "genre": "pop",
+    "year": 2015,
+    "isrc": "USUG11500741",
     "popularity": 99
   },
   {
@@ -1271,8 +1212,6 @@
     "genre": "rock",
     "year": 1969,
     "isrc": "USC4R0817613",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -1282,8 +1221,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USVR19600010",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1293,8 +1230,6 @@
     "genre": "punk",
     "year": 1997,
     "isrc": "USCR29753148",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1304,9 +1239,16 @@
     "genre": "pop",
     "year": 2022,
     "isrc": "USAT22203704",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
+  },
+  {
+    "artist": "Bruno Mars",
+    "title": "Just the Way You Are",
+    "bpm": 109,
+    "genre": "pop",
+    "year": 2010,
+    "isrc": "USAT21001269",
+    "popularity": 95
   },
   {
     "artist": "The Police",
@@ -1315,9 +1257,25 @@
     "genre": "rock",
     "year": 1987,
     "isrc": "GBAAM0201173",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
+  },
+  {
+    "artist": "Spice Girls",
+    "title": "Wannabe",
+    "bpm": 110,
+    "genre": "pop",
+    "year": 1996,
+    "isrc": "GBAAA9600008",
+    "popularity": 100
+  },
+  {
+    "artist": "Lewis Capaldi",
+    "title": "Someone You Loved",
+    "bpm": 110,
+    "genre": "pop",
+    "year": 2018,
+    "isrc": "DEUM71807062",
+    "popularity": 100
   },
   {
     "artist": "Queen",
@@ -1326,8 +1284,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "GBUM71029605",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1337,8 +1293,6 @@
     "genre": "country",
     "year": 1989,
     "isrc": "USRN19600096",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1348,8 +1302,6 @@
     "genre": "rock",
     "year": 1998,
     "isrc": "GBAAN8790003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1359,8 +1311,6 @@
     "genre": "country",
     "year": 1981,
     "isrc": "USSM17900687",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1370,8 +1320,6 @@
     "genre": "hip-hop",
     "year": 2014,
     "isrc": "USUM71502498",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1381,8 +1329,6 @@
     "genre": "country",
     "year": 1964,
     "isrc": "USSM11201764",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1392,8 +1338,6 @@
     "genre": "electronic",
     "year": 1999,
     "isrc": "GBBMQ9800092",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 91
   },
   {
@@ -1403,8 +1347,6 @@
     "genre": "funk",
     "year": 1991,
     "isrc": "USWB19903319",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1414,8 +1356,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USRC11903454",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1425,8 +1365,6 @@
     "genre": "rock",
     "year": 1987,
     "isrc": "USSM16200322",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1436,8 +1374,6 @@
     "genre": "metal",
     "year": 1989,
     "isrc": "USEE10170110",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1447,8 +1383,6 @@
     "genre": "hip-hop",
     "year": 2002,
     "isrc": "USIR10211038",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1458,8 +1392,6 @@
     "genre": "pop",
     "year": 2015,
     "isrc": "GBAYE1500981",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1469,8 +1401,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "USJT11700005",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1480,9 +1410,25 @@
     "genre": "pop",
     "year": 1989,
     "isrc": "USWB10002775",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
+  },
+  {
+    "artist": "Tears for Fears",
+    "title": "Everybody Wants to Rule the World",
+    "bpm": 112,
+    "genre": "pop",
+    "year": 1985,
+    "isrc": "GBF088590110",
+    "popularity": 97
+  },
+  {
+    "artist": "Gnarls Barkley",
+    "title": "Crazy",
+    "bpm": 112,
+    "genre": "r&b",
+    "year": 2006,
+    "isrc": "USAT20611041",
+    "popularity": 95
   },
   {
     "artist": "Arctic Monkeys",
@@ -1491,8 +1437,6 @@
     "genre": "indie",
     "year": 2007,
     "isrc": "GBCEL0700067",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -1502,8 +1446,6 @@
     "genre": "electronic",
     "year": 1985,
     "isrc": "GBAJH9800146",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1513,8 +1455,6 @@
     "genre": "metal",
     "year": 2005,
     "isrc": "USSM10505340",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1524,8 +1464,6 @@
     "genre": "punk",
     "year": 1982,
     "isrc": "GBARL1200670",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1535,8 +1473,6 @@
     "genre": "pop",
     "year": 2016,
     "isrc": "USRC11600876",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1546,8 +1482,6 @@
     "genre": "pop",
     "year": 1988,
     "isrc": "GBARL0600786",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1557,8 +1491,6 @@
     "genre": "funk",
     "year": 1979,
     "isrc": "USSM19802930",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1568,8 +1500,6 @@
     "genre": "rock",
     "year": 1978,
     "isrc": "USWB11403672",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 93
   },
   {
@@ -1579,20 +1509,7 @@
     "genre": "rock",
     "year": 1975,
     "isrc": "USQX90900782",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
-  },
-  {
-    "artist": "The Clash",
-    "title": "Should I Stay Or Should I Go Now",
-    "bpm": 113,
-    "genre": "punk",
-    "year": 2014,
-    "isrc": "ES7001419009",
-    "key_of": null,
-    "time_sig": null,
-    "popularity": 76
   },
   {
     "artist": "The Smiths",
@@ -1601,8 +1518,6 @@
     "genre": "indie",
     "year": 1984,
     "isrc": "GBCRL0800305",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1612,8 +1527,6 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "USRE10602912",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1623,8 +1536,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USUG10400001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1634,8 +1545,6 @@
     "genre": "pop",
     "year": 2014,
     "isrc": "GBARL1401524",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1645,8 +1554,6 @@
     "genre": "funk",
     "year": 2014,
     "isrc": "GBARL1401524",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1656,8 +1563,6 @@
     "genre": "rock",
     "year": 2001,
     "isrc": "USIR10110358",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1667,8 +1572,6 @@
     "genre": "pop",
     "year": 2005,
     "isrc": "USDJ20500174",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1678,8 +1581,6 @@
     "genre": "rock",
     "year": 2010,
     "isrc": "USRC11000687",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1689,8 +1590,6 @@
     "genre": "rock",
     "year": 1976,
     "isrc": "USUG10400002",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -1700,8 +1599,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "AUAP07900028",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1711,8 +1608,6 @@
     "genre": "electronic",
     "year": 2013,
     "isrc": "USQX91300809",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1722,8 +1617,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USGF19972704",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1733,8 +1626,6 @@
     "genre": "pop",
     "year": 2012,
     "isrc": "USAT21206909",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -1744,8 +1635,15 @@
     "genre": "rock",
     "year": 1999,
     "isrc": "USAR19900033",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Madonna",
+    "title": "Vogue",
+    "bpm": 116,
+    "genre": "pop",
+    "year": 1990,
+    "isrc": "USWB19903855",
     "popularity": 99
   },
   {
@@ -1755,8 +1653,6 @@
     "genre": "rock",
     "year": 1970,
     "isrc": "USC4R0817643",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1766,8 +1662,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "GBAAM8300001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1777,8 +1671,6 @@
     "genre": "pop",
     "year": 1982,
     "isrc": "USSM19902991",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1788,8 +1680,6 @@
     "genre": "indie",
     "year": 2015,
     "isrc": "AUUM71500303",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1799,8 +1689,15 @@
     "genre": "grunge",
     "year": 1991,
     "isrc": "USGF19610505",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Gloria Gaynor",
+    "title": "I Will Survive",
+    "bpm": 117,
+    "genre": "disco",
+    "year": 1992,
+    "isrc": "FR6V88200357",
     "popularity": 99
   },
   {
@@ -1810,8 +1707,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "USSM18000407",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1821,8 +1716,6 @@
     "genre": "rock",
     "year": 1991,
     "isrc": "USMC19135647",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1832,8 +1725,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "USWB10502869",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1843,8 +1734,6 @@
     "genre": "soul",
     "year": 1974,
     "isrc": "USMO16884718",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1854,8 +1743,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBUM71029606",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -1865,8 +1752,6 @@
     "genre": "metal",
     "year": 1984,
     "isrc": "USEE10170109",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1876,8 +1761,6 @@
     "genre": "pop",
     "year": 1987,
     "isrc": "USSM10905822",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1887,8 +1770,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USUG12000669",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1898,8 +1779,6 @@
     "genre": "pop",
     "year": 2023,
     "isrc": "USSM12209777",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1909,8 +1788,6 @@
     "genre": "rock",
     "year": 2003,
     "isrc": "GBCVT0300078",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -1920,8 +1797,6 @@
     "genre": "rock",
     "year": 1993,
     "isrc": "USAT21300937",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1931,8 +1806,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USSM19200664",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1942,8 +1815,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USSM18400415",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -1953,8 +1824,6 @@
     "genre": "rock",
     "year": 1986,
     "isrc": "USVR19200005",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1964,8 +1833,6 @@
     "genre": "rock",
     "year": 1963,
     "isrc": "USSM16301099",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -1975,8 +1842,6 @@
     "genre": "grunge",
     "year": 1992,
     "isrc": "USGF19972702",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1986,8 +1851,6 @@
     "genre": "pop",
     "year": 1986,
     "isrc": "USSM19902989",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -1997,8 +1860,6 @@
     "genre": "pop",
     "year": 2009,
     "isrc": "USUM70903859",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2008,8 +1869,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USMC17301726",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2019,8 +1878,6 @@
     "genre": "pop",
     "year": 1987,
     "isrc": "USAR18700121",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2030,8 +1887,6 @@
     "genre": "funk",
     "year": 1976,
     "isrc": "USMO19682655",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2041,8 +1896,6 @@
     "genre": "disco",
     "year": 1978,
     "isrc": "USAT27800012",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2052,8 +1905,6 @@
     "genre": "pop",
     "year": 2008,
     "isrc": "USUM70824409",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2063,8 +1914,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBN9Y1100109",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -2074,8 +1923,6 @@
     "genre": "rock",
     "year": 1996,
     "isrc": "USJT11500099",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -2085,8 +1932,6 @@
     "genre": "rock",
     "year": 1974,
     "isrc": "USMC17402686",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2096,8 +1941,6 @@
     "genre": "rock",
     "year": 1993,
     "isrc": "USIR20000145",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2107,8 +1950,6 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10400046",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2118,9 +1959,16 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "GBAHT0500593",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
+  },
+  {
+    "artist": "Madonna",
+    "title": "Like a Virgin",
+    "bpm": 120,
+    "genre": "pop",
+    "year": 1984,
+    "isrc": "USWB10002748",
+    "popularity": 98
   },
   {
     "artist": "Childish Gambino",
@@ -2129,8 +1977,6 @@
     "genre": "hip-hop",
     "year": 2018,
     "isrc": "USRC11801773",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2140,8 +1986,6 @@
     "genre": "rock",
     "year": 1999,
     "isrc": "USAR19900037",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -2151,9 +1995,16 @@
     "genre": "rock",
     "year": 1972,
     "isrc": "USC4R0817594",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
+  },
+  {
+    "artist": "Carly Rae Jepsen",
+    "title": "Call Me Maybe",
+    "bpm": 120,
+    "genre": "pop",
+    "year": 2011,
+    "isrc": "CAB391100615",
+    "popularity": 94
   },
   {
     "artist": "Cyndi Lauper",
@@ -2162,9 +2013,16 @@
     "genre": "pop",
     "year": 1984,
     "isrc": "USSM18300548",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Journey",
+    "title": "Don't Stop Believin'",
+    "bpm": 121,
+    "genre": "rock",
+    "year": 1981,
+    "isrc": "USSM18100116",
+    "popularity": 99
   },
   {
     "artist": "Nirvana",
@@ -2173,8 +2031,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USGF19972701",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2184,8 +2040,6 @@
     "genre": "indie",
     "year": 2005,
     "isrc": "USRC10503559",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2195,8 +2049,6 @@
     "genre": "disco",
     "year": 1979,
     "isrc": "USPR37907202",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2206,8 +2058,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400008",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -2217,8 +2067,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "GBN9Y1100088",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2228,8 +2076,6 @@
     "genre": "rock",
     "year": 1990,
     "isrc": "GBN9Y1100081",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2239,8 +2085,6 @@
     "genre": "rock",
     "year": 1987,
     "isrc": "USPR38619998",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2250,8 +2094,6 @@
     "genre": "rock",
     "year": 2006,
     "isrc": "GBAHT0500592",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2261,9 +2103,16 @@
     "genre": "reggae",
     "year": 1977,
     "isrc": "USIR27800259",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
+  },
+  {
+    "artist": "OneRepublic",
+    "title": "Counting Stars",
+    "bpm": 122,
+    "genre": "pop",
+    "year": 2013,
+    "isrc": "USUM71301306",
+    "popularity": 98
   },
   {
     "artist": "Kings of Leon",
@@ -2272,8 +2121,6 @@
     "genre": "rock",
     "year": 2013,
     "isrc": "USRC11300783",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2283,8 +2130,6 @@
     "genre": "rock",
     "year": 1986,
     "isrc": "USPR39402224",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2294,8 +2139,6 @@
     "genre": "rock",
     "year": 1986,
     "isrc": "USGF18714801",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2305,8 +2148,6 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10302417",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2316,8 +2157,6 @@
     "genre": "electronic",
     "year": 2001,
     "isrc": "GBDUW0000059",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2327,8 +2166,6 @@
     "genre": "indie",
     "year": 2012,
     "isrc": "AUUM71200495",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2338,8 +2175,6 @@
     "genre": "country",
     "year": 2002,
     "isrc": "USDJ20200647",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2349,8 +2184,6 @@
     "genre": "electronic",
     "year": 1993,
     "isrc": "GBAJH0602208",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2360,8 +2193,6 @@
     "genre": "rock",
     "year": 2003,
     "isrc": "USVT10300001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2371,8 +2202,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "GBAHT1901121",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2382,8 +2211,15 @@
     "genre": "electronic",
     "year": 2013,
     "isrc": "SEUM71301326",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Haddaway",
+    "title": "What Is Love",
+    "bpm": 124,
+    "genre": "electronic",
+    "year": 1993,
+    "isrc": "DEA410500401",
     "popularity": 99
   },
   {
@@ -2393,8 +2229,6 @@
     "genre": "pop",
     "year": 2010,
     "isrc": "USCA21001262",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2404,8 +2238,6 @@
     "genre": "funk",
     "year": 1976,
     "isrc": "USMO17600526",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2415,8 +2247,6 @@
     "genre": "pop",
     "year": 2005,
     "isrc": "USSM10603628",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2426,8 +2256,6 @@
     "genre": "hip-hop",
     "year": 2019,
     "isrc": "QMJMT1902056",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2437,8 +2265,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "USGF18714809",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2448,8 +2274,6 @@
     "genre": "metal",
     "year": 1992,
     "isrc": "USEE10001992",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2459,8 +2283,6 @@
     "genre": "pop",
     "year": 2017,
     "isrc": "USUM71700626",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2470,19 +2292,15 @@
     "genre": "indie",
     "year": 2015,
     "isrc": "AUUM71500292",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
-    "artist": "Tame Impala",
-    "title": "Let It Happen v1",
+    "artist": "Eurythmics",
+    "title": "Sweet Dreams (Are Made of This)",
     "bpm": 125,
-    "genre": "indie",
-    "year": 2015,
-    "isrc": "AUUM71500292",
-    "key_of": null,
-    "time_sig": null,
+    "genre": "pop",
+    "year": 1987,
+    "isrc": "GBARL0300589",
     "popularity": 100
   },
   {
@@ -2492,8 +2310,6 @@
     "genre": "rock",
     "year": 1991,
     "isrc": "USGF19141504",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2503,8 +2319,6 @@
     "genre": "funk",
     "year": 1983,
     "isrc": "USSM18100641",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2514,8 +2328,6 @@
     "genre": "rock",
     "year": 2015,
     "isrc": "GBAHT1500068",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2525,8 +2337,6 @@
     "genre": "country",
     "year": 1998,
     "isrc": "USMR19887508",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2536,8 +2346,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USA176910010",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2547,8 +2355,6 @@
     "genre": "hip-hop",
     "year": 2017,
     "isrc": "USAT21701762",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2558,8 +2364,6 @@
     "genre": "electronic",
     "year": 2011,
     "isrc": "GB28K1100036",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2569,8 +2373,6 @@
     "genre": "electronic",
     "year": 2011,
     "isrc": "SEUM71100962",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2580,8 +2382,15 @@
     "genre": "r&b",
     "year": 2013,
     "isrc": "USSM11303954",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Kylie Minogue",
+    "title": "Can't Get You Out of My Head",
+    "bpm": 126,
+    "genre": "pop",
+    "year": 2001,
+    "isrc": "GBAYE0100913",
     "popularity": 99
   },
   {
@@ -2591,8 +2400,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "GBAAN0400084",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2602,8 +2409,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "USJT19900087",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2613,8 +2418,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USWB11403684",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2624,8 +2427,6 @@
     "genre": "pop",
     "year": 1977,
     "isrc": "USSM17700373",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2635,8 +2436,6 @@
     "genre": "rock",
     "year": 2001,
     "isrc": "USIR10110319",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2646,8 +2445,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USSM11100237",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -2657,8 +2454,6 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "USWB10302448",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
   },
   {
@@ -2668,8 +2463,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "GBN9Y1100113",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2679,8 +2472,6 @@
     "genre": "pop",
     "year": 2018,
     "isrc": "USAT21804142",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2690,8 +2481,6 @@
     "genre": "hip-hop",
     "year": 2010,
     "isrc": "USCM51100104",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2701,8 +2490,6 @@
     "genre": "pop",
     "year": 2011,
     "isrc": "USUM71115507",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2712,8 +2499,6 @@
     "genre": "rock",
     "year": 1969,
     "isrc": "GBAYE0601696",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2723,8 +2508,6 @@
     "genre": "pop",
     "year": 1971,
     "isrc": "GBAMB9500072",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2734,8 +2517,6 @@
     "genre": "rock",
     "year": 1971,
     "isrc": "GBUM70909464",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2745,9 +2526,16 @@
     "genre": "pop",
     "year": 2010,
     "isrc": "USUM71109132",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
+  },
+  {
+    "artist": "The Black Eyed Peas",
+    "title": "I Gotta Feeling",
+    "bpm": 128,
+    "genre": "pop",
+    "year": 2008,
+    "isrc": "USUM70965169",
+    "popularity": 96
   },
   {
     "artist": "Survivor",
@@ -2756,8 +2544,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "USVR10100068",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 89
   },
   {
@@ -2767,8 +2553,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "AUAP08000047",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2778,8 +2562,6 @@
     "genre": "metal",
     "year": 2001,
     "isrc": "USSM10107256",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2789,8 +2571,6 @@
     "genre": "electronic",
     "year": 2012,
     "isrc": "GBAAA1200728",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2800,8 +2580,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "USWB19900188",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2811,8 +2589,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USSM17000293",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2822,8 +2598,6 @@
     "genre": "rock",
     "year": 1966,
     "isrc": "USSM16600723",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -2833,8 +2607,6 @@
     "genre": "rock",
     "year": 1994,
     "isrc": "USSM19922549",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2844,8 +2616,6 @@
     "genre": "indie",
     "year": 2011,
     "isrc": "AUZS21100040",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2855,8 +2625,6 @@
     "genre": "hip-hop",
     "year": 2016,
     "isrc": "USSM11607555",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2866,8 +2634,6 @@
     "genre": "punk",
     "year": 1982,
     "isrc": "GBARL1200671",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2877,8 +2643,6 @@
     "genre": "electronic",
     "year": 1993,
     "isrc": "GBAJH0602195",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2888,9 +2652,16 @@
     "genre": "rock",
     "year": 2011,
     "isrc": "USNO11100275",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
+  },
+  {
+    "artist": "LMFAO",
+    "title": "Party Rock Anthem",
+    "bpm": 130,
+    "genre": "electronic",
+    "year": 2011,
+    "isrc": "USUM71105650",
+    "popularity": 96
   },
   {
     "artist": "Michael Jackson",
@@ -2899,8 +2670,6 @@
     "genre": "pop",
     "year": 1987,
     "isrc": "USSM11204988",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2910,8 +2679,6 @@
     "genre": "pop",
     "year": 2002,
     "isrc": "GBAYE0200771",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2921,8 +2688,6 @@
     "genre": "metal",
     "year": 1995,
     "isrc": "USSM19800759",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2932,8 +2697,15 @@
     "genre": "funk",
     "year": 1980,
     "isrc": "USMO18082595",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 98
+  },
+  {
+    "artist": "Kelly Clarkson",
+    "title": "Since U Been Gone",
+    "bpm": 131,
+    "genre": "pop",
+    "year": 2003,
+    "isrc": "GBCTA0400231",
     "popularity": 98
   },
   {
@@ -2943,8 +2715,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "GBAAM7800003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -2954,8 +2724,6 @@
     "genre": "pop",
     "year": 1973,
     "isrc": "GBUM71304955",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -2965,8 +2733,6 @@
     "genre": "rock",
     "year": 1967,
     "isrc": "USQX90900760",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -2976,8 +2742,6 @@
     "genre": "rock",
     "year": 1968,
     "isrc": "USRY29901310",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 83
   },
   {
@@ -2987,8 +2751,6 @@
     "genre": "rock",
     "year": 1991,
     "isrc": "AUAP09000014",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -2998,8 +2760,15 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USGF19142004",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Cher",
+    "title": "Believe",
+    "bpm": 133,
+    "genre": "pop",
+    "year": 1998,
+    "isrc": "GBAHT9803002",
     "popularity": 99
   },
   {
@@ -3009,8 +2778,6 @@
     "genre": "rock",
     "year": 1983,
     "isrc": "GBUM70809759",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3020,8 +2787,6 @@
     "genre": "rock",
     "year": 1969,
     "isrc": "USC4R0817618",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3031,8 +2796,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USMC17301721",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3042,8 +2805,6 @@
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB10001203",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3053,8 +2814,6 @@
     "genre": "pop",
     "year": 2009,
     "isrc": "USSM10905706",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3064,9 +2823,16 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "GBF088500674",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Adele",
+    "title": "Someone Like You",
+    "bpm": 134,
+    "genre": "pop",
+    "year": 2010,
+    "isrc": "GBBKS1000351",
+    "popularity": 99
   },
   {
     "artist": "The Clash",
@@ -3075,8 +2841,15 @@
     "genre": "punk",
     "year": 1979,
     "isrc": "GBARL1200680",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 98
+  },
+  {
+    "artist": "Meghan Trainor",
+    "title": "All About That Bass",
+    "bpm": 134,
+    "genre": "pop",
+    "year": 2014,
+    "isrc": "USSM11401317",
     "popularity": 98
   },
   {
@@ -3086,8 +2859,6 @@
     "genre": "pop",
     "year": 2006,
     "isrc": "USSM10603632",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3097,8 +2868,6 @@
     "genre": "pop",
     "year": 1977,
     "isrc": "USSM17700369",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3108,8 +2877,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USUM71900764",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3119,8 +2886,6 @@
     "genre": "indie",
     "year": 1986,
     "isrc": "GBAHT1700332",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3130,8 +2895,6 @@
     "genre": "punk",
     "year": 1999,
     "isrc": "USMC19959122",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3141,8 +2904,6 @@
     "genre": "rock",
     "year": 1999,
     "isrc": "USRW39900002",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3152,8 +2913,6 @@
     "genre": "pop",
     "year": 1976,
     "isrc": "GBAMB7200006",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3163,8 +2922,6 @@
     "genre": "hip-hop",
     "year": 2018,
     "isrc": "USSM11901941",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3174,8 +2931,6 @@
     "genre": "rock",
     "year": 1966,
     "isrc": "USA176510160",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3185,8 +2940,6 @@
     "genre": "indie",
     "year": 1986,
     "isrc": "GBCRL0800315",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3196,8 +2949,6 @@
     "genre": "rock",
     "year": 2013,
     "isrc": "USAT21300012",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3207,8 +2958,6 @@
     "genre": "rock",
     "year": 2001,
     "isrc": "GBCVT0000025",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3218,8 +2967,6 @@
     "genre": "pop",
     "year": 2000,
     "isrc": "GBAYE0000569",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3229,8 +2976,6 @@
     "genre": "rock",
     "year": 1972,
     "isrc": "USJT11500173",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3240,8 +2985,6 @@
     "genre": "alternative",
     "year": 1992,
     "isrc": "GBALB9200002",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3251,8 +2994,6 @@
     "genre": "pop",
     "year": 2008,
     "isrc": "GBAYE0800265",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -3262,8 +3003,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "GBAYE0601713",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3273,8 +3012,6 @@
     "genre": "rock",
     "year": 1966,
     "isrc": "GBUM71505892",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3284,8 +3021,6 @@
     "genre": "indie",
     "year": 2004,
     "isrc": "USIR20400195",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3295,8 +3030,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "USWB19900872",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3306,8 +3039,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "GBF076922580",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3317,8 +3048,6 @@
     "genre": "pop",
     "year": 1983,
     "isrc": "USSM19902990",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -3328,8 +3057,6 @@
     "genre": "rock",
     "year": 1974,
     "isrc": "GBCJN0500011",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3339,8 +3066,6 @@
     "genre": "rock",
     "year": 1981,
     "isrc": "USWB11403670",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3350,8 +3075,6 @@
     "genre": "punk",
     "year": 1994,
     "isrc": "USCR29458603",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3361,8 +3084,6 @@
     "genre": "pop",
     "year": 1976,
     "isrc": "GBUM71304953",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3372,8 +3093,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USWB17700031",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -3383,8 +3102,6 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "USSM11304547",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3394,8 +3111,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USUM71900110",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3405,8 +3120,6 @@
     "genre": "rock",
     "year": 2008,
     "isrc": "USRC10800301",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3416,8 +3129,6 @@
     "genre": "pop",
     "year": 2012,
     "isrc": "USUM71400693",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3427,8 +3138,6 @@
     "genre": "indie",
     "year": 2007,
     "isrc": "GBCEL0700074",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3438,8 +3147,6 @@
     "genre": "alternative",
     "year": 1989,
     "isrc": "GBALB8900003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
   },
   {
@@ -3449,8 +3156,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USWB11403681",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3460,8 +3165,6 @@
     "genre": "grunge",
     "year": 1995,
     "isrc": "USSM19200006",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3471,8 +3174,6 @@
     "genre": "punk",
     "year": 1993,
     "isrc": "USRE19900148",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3482,8 +3183,6 @@
     "genre": "metal",
     "year": 1975,
     "isrc": "GBCBR1700231",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3493,8 +3192,6 @@
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400013",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3504,8 +3201,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "USC4R0817600",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3515,8 +3210,6 @@
     "genre": "rock",
     "year": 2003,
     "isrc": "USFP70400154",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
   },
   {
@@ -3526,9 +3219,16 @@
     "genre": "metal",
     "year": 1993,
     "isrc": "USEE10001999",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Britney Spears",
+    "title": "Toxic",
+    "bpm": 143,
+    "genre": "pop",
+    "year": 2003,
+    "isrc": "USJI10301005",
+    "popularity": 99
   },
   {
     "artist": "Rage Against the Machine",
@@ -3537,8 +3237,6 @@
     "genre": "rock",
     "year": 1991,
     "isrc": "USSM19200668",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3548,9 +3246,16 @@
     "genre": "pop",
     "year": 2012,
     "isrc": "USAT21203287",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "Olivia Rodrigo",
+    "title": "drivers license",
+    "bpm": 144,
+    "genre": "pop",
+    "year": 2021,
+    "isrc": "USUG12004749",
+    "popularity": 99
   },
   {
     "artist": "Paramore",
@@ -3559,8 +3264,6 @@
     "genre": "rock",
     "year": 2009,
     "isrc": "USAT20902328",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3570,8 +3273,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USVR19600001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3581,8 +3282,6 @@
     "genre": "rock",
     "year": 2003,
     "isrc": "USRW30200005",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3592,8 +3291,6 @@
     "genre": "pop",
     "year": 1990,
     "isrc": "USSM18900217",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3603,8 +3300,6 @@
     "genre": "pop",
     "year": 2003,
     "isrc": "GBAYE0200772",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -3614,8 +3309,6 @@
     "genre": "metal",
     "year": 1971,
     "isrc": "GBCBR1700220",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3625,8 +3318,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "GBAAM7900007",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3636,8 +3327,6 @@
     "genre": "rock",
     "year": 1989,
     "isrc": "USSM17000311",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3647,8 +3336,6 @@
     "genre": "rock",
     "year": 1973,
     "isrc": "USMC17347089",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3658,8 +3345,6 @@
     "genre": "punk",
     "year": 2004,
     "isrc": "USRE10500451",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3669,8 +3354,6 @@
     "genre": "alternative",
     "year": 1995,
     "isrc": "GBAYE9400056",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3680,8 +3363,6 @@
     "genre": "rock",
     "year": 1981,
     "isrc": "USSM17500423",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3691,8 +3372,6 @@
     "genre": "punk",
     "year": 1999,
     "isrc": "USMC19959123",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3702,8 +3381,6 @@
     "genre": "reggae",
     "year": 1977,
     "isrc": "USIR27700016",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3713,8 +3390,6 @@
     "genre": "indie",
     "year": 2003,
     "isrc": "USIR20400274",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3724,8 +3399,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBF089601041",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -3735,8 +3408,6 @@
     "genre": "rock",
     "year": 1984,
     "isrc": "USSM18400416",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3746,8 +3417,6 @@
     "genre": "grunge",
     "year": 1992,
     "isrc": "USSM19100003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3757,8 +3426,6 @@
     "genre": "hip-hop",
     "year": 2017,
     "isrc": "USUM71703085",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3768,8 +3435,6 @@
     "genre": "rock",
     "year": 2011,
     "isrc": "USNO11100276",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3779,8 +3444,6 @@
     "genre": "rock",
     "year": 1987,
     "isrc": "USGF18714803",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3790,8 +3453,6 @@
     "genre": "pop",
     "year": 2002,
     "isrc": "USJAY0300079",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -3801,8 +3462,6 @@
     "genre": "rock",
     "year": 1967,
     "isrc": "USQX90900764",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3812,8 +3471,6 @@
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB10002403",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -3823,8 +3480,6 @@
     "genre": "alternative",
     "year": 1991,
     "isrc": "GBALB8700003",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3834,8 +3489,6 @@
     "genre": "pop",
     "year": 2008,
     "isrc": "USUM70808144",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 93
   },
   {
@@ -3845,8 +3498,6 @@
     "genre": "alternative",
     "year": 1997,
     "isrc": "GBAYE9701368",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3856,8 +3507,6 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10400053",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3867,8 +3516,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBAAM7900002",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3878,8 +3525,6 @@
     "genre": "rock",
     "year": 1988,
     "isrc": "USPR39402222",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -3889,8 +3534,6 @@
     "genre": "punk",
     "year": 1995,
     "isrc": "USRE19500211",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3900,8 +3543,6 @@
     "genre": "punk",
     "year": 1979,
     "isrc": "GBARL1201017",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3911,8 +3552,6 @@
     "genre": "pop",
     "year": 1980,
     "isrc": "USSM17900398",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3922,8 +3561,6 @@
     "genre": "indie",
     "year": 2015,
     "isrc": "AUUM71500302",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3933,8 +3570,6 @@
     "genre": "reggae",
     "year": 1978,
     "isrc": "GBAAN7790002",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3944,8 +3579,6 @@
     "genre": "rock",
     "year": 1980,
     "isrc": "GBUM70909467",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3955,8 +3588,6 @@
     "genre": "grunge",
     "year": 1992,
     "isrc": "USSM19100412",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3966,8 +3597,6 @@
     "genre": "rock",
     "year": 2008,
     "isrc": "USRC10800300",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -3977,8 +3606,6 @@
     "genre": "pop",
     "year": 1973,
     "isrc": "GBUM71304966",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -3988,8 +3615,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "GBUM71029612",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 94
   },
   {
@@ -3999,8 +3624,6 @@
     "genre": "metal",
     "year": 1974,
     "isrc": "GBAJE7000085",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4010,8 +3633,6 @@
     "genre": "hip-hop",
     "year": 2018,
     "isrc": "USCM51800004",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4021,8 +3642,6 @@
     "genre": "rock",
     "year": 1997,
     "isrc": "USRW29600007",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4032,8 +3651,6 @@
     "genre": "rock",
     "year": 1978,
     "isrc": "GBCEG9400014",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4043,8 +3660,6 @@
     "genre": "metal",
     "year": 1986,
     "isrc": "GBCHB1800046",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4054,8 +3669,6 @@
     "genre": "rock",
     "year": 1991,
     "isrc": "USSM11205432",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4065,8 +3678,6 @@
     "genre": "hip-hop",
     "year": 2018,
     "isrc": "USSM11806660",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4076,8 +3687,6 @@
     "genre": "pop",
     "year": 2007,
     "isrc": "USUM70700326",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4087,8 +3696,6 @@
     "genre": "soul",
     "year": 1972,
     "isrc": "USSM10207818",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4098,8 +3705,6 @@
     "genre": "rock",
     "year": 2014,
     "isrc": "USNO11400177",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -4109,8 +3714,6 @@
     "genre": "pop",
     "year": 2014,
     "isrc": "USUM71414163",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4120,8 +3723,6 @@
     "genre": "rock",
     "year": 2008,
     "isrc": "USNO10750895",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -4131,8 +3732,6 @@
     "genre": "punk",
     "year": 1998,
     "isrc": "USMC19959007",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4142,8 +3741,6 @@
     "genre": "rock",
     "year": 1999,
     "isrc": "USRW29600011",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4153,8 +3750,6 @@
     "genre": "pop",
     "year": 2014,
     "isrc": "GBAHS1400099",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4164,8 +3759,6 @@
     "genre": "indie",
     "year": 2003,
     "isrc": "USRC10301519",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4175,8 +3768,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "AUAP07700011",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4186,8 +3777,6 @@
     "genre": "rock",
     "year": 1990,
     "isrc": "USJT11200009",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4197,8 +3786,15 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USA171010213",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 99
+  },
+  {
+    "artist": "Pharrell Williams",
+    "title": "Happy",
+    "bpm": 160,
+    "genre": "pop",
+    "year": 2012,
+    "isrc": "USQ4E1300686",
     "popularity": 99
   },
   {
@@ -4208,8 +3804,6 @@
     "genre": "hip-hop",
     "year": 2003,
     "isrc": "USAR10300924",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4219,8 +3813,6 @@
     "genre": "hip-hop",
     "year": 2017,
     "isrc": "USUM71710087",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4230,8 +3822,6 @@
     "genre": "hip-hop",
     "year": 2000,
     "isrc": "USIR10001280",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4241,8 +3831,6 @@
     "genre": "rock",
     "year": 1975,
     "isrc": "USWB19903197",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4252,8 +3840,6 @@
     "genre": "rock",
     "year": 1989,
     "isrc": "USAT21300891",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4263,8 +3849,15 @@
     "genre": "rock",
     "year": 1994,
     "isrc": "USGF19962905",
-    "key_of": null,
-    "time_sig": null,
+    "popularity": 97
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Shake It Off",
+    "bpm": 160,
+    "genre": "pop",
+    "year": 2014,
+    "isrc": "USUG12306677",
     "popularity": 97
   },
   {
@@ -4274,8 +3867,6 @@
     "genre": "rock",
     "year": 2016,
     "isrc": "USRC11601474",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4285,8 +3876,6 @@
     "genre": "indie",
     "year": 1986,
     "isrc": "GBCRL1100055",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -4296,8 +3885,6 @@
     "genre": "metal",
     "year": 1980,
     "isrc": "USWB11304628",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4307,8 +3894,6 @@
     "genre": "metal",
     "year": 1993,
     "isrc": "GBAYE9801390",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4318,8 +3903,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USSM11205433",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4329,8 +3912,6 @@
     "genre": "rock",
     "year": 1976,
     "isrc": "USSM10013400",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4340,8 +3921,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USAT21300956",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4351,8 +3930,6 @@
     "genre": "rock",
     "year": 1969,
     "isrc": "GBAYE0601690",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4362,8 +3939,6 @@
     "genre": "rock",
     "year": 2008,
     "isrc": "USAT20804057",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4373,8 +3948,6 @@
     "genre": "funk",
     "year": 1975,
     "isrc": "USSM17400502",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 92
   },
   {
@@ -4384,8 +3957,6 @@
     "genre": "rock",
     "year": 1978,
     "isrc": "USWB11403669",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4395,8 +3966,6 @@
     "genre": "alternative",
     "year": 2007,
     "isrc": "GBSTK0700009",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4406,8 +3975,6 @@
     "genre": "rock",
     "year": 1971,
     "isrc": "USQX90900730",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 91
   },
   {
@@ -4417,8 +3984,6 @@
     "genre": "pop",
     "year": 2021,
     "isrc": "USUG12101245",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4428,8 +3993,6 @@
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM18200245",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4439,8 +4002,6 @@
     "genre": "rock",
     "year": 1992,
     "isrc": "USWB19901576",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4450,8 +4011,6 @@
     "genre": "rock",
     "year": 1996,
     "isrc": "USSM19502563",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4461,8 +4020,6 @@
     "genre": "rock",
     "year": 1978,
     "isrc": "USQX90900767",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4472,8 +4029,6 @@
     "genre": "rock",
     "year": 2011,
     "isrc": "USNO11100273",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4483,8 +4038,6 @@
     "genre": "pop",
     "year": 1984,
     "isrc": "USWB19901214",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4494,8 +4047,6 @@
     "genre": "rock",
     "year": 1993,
     "isrc": "USMC19341704",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4505,8 +4056,6 @@
     "genre": "rock",
     "year": 1989,
     "isrc": "USMC18925673",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4516,8 +4065,6 @@
     "genre": "alternative",
     "year": 1993,
     "isrc": "GBALB7800001",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -4527,9 +4074,25 @@
     "genre": "pop",
     "year": 2015,
     "isrc": "USAT21500597",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
+  },
+  {
+    "artist": "The Kid LAROI",
+    "title": "Stay",
+    "bpm": 170,
+    "genre": "pop",
+    "year": 2021,
+    "isrc": "USSM12103949",
+    "popularity": 99
+  },
+  {
+    "artist": "Taylor Swift",
+    "title": "Cruel Summer",
+    "bpm": 170,
+    "genre": "pop",
+    "year": 2019,
+    "isrc": "USUG11901472",
+    "popularity": 99
   },
   {
     "artist": "Tom Petty",
@@ -4538,8 +4101,6 @@
     "genre": "rock",
     "year": 1989,
     "isrc": "USMC18925680",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -4549,8 +4110,6 @@
     "genre": "pop",
     "year": 2019,
     "isrc": "USUG11904206",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4560,8 +4119,6 @@
     "genre": "rock",
     "year": 1993,
     "isrc": "USSM19200665",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4571,8 +4128,6 @@
     "genre": "rock",
     "year": 2009,
     "isrc": "USAT20902050",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4582,8 +4137,6 @@
     "genre": "hip-hop",
     "year": 2002,
     "isrc": "USIR10211559",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4593,8 +4146,6 @@
     "genre": "metal",
     "year": 2001,
     "isrc": "USSM10107262",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4604,8 +4155,6 @@
     "genre": "rock",
     "year": 1966,
     "isrc": "USSM16501149",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 91
   },
   {
@@ -4615,8 +4164,6 @@
     "genre": "rock",
     "year": 2007,
     "isrc": "USRW30700007",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4626,8 +4173,6 @@
     "genre": "rock",
     "year": 2007,
     "isrc": "USAT20702617",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4637,8 +4182,6 @@
     "genre": "r&b",
     "year": 2007,
     "isrc": "USUM70736771",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4648,8 +4191,6 @@
     "genre": "pop",
     "year": 2022,
     "isrc": "USSM12200612",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4659,8 +4200,6 @@
     "genre": "pop",
     "year": 2014,
     "isrc": "USRC11400498",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4670,8 +4209,6 @@
     "genre": "rock",
     "year": 1981,
     "isrc": "USAT21300925",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4681,8 +4218,6 @@
     "genre": "pop",
     "year": 1991,
     "isrc": "USSM10024729",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4692,8 +4227,6 @@
     "genre": "metal",
     "year": 1980,
     "isrc": "GBCHB1800005",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4703,8 +4236,6 @@
     "genre": "punk",
     "year": 1994,
     "isrc": "USRE19900151",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4714,8 +4245,6 @@
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10400047",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -4725,8 +4254,6 @@
     "genre": "pop",
     "year": 1984,
     "isrc": "GBALX8300190",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4736,8 +4263,6 @@
     "genre": "pop",
     "year": 1973,
     "isrc": "USSM17300504",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 99
   },
   {
@@ -4747,8 +4272,6 @@
     "genre": "rock",
     "year": 1985,
     "isrc": "USSM18400411",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4758,8 +4281,6 @@
     "genre": "rock",
     "year": 1979,
     "isrc": "USSM18400411",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 98
   },
   {
@@ -4769,8 +4290,6 @@
     "genre": "metal",
     "year": 1975,
     "isrc": "GBAJE7000063",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4780,8 +4299,6 @@
     "genre": "rock",
     "year": 2004,
     "isrc": "USRE10400660",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4791,8 +4308,6 @@
     "genre": "rock",
     "year": 2002,
     "isrc": "USWB10201694",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4802,8 +4317,6 @@
     "genre": "grunge",
     "year": 1996,
     "isrc": "USAM19602232",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -4813,8 +4326,6 @@
     "genre": "pop",
     "year": 2016,
     "isrc": "USUG11600976",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 100
   },
   {
@@ -4824,8 +4335,6 @@
     "genre": "punk",
     "year": 2004,
     "isrc": "USRE10400888",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   },
   {
@@ -4835,8 +4344,6 @@
     "genre": "rock",
     "year": 1969,
     "isrc": "USSM16900831",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4846,8 +4353,6 @@
     "genre": "rock",
     "year": 1974,
     "isrc": "USSM17000297",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 97
   },
   {
@@ -4857,8 +4362,6 @@
     "genre": "electronic",
     "year": 1997,
     "isrc": "GBAJH0400146",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 95
   },
   {
@@ -4868,8 +4371,6 @@
     "genre": "punk",
     "year": 1979,
     "isrc": "GBARL1200689",
-    "key_of": null,
-    "time_sig": null,
     "popularity": 96
   }
 ]

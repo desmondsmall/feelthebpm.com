@@ -1,5 +1,11 @@
 .dev/dangerous/
 .obsidian/
+.DS_Store
 
 # build pipeline cache (regenerable HTTP responses)
 pipeline/cache/
+
+# GSB evaluation raw data (regenerable — re-run pipeline/eval-gsb.mjs to refresh).
+# The human-readable report (.dev/reference/gsb-eval.md) is a tracked doc; only the
+# large raw rows are ignored.
+.dev/reference/gsb-eval.json

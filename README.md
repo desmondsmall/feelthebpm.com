@@ -32,8 +32,6 @@ Each song in `public/songs.json` / `public/songs.js` (written there by the pipel
   "genre": "rock",
   "year": 2003,                   // original release year (MusicBrainz; Deezer fallback)
   "isrc": "USVT10300001",
-  "key_of": null,                 // musical key  (only from GetSongBPM gap-filler)
-  "time_sig": null,               // time signature (only from GetSongBPM gap-filler)
   "popularity": 98               // 0–100, derived blend (see below)
 }
 ```
@@ -94,11 +92,14 @@ and logged to `pipeline/gaps.json` — review that file to grow the override tab
   no single meaningful tempo (multi-movement or rubato — Bohemian Rhapsody, Stairway, Free
   Bird…) make poor "feel this BPM" anchors, so they're dropped even if they have a BPM.
 - **GetSongBPM gap-filler (wired, dormant):** any song Deezer can't tempo falls through to
-  GetSongBPM, which also returns musical key + time signature. Off until you provide a free
-  key (register at getsongbpm.com/api — requires a visible backlink):
+  GetSongBPM for a tempo. Off until you provide a free key (register at getsongbpm.com/api —
+  requires a visible backlink):
   ```bash
   GETSONGBPM_API_KEY=your_key node pipeline/build.mjs
   ```
+  GSB also doubles as a **BPM verifier** — `pipeline/eval-gsb.mjs` cross-checks every shipped
+  tempo against GSB and emits an override worklist for songs where Deezer and GSB disagree
+  (useful for finding which canonical tempos to add to `bpm_overrides.json`).
 - **Better BPM source later:** SoundCharts (paid B2B, industry-grade) can augment at the same seam.
 
 ## Sources & attribution

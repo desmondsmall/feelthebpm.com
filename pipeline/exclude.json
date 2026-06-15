@@ -13,6 +13,9 @@
     "the beatles|happiness is a warm gun",
     "pink floyd|shine on you crazy diamond",
     "green day|jesus of suburbia",
-    "the who|won't get fooled again"
+    "the who|won't get fooled again",
+
+    "_artifact: Songsterr title artifact — a junk-suffixed duplicate of a real title already in the set (the real one is 'should i stay or should i go'); not a cover, just a bad title",
+    "the clash|should i stay or should i go now"
   ]
 }
