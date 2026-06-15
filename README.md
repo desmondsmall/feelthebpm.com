@@ -38,6 +38,9 @@ Each song in `public/songs.json` / `public/songs.js` (written there by the pipel
 }
 ```
 
+Alongside them the pipeline writes `public/version.json` — a small build manifest
+(date, song count, year-source tally, exclusions, BPM gaps) for provenance/versioning.
+
 `songs.json` is canonical (the source of truth CI validates); `songs.js` is a
 generated `<script>`-loadable mirror (`window.SONGS=[…]`) so `index.html` works on
 `file://` with no server. The page loads `.js` and only fetches `.json` as a

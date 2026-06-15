@@ -1,0 +1,10 @@
+{
+  "built": "2026-06-15",
+  "songs": 443,
+  "year_sources": {
+    "musicbrainz": 440,
+    "deezer": 4
+  },
+  "excluded": 6,
+  "bpm_gaps": 97
+}

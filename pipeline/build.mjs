@@ -327,6 +327,16 @@ const popularity = (views, rank) =>
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
   writeFileSync(join(HERE, 'gaps.json'), JSON.stringify(gaps, null, 2));
+  // build manifest: provenance git can't infer from songs.json alone (how it was produced).
+  // Ships in public/ so it deploys with the data and can double as a version stamp.
+  const meta = {
+    built: new Date().toISOString().slice(0, 10),
+    songs: deduped.length,
+    year_sources: { musicbrainz: yearFromMB, deezer: yearFromDeezer },
+    excluded: excluded.length,
+    bpm_gaps: gaps.length,
+  };
+  writeFileSync(join(SITE, 'version.json'), JSON.stringify(meta, null, 2) + '\n');
   console.error(`\nDeduped ${nDropped} arrangement variant(s).`);
   console.error(`Excluded ${excluded.length} multi-tempo song(s) via exclude.json: ${excluded.join(', ') || '(none matched)'}`);
   console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
