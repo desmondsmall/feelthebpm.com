@@ -1,0 +1,66 @@
+name: Deploy to production
+
+on:
+  push:
+    branches: [main]
+    paths:                       # only deploy when the deployable surface changes
+      - 'public/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:             # manual redeploy button in the Actions tab
+
+concurrency:                     # never let two deploys race
+  group: deploy-prod
+  cancel-in-progress: true
+
+env:
+  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+  DEPLOY_PATH: /var/www/feelthebpm
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate dataset (gate the deploy)
+        run: |
+          node -e '
+            const s = require("./public/songs.json");
+            if (!Array.isArray(s) || s.length === 0) throw new Error("songs.json empty");
+            const banned = ["songsterr_views", "deezer_rank", "bpm_confidence"];
+            for (const r of s) {
+              for (const b of banned) if (b in r) throw new Error("service field leaked: " + b);
+              if (typeof r.bpm !== "number" || !r.title || !r.artist)
+                throw new Error("bad record: " + JSON.stringify(r));
+            }
+            console.log("songs.json OK:", s.length, "records");
+          '
+          # songs.js must stay in sync with songs.json
+          node -e '
+            const fs = require("fs");
+            const js = fs.readFileSync("public/songs.js", "utf8")
+              .replace(/^window\.SONGS\s*=\s*/, "").replace(/;\s*$/, "");
+            if (JSON.stringify(JSON.parse(js)) !== JSON.stringify(require("./public/songs.json")))
+              throw new Error("songs.js out of sync with songs.json — re-run pipeline/build.mjs");
+            console.log("songs.js matches songs.json");
+          '
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Deploy (mirror public/ -> web root)
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            public/ \
+            "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+
+      - name: Smoke test
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' https://feelthebpm.com)
+          test "$code" = "200" || { echo "site returned $code"; exit 1; }
