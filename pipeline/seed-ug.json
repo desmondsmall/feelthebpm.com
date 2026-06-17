@@ -1,0 +1,895 @@
+{
+  "_comment": "Parsed Ultimate Guitar top-tabs harvest = MEMBERSHIP + ug_hits signal for the build SEED. Regenerate with `node pipeline/seed-ug.mjs` (reads pipeline/raw/ug-*.txt). UG strips punctuation from titles (display artifact); matching/dedup is punctuation-insensitive (build.mjs `key()`), so these still merge with existing catalogue entries. Net-new songs ship with UG's title and a default genre — promote any you care about into extra_songs.json with a real title/genre.",
+  "generated": "2026-06-17",
+  "count": 148,
+  "songs": [
+    {
+      "artist": "Metallica",
+      "title": "Nothing Else Matters",
+      "ug_hits": 1915854,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Sweet Child O Mine",
+      "ug_hits": 1781559,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Stairway To Heaven",
+      "ug_hits": 1335050,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Fade To Black",
+      "ug_hits": 999432,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "JerryC",
+      "title": "Canon Rock",
+      "ug_hits": 918967,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "One",
+      "ug_hits": 886169,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Enter Sandman",
+      "ug_hits": 875064,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Master Of Puppets",
+      "ug_hits": 869816,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Back In Black",
+      "ug_hits": 759718,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Deep Purple",
+      "title": "Smoke On The Water",
+      "ug_hits": 756304,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Ozzy Osbourne",
+      "title": "Crazy Train",
+      "ug_hits": 726922,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Paranoid",
+      "ug_hits": 722655,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Sweet Home Alabama",
+      "ug_hits": 694927,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Smells Like Teen Spirit",
+      "ug_hits": 691969,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Comfortably Numb",
+      "ug_hits": 670560,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "The Day That Never Comes",
+      "ug_hits": 669692,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Californication",
+      "ug_hits": 612794,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Highway To Hell",
+      "ug_hits": 611718,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Dont Cry",
+      "ug_hits": 599973,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "Fear Of The Dark",
+      "ug_hits": 592051,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Seek And Destroy",
+      "ug_hits": 582895,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Wonderwall",
+      "ug_hits": 571731,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Tears In Heaven",
+      "ug_hits": 555728,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "DragonForce",
+      "title": "Through The Fire And Flames",
+      "ug_hits": 547111,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Queen",
+      "title": "Bohemian Rhapsody",
+      "ug_hits": 537096,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Wish You Were Here",
+      "ug_hits": 531940,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Thin Lizzy",
+      "title": "Got To Give It Up",
+      "ug_hits": 530541,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "November Rain",
+      "ug_hits": 529563,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Little Wing",
+      "ug_hits": 521464,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Come As You Are",
+      "ug_hits": 520671,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "For Whom The Bell Tolls",
+      "ug_hits": 513138,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Welcome To The Jungle",
+      "ug_hits": 490895,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Chuck Berry",
+      "title": "Johnny B Goode",
+      "ug_hits": 490772,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Muse",
+      "title": "Hysteria",
+      "ug_hits": 473927,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "System Of A Down",
+      "title": "Toxicity",
+      "ug_hits": 460255,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Afterlife",
+      "ug_hits": 440647,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Sultans Of Swing",
+      "ug_hits": 436268,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "The Trooper",
+      "ug_hits": 427339,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Welcome Home Sanitarium",
+      "ug_hits": 425150,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Wake Me Up When September Ends",
+      "ug_hits": 414411,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Pantera",
+      "title": "Cowboys From Hell",
+      "ug_hits": 402564,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Another Brick In The Wall Part 2",
+      "ug_hits": 393195,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Eric Johnson",
+      "title": "Cliffs Of Dover",
+      "ug_hits": 391871,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Slayer",
+      "title": "Raining Blood",
+      "ug_hits": 385557,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Symphony Of Destruction",
+      "ug_hits": 379286,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Hey Joe",
+      "ug_hits": 378686,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Kansas",
+      "title": "Dust In The Wind",
+      "ug_hits": 373788,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Iron Man",
+      "ug_hits": 372432,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "Everlong",
+      "ug_hits": 371715,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Cant Stop",
+      "ug_hits": 371045,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Pantera",
+      "title": "Cemetery Gates",
+      "ug_hits": 368010,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Creeping Death",
+      "ug_hits": 367089,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Lamb of God",
+      "title": "Laid To Rest",
+      "ug_hits": 361769,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Scar Tissue",
+      "ug_hits": 358146,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "System Of A Down",
+      "title": "Chop Suey",
+      "ug_hits": 357105,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Battery",
+      "ug_hits": 356282,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Knockin On Heavens Door",
+      "ug_hits": 354942,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Layla",
+      "ug_hits": 350784,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Orion",
+      "ug_hits": 350258,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "Seven Nation Army",
+      "ug_hits": 349798,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Jason Mraz",
+      "title": "Im Yours",
+      "ug_hits": 349699,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Scorpions",
+      "title": "Rock You Like A Hurricane",
+      "ug_hits": 349195,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Scorpions",
+      "title": "Still Loving You",
+      "ug_hits": 345759,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Bullet For My Valentine",
+      "title": "Tears Dont Fall",
+      "ug_hits": 342996,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Beat It",
+      "ug_hits": 342047,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Dream On",
+      "ug_hits": 341178,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Extreme",
+      "title": "More Than Words",
+      "ug_hits": 341089,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Gary Moore",
+      "title": "Still Got The Blues",
+      "ug_hits": 340903,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Misc Soundtrack",
+      "title": "Pirates Of The Caribbean - Hes A Pirate",
+      "ug_hits": 340632,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "All Along The Watchtower",
+      "ug_hits": 339024,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Green Day",
+      "title": "21 Guns",
+      "ug_hits": 338162,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Tornado Of Souls",
+      "ug_hits": 329397,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Green Day",
+      "title": "American Idiot",
+      "ug_hits": 328455,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Free Bird",
+      "ug_hits": 326408,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Bullet For My Valentine",
+      "title": "Waking The Demon",
+      "ug_hits": 325231,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "The Pretender",
+      "ug_hits": 325190,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Eagles",
+      "title": "Hotel California",
+      "ug_hits": 323448,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Metallica",
+      "title": "Sad But True",
+      "ug_hits": 320753,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Beast And The Harlot",
+      "ug_hits": 318412,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Black Dog",
+      "ug_hits": 317972,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Adele",
+      "title": "Rolling In The Deep",
+      "ug_hits": 317163,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Under The Bridge",
+      "ug_hits": 313097,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Muse",
+      "title": "Knights Of Cydonia",
+      "ug_hits": 312283,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Yesterday",
+      "ug_hits": 312248,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Unholy Confessions",
+      "ug_hits": 312224,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Motörhead",
+      "title": "Ace Of Spades",
+      "ug_hits": 310952,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Marilyn Manson",
+      "title": "Sweet Dreams Are Made Of This",
+      "ug_hits": 308348,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Holy Wars The Punishment Due",
+      "ug_hits": 306762,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "Reptilia",
+      "ug_hits": 305786,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Jet",
+      "title": "Are You Gonna Be My Girl",
+      "ug_hits": 305104,
+      "ug_type": "drums,guitar-pro"
+    },
+    {
+      "artist": "Santana",
+      "title": "Europa",
+      "ug_hits": 304985,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Snow Hey Oh",
+      "ug_hits": 302544,
+      "ug_type": "guitar-pro"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Holiday",
+      "ug_hits": 52899,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Boulevard Of Broken Dreams",
+      "ug_hits": 48220,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Eye Of The Tiger",
+      "ug_hits": 47290,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Money For Nothing",
+      "ug_hits": 44587,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Blur",
+      "title": "Song 2",
+      "ug_hits": 44410,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Dani California",
+      "ug_hits": 42017,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "The Cranberries",
+      "title": "Zombie",
+      "ug_hits": 41456,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Phil Collins",
+      "title": "In The Air Tonight",
+      "ug_hits": 37341,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Use Somebody",
+      "ug_hits": 36065,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Creep",
+      "ug_hits": 35820,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Thirty Seconds To Mars",
+      "title": "The Kill",
+      "ug_hits": 34071,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Gorillaz",
+      "title": "Feel Good Inc",
+      "ug_hits": 31662,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Know Your Enemy",
+      "ug_hits": 29591,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "What Ive Done",
+      "ug_hits": 28936,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Misery Business",
+      "ug_hits": 28669,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "So Far Away",
+      "ug_hits": 28488,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Queen",
+      "title": "We Will Rock You",
+      "ug_hits": 28426,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Heart Shaped Box",
+      "ug_hits": 28201,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Basket Case",
+      "ug_hits": 27984,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "3 Doors Down",
+      "title": "Kryptonite",
+      "ug_hits": 27834,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "In Bloom",
+      "ug_hits": 27368,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Come Together",
+      "ug_hits": 26877,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Tnt",
+      "ug_hits": 24656,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Three Days Grace",
+      "title": "Animal I Have Become",
+      "ug_hits": 24573,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "All The Small Things",
+      "ug_hits": 24564,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Thats What You Get",
+      "ug_hits": 24018,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Sunday Morning",
+      "ug_hits": 23806,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Fun.",
+      "title": "We Are Young",
+      "ug_hits": 23774,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Dammit",
+      "ug_hits": 23752,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Steppenwolf",
+      "title": "Born To Be Wild",
+      "ug_hits": 23550,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Paradise City",
+      "ug_hits": 23480,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Numb",
+      "ug_hits": 22444,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Adams Song",
+      "ug_hits": 22263,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Let It Be",
+      "ug_hits": 21795,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Bat Country",
+      "ug_hits": 21664,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Gorillaz",
+      "title": "Clint Eastwood",
+      "ug_hits": 21642,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "You Shook Me All Night Long",
+      "ug_hits": 21614,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Muse",
+      "title": "Supermassive Black Hole",
+      "ug_hits": 21519,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Thunderstruck",
+      "ug_hits": 21459,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Cream",
+      "title": "Sunshine Of Your Love",
+      "ug_hits": 21414,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "My Hero",
+      "ug_hits": 21260,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "About A Girl",
+      "ug_hits": 21065,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Welcome To The Black Parade",
+      "ug_hits": 20873,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Three Days Grace",
+      "title": "I Hate Everything About You",
+      "ug_hits": 20643,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "First Date",
+      "ug_hits": 20357,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Disturbed",
+      "title": "Down With The Sickness",
+      "ug_hits": 20338,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Otherside",
+      "ug_hits": 20174,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Hey Jude",
+      "ug_hits": 20158,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Decode",
+      "ug_hits": 20008,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Whole Lotta Love",
+      "ug_hits": 19697,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Ignorance",
+      "ug_hits": 19217,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Lithium",
+      "ug_hits": 19164,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Queen",
+      "title": "Another One Bites The Dust",
+      "ug_hits": 19072,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Sugar Were Going Down",
+      "ug_hits": 18703,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "Metallica",
+      "title": "The Unforgiven",
+      "ug_hits": 18681,
+      "ug_type": "drums"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Here Comes The Sun",
+      "ug_hits": 18653,
+      "ug_type": "drums"
+    }
+  ]
+}

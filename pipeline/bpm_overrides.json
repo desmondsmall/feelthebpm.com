@@ -1,6 +1,16 @@
 {
   "_comment": "Canonical BPM for songs Deezer lacks (bpm:0) OR returns a clear half/double-tempo artifact. Key = 'artist|title'; punctuation/case are normalized at load, so 'AC/DC|...' matches. Deezer's classic-rock BPM coverage is sparse, so the rock canon lives here.",
   "overrides": {
+    "kool & the gang|celebration": 121,
+    "kc and the sunshine band|that's the way (i like it)": 110,
+    "bryan adams|summer of '69": 139,
+    "joan jett & the blackhearts|i love rock 'n' roll": 92,
+    "tina turner|the best": 104,
+    "marvin gaye|let's get it on": 85,
+    "john denver|take me home, country roads": 83,
+    "semisonic|closing time": 92,
+    "no doubt|don't speak": 76,
+    "alanis morissette|ironic": 86,
     "the white stripes|seven nation army": 124,
     "adele|rolling in the deep": 105,
     "daft punk|harder better faster stronger": 123,

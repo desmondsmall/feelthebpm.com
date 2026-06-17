@@ -1,0 +1,4992 @@
+{
+  "_comment": "Generated SEED = catalogue membership (which songs exist). Refresh from sources with `node pipeline/seed.mjs` after editing artists.json / extra_songs.json. The build reads this file and only auto-generates it when absent (first run). `source` = which discovery source found the song; `songsterr_views` is the Songsterr popularity signal captured at discovery.",
+  "generated": "2026-06-17",
+  "count": 691,
+  "songs": [
+    {
+      "artist": "3 Doors Down",
+      "title": "Kryptonite",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 27834
+    },
+    {
+      "artist": "50 Cent",
+      "title": "In Da Club",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "a-ha",
+      "title": "Take On Me",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "ABBA",
+      "title": "Dancing Queen",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "ABBA",
+      "title": "Mamma Mia",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Back In Black",
+      "genre": "rock",
+      "songsterr_views": 1208104,
+      "source": "songsterr",
+      "ug_hits": 759718
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Hells Bells",
+      "genre": "rock",
+      "songsterr_views": 744349,
+      "source": "songsterr"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Highway To Hell",
+      "genre": "rock",
+      "songsterr_views": 337844,
+      "source": "songsterr",
+      "ug_hits": 611718
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Thunderstruck",
+      "genre": "rock",
+      "songsterr_views": 636702,
+      "source": "songsterr",
+      "ug_hits": 21459
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Tnt",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 24656
+    },
+    {
+      "artist": "AC/DC",
+      "title": "Whole Lotta Rosie",
+      "genre": "rock",
+      "songsterr_views": 133259,
+      "source": "songsterr"
+    },
+    {
+      "artist": "AC/DC",
+      "title": "You Shook Me All Night Long",
+      "genre": "rock",
+      "songsterr_views": 487756,
+      "source": "songsterr",
+      "ug_hits": 21614
+    },
+    {
+      "artist": "Ace of Base",
+      "title": "The Sign",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Adele",
+      "title": "Hello",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Adele",
+      "title": "Rolling in the Deep",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0,
+      "ug_hits": 317163
+    },
+    {
+      "artist": "Adele",
+      "title": "Someone Like You",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Amazing",
+      "genre": "rock",
+      "songsterr_views": 28621,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Dream On",
+      "genre": "rock",
+      "songsterr_views": 367962,
+      "source": "songsterr",
+      "ug_hits": 341178
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Eat The Rich",
+      "genre": "rock",
+      "songsterr_views": 34579,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Mama Kin",
+      "genre": "rock",
+      "songsterr_views": 33979,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Sweet Emotion",
+      "genre": "rock",
+      "songsterr_views": 91177,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Aerosmith",
+      "title": "Walk This Way",
+      "genre": "rock",
+      "songsterr_views": 146480,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Al Green",
+      "title": "Let's Stay Together",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Alanis Morissette",
+      "title": "Ironic",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Alicia Keys",
+      "title": "No One",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "505",
+      "genre": "indie",
+      "songsterr_views": 211504,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "Do I Wanna Know?",
+      "genre": "indie",
+      "songsterr_views": 672919,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "Fluorescent Adolescent",
+      "genre": "indie",
+      "songsterr_views": 106381,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "I Bet You Look Good On The Dancefloor",
+      "genre": "indie",
+      "songsterr_views": 114485,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "Knee Socks",
+      "genre": "indie",
+      "songsterr_views": 102602,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Arctic Monkeys",
+      "title": "R U Mine?",
+      "genre": "indie",
+      "songsterr_views": 428197,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Aretha Franklin",
+      "title": "Respect",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Ariana Grande",
+      "title": "7 rings",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Afterlife",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 440647
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Bat Country",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 21664
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Beast And The Harlot",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 318412
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "So Far Away",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 28488
+    },
+    {
+      "artist": "Avenged Sevenfold",
+      "title": "Unholy Confessions",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 312224
+    },
+    {
+      "artist": "Avicii",
+      "title": "Levels",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Avicii",
+      "title": "Wake Me Up",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Avril Lavigne",
+      "title": "Complicated",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Backstreet Boys",
+      "title": "I Want It That Way",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bee Gees",
+      "title": "Stayin' Alive",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Ben E. King",
+      "title": "Stand By Me",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Beyoncé",
+      "title": "Crazy in Love",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Beyoncé",
+      "title": "Single Ladies",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bill Haley & His Comets",
+      "title": "Rock Around the Clock",
+      "genre": "rock and roll",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Ain't No Sunshine",
+      "genre": "soul",
+      "songsterr_views": 39694,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Just The Two Of Us",
+      "genre": "soul",
+      "songsterr_views": 194620,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Lean On Me",
+      "genre": "soul",
+      "songsterr_views": 12909,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Lovely Day",
+      "genre": "soul",
+      "songsterr_views": 57234,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Lovely Day Bass",
+      "genre": "soul",
+      "songsterr_views": 2930,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bill Withers",
+      "title": "Use Me",
+      "genre": "soul",
+      "songsterr_views": 10688,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billie Eilish",
+      "title": "bad guy",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Billie Eilish",
+      "title": "Happier Than Ever",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "Movin' Out",
+      "genre": "pop",
+      "songsterr_views": 10395,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "Piano Man",
+      "genre": "pop",
+      "songsterr_views": 13846,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "Vienna",
+      "genre": "pop",
+      "songsterr_views": 15429,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "Vienna (Bass)",
+      "genre": "pop",
+      "songsterr_views": 9270,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "We Didn't Start The Fire",
+      "genre": "pop",
+      "songsterr_views": 7519,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Billy Joel",
+      "title": "You May Be Right",
+      "genre": "pop",
+      "songsterr_views": 16511,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Children Of The Grave",
+      "genre": "metal",
+      "songsterr_views": 275577,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Into the Void",
+      "genre": "metal",
+      "songsterr_views": 449700,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Iron Man",
+      "genre": "metal",
+      "songsterr_views": 1681938,
+      "source": "songsterr",
+      "ug_hits": 372432
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "N.I.B",
+      "genre": "metal",
+      "songsterr_views": 450676,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "Paranoid",
+      "genre": "metal",
+      "songsterr_views": 773085,
+      "source": "songsterr",
+      "ug_hits": 722655
+    },
+    {
+      "artist": "Black Sabbath",
+      "title": "War Pigs",
+      "genre": "metal",
+      "songsterr_views": 1015602,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Adam's Song",
+      "genre": "punk",
+      "songsterr_views": 121115,
+      "source": "songsterr",
+      "ug_hits": 22263
+    },
+    {
+      "artist": "Blink-182",
+      "title": "All The Small Things",
+      "genre": "punk",
+      "songsterr_views": 237034,
+      "source": "songsterr",
+      "ug_hits": 24564
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Carousel",
+      "genre": "punk",
+      "songsterr_views": 73347,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Dammit",
+      "genre": "punk",
+      "songsterr_views": 99974,
+      "source": "songsterr",
+      "ug_hits": 23752
+    },
+    {
+      "artist": "Blink-182",
+      "title": "First Date",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 20357
+    },
+    {
+      "artist": "Blink-182",
+      "title": "Stay Together For The Kids",
+      "genre": "punk",
+      "songsterr_views": 79588,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Blink-182",
+      "title": "What's My Age Again?",
+      "genre": "punk",
+      "songsterr_views": 52522,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Blur",
+      "title": "Song 2",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 44410
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "All Along The Watchtower",
+      "genre": "rock",
+      "songsterr_views": 11261,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "Blowin' in the Wind",
+      "genre": "rock",
+      "songsterr_views": 19740,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "Don't Think Twice, It's All Right",
+      "genre": "rock",
+      "songsterr_views": 90782,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "Girl From The North Country",
+      "genre": "rock",
+      "songsterr_views": 68727,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "Knockin' On Heaven's Door",
+      "genre": "rock",
+      "songsterr_views": 74887,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Dylan",
+      "title": "Like A Rolling Stone",
+      "genre": "rock",
+      "songsterr_views": 30496,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bob Marley",
+      "title": "Could You Be Loved",
+      "genre": "reggae",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bob Marley",
+      "title": "Is This Love",
+      "genre": "reggae",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bob Marley",
+      "title": "One Love",
+      "genre": "reggae",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bob Marley",
+      "title": "Three Little Birds",
+      "genre": "reggae",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "Bed Of Roses",
+      "genre": "rock",
+      "songsterr_views": 99193,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "It's My Life",
+      "genre": "rock",
+      "songsterr_views": 90542,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "Livin' On A Prayer",
+      "genre": "rock",
+      "songsterr_views": 171717,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "Runaway",
+      "genre": "rock",
+      "songsterr_views": 71826,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "Wanted Dead Or Alive",
+      "genre": "rock",
+      "songsterr_views": 209405,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bon Jovi",
+      "title": "You Give Love a Bad Name!",
+      "genre": "rock",
+      "songsterr_views": 363247,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bonnie Tyler",
+      "title": "Total Eclipse of the Heart",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Britney Spears",
+      "title": "...Baby One More Time",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Britney Spears",
+      "title": "Toxic",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "Born To Run",
+      "genre": "rock",
+      "songsterr_views": 19844,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "Dancing In The Dark",
+      "genre": "rock",
+      "songsterr_views": 8937,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "Fire",
+      "genre": "rock",
+      "songsterr_views": 10171,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "Glory Days",
+      "genre": "rock",
+      "songsterr_views": 8851,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "I'm On Fire",
+      "genre": "rock",
+      "songsterr_views": 21353,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruce Springsteen",
+      "title": "The River",
+      "genre": "rock",
+      "songsterr_views": 13150,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "I Just Might",
+      "genre": "pop",
+      "songsterr_views": 23672,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Just the Way You Are",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Locked Out Of Heaven",
+      "genre": "pop",
+      "songsterr_views": 56228,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Risk It All",
+      "genre": "pop",
+      "songsterr_views": 47946,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Runaway Baby",
+      "genre": "pop",
+      "songsterr_views": 18981,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Treasure",
+      "genre": "pop",
+      "songsterr_views": 59447,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bruno Mars",
+      "title": "Uptown Funk",
+      "genre": "pop",
+      "songsterr_views": 22767,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Bryan Adams",
+      "title": "Summer of '69",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Bullet For My Valentine",
+      "title": "Tears Dont Fall",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 342996
+    },
+    {
+      "artist": "Bullet For My Valentine",
+      "title": "Waking The Demon",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 325231
+    },
+    {
+      "artist": "Calvin Harris",
+      "title": "One Kiss",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Calvin Harris",
+      "title": "Summer",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Camila Cabello",
+      "title": "Havana",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Cardi B",
+      "title": "Bodak Yellow",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Carly Rae Jepsen",
+      "title": "Call Me Maybe",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Cher",
+      "title": "Believe",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Chic",
+      "title": "Le Freak",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Childish Gambino",
+      "title": "This Is America",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Chuck Berry",
+      "title": "Johnny B Goode",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 490772
+    },
+    {
+      "artist": "Chumbawamba",
+      "title": "Tubthumping",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Coldplay",
+      "title": "Adventure Of A Lifetime",
+      "genre": "pop",
+      "songsterr_views": 62248,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coldplay",
+      "title": "Clocks",
+      "genre": "pop",
+      "songsterr_views": 33368,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coldplay",
+      "title": "Sparks",
+      "genre": "pop",
+      "songsterr_views": 225915,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coldplay",
+      "title": "The Scientist",
+      "genre": "pop",
+      "songsterr_views": 16346,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coldplay",
+      "title": "Viva La Vida",
+      "genre": "pop",
+      "songsterr_views": 20821,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coldplay",
+      "title": "Yellow",
+      "genre": "pop",
+      "songsterr_views": 128843,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Coolio",
+      "title": "Gangsta's Paradise",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Cream",
+      "title": "Sunshine Of Your Love",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 21414
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Bad Moon Rising",
+      "genre": "rock",
+      "songsterr_views": 59214,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Down On The Corner",
+      "genre": "rock",
+      "songsterr_views": 43523,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Fortunate Son",
+      "genre": "rock",
+      "songsterr_views": 97509,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Green River",
+      "genre": "rock",
+      "songsterr_views": 45665,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Have You Ever Seen The Rain",
+      "genre": "rock",
+      "songsterr_views": 133120,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Creedence Clearwater Revival",
+      "title": "Proud Mary",
+      "genre": "rock",
+      "songsterr_views": 38697,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Cyndi Lauper",
+      "title": "Girls Just Want to Have Fun",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Cyndi Lauper",
+      "title": "Time After Time",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Daft Punk",
+      "title": "Get Lucky",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Daft Punk",
+      "title": "Harder Better Faster Stronger",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Daft Punk",
+      "title": "One More Time",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "David Bowie",
+      "title": "Heroes",
+      "genre": "rock",
+      "songsterr_views": 56507,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Bowie",
+      "title": "Rebel Rebel",
+      "genre": "rock",
+      "songsterr_views": 65898,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Bowie",
+      "title": "Space Oddity",
+      "genre": "rock",
+      "songsterr_views": 85459,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Bowie",
+      "title": "Starman",
+      "genre": "rock",
+      "songsterr_views": 66194,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Bowie",
+      "title": "The Man Who Sold The World",
+      "genre": "rock",
+      "songsterr_views": 48370,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Bowie",
+      "title": "Ziggy Stardust",
+      "genre": "rock",
+      "songsterr_views": 36829,
+      "source": "songsterr"
+    },
+    {
+      "artist": "David Guetta",
+      "title": "Titanium",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Deep Purple",
+      "title": "Smoke On The Water",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 756304
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "Enjoy The Silence",
+      "genre": "electronic",
+      "songsterr_views": 79036,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "I Feel You",
+      "genre": "electronic",
+      "songsterr_views": 4383,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "Never Let Me Down Again",
+      "genre": "electronic",
+      "songsterr_views": 5045,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "Personal Jesus",
+      "genre": "electronic",
+      "songsterr_views": 63241,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "Useless",
+      "genre": "electronic",
+      "songsterr_views": 6109,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Depeche Mode",
+      "title": "Walking In My Shoes",
+      "genre": "electronic",
+      "songsterr_views": 26836,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Brothers In Arms",
+      "genre": "rock",
+      "songsterr_views": 189772,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Lady Writer",
+      "genre": "rock",
+      "songsterr_views": 151493,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Money For Nothing",
+      "genre": "rock",
+      "songsterr_views": 1076436,
+      "source": "songsterr",
+      "ug_hits": 44587
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Sultans Of Swing",
+      "genre": "rock",
+      "songsterr_views": 2137284,
+      "source": "songsterr",
+      "ug_hits": 436268
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Telegraph Road",
+      "genre": "rock",
+      "songsterr_views": 73921,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Dire Straits",
+      "title": "Tunnel Of Love",
+      "genre": "rock",
+      "songsterr_views": 68126,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Disturbed",
+      "title": "Down With The Sickness",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 20338
+    },
+    {
+      "artist": "Doja Cat",
+      "title": "Say So",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Dolly Parton",
+      "title": "9 to 5",
+      "genre": "country",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Dolly Parton",
+      "title": "Jolene",
+      "genre": "country",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Donna Summer",
+      "title": "Hot Stuff",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Dr. Dre",
+      "title": "Still D.R.E.",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "DragonForce",
+      "title": "Through The Fire And Flames",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 547111
+    },
+    {
+      "artist": "Drake",
+      "title": "God's Plan",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Drake",
+      "title": "Hotline Bling",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Drake",
+      "title": "One Dance",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Dua Lipa",
+      "title": "Don't Start Now",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Dua Lipa",
+      "title": "Levitating",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eagles",
+      "title": "Hotel California",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0,
+      "ug_hits": 323448
+    },
+    {
+      "artist": "Eagles",
+      "title": "Tequila Sunrise",
+      "genre": "rock",
+      "songsterr_views": 11184,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "Boogie Wonderland",
+      "genre": "funk",
+      "songsterr_views": 29185,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "Fantasy",
+      "genre": "funk",
+      "songsterr_views": 5493,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "In The Stone",
+      "genre": "funk",
+      "songsterr_views": 3508,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "Let's Groove",
+      "genre": "funk",
+      "songsterr_views": 8970,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "September",
+      "genre": "funk",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "Shining Star",
+      "genre": "funk",
+      "songsterr_views": 5334,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Earth, Wind & Fire",
+      "title": "That's The Way Of The World",
+      "genre": "funk",
+      "songsterr_views": 6793,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "Blow",
+      "genre": "pop",
+      "songsterr_views": 13662,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "I See Fire",
+      "genre": "pop",
+      "songsterr_views": 61063,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "Perfect",
+      "genre": "pop",
+      "songsterr_views": 103820,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "Photograph",
+      "genre": "pop",
+      "songsterr_views": 15966,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "Shape Of You",
+      "genre": "pop",
+      "songsterr_views": 33807,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ed Sheeran",
+      "title": "Thinking Out Loud",
+      "genre": "pop",
+      "songsterr_views": 33153,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Bennie And The Jets",
+      "genre": "pop",
+      "songsterr_views": 11801,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Funeral For A Friend Love Lies Bleeding",
+      "genre": "pop",
+      "songsterr_views": 22500,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "I'm Still Standing",
+      "genre": "pop",
+      "songsterr_views": 22042,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Rocket Man",
+      "genre": "pop",
+      "songsterr_views": 25940,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Saturday Night's Alright For Fighting",
+      "genre": "pop",
+      "songsterr_views": 21562,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Elton John",
+      "title": "Your Song",
+      "genre": "pop",
+      "songsterr_views": 12775,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Eminem",
+      "title": "Lose Yourself",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eminem",
+      "title": "Stan",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eminem",
+      "title": "The Real Slim Shady",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eminem",
+      "title": "Without Me",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Cocaine",
+      "genre": "rock",
+      "songsterr_views": 62541,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Hideaway",
+      "genre": "rock",
+      "songsterr_views": 47346,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Layla",
+      "genre": "rock",
+      "songsterr_views": 199346,
+      "source": "songsterr",
+      "ug_hits": 350784
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Old Love",
+      "genre": "rock",
+      "songsterr_views": 46940,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Tears In Heaven",
+      "genre": "rock",
+      "songsterr_views": 495162,
+      "source": "songsterr",
+      "ug_hits": 555728
+    },
+    {
+      "artist": "Eric Clapton",
+      "title": "Wonderful Tonight",
+      "genre": "rock",
+      "songsterr_views": 175662,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Eric Johnson",
+      "title": "Cliffs Of Dover",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 391871
+    },
+    {
+      "artist": "Europe",
+      "title": "The Final Countdown",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Eurythmics",
+      "title": "Sweet Dreams (Are Made of This)",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Extreme",
+      "title": "More Than Words",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 341089
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Beat It",
+      "genre": "pop",
+      "songsterr_views": 15241,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Dance, Dance",
+      "genre": "pop",
+      "songsterr_views": 80240,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "I Slept With Someone In Fall Out Boy And All I Got Was This Stupid Song Written About Me",
+      "genre": "pop",
+      "songsterr_views": 14175,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Sugar Were Going Down",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 18703
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Sugar, We're Goin Down",
+      "genre": "pop",
+      "songsterr_views": 140682,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "The Take Over, The Breaks Over",
+      "genre": "pop",
+      "songsterr_views": 16453,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fall Out Boy",
+      "title": "Thnks Fr Th Mmrs",
+      "genre": "pop",
+      "songsterr_views": 16203,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fatboy Slim",
+      "title": "Praise You",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "Dreams",
+      "genre": "rock",
+      "songsterr_views": 124251,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "Landslide",
+      "genre": "rock",
+      "songsterr_views": 367069,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "Need Your Love So Bad",
+      "genre": "rock",
+      "songsterr_views": 54768,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "Never Going Back Again",
+      "genre": "rock",
+      "songsterr_views": 61990,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "Rhiannon",
+      "genre": "rock",
+      "songsterr_views": 127251,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Fleetwood Mac",
+      "title": "The Chain",
+      "genre": "rock",
+      "songsterr_views": 299850,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "Everlong",
+      "genre": "rock",
+      "songsterr_views": 604258,
+      "source": "songsterr",
+      "ug_hits": 371715
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "Learn To Fly",
+      "genre": "rock",
+      "songsterr_views": 96254,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "Monkey Wrench",
+      "genre": "rock",
+      "songsterr_views": 99828,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "My Hero",
+      "genre": "rock",
+      "songsterr_views": 167236,
+      "source": "songsterr",
+      "ug_hits": 21260
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "The Pretender",
+      "genre": "rock",
+      "songsterr_views": 68364,
+      "source": "songsterr",
+      "ug_hits": 325190
+    },
+    {
+      "artist": "Foo Fighters",
+      "title": "Times Like These",
+      "genre": "rock",
+      "songsterr_views": 54685,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Frank Ocean",
+      "title": "Thinkin Bout You",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Frank Sinatra",
+      "title": "Fly Me to the Moon",
+      "genre": "jazz",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Fun.",
+      "title": "We Are Young",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 23774
+    },
+    {
+      "artist": "Garth Brooks",
+      "title": "Friends in Low Places",
+      "genre": "country",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Gary Moore",
+      "title": "Still Got The Blues",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 340903
+    },
+    {
+      "artist": "George Michael",
+      "title": "Faith",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Glass Animals",
+      "title": "Heat Waves",
+      "genre": "indie",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Gloria Gaynor",
+      "title": "I Will Survive",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Gnarls Barkley",
+      "title": "Crazy",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Goo Goo Dolls",
+      "title": "Iris",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Gorillaz",
+      "title": "Clint Eastwood",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 21642
+    },
+    {
+      "artist": "Gorillaz",
+      "title": "Feel Good Inc",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 31662
+    },
+    {
+      "artist": "Gotye",
+      "title": "Somebody That I Used to Know",
+      "genre": "indie",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Green Day",
+      "title": "21 Guns",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 338162
+    },
+    {
+      "artist": "Green Day",
+      "title": "American Idiot",
+      "genre": "punk",
+      "songsterr_views": 197539,
+      "source": "songsterr",
+      "ug_hits": 328455
+    },
+    {
+      "artist": "Green Day",
+      "title": "Basket Case",
+      "genre": "punk",
+      "songsterr_views": 199339,
+      "source": "songsterr",
+      "ug_hits": 27984
+    },
+    {
+      "artist": "Green Day",
+      "title": "Boulevard Of Broken Dreams",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 48220
+    },
+    {
+      "artist": "Green Day",
+      "title": "Brain Stew",
+      "genre": "punk",
+      "songsterr_views": 208109,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Holiday",
+      "genre": "punk",
+      "songsterr_views": 200894,
+      "source": "songsterr",
+      "ug_hits": 52899
+    },
+    {
+      "artist": "Green Day",
+      "title": "Know Your Enemy",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 29591
+    },
+    {
+      "artist": "Green Day",
+      "title": "Longview",
+      "genre": "punk",
+      "songsterr_views": 201448,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Green Day",
+      "title": "Wake Me Up When September Ends",
+      "genre": "punk",
+      "songsterr_views": 327814,
+      "source": "songsterr",
+      "ug_hits": 414411
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Don't Cry",
+      "genre": "rock",
+      "songsterr_views": 266691,
+      "source": "songsterr",
+      "ug_hits": 599973
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Knockin' On Heaven's Door",
+      "genre": "rock",
+      "songsterr_views": 416348,
+      "source": "songsterr",
+      "ug_hits": 354942
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Nightrain",
+      "genre": "rock",
+      "songsterr_views": 230616,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "November Rain",
+      "genre": "rock",
+      "songsterr_views": 1020650,
+      "source": "songsterr",
+      "ug_hits": 529563
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Paradise City",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 23480
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Sweet Child O' Mine",
+      "genre": "rock",
+      "songsterr_views": 2235906,
+      "source": "songsterr",
+      "ug_hits": 1781559
+    },
+    {
+      "artist": "Guns N' Roses",
+      "title": "Welcome To The Jungle",
+      "genre": "rock",
+      "songsterr_views": 372979,
+      "source": "songsterr",
+      "ug_hits": 490895
+    },
+    {
+      "artist": "Haddaway",
+      "title": "What Is Love",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Harry Styles",
+      "title": "As It Was",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Harry Styles",
+      "title": "Watermelon Sugar",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "House of Pain",
+      "title": "Jump Around",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "Believer",
+      "genre": "pop",
+      "songsterr_views": 29597,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "bones",
+      "genre": "pop",
+      "songsterr_views": 9046,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "Demons",
+      "genre": "pop",
+      "songsterr_views": 9007,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "Radioactive",
+      "genre": "pop",
+      "songsterr_views": 21650,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "Sharks",
+      "genre": "pop",
+      "songsterr_views": 11500,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Imagine Dragons",
+      "title": "Warriors",
+      "genre": "pop",
+      "songsterr_views": 16996,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "2 Minutes To Midnight",
+      "genre": "metal",
+      "songsterr_views": 198276,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "Fear Of The Dark",
+      "genre": "metal",
+      "songsterr_views": 318766,
+      "source": "songsterr",
+      "ug_hits": 592051
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "Hallowed Be Thy Name",
+      "genre": "metal",
+      "songsterr_views": 188504,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "Phantom Of The Opera",
+      "genre": "metal",
+      "songsterr_views": 176999,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "The Trooper",
+      "genre": "metal",
+      "songsterr_views": 662036,
+      "source": "songsterr",
+      "ug_hits": 427339
+    },
+    {
+      "artist": "Iron Maiden",
+      "title": "Wasted Years",
+      "genre": "metal",
+      "songsterr_views": 279171,
+      "source": "songsterr"
+    },
+    {
+      "artist": "J. Cole",
+      "title": "Middle Child",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Jason Mraz",
+      "title": "Im Yours",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 349699
+    },
+    {
+      "artist": "Jay-Z",
+      "title": "99 Problems",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "JerryC",
+      "title": "Canon Rock",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 918967
+    },
+    {
+      "artist": "Jet",
+      "title": "Are You Gonna Be My Girl",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 305104
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "All Along The Watchtower",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 339024
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Bold As Love",
+      "genre": "rock",
+      "songsterr_views": 54611,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Castles Made Of Sand",
+      "genre": "rock",
+      "songsterr_views": 57216,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Hey Baby (New Rising Sun)",
+      "genre": "rock",
+      "songsterr_views": 33401,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Hey Joe",
+      "genre": "rock",
+      "songsterr_views": 384416,
+      "source": "songsterr",
+      "ug_hits": 378686
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Little Wing",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 521464
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Red House",
+      "genre": "rock",
+      "songsterr_views": 301879,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Jimi Hendrix",
+      "title": "Star Spangled Banner",
+      "genre": "rock",
+      "songsterr_views": 45732,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Joan Jett & the Blackhearts",
+      "title": "I Love Rock 'n' Roll",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "John Denver",
+      "title": "Take Me Home, Country Roads",
+      "genre": "country",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "John Legend",
+      "title": "All of Me",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Belief",
+      "genre": "pop",
+      "songsterr_views": 54812,
+      "source": "songsterr"
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Edge Of Desire",
+      "genre": "pop",
+      "songsterr_views": 112145,
+      "source": "songsterr"
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Gravity",
+      "genre": "pop",
+      "songsterr_views": 122634,
+      "source": "songsterr"
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Neon",
+      "genre": "pop",
+      "songsterr_views": 93525,
+      "source": "songsterr"
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Slow Dancing In A Burning Room",
+      "genre": "pop",
+      "songsterr_views": 305659,
+      "source": "songsterr"
+    },
+    {
+      "artist": "John Mayer",
+      "title": "Stop This Train",
+      "genre": "pop",
+      "songsterr_views": 67961,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "Folsom Prison Blues",
+      "genre": "country",
+      "songsterr_views": 82105,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "Ghost Riders In The Sky",
+      "genre": "country",
+      "songsterr_views": 58317,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "Hurt",
+      "genre": "country",
+      "songsterr_views": 294705,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "I Walk The Line",
+      "genre": "country",
+      "songsterr_views": 87822,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "Personal Jesus",
+      "genre": "country",
+      "songsterr_views": 32175,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Johnny Cash",
+      "title": "Ring Of Fire",
+      "genre": "country",
+      "songsterr_views": 15477,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Journey",
+      "title": "Don't Stop Believin'",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Justin Timberlake",
+      "title": "Can't Stop the Feeling!",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kansas",
+      "title": "Dust In The Wind",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 373788
+    },
+    {
+      "artist": "Kanye West",
+      "title": "Gold Digger",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kanye West",
+      "title": "Heartless",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kanye West",
+      "title": "Stronger",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Katy Perry",
+      "title": "Firework",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "KC and the Sunshine Band",
+      "title": "That's the Way (I Like It)",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kelly Clarkson",
+      "title": "Since U Been Gone",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "title": "Alright",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "title": "HUMBLE.",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Beautiful War",
+      "genre": "rock",
+      "songsterr_views": 6930,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Find Me",
+      "genre": "rock",
+      "songsterr_views": 7836,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Molly's Chambers",
+      "genre": "rock",
+      "songsterr_views": 7163,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Pyro",
+      "genre": "rock",
+      "songsterr_views": 14541,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Sex On Fire",
+      "genre": "rock",
+      "songsterr_views": 67366,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Kings of Leon",
+      "title": "Use Somebody",
+      "genre": "rock",
+      "songsterr_views": 19808,
+      "source": "songsterr",
+      "ug_hits": 36065
+    },
+    {
+      "artist": "Kool & the Gang",
+      "title": "Celebration",
+      "genre": "funk",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Kylie Minogue",
+      "title": "Can't Get You Out of My Head",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lady Gaga",
+      "title": "Bad Romance",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lady Gaga",
+      "title": "Poker Face",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lamb of God",
+      "title": "Laid To Rest",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 361769
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Black Dog",
+      "genre": "rock",
+      "songsterr_views": 402868,
+      "source": "songsterr",
+      "ug_hits": 317972
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Over The Hills And Far Away",
+      "genre": "rock",
+      "songsterr_views": 284240,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Since I've Been Loving You",
+      "genre": "rock",
+      "songsterr_views": 292023,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Stairway to Heaven",
+      "genre": "rock",
+      "songsterr_views": 2565451,
+      "source": "songsterr",
+      "ug_hits": 1335050
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "The Rain Song",
+      "genre": "rock",
+      "songsterr_views": 319824,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Led Zeppelin",
+      "title": "Whole Lotta Love",
+      "genre": "rock",
+      "songsterr_views": 248002,
+      "source": "songsterr",
+      "ug_hits": 19697
+    },
+    {
+      "artist": "Lewis Capaldi",
+      "title": "Someone You Loved",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lil Nas X",
+      "title": "Old Town Road",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "A Place For My Head",
+      "genre": "rock",
+      "songsterr_views": 101739,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Faint",
+      "genre": "rock",
+      "songsterr_views": 281705,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Given Up",
+      "genre": "rock",
+      "songsterr_views": 414756,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Lying From You",
+      "genre": "rock",
+      "songsterr_views": 112807,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Numb",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 22444
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "One Step Closer",
+      "genre": "rock",
+      "songsterr_views": 343456,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "Papercut",
+      "genre": "rock",
+      "songsterr_views": 123037,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Linkin Park",
+      "title": "What Ive Done",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 28936
+    },
+    {
+      "artist": "Lizzo",
+      "title": "About Damn Time",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "LMFAO",
+      "title": "Party Rock Anthem",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lorde",
+      "title": "Royals",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Los del Río",
+      "title": "Macarena",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Luis Fonsi",
+      "title": "Despacito",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Free Bird",
+      "genre": "rock",
+      "songsterr_views": 254439,
+      "source": "songsterr",
+      "ug_hits": 326408
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Gimme Three Steps",
+      "genre": "rock",
+      "songsterr_views": 63834,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "I Need You",
+      "genre": "rock",
+      "songsterr_views": 55552,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Simple Man",
+      "genre": "rock",
+      "songsterr_views": 308825,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Sweet Home Alabama",
+      "genre": "rock",
+      "songsterr_views": 575645,
+      "source": "songsterr",
+      "ug_hits": 694927
+    },
+    {
+      "artist": "Lynyrd Skynyrd",
+      "title": "Tuesday's Gone",
+      "genre": "rock",
+      "songsterr_views": 96409,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Madonna",
+      "title": "Like a Prayer",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Madonna",
+      "title": "Like a Virgin",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Madonna",
+      "title": "Vogue",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Mariah Carey",
+      "title": "Fantasy",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Marilyn Manson",
+      "title": "Sweet Dreams Are Made Of This",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 308348
+    },
+    {
+      "artist": "Mark Ronson",
+      "title": "Uptown Funk",
+      "genre": "funk",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Harder To Breathe",
+      "genre": "pop",
+      "songsterr_views": 11632,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Memories (Bass + Guitar)",
+      "genre": "pop",
+      "songsterr_views": 13675,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Moves Like Jagger",
+      "genre": "pop",
+      "songsterr_views": 12051,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Payphone",
+      "genre": "pop",
+      "songsterr_views": 50450,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "Sunday Morning",
+      "genre": "pop",
+      "songsterr_views": 16250,
+      "source": "songsterr",
+      "ug_hits": 23806
+    },
+    {
+      "artist": "Maroon 5",
+      "title": "This Love",
+      "genre": "pop",
+      "songsterr_views": 75386,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Marshmello",
+      "title": "Happier",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Marvin Gaye",
+      "title": "I Heard It Through the Grapevine",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Marvin Gaye",
+      "title": "Let's Get It On",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "MC Hammer",
+      "title": "U Can't Touch This",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Holy Wars The Punishment Due",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 306762
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Symphony Of Destruction",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 379286
+    },
+    {
+      "artist": "Megadeth",
+      "title": "Tornado Of Souls",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 329397
+    },
+    {
+      "artist": "Megan Thee Stallion",
+      "title": "Savage",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Meghan Trainor",
+      "title": "All About That Bass",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Metallica",
+      "title": "Battery",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 356282
+    },
+    {
+      "artist": "Metallica",
+      "title": "Creeping Death",
+      "genre": "metal",
+      "songsterr_views": 908815,
+      "source": "songsterr",
+      "ug_hits": 367089
+    },
+    {
+      "artist": "Metallica",
+      "title": "Enter Sandman",
+      "genre": "metal",
+      "songsterr_views": 1342641,
+      "source": "songsterr",
+      "ug_hits": 875064
+    },
+    {
+      "artist": "Metallica",
+      "title": "Fade to Black",
+      "genre": "metal",
+      "songsterr_views": 2609104,
+      "source": "songsterr",
+      "ug_hits": 999432
+    },
+    {
+      "artist": "Metallica",
+      "title": "For Whom The Bell Tolls",
+      "genre": "metal",
+      "songsterr_views": 965039,
+      "source": "songsterr",
+      "ug_hits": 513138
+    },
+    {
+      "artist": "Metallica",
+      "title": "Master of Puppets",
+      "genre": "metal",
+      "songsterr_views": 2050466,
+      "source": "songsterr",
+      "ug_hits": 869816
+    },
+    {
+      "artist": "Metallica",
+      "title": "Nothing Else Matters",
+      "genre": "metal",
+      "songsterr_views": 2725695,
+      "source": "songsterr",
+      "ug_hits": 1915854
+    },
+    {
+      "artist": "Metallica",
+      "title": "One",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 886169
+    },
+    {
+      "artist": "Metallica",
+      "title": "Orion",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 350258
+    },
+    {
+      "artist": "Metallica",
+      "title": "Sad But True",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 320753
+    },
+    {
+      "artist": "Metallica",
+      "title": "Seek And Destroy",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 582895
+    },
+    {
+      "artist": "Metallica",
+      "title": "The Day That Never Comes",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 669692
+    },
+    {
+      "artist": "Metallica",
+      "title": "The Unforgiven",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 18681
+    },
+    {
+      "artist": "Metallica",
+      "title": "Welcome Home Sanitarium",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 425150
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Beat It",
+      "genre": "pop",
+      "songsterr_views": 343569,
+      "source": "songsterr",
+      "ug_hits": 342047
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Billie Jean",
+      "genre": "pop",
+      "songsterr_views": 214045,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Dirty Diana",
+      "genre": "pop",
+      "songsterr_views": 49054,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Give In To Me",
+      "genre": "pop",
+      "songsterr_views": 42527,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Smooth Criminal",
+      "genre": "pop",
+      "songsterr_views": 64762,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Michael Jackson",
+      "title": "Thriller",
+      "genre": "pop",
+      "songsterr_views": 42935,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Miley Cyrus",
+      "title": "Flowers",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Misc Soundtrack",
+      "title": "Pirates Of The Caribbean - Hes A Pirate",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 340632
+    },
+    {
+      "artist": "Motörhead",
+      "title": "Ace Of Spades",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 310952
+    },
+    {
+      "artist": "Muse",
+      "title": "Hysteria",
+      "genre": "rock",
+      "songsterr_views": 1153400,
+      "source": "songsterr",
+      "ug_hits": 473927
+    },
+    {
+      "artist": "Muse",
+      "title": "Knights Of Cydonia",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 312283
+    },
+    {
+      "artist": "Muse",
+      "title": "Plug In Baby",
+      "genre": "rock",
+      "songsterr_views": 218557,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Muse",
+      "title": "Psycho",
+      "genre": "rock",
+      "songsterr_views": 158370,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Muse",
+      "title": "Starlight",
+      "genre": "rock",
+      "songsterr_views": 94142,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Muse",
+      "title": "Supermassive Black Hole",
+      "genre": "rock",
+      "songsterr_views": 257425,
+      "source": "songsterr",
+      "ug_hits": 21519
+    },
+    {
+      "artist": "Muse",
+      "title": "Time Is Running Out",
+      "genre": "rock",
+      "songsterr_views": 117052,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Dead!",
+      "genre": "rock",
+      "songsterr_views": 183595,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Demolition Lovers",
+      "genre": "rock",
+      "songsterr_views": 118618,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "I'm Not Okay (I Promise)",
+      "genre": "rock",
+      "songsterr_views": 188031,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Teenagers",
+      "genre": "rock",
+      "songsterr_views": 116697,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Thank You for the Venom",
+      "genre": "rock",
+      "songsterr_views": 396704,
+      "source": "songsterr"
+    },
+    {
+      "artist": "My Chemical Romance",
+      "title": "Welcome To The Black Parade",
+      "genre": "rock",
+      "songsterr_views": 196868,
+      "source": "songsterr",
+      "ug_hits": 20873
+    },
+    {
+      "artist": "Nas",
+      "title": "N.Y. State of Mind",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Natalie Imbruglia",
+      "title": "Torn",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Neil Diamond",
+      "title": "Sweet Caroline",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Nicki Minaj",
+      "title": "Super Bass",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Nirvana",
+      "title": "About A Girl",
+      "genre": "grunge",
+      "songsterr_views": 226916,
+      "source": "songsterr",
+      "ug_hits": 21065
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Come As You Are",
+      "genre": "grunge",
+      "songsterr_views": 1858932,
+      "source": "songsterr",
+      "ug_hits": 520671
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Heart-Shaped Box",
+      "genre": "grunge",
+      "songsterr_views": 346465,
+      "source": "songsterr",
+      "ug_hits": 28201
+    },
+    {
+      "artist": "Nirvana",
+      "title": "In Bloom",
+      "genre": "grunge",
+      "songsterr_views": 441848,
+      "source": "songsterr",
+      "ug_hits": 27368
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Lithium",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 19164
+    },
+    {
+      "artist": "Nirvana",
+      "title": "Smells Like Teen Spirit",
+      "genre": "grunge",
+      "songsterr_views": 426300,
+      "source": "songsterr",
+      "ug_hits": 691969
+    },
+    {
+      "artist": "Nirvana",
+      "title": "The Man Who Sold The World",
+      "genre": "grunge",
+      "songsterr_views": 212773,
+      "source": "songsterr"
+    },
+    {
+      "artist": "No Doubt",
+      "title": "Don't Speak",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Oasis",
+      "title": "Cigarettes & Alcohol",
+      "genre": "rock",
+      "songsterr_views": 104298,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Don't Look Back In Anger",
+      "genre": "rock",
+      "songsterr_views": 331078,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Married With Children",
+      "genre": "rock",
+      "songsterr_views": 102014,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Stand By Me",
+      "genre": "rock",
+      "songsterr_views": 83765,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Supersonic",
+      "genre": "rock",
+      "songsterr_views": 186094,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Oasis",
+      "title": "Wonderwall",
+      "genre": "rock",
+      "songsterr_views": 142988,
+      "source": "songsterr",
+      "ug_hits": 571731
+    },
+    {
+      "artist": "Olivia Rodrigo",
+      "title": "drivers license",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Olivia Rodrigo",
+      "title": "good 4 u",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Olivia Rodrigo",
+      "title": "vampire",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "OneRepublic",
+      "title": "Counting Stars",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Otis Redding",
+      "title": "Sittin' On The Dock of the Bay",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Outkast",
+      "title": "Hey Ya!",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Outkast",
+      "title": "Ms. Jackson",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Ozzy Osbourne",
+      "title": "Crazy Train",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 726922
+    },
+    {
+      "artist": "Pantera",
+      "title": "Cemetery Gates",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 368010
+    },
+    {
+      "artist": "Pantera",
+      "title": "Cowboys From Hell",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 402564
+    },
+    {
+      "artist": "Paramore",
+      "title": "Ain't It Fun",
+      "genre": "rock",
+      "songsterr_views": 45899,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Paramore",
+      "title": "All I Wanted",
+      "genre": "rock",
+      "songsterr_views": 46827,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Decode",
+      "genre": "rock",
+      "songsterr_views": 87640,
+      "source": "songsterr",
+      "ug_hits": 20008
+    },
+    {
+      "artist": "Paramore",
+      "title": "Ignorance",
+      "genre": "rock",
+      "songsterr_views": 80534,
+      "source": "songsterr",
+      "ug_hits": 19217
+    },
+    {
+      "artist": "Paramore",
+      "title": "Misery Business",
+      "genre": "rock",
+      "songsterr_views": 197944,
+      "source": "songsterr",
+      "ug_hits": 28669
+    },
+    {
+      "artist": "Paramore",
+      "title": "Still Into You",
+      "genre": "rock",
+      "songsterr_views": 111521,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Paramore",
+      "title": "Thats What You Get",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 24018
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Alive",
+      "genre": "grunge",
+      "songsterr_views": 163280,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Better Man",
+      "genre": "grunge",
+      "songsterr_views": 46022,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Black",
+      "genre": "grunge",
+      "songsterr_views": 119762,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Even Flow",
+      "genre": "grunge",
+      "songsterr_views": 234500,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Jeremy",
+      "genre": "grunge",
+      "songsterr_views": 73091,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pearl Jam",
+      "title": "Yellow Ledbetter",
+      "genre": "grunge",
+      "songsterr_views": 260961,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pharrell Williams",
+      "title": "Happy",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Phil Collins",
+      "title": "In The Air Tonight",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 37341
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Another Brick In The Wall, Part 2",
+      "genre": "rock",
+      "songsterr_views": 367451,
+      "source": "songsterr",
+      "ug_hits": 393195
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Comfortably Numb",
+      "genre": "rock",
+      "songsterr_views": 1580683,
+      "source": "songsterr",
+      "ug_hits": 670560
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Is There Anybody Out There?",
+      "genre": "rock",
+      "songsterr_views": 174334,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Money",
+      "genre": "rock",
+      "songsterr_views": 560125,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Shine On You Crazy Diamond (Parts I - IX)",
+      "genre": "rock",
+      "songsterr_views": 820467,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pink Floyd",
+      "title": "Wish You Were Here",
+      "genre": "rock",
+      "songsterr_views": 682231,
+      "source": "songsterr",
+      "ug_hits": 531940
+    },
+    {
+      "artist": "Pixies",
+      "title": "All I Think About Now",
+      "genre": "alternative",
+      "songsterr_views": 81821,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pixies",
+      "title": "Debaser",
+      "genre": "alternative",
+      "songsterr_views": 25580,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pixies",
+      "title": "Here Comes Your Man",
+      "genre": "alternative",
+      "songsterr_views": 74720,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pixies",
+      "title": "Hey",
+      "genre": "alternative",
+      "songsterr_views": 82362,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pixies",
+      "title": "Monkey Gone To Heaven",
+      "genre": "alternative",
+      "songsterr_views": 23012,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Pixies",
+      "title": "Where Is My Mind?",
+      "genre": "alternative",
+      "songsterr_views": 473181,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Post Malone",
+      "title": "Rockstar",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Prince",
+      "title": "Kiss",
+      "genre": "funk",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Prince",
+      "title": "Purple Rain",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Queen",
+      "title": "Another One Bites the Dust",
+      "genre": "rock",
+      "songsterr_views": 441448,
+      "source": "songsterr",
+      "ug_hits": 19072
+    },
+    {
+      "artist": "Queen",
+      "title": "Bohemian Rhapsody",
+      "genre": "rock",
+      "songsterr_views": 521730,
+      "source": "songsterr",
+      "ug_hits": 537096
+    },
+    {
+      "artist": "Queen",
+      "title": "Crazy Little Thing Called Love",
+      "genre": "rock",
+      "songsterr_views": 110821,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Queen",
+      "title": "Don't Stop Me Now",
+      "genre": "rock",
+      "songsterr_views": 123846,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Queen",
+      "title": "Killer Queen",
+      "genre": "rock",
+      "songsterr_views": 92418,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Queen",
+      "title": "We Will Rock You",
+      "genre": "rock",
+      "songsterr_views": 114807,
+      "source": "songsterr",
+      "ug_hits": 28426
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Creep",
+      "genre": "alternative",
+      "songsterr_views": 941565,
+      "source": "songsterr",
+      "ug_hits": 35820
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Fake Plastic Trees",
+      "genre": "alternative",
+      "songsterr_views": 149506,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Jigsaw Falling Into Place",
+      "genre": "alternative",
+      "songsterr_views": 417179,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Karma Police",
+      "genre": "alternative",
+      "songsterr_views": 186620,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Radiohead",
+      "title": "No Surprises",
+      "genre": "alternative",
+      "songsterr_views": 296954,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Radiohead",
+      "title": "Paranoid Android",
+      "genre": "alternative",
+      "songsterr_views": 226710,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Bombtrack",
+      "genre": "rock",
+      "songsterr_views": 180544,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Bulls On Parade",
+      "genre": "rock",
+      "songsterr_views": 151866,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Freedom",
+      "genre": "rock",
+      "songsterr_views": 104841,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Killing in the Name",
+      "genre": "rock",
+      "songsterr_views": 615554,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Know Your Enemy",
+      "genre": "rock",
+      "songsterr_views": 114487,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Rage Against the Machine",
+      "title": "Wake Up",
+      "genre": "rock",
+      "songsterr_views": 104912,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Ray Charles",
+      "title": "Hit the Road Jack",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Aeroplane",
+      "genre": "rock",
+      "songsterr_views": 401537,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Californication",
+      "genre": "rock",
+      "songsterr_views": 963522,
+      "source": "songsterr",
+      "ug_hits": 612794
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Can't Stop",
+      "genre": "rock",
+      "songsterr_views": 579591,
+      "source": "songsterr",
+      "ug_hits": 371045
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Dani California",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 42017
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Otherside",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 20174
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Scar Tissue",
+      "genre": "rock",
+      "songsterr_views": 385839,
+      "source": "songsterr",
+      "ug_hits": 358146
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Snow (Hey Oh)",
+      "genre": "rock",
+      "songsterr_views": 495184,
+      "source": "songsterr",
+      "ug_hits": 302544
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "title": "Under The Bridge",
+      "genre": "rock",
+      "songsterr_views": 836610,
+      "source": "songsterr",
+      "ug_hits": 313097
+    },
+    {
+      "artist": "Rick Astley",
+      "title": "Never Gonna Give You Up",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Rihanna",
+      "title": "Umbrella",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Rihanna",
+      "title": "We Found Love",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Roy Orbison",
+      "title": "Oh, Pretty Woman",
+      "genre": "rock and roll",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Sabrina Carpenter",
+      "title": "Espresso",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Santana",
+      "title": "Black Magic Woman",
+      "genre": "rock",
+      "songsterr_views": 326681,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Santana",
+      "title": "Corazon Espinado",
+      "genre": "rock",
+      "songsterr_views": 114719,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Santana",
+      "title": "Europa",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 304985
+    },
+    {
+      "artist": "Santana",
+      "title": "Europa (Earth's Cry Heaven's Smile)",
+      "genre": "rock",
+      "songsterr_views": 460890,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Santana",
+      "title": "Oye Como Va",
+      "genre": "rock",
+      "songsterr_views": 111756,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Santana",
+      "title": "Samba Pa Ti",
+      "genre": "rock",
+      "songsterr_views": 215138,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Santana",
+      "title": "Smooth",
+      "genre": "rock",
+      "songsterr_views": 417484,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Scorpions",
+      "title": "Rock You Like A Hurricane",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 349195
+    },
+    {
+      "artist": "Scorpions",
+      "title": "Still Loving You",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 345759
+    },
+    {
+      "artist": "Semisonic",
+      "title": "Closing Time",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Shakira",
+      "title": "Hips Don't Lie",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Shania Twain",
+      "title": "Man! I Feel Like a Woman!",
+      "genre": "country",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Sia",
+      "title": "Chandelier",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Sia",
+      "title": "Cheap Thrills",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "Anji",
+      "genre": "rock",
+      "songsterr_views": 5858,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "April Come She Will",
+      "genre": "rock",
+      "songsterr_views": 25213,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "Mrs. Robinson",
+      "genre": "rock",
+      "songsterr_views": 11370,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "Scarborough Fair / Canticle",
+      "genre": "rock",
+      "songsterr_views": 51815,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "The Boxer",
+      "genre": "rock",
+      "songsterr_views": 47472,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Simon & Garfunkel",
+      "title": "The Sounds Of Silence",
+      "genre": "rock",
+      "songsterr_views": 34987,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Sir Mix-a-Lot",
+      "title": "Baby Got Back",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Sister Sledge",
+      "title": "We Are Family",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Slayer",
+      "title": "Raining Blood",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 385557
+    },
+    {
+      "artist": "Smash Mouth",
+      "title": "All Star",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Snoop Dogg",
+      "title": "Drop It Like It's Hot",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "4th Of July",
+      "genre": "grunge",
+      "songsterr_views": 49029,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "Black Hole Sun",
+      "genre": "grunge",
+      "songsterr_views": 408272,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "Burden In My Hand",
+      "genre": "grunge",
+      "songsterr_views": 26081,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "Fell On Black Days",
+      "genre": "grunge",
+      "songsterr_views": 73871,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "Outshined",
+      "genre": "grunge",
+      "songsterr_views": 151344,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Soundgarden",
+      "title": "Spoonman",
+      "genre": "grunge",
+      "songsterr_views": 85046,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Spice Girls",
+      "title": "Wannabe",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Steppenwolf",
+      "title": "Born To Be Wild",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 23550
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "I Wish",
+      "genre": "funk",
+      "songsterr_views": 80247,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "Isn't She Lovely",
+      "genre": "funk",
+      "songsterr_views": 66168,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "Master Blaster (Jammin')",
+      "genre": "funk",
+      "songsterr_views": 174672,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "Signed, Sealed, Delivered (I'm Yours)",
+      "genre": "funk",
+      "songsterr_views": 22826,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "Sir Duke",
+      "genre": "funk",
+      "songsterr_views": 166815,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Stevie Wonder",
+      "title": "Superstition",
+      "genre": "funk",
+      "songsterr_views": 43068,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Burning Heart",
+      "genre": "rock",
+      "songsterr_views": 5460,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Burning Heart (Rocky)",
+      "genre": "rock",
+      "songsterr_views": 235,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Didn't Know It Was Love",
+      "genre": "rock",
+      "songsterr_views": 1803,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Eye Of The Tiger",
+      "genre": "rock",
+      "songsterr_views": 142805,
+      "source": "songsterr",
+      "ug_hits": 47290
+    },
+    {
+      "artist": "Survivor",
+      "title": "I Can't Hold Back",
+      "genre": "rock",
+      "songsterr_views": 2405,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Survivor",
+      "title": "Is This Love",
+      "genre": "rock",
+      "songsterr_views": 462,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Swedish House Mafia",
+      "title": "Don't You Worry Child",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "System of a Down",
+      "title": "Aerials",
+      "genre": "metal",
+      "songsterr_views": 760658,
+      "source": "songsterr"
+    },
+    {
+      "artist": "System of a Down",
+      "title": "B.Y.O.B.",
+      "genre": "metal",
+      "songsterr_views": 220107,
+      "source": "songsterr"
+    },
+    {
+      "artist": "System of a Down",
+      "title": "Chop Suey!",
+      "genre": "metal",
+      "songsterr_views": 313153,
+      "source": "songsterr",
+      "ug_hits": 357105
+    },
+    {
+      "artist": "System of a Down",
+      "title": "Lonely Day",
+      "genre": "metal",
+      "songsterr_views": 256236,
+      "source": "songsterr"
+    },
+    {
+      "artist": "System of a Down",
+      "title": "Sugar",
+      "genre": "metal",
+      "songsterr_views": 224902,
+      "source": "songsterr"
+    },
+    {
+      "artist": "System of a Down",
+      "title": "Toxicity",
+      "genre": "metal",
+      "songsterr_views": 353656,
+      "source": "songsterr",
+      "ug_hits": 460255
+    },
+    {
+      "artist": "SZA",
+      "title": "Kill Bill",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "And She Was",
+      "genre": "rock",
+      "songsterr_views": 7454,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "Burning Down The House",
+      "genre": "rock",
+      "songsterr_views": 10651,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "Life During Wartime",
+      "genre": "rock",
+      "songsterr_views": 16385,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "Once In A Lifetime",
+      "genre": "rock",
+      "songsterr_views": 8919,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "Psycho Killer",
+      "genre": "rock",
+      "songsterr_views": 310009,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Talking Heads",
+      "title": "Take Me To The River",
+      "genre": "rock",
+      "songsterr_views": 13548,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "Borderline",
+      "genre": "indie",
+      "songsterr_views": 9558,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "Elephant",
+      "genre": "indie",
+      "songsterr_views": 25399,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "Let It Happen",
+      "genre": "indie",
+      "songsterr_views": 48877,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "Loser",
+      "genre": "indie",
+      "songsterr_views": 11357,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "New Person, Same Old Mistakes",
+      "genre": "indie",
+      "songsterr_views": 15990,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tame Impala",
+      "title": "The Less I Know The Better",
+      "genre": "indie",
+      "songsterr_views": 313308,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Taylor Swift",
+      "title": "Anti-Hero",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Taylor Swift",
+      "title": "Blank Space",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Taylor Swift",
+      "title": "Cruel Summer",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Taylor Swift",
+      "title": "Shake It Off",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Tears for Fears",
+      "title": "Everybody Wants to Rule the World",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Beach Boys",
+      "title": "Good Vibrations",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Blackbird",
+      "genre": "rock",
+      "songsterr_views": 670549,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Come Together",
+      "genre": "rock",
+      "songsterr_views": 252971,
+      "source": "songsterr",
+      "ug_hits": 26877
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Day Tripper",
+      "genre": "rock",
+      "songsterr_views": 175294,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Here Comes the Sun",
+      "genre": "rock",
+      "songsterr_views": 251957,
+      "source": "songsterr",
+      "ug_hits": 18653
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Hey Jude",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 20158
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Let It Be",
+      "genre": "rock",
+      "songsterr_views": 250920,
+      "source": "songsterr",
+      "ug_hits": 21795
+    },
+    {
+      "artist": "The Beatles",
+      "title": "Yesterday",
+      "genre": "rock",
+      "songsterr_views": 174586,
+      "source": "songsterr",
+      "ug_hits": 312248
+    },
+    {
+      "artist": "The Black Eyed Peas",
+      "title": "I Gotta Feeling",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "Gold On The Ceiling",
+      "genre": "rock",
+      "songsterr_views": 18446,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "I Got Mine",
+      "genre": "rock",
+      "songsterr_views": 16791,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "Little Black Submarines",
+      "genre": "rock",
+      "songsterr_views": 27592,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "Lonely Boy",
+      "genre": "rock",
+      "songsterr_views": 38307,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "Thickfreakness",
+      "genre": "rock",
+      "songsterr_views": 12989,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Black Keys",
+      "title": "Weight of love",
+      "genre": "rock",
+      "songsterr_views": 10856,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Chainsmokers",
+      "title": "Closer",
+      "genre": "electronic",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Clash",
+      "title": "I Fought The Law",
+      "genre": "punk",
+      "songsterr_views": 16314,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Clash",
+      "title": "London Calling",
+      "genre": "punk",
+      "songsterr_views": 54120,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Clash",
+      "title": "Rock The Casbah",
+      "genre": "punk",
+      "songsterr_views": 29478,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Clash",
+      "title": "Should I Stay Or Should I Go",
+      "genre": "punk",
+      "songsterr_views": 98826,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Clash",
+      "title": "Should I Stay Or Should I Go Now",
+      "genre": "punk",
+      "songsterr_views": 10204,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Clash",
+      "title": "The Guns Of Brixton",
+      "genre": "punk",
+      "songsterr_views": 32377,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cranberries",
+      "title": "Zombie",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 41456
+    },
+    {
+      "artist": "The Cure",
+      "title": "A Forest",
+      "genre": "alternative",
+      "songsterr_views": 86054,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cure",
+      "title": "Boys Don't Cry",
+      "genre": "alternative",
+      "songsterr_views": 166633,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cure",
+      "title": "Friday I'm in Love",
+      "genre": "alternative",
+      "songsterr_views": 69570,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cure",
+      "title": "Just Like Heaven",
+      "genre": "alternative",
+      "songsterr_views": 90103,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cure",
+      "title": "Lovesong",
+      "genre": "alternative",
+      "songsterr_views": 95304,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Cure",
+      "title": "The Lovecats",
+      "genre": "alternative",
+      "songsterr_views": 36657,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Kid LAROI",
+      "title": "Stay",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Killers",
+      "title": "Jenny Was A Friend Of Mine",
+      "genre": "indie",
+      "songsterr_views": 29568,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Killers",
+      "title": "Mr. Brightside",
+      "genre": "indie",
+      "songsterr_views": 289031,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Killers",
+      "title": "Smile Like You Mean It",
+      "genre": "indie",
+      "songsterr_views": 26037,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Killers",
+      "title": "Somebody Told Me",
+      "genre": "indie",
+      "songsterr_views": 52793,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Killers",
+      "title": "Somebody Told Me (Standard)",
+      "genre": "indie",
+      "songsterr_views": 15996,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Killers",
+      "title": "When You Were Young",
+      "genre": "indie",
+      "songsterr_views": 101886,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Monkees",
+      "title": "I'm a Believer",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Notorious B.I.G.",
+      "title": "Juicy",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Police",
+      "title": "Bring On The Night",
+      "genre": "rock",
+      "songsterr_views": 43001,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Police",
+      "title": "Every Breath You Take",
+      "genre": "rock",
+      "songsterr_views": 416050,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Police",
+      "title": "Message In A Bottle",
+      "genre": "rock",
+      "songsterr_views": 215971,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Police",
+      "title": "Roxanne",
+      "genre": "rock",
+      "songsterr_views": 87309,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Police",
+      "title": "Synchronicity II",
+      "genre": "rock",
+      "songsterr_views": 23909,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Police",
+      "title": "Walking On The Moon",
+      "genre": "rock",
+      "songsterr_views": 46080,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Proclaimers",
+      "title": "I'm Gonna Be (500 Miles)",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "(I Can't Get No) Satisfaction",
+      "genre": "rock",
+      "songsterr_views": 62395,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "Angie",
+      "genre": "rock",
+      "songsterr_views": 162374,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "Brown Sugar",
+      "genre": "rock",
+      "songsterr_views": 67714,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "Can't You Hear Me Knocking",
+      "genre": "rock",
+      "songsterr_views": 84315,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "Honky Tonk Women",
+      "genre": "rock",
+      "songsterr_views": 74468,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Rolling Stones",
+      "title": "Paint It Black",
+      "genre": "rock",
+      "songsterr_views": 202629,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "Back To The Old House",
+      "genre": "indie",
+      "songsterr_views": 203295,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "Bigmouth Strikes Again",
+      "genre": "indie",
+      "songsterr_views": 40502,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "Heaven Knows I'm Miserable Now",
+      "genre": "indie",
+      "songsterr_views": 75081,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "Some Girls Are Bigger Than Others",
+      "genre": "indie",
+      "songsterr_views": 49401,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "There Is A Light That Never Goes Out",
+      "genre": "indie",
+      "songsterr_views": 99036,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Smiths",
+      "title": "This Charming Man",
+      "genre": "indie",
+      "songsterr_views": 90534,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "Is This It",
+      "genre": "indie",
+      "songsterr_views": 57529,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "Last Nite",
+      "genre": "indie",
+      "songsterr_views": 53253,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "Reptilia",
+      "genre": "indie",
+      "songsterr_views": 177192,
+      "source": "songsterr",
+      "ug_hits": 305786
+    },
+    {
+      "artist": "The Strokes",
+      "title": "Selfless",
+      "genre": "indie",
+      "songsterr_views": 37621,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "The Adults Are Talking",
+      "genre": "indie",
+      "songsterr_views": 44025,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Strokes",
+      "title": "You Only Live Once",
+      "genre": "indie",
+      "songsterr_views": 111811,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The Temptations",
+      "title": "My Girl",
+      "genre": "soul",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Weeknd",
+      "title": "Blinding Lights",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Weeknd",
+      "title": "Can't Feel My Face",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Weeknd",
+      "title": "Save Your Tears",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The Weeknd",
+      "title": "Starboy",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "Blue Orchid",
+      "genre": "rock",
+      "songsterr_views": 28601,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "Dead Leaves And The Dirty Ground",
+      "genre": "rock",
+      "songsterr_views": 41638,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "Fell In Love With a Girl",
+      "genre": "rock",
+      "songsterr_views": 40739,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "Seven Nation Army",
+      "genre": "rock",
+      "songsterr_views": 400911,
+      "source": "songsterr",
+      "ug_hits": 349798
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "The Hardest Button To Button",
+      "genre": "rock",
+      "songsterr_views": 34756,
+      "source": "songsterr"
+    },
+    {
+      "artist": "The White Stripes",
+      "title": "We're Going To Be Friends",
+      "genre": "rock",
+      "songsterr_views": 53791,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Thin Lizzy",
+      "title": "Got To Give It Up",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 530541
+    },
+    {
+      "artist": "Third Eye Blind",
+      "title": "Semi-Charmed Life",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Thirty Seconds To Mars",
+      "title": "The Kill",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 34071
+    },
+    {
+      "artist": "Three Days Grace",
+      "title": "Animal I Have Become",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 24573
+    },
+    {
+      "artist": "Three Days Grace",
+      "title": "I Hate Everything About You",
+      "genre": "rock",
+      "source": "ultimate-guitar",
+      "songsterr_views": 0,
+      "ug_hits": 20643
+    },
+    {
+      "artist": "Tina Turner",
+      "title": "The Best",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "American Girl",
+      "genre": "rock",
+      "songsterr_views": 41307,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "Breakdown",
+      "genre": "rock",
+      "songsterr_views": 39103,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "Free Fallin'",
+      "genre": "rock",
+      "songsterr_views": 21340,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "Learning To Fly",
+      "genre": "rock",
+      "songsterr_views": 21467,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "Mary Jane's Last Dance",
+      "genre": "rock",
+      "songsterr_views": 85332,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Tom Petty",
+      "title": "Runnin' Down a Dream",
+      "genre": "rock",
+      "songsterr_views": 43796,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Africa",
+      "genre": "rock",
+      "songsterr_views": 80988,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Georgy Porgy",
+      "genre": "rock",
+      "songsterr_views": 11819,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Hold The Line",
+      "genre": "rock",
+      "songsterr_views": 213087,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Jake To The Bone",
+      "genre": "rock",
+      "songsterr_views": 7484,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Rosanna",
+      "genre": "rock",
+      "songsterr_views": 102902,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Toto",
+      "title": "Stop Loving You",
+      "genre": "rock",
+      "songsterr_views": 13368,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Travis Scott",
+      "title": "Goosebumps",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Travis Scott",
+      "title": "SICKO MODE",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Tupac",
+      "title": "California Love",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Drum Show",
+      "genre": "pop",
+      "songsterr_views": 33707,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Heathens",
+      "genre": "pop",
+      "songsterr_views": 17840,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Jumpsuit",
+      "genre": "pop",
+      "songsterr_views": 33451,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Navigating",
+      "genre": "pop",
+      "songsterr_views": 17335,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Next Semester",
+      "genre": "pop",
+      "songsterr_views": 22508,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Twenty One Pilots",
+      "title": "Stressed Out",
+      "genre": "pop",
+      "songsterr_views": 16548,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "New Year's Day",
+      "genre": "rock",
+      "songsterr_views": 26118,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "One",
+      "genre": "rock",
+      "songsterr_views": 30861,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "Pride (In The Name Of Love)",
+      "genre": "rock",
+      "songsterr_views": 38387,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "Sunday Bloody Sunday",
+      "genre": "rock",
+      "songsterr_views": 38699,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "Where The Streets Have No Name",
+      "genre": "rock",
+      "songsterr_views": 56375,
+      "source": "songsterr"
+    },
+    {
+      "artist": "U2",
+      "title": "With Or Without You",
+      "genre": "rock",
+      "songsterr_views": 78573,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Usher",
+      "title": "Yeah!",
+      "genre": "r&b",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Van Halen",
+      "title": "Ain't Talkin' 'Bout Love",
+      "genre": "rock",
+      "songsterr_views": 601192,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Van Halen",
+      "title": "Eruption",
+      "genre": "rock",
+      "songsterr_views": 505961,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Van Halen",
+      "title": "Hot For Teacher",
+      "genre": "rock",
+      "songsterr_views": 367796,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Van Halen",
+      "title": "I'm The One",
+      "genre": "rock",
+      "songsterr_views": 115480,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Van Halen",
+      "title": "Panama",
+      "genre": "rock",
+      "songsterr_views": 425793,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Van Halen",
+      "title": "You Really Got Me",
+      "genre": "rock",
+      "songsterr_views": 140345,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Vanessa Carlton",
+      "title": "A Thousand Miles",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Vanilla Ice",
+      "title": "Ice Ice Baby",
+      "genre": "hip-hop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Village People",
+      "title": "Y.M.C.A.",
+      "genre": "disco",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Weezer",
+      "title": "Buddy Holly",
+      "genre": "rock",
+      "songsterr_views": 342329,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Weezer",
+      "title": "Go Away",
+      "genre": "rock",
+      "songsterr_views": 56015,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Weezer",
+      "title": "Hash Pipe",
+      "genre": "rock",
+      "songsterr_views": 41861,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Weezer",
+      "title": "Island In The Sun",
+      "genre": "rock",
+      "songsterr_views": 31853,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Weezer",
+      "title": "Say It Ain't So",
+      "genre": "rock",
+      "songsterr_views": 191126,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Weezer",
+      "title": "Undone - The Sweater Song",
+      "genre": "rock",
+      "songsterr_views": 123402,
+      "source": "songsterr"
+    },
+    {
+      "artist": "Wham!",
+      "title": "Wake Me Up Before You Go-Go",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Wheatus",
+      "title": "Teenage Dirtbag",
+      "genre": "rock",
+      "source": "extra",
+      "songsterr_views": 0
+    },
+    {
+      "artist": "Whitney Houston",
+      "title": "I Wanna Dance with Somebody",
+      "genre": "pop",
+      "source": "extra",
+      "songsterr_views": 0
+    }
+  ]
+}

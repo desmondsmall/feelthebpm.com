@@ -1,10 +1,22 @@
 {
-  "built": "2026-06-15",
-  "songs": 486,
+  "built": "2026-06-17",
+  "songs": 487,
   "year_sources": {
-    "musicbrainz": 485,
+    "musicbrainz": 486,
     "deezer": 2
   },
-  "excluded": 7,
-  "bpm_gaps": 91
+  "popularity": {
+    "method": "percentile-blend",
+    "weights": {
+      "youtube": 0.7,
+      "rank": 0.2,
+      "songsterr": 0.1
+    },
+    "youtube": {
+      "enabled": true,
+      "coverage": 486
+    }
+  },
+  "excluded": 177,
+  "bpm_gaps": 26
 }
