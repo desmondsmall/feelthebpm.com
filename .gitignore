@@ -5,6 +5,10 @@
 # build pipeline cache (regenerable HTTP responses)
 pipeline/cache/
 
+# raw manual harvests (e.g. Ultimate Guitar page dumps). Bulky intermediates — the PARSED
+# output (pipeline/seed-ug.json) is the committed artifact; these raw dumps are not.
+pipeline/raw/
+
 # GSB evaluation raw data (regenerable — re-run pipeline/eval-gsb.mjs to refresh).
 # The human-readable report (.dev/reference/gsb-eval.md) is a tracked doc; only the
 # large raw rows are ignored.
