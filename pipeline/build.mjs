@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build songs.json from the seed catalogue (pipeline/catalogue.json — see seed.mjs): Deezer
+// Build songs.json from the seed catalogue (pipeline/generated/catalogue.json — see seed.mjs): Deezer
 // (BPM/year/rank) + MusicBrainz (original year) + YouTube/Songsterr popularity + override table.
 // No deps; Node 22+ (global fetch). Caches Deezer responses to ./cache so re-runs are cheap.
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
@@ -23,6 +23,10 @@ const SITE = join(HERE, '..', 'public');
 if (!existsSync(SITE)) mkdirSync(SITE, { recursive: true });
 const CACHE = join(HERE, 'cache');
 if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
+// hand-curated config vs. generated artifacts (see .dev/reference/pipeline-architecture.md)
+const INPUTS = join(HERE, 'inputs');        // artists / extra_songs / exclude* / bpm_overrides — hand-edited
+const GENERATED = join(HERE, 'generated');  // catalogue / seed-ug / gaps — build+seed outputs (committed)
+if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
 
 // ---- tunables ----------------------------------------------------------
 const SONGS_PER_ARTIST = 6;        // top-N popular songs kept per Songsterr artist
@@ -39,7 +43,7 @@ const YT_PACE_MS = 800;            // polite delay after a live yt-dlp call (una
 // A song missing a signal scores percentile 0 for it — a penalty, not a dropped term (see §4b);
 // only a signal that's entirely dormant across the catalogue (e.g. YouTube disabled) is dropped,
 // with the remaining weights renormalizing. Env-overridable (POP_W_YT / POP_W_RANK / POP_W_SONG)
-// to tune/sweep without a code edit; compare configs offline with pipeline/sweep-weights.mjs.
+// to tune/sweep without a code edit; compare configs offline with pipeline/tools/sweep-weights.mjs.
 const wEnv = (name, def) => { const v = Number(process.env[name]); return Number.isFinite(v) ? v : def; };
 const POP_WEIGHTS = { youtube: wEnv('POP_W_YT', 0.70), rank: wEnv('POP_W_RANK', 0.20), songsterr: wEnv('POP_W_SONG', 0.10) };
 
@@ -393,7 +397,7 @@ async function enrichCandidate(c, overrides) {
 // Punctuation/case are normalized via key() so 'AC/DC|...' matches candidate keys;
 // comment/section keys (leading '_') and non-numeric values are skipped.
 function loadOverrides() {
-  const raw = readJson(join(HERE, 'bpm_overrides.json')).overrides;
+  const raw = readJson(join(INPUTS, 'bpm_overrides.json')).overrides;
   const overrides = {};
   for (const [k, v] of Object.entries(raw)) {
     if (k.startsWith('_') || typeof v !== 'number') continue;
@@ -411,12 +415,12 @@ function loadOverrides() {
 // decoupled: refresh the seed occasionally, build off it every run. songsterr_views rides on the
 // seed entry because it's captured for free during the Songsterr scrape (it doubles as the
 // Songsterr popularity signal). See .dev/reference/pipeline-architecture.md.
-const CATALOGUE = join(HERE, 'catalogue.json');
+const CATALOGUE = join(GENERATED, 'catalogue.json');
 
 async function gatherCatalogue() {
-  const artists = readJson(join(HERE, 'artists.json')).artists;
-  const extra = readJson(join(HERE, 'extra_songs.json')).songs;
-  const UG = join(HERE, 'seed-ug.json');
+  const artists = readJson(join(INPUTS, 'artists.json')).artists;
+  const extra = readJson(join(INPUTS, 'extra_songs.json')).songs;
+  const UG = join(GENERATED, 'seed-ug.json');
   const candidates = new Map();
   // On a key collision, keep the FIRST record (its artist/title/genre/source) but absorb the
   // popularity signals (songsterr_views, ug_hits) — so a song discovered on Songsterr that's also
@@ -465,16 +469,15 @@ function writeCatalogue(catalogue) {
 // ---- main --------------------------------------------------------------
 async function main() {
   const overrides = loadOverrides();
-  // exclusion lists: every exclude*.json in the pipeline dir, each a reviewable list of
-  // 'artist|title' keys (normalized like the candidates so 'queen|bohemian rhapsody' matches). By
-  // file: exclude.json = no single meaningful tempo (multi-movement/rubato); exclude-obscure.json =
-  // guitar/drum-tab "canon" musicians know but laypeople don't; exclude-contemporary.json =
-  // too-recent-for-karaoke streaming hits. All unioned, applied as a build-time filter. See
-  // .dev/reference/pipeline-architecture.md.
+  // exclusion lists: every inputs/exclude*.json, each a reviewable list of 'artist|title' keys
+  // (normalized like the candidates so 'queen|bohemian rhapsody' matches). By file: exclude.json =
+  // no single meaningful tempo (multi-movement/rubato); exclude-obscure.json = guitar/drum-tab
+  // "canon" musicians know but laypeople don't; exclude-contemporary.json = too-recent-for-karaoke
+  // streaming hits. All unioned, applied as a build-time filter. See pipeline-architecture.md.
   const excludeSet = new Set(
-    readdirSync(HERE)
+    readdirSync(INPUTS)
       .filter((f) => /^exclude.*\.json$/.test(f))
-      .flatMap((f) => readJson(join(HERE, f)).exclude
+      .flatMap((f) => readJson(join(INPUTS, f)).exclude
         .filter((k) => !k.startsWith('_'))
         .map((k) => { const [a, t] = k.split('|'); return key(a, t); }))
   );
@@ -564,7 +567,7 @@ async function main() {
 
   // optional: dump the deduped set's RAW signals so weights can be swept offline (no network).
   // Lands in the gitignored cache — raw provider signals must never be committed (see §3) —
-  // and is read by pipeline/sweep-weights.mjs. Enable with DUMP_SIGNALS=1.
+  // and is read by pipeline/tools/sweep-weights.mjs. Enable with DUMP_SIGNALS=1.
   if (process.env.DUMP_SIGNALS) {
     const dump = deduped.map((s) => ({ artist: s.artist, title: s.title, bpm: s.bpm, raw: rawSignals.get(s) }));
     writeFileSync(join(CACHE, 'signals.json'), JSON.stringify(dump));
@@ -575,7 +578,7 @@ async function main() {
   writeFileSync(join(SITE, 'songs.json'), JSON.stringify(deduped, null, 2));
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
-  writeFileSync(join(HERE, 'gaps.json'), JSON.stringify(gaps, null, 2));
+  writeFileSync(join(GENERATED, 'gaps.json'), JSON.stringify(gaps, null, 2));
   // build manifest: provenance git can't infer from songs.json alone (how it was produced).
   // Ships in public/ so it deploys with the data and can double as a version stamp.
   const ytCovered = deduped.filter((s) => rawSignals.get(s).youtube > 0).length;
@@ -599,10 +602,10 @@ async function main() {
   console.error(`Excluded ${excluded.length} multi-tempo song(s) via exclude.json: ${excluded.join(', ') || '(none matched)'}`);
   console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
   console.error(`Done. ${deduped.length} songs -> songs.json`);
-  console.error(`${gaps.length} BPM gaps -> pipeline/gaps.json (add to bpm_overrides.json)`);
+  console.error(`${gaps.length} BPM gaps -> pipeline/generated/gaps.json (add to bpm_overrides.json)`);
 }
 
-// Reusable pieces for sibling tools (e.g. pipeline/eval-gsb.mjs) — exported so the eval
+// Reusable pieces for sibling tools (e.g. pipeline/tools/eval-gsb.mjs) — exported so the eval
 // runs the EXACT production matching logic instead of a drifting reimplementation.
 export { norm, key, getJson, deezerEnrich, getsongbpmEnrich, loadOverrides, percentileMap, POP_WEIGHTS, gatherCatalogue, writeCatalogue };
 

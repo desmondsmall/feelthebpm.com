@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Parse manually-harvested Ultimate Guitar "Top 100 tabs by hits" charts into pipeline/seed-ug.json
+// Parse manually-harvested Ultimate Guitar "Top 100 tabs by hits" charts into pipeline/generated/seed-ug.json
 // — a MEMBERSHIP + ug_hits source for the build's SEED layer (see .dev/reference/pipeline-architecture.md).
 // UG is Cloudflare-protected (no keyless fetch like Songsterr), so harvesting is manual: copy each
 // chart's rendered text into pipeline/raw/ug-<type>.txt, then:
@@ -7,13 +7,15 @@
 //   node pipeline/seed.mjs           # fold UG into catalogue.json
 //   ENABLE_YOUTUBE=1 node pipeline/build.mjs
 // File type comes from the NAME: 'drums' anywhere in the filename => 'drums', else 'guitar-pro'.
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const RAW = join(HERE, 'raw');
-const OUT = join(HERE, 'seed-ug.json');
+const GENERATED = join(HERE, 'generated');
+if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
+const OUT = join(GENERATED, 'seed-ug.json');
 
 if (!existsSync(RAW)) { console.error(`No ${RAW}/ — create it and add harvested ug-*.txt files.`); process.exit(1); }
 const files = readdirSync(RAW).filter((f) => /^ug-.*\.txt$/i.test(f));
@@ -66,4 +68,4 @@ writeFileSync(OUT, JSON.stringify({
   songs,
 }, null, 2) + '\n');
 
-console.error(`\nParsed ${parsed} rows -> ${songs.length} unique songs -> pipeline/seed-ug.json`);
+console.error(`\nParsed ${parsed} rows -> ${songs.length} unique songs -> pipeline/generated/seed-ug.json`);

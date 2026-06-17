@@ -59,7 +59,7 @@ results cached to `pipeline/cache/` so re-runs are instant):
 1. **Songsterr** (`/api/songs`) — discovers *popular, recognizable* songs and gives a
    real popularity signal (per-instrument view counts). Great for rock/pop/metal;
    covers/variants and tab-arrangement suffixes are filtered/cleaned out.
-2. **Curated cross-genre list** (`pipeline/extra_songs.json`) — fills what Songsterr
+2. **Curated cross-genre list** (`pipeline/inputs/extra_songs.json`) — fills what Songsterr
    covers poorly (hip-hop, electronic, R&B, disco, reggae), genre-tagged by hand.
 3. **Deezer** (`api.deezer.com`) — the BPM source of record (audio-analysis tempo) plus
    ISRC / popularity rank. Free, no auth.
@@ -73,22 +73,22 @@ results cached to `pipeline/cache/` so re-runs are instant):
    descriptive `User-Agent` and allows ~1 request/sec, so the first run is slow (~8–10 min);
    responses cache to `pipeline/cache/`, so re-runs are instant.
 
-**Override table** (`pipeline/bpm_overrides.json`) handles two known Deezer weaknesses:
+**Override table** (`pipeline/inputs/bpm_overrides.json`) handles two known Deezer weaknesses:
 - *Coverage gaps* — Deezer returns `bpm: 0` for much of the classic-rock canon
   (Highway to Hell, Wonderwall, Creep…), so canonical tempos live here.
 - *Half/double-tempo artifacts* — audio analysis sometimes reports 2× the real tempo
   (Dancing Queen 201→101, Superstition 201→100); corrected here.
 
 Songs the pipeline can't find a trustworthy BPM for are dropped (quality over quantity)
-and logged to `pipeline/gaps.json` — review that file to grow the override table.
+and logged to `pipeline/generated/gaps.json` — review that file to grow the override table.
 
 ## Extending
 
-- **More songs:** add artists to `pipeline/artists.json` (Songsterr-friendly genres) or
-  songs to `pipeline/extra_songs.json` (anything else), then re-run the pipeline.
-- **Fix a tempo:** add `"artist|title": bpm` to `pipeline/bpm_overrides.json`
+- **More songs:** add artists to `pipeline/inputs/artists.json` (Songsterr-friendly genres) or
+  songs to `pipeline/inputs/extra_songs.json` (anything else), then re-run the pipeline.
+- **Fix a tempo:** add `"artist|title": bpm` to `pipeline/inputs/bpm_overrides.json`
   (punctuation/case are normalized, so `"AC/DC|Back in Black"` matches).
-- **Drop a multi-tempo song:** add `"artist|title"` to `pipeline/exclude.json`. Songs with
+- **Drop a multi-tempo song:** add `"artist|title"` to `pipeline/inputs/exclude.json`. Songs with
   no single meaningful tempo (multi-movement or rubato — Bohemian Rhapsody, Stairway, Free
   Bird…) make poor "feel this BPM" anchors, so they're dropped even if they have a BPM.
 - **GetSongBPM gap-filler (wired, dormant):** any song Deezer can't tempo falls through to
@@ -97,7 +97,7 @@ and logged to `pipeline/gaps.json` — review that file to grow the override tab
   ```bash
   GETSONGBPM_API_KEY=your_key node pipeline/build.mjs
   ```
-  GSB also doubles as a **BPM verifier** — `pipeline/eval-gsb.mjs` cross-checks every shipped
+  GSB also doubles as a **BPM verifier** — `pipeline/tools/eval-gsb.mjs` cross-checks every shipped
   tempo against GSB and emits an override worklist for songs where Deezer and GSB disagree
   (useful for finding which canonical tempos to add to `bpm_overrides.json`).
 - **Better BPM source later:** SoundCharts (paid B2B, industry-grade) can augment at the same seam.
