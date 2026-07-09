@@ -16,9 +16,14 @@ open public/index.html
 cd public && python3 -m http.server 8777   # then visit http://localhost:8777
 ```
 
-Controls: drag the slider · `+`/`−` or arrow keys to nudge · **Tap** (or press `t`)
-to tap a tempo · **Space** to start/stop · click any song to snap to its exact BPM ·
-genre chips filter (multi-select).
+The UI is a **spatial tempo axis** (Signal Green): the selected BPM pulses at center as a
+metronome and songs arrange around it — slower to the left, faster to the right, exact
+matches pouring out of the beat below center. Nearer tempos are brighter, farther ones fade.
+
+Controls: **drag the axis** (or trackpad-scroll) to scrub the center · `+`/`−` or arrow keys
+to nudge · **type a BPM** in the field for precise entry · click any song to snap the beat to
+its exact tempo · genre chips filter (multi-select). The pulse is visual-only — its ring
+expands at the current tempo so you *feel* the BPM; there are no playback controls.
 
 ## Data structure
 

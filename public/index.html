@@ -4,129 +4,280 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Tempo — feel the BPM through songs you know</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <style>
+  /* ---- Signal Green palette (from the design reference) ---- */
   :root {
-    --bg: #0e1015; --panel: #171a22; --panel2: #1e222d; --line: #2a2f3c;
-    --text: #e7ebf3; --dim: #8b93a7; --accent: #ff5a4d; --accent2: #ffd34e;
-    --good: #4ad6a0;
+    --acc: #3ddc84; --accRGB: 61,220,132; --name: #8fe6b4; --onacc: #08160d;
+    --bg1: #0f1411; --bg2: #0a0d0b; --page: #080a08;
+    --card: #141620; --chip: #0e1017; --btn: #171922;
+    --t-hi: #f4f5f7; --t1: #e9ebf0; --t2: #c9cdd4; --t3: #aeb2bb;
+    --dim: #7e838d; --dim2: #6a6e78; --faint: #61656f;
+    --num: 'Space Grotesk', system-ui, sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
-    background: radial-gradient(1200px 700px at 50% -10%, #1a1f2b 0%, var(--bg) 60%);
-    color: var(--text); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased; display: flex; justify-content: center;
-    padding: 24px 16px 60px;
+    background: var(--page);
+    color: var(--t1);
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px; overflow: hidden;
   }
-  .app { width: 100%; max-width: 880px; }
-  header { text-align: center; margin-bottom: 18px; }
-  header h1 { font-size: 18px; font-weight: 650; letter-spacing: .2px; }
-  header p { color: var(--dim); font-size: 13px; margin-top: 3px; }
+  a { color: var(--acc); text-decoration: none; }
+  a:hover { color: var(--name); }
 
-  .met {
-    background: linear-gradient(180deg, var(--panel) 0%, #14171f 100%);
-    border: 1px solid var(--line); border-radius: 20px; padding: 26px 24px 30px;
-    box-shadow: 0 20px 60px -30px #000; text-align: center;
+  /* ---- Stage: the 1280×820 artboard, fluid down to the viewport ---- */
+  .stage {
+    position: relative;
+    width: min(1280px, 100vw - 36px);
+    height: min(820px, 100vh - 36px);
+    background: radial-gradient(120% 100% at 50% 0%, var(--bg1) 0%, var(--bg2) 70%);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,.45);
+    display: flex; flex-direction: column;
+    --centerX: 50%; --axisY: 250px; --slotW: 200px;
+    --cardW: 150px; --centerCardW: 190px; --disc: 150px;
+    --beat: .5s;
   }
-  .pulse-row { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; }
-  .dot { width: 13px; height: 13px; border-radius: 50%; background: #313747; transition: transform .05s, background .05s; }
-  .dot.on { background: var(--accent); transform: scale(1.55); box-shadow: 0 0 18px var(--accent); }
-  .dot.accent.on { background: var(--accent2); box-shadow: 0 0 18px var(--accent2); }
 
-  .bpm { font-size: 84px; font-weight: 750; line-height: 1; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
-  .bpm small { font-size: 17px; font-weight: 600; color: var(--dim); letter-spacing: 0; margin-left: 6px; }
-  .marking { color: var(--accent2); font-weight: 600; font-size: 14px; letter-spacing: .6px; text-transform: uppercase; margin-top: 4px; min-height: 18px; }
+  /* ---- Toolbar: centered −/+ stepper with an editable BPM field ---- */
+  .toolbar {
+    flex: 0 0 auto; height: 66px; display: flex; align-items: center; justify-content: center;
+    padding: 0 20px; border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .stepper { display: flex; align-items: center; gap: 9px; }
+  .step {
+    width: 44px; height: 48px; border-radius: 12px; background: var(--btn);
+    border: 1px solid rgba(255,255,255,.09); color: var(--t2);
+    font-size: 22px; line-height: 1; cursor: pointer; transition: .12s;
+    display: flex; align-items: center; justify-content: center; user-select: none;
+  }
+  .step:hover { background: #1e2029; border-color: rgba(255,255,255,.16); color: var(--t-hi); }
+  .step:active { transform: translateY(1px); }
+  .bpmField {
+    height: 48px; min-width: 120px; border-radius: 12px; background: var(--chip);
+    border: 1.5px solid var(--acc); box-shadow: 0 0 0 4px rgba(var(--accRGB),.14);
+    display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px;
+    transition: box-shadow .15s;
+  }
+  .bpmField:focus-within { box-shadow: 0 0 0 5px rgba(var(--accRGB),.22); }
+  .bpmInput {
+    width: 3ch; background: transparent; border: none; outline: none;
+    font-family: var(--num); font-size: 24px; font-weight: 700; color: var(--t-hi);
+    letter-spacing: .5px; text-align: center; font-variant-numeric: tabular-nums;
+    -moz-appearance: textfield;
+  }
+  .bpmInput::-webkit-outer-spin-button, .bpmInput::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .bpmDiv { width: 1.5px; height: 22px; background: var(--acc); }
+  .bpmUnit { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--dim); }
 
-  .slider-wrap { margin: 22px 4px 6px; }
-  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 6px;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--p,30%), #2b3140 var(--p,30%)); outline: none; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
-    background: #fff; border: 4px solid var(--accent); cursor: grab; box-shadow: 0 3px 10px #0008; }
-  input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 4px solid var(--accent); cursor: grab; }
-  .scale { display: flex; justify-content: space-between; color: var(--dim); font-size: 11px; margin-top: 6px; }
+  /* ---- Genre bar ---- */
+  .genres {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,.05);
+    max-height: 92px; overflow-y: auto; scrollbar-width: none;
+  }
+  .genres::-webkit-scrollbar { display: none; }
+  .g-chip {
+    font-size: 12.5px; padding: 6px 15px; border-radius: 999px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.13); color: var(--t3); background: transparent;
+    white-space: nowrap; transition: .12s; font-weight: 500;
+  }
+  .g-chip:hover { border-color: rgba(255,255,255,.28); color: var(--t1); }
+  .g-chip.on { background: var(--acc); color: var(--onacc); border-color: var(--acc); font-weight: 700; }
 
-  .controls { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-  button { font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line);
-    border-radius: 11px; padding: 11px 16px; cursor: pointer; transition: .12s; font-weight: 550; }
-  button:hover { border-color: #3a4252; background: #232836; }
-  button:active { transform: translateY(1px); }
-  .nudge { width: 46px; font-size: 20px; font-weight: 600; }
-  .play { background: var(--accent); border-color: var(--accent); color: #fff; min-width: 120px; font-weight: 650; }
-  .play.on { background: var(--good); border-color: var(--good); color: #06251b; }
-  .tap { min-width: 92px; }
-  select { font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 11px; padding: 10px 12px; }
+  /* ---- Field: the tempo axis + columns + pulse ---- */
+  .field { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; cursor: grab; touch-action: none; }
+  .field.dragging { cursor: grabbing; }
+  .field.dragging .column, .field.dragging #centerCol, .field.dragging .pulse { transition: none !important; }
 
-  .genres { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin: 22px 0 4px; }
-  .chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--dim);
-    cursor: pointer; font-size: 13px; transition: .12s; }
-  .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .axis {
+    position: absolute; top: var(--axisY); left: 64px; right: 64px; height: 2px;
+    background: rgba(255,255,255,.13); transform: translateY(-50%); pointer-events: none;
+  }
+  .axis-end {
+    position: absolute; top: calc(var(--axisY) - 24px); font: 500 12px -apple-system, system-ui, sans-serif;
+    color: var(--dim2); letter-spacing: .3px; pointer-events: none; user-select: none;
+  }
+  .axis-end.slower { left: 74px; }
+  .axis-end.faster { right: 74px; }
 
-  .songs { margin-top: 16px; }
-  .songs-head { display: flex; align-items: baseline; gap: 8px; color: var(--dim); font-size: 13px; margin: 0 4px 8px; }
-  .songs-head b { color: var(--text); font-size: 15px; }
-  ul { list-style: none; }
-  li.song { display: flex; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid var(--line);
-    background: var(--panel); border-radius: 13px; margin-bottom: 8px; cursor: pointer; transition: .12s; }
-  li.song:hover { border-color: var(--accent); background: var(--panel2); }
-  li.song.here { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
-  .sbpm { font-variant-numeric: tabular-nums; font-weight: 750; font-size: 20px; min-width: 58px; text-align: center; }
-  .sbpm .d { font-size: 11px; color: var(--dim); font-weight: 500; }
-  .smeta { flex: 1; min-width: 0; }
-  .stitle { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .sartist { color: var(--dim); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .stag { color: var(--dim); font-size: 12px; text-align: right; white-space: nowrap; }
-  .stag .g { display: inline-block; padding: 2px 8px; border: 1px solid var(--line); border-radius: 999px; }
-  .delta { font-size: 12px; font-weight: 600; }
-  .delta.up { color: var(--accent2); } .delta.dn { color: #7fb2ff; } .delta.eq { color: var(--good); }
-  .empty { color: var(--dim); text-align: center; padding: 30px; }
-  footer { text-align: center; color: var(--dim); font-size: 12px; margin-top: 26px; line-height: 1.7; }
-  footer a { color: var(--dim); }
+  /* pulse */
+  .pulse { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 5;
+    transition: left .5s var(--ease); pointer-events: none; }
+  .pulse .ring {
+    position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
+    border-radius: 50%; border: 2px solid var(--acc);
+    transform: translate(-50%,-50%) scale(.85); opacity: 0;
+    animation: pr var(--beat) ease-out infinite;
+  }
+  .pulse .ring.r2 { animation-delay: calc(var(--beat) / -2); }
+  @keyframes pr {
+    0%   { transform: translate(-50%,-50%) scale(.85); opacity: .5; }
+    70%  { transform: translate(-50%,-50%) scale(1.45); opacity: 0; }
+    100% { transform: translate(-50%,-50%) scale(1.45); opacity: 0; }
+  }
+  .pulse .disc {
+    position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
+    transform: translate(-50%,-50%); border-radius: 50%;
+    background: radial-gradient(circle at 50% 42%, #181b22, #101219);
+    border: 2px solid rgba(var(--accRGB),.85);
+    box-shadow: 0 0 60px rgba(var(--accRGB),.18), inset 0 0 34px rgba(0,0,0,.4);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    animation: beat var(--beat) var(--ease) infinite;
+  }
+  @keyframes beat { 0%,100% { box-shadow: 0 0 60px rgba(var(--accRGB),.18), inset 0 0 34px rgba(0,0,0,.4); }
+                    8%  { box-shadow: 0 0 78px rgba(var(--accRGB),.34), inset 0 0 34px rgba(0,0,0,.4); } }
+  .pulse .disc .big {
+    font-family: var(--num); font-weight: 700; line-height: .9; color: var(--t-hi);
+    letter-spacing: -1px; font-variant-numeric: tabular-nums;
+    font-size: calc(var(--disc) * .35);
+  }
+  .pulse .disc .mark {
+    font-size: calc(var(--disc) * .068); font-weight: 600; letter-spacing: 2.5px;
+    color: var(--name); margin-top: 6px; text-transform: uppercase;
+  }
+
+  /* side columns */
+  .column {
+    position: absolute; top: var(--axisY); left: var(--centerX); width: var(--cardW);
+    margin-left: calc(var(--cardW) / -2); z-index: 2;
+    transition: transform .5s var(--ease), opacity .4s var(--ease);
+    will-change: transform, opacity;
+  }
+  .column .chip {
+    position: absolute; left: 50%; top: 0; transform: translate(-50%,-50%);
+    padding: 6px 12px; border-radius: 10px; background: var(--chip);
+    border: 1px solid rgba(255,255,255,.12); font-family: var(--num);
+    font-size: 16px; font-weight: 600; color: var(--t2); white-space: nowrap;
+    cursor: pointer; transition: border-color .12s, color .12s;
+  }
+  .column .chip:hover { border-color: rgba(var(--accRGB),.5); color: var(--t-hi); }
+  .column .chip .d { font-size: 11px; color: #8b909b; }
+  .column .cards { display: flex; flex-direction: column; gap: 10px; padding-top: 28px; }
+
+  .card {
+    height: 56px; background: var(--card); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 11px; padding: 8px 12px; cursor: pointer; overflow: hidden;
+    transition: border-color .12s, background .12s, transform .12s;
+  }
+  .card:hover { border-color: rgba(var(--accRGB),.45); background: #171a25; }
+  .card:active { transform: scale(.98); }
+  .card .t { font-size: 12.5px; font-weight: 600; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .a { font-size: 10.5px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+
+  .more {
+    height: 40px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(255,255,255,.16); border-radius: 11px;
+    font-size: 12px; font-weight: 600; color: var(--dim);
+  }
+
+  /* center exact-match column — pours out of the beat */
+  #centerCol {
+    position: absolute; top: var(--axisY); left: var(--centerX); width: var(--centerCardW);
+    margin-left: calc(var(--centerCardW) / -2); z-index: 4;
+    transition: left .5s var(--ease); pointer-events: none;
+  }
+  #centerCol .cards { display: flex; flex-direction: column; gap: 10px;
+    padding-top: calc(var(--disc) / 2 + 30px); }
+  #centerCol .clabel {
+    font-size: 11px; font-weight: 600; letter-spacing: .5px; color: var(--dim);
+    text-transform: uppercase; text-align: center; margin-bottom: 2px;
+  }
+  #centerCol .empty { text-align: center; color: var(--dim2); font-size: 12px; line-height: 1.6; }
+  .xcard {
+    height: 56px; border-radius: 12px; display: flex; align-items: center; gap: 11px;
+    padding: 0 13px; cursor: pointer; pointer-events: auto; overflow: hidden;
+    transition: transform .12s, filter .12s;
+  }
+  .xcard:hover { filter: brightness(1.12); }
+  .xcard:active { transform: scale(.98); }
+  .xcard .badge {
+    font-family: var(--num); font-size: 15px; font-weight: 700; color: var(--acc);
+    line-height: 1; text-align: center; flex: 0 0 auto;
+  }
+  .xcard .badge small { display: block; font-size: 8px; font-weight: 600; letter-spacing: 1px; opacity: .85; }
+  .xcard .meta { flex: 1; min-width: 0; }
+  .xcard .t { font-size: 12.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .xcard .a { font-size: 10.5px; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .xmore {
+    height: 44px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(var(--accRGB),.4); border-radius: 12px;
+    font-size: 12px; font-weight: 600; color: var(--acc); pointer-events: auto; cursor: pointer;
+  }
+
+  /* footer hint + attribution */
+  .hint {
+    flex: 0 0 auto; text-align: center; font-size: 12px; color: var(--faint);
+    padding: 12px 16px 14px; pointer-events: none;
+  }
+  .attr {
+    position: absolute; right: 14px; bottom: 10px; font-size: 10.5px; color: var(--dim2); z-index: 6;
+  }
+  .attr a { color: var(--dim); }
+
+  @media (max-width: 720px) {
+    body { padding: 0; }
+    .stage { width: 100vw; height: 100vh; border-radius: 0; border: none; }
+    .axis { left: 24px; right: 24px; }
+    .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
+    /* single scrollable row keeps the top compact and the field tall */
+    .genres { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; overflow-y: hidden; max-height: none; }
+    .g-chip { flex: 0 0 auto; }
+    /* the long hint collides with the (required) attribution on narrow screens */
+    .hint { display: none; }
+    .attr { left: 0; right: 0; text-align: center; }
+  }
 </style>
 </head>
 <body>
-<div class="app">
-  <header>
-    <h1>Tempo</h1>
-    <p>Slide the BPM and feel it through songs you already know.</p>
-  </header>
+<div class="stage" id="stage">
 
-  <div class="met">
-    <div class="pulse-row" id="pulse"></div>
-    <div class="bpm"><span id="bpmVal">120</span><small>BPM</small></div>
-    <div class="marking" id="marking">Allegro</div>
-
-    <div class="slider-wrap">
-      <input type="range" id="slider" min="40" max="220" value="120" step="1" />
-      <div class="scale"><span>40</span><span>90</span><span>120</span><span>160</span><span>220</span></div>
-    </div>
-
-    <div class="controls">
-      <button class="nudge" id="minus" aria-label="slower">−</button>
-      <button class="play" id="play">▶ Start</button>
-      <button class="nudge" id="plus" aria-label="faster">+</button>
-      <button class="tap" id="tap">Tap</button>
-      <select id="sig" title="time signature">
-        <option value="4">4 / 4</option>
-        <option value="3">3 / 4</option>
-        <option value="2">2 / 4</option>
-        <option value="6">6 / 8</option>
-      </select>
+  <div class="toolbar">
+    <div class="stepper">
+      <div class="step" id="minus" role="button" aria-label="slower">−</div>
+      <div class="bpmField">
+        <input class="bpmInput" id="bpmInput" inputmode="numeric" value="120" aria-label="beats per minute" />
+        <span class="bpmDiv"></span>
+        <span class="bpmUnit">BPM</span>
+      </div>
+      <div class="step" id="plus" role="button" aria-label="faster">+</div>
     </div>
   </div>
 
   <div class="genres" id="genres"></div>
 
-  <div class="songs">
-    <div class="songs-head"><b id="atLabel">Songs around 120 BPM</b><span id="countLabel"></span></div>
-    <ul id="list"></ul>
+  <div class="field" id="field">
+    <div class="axis"></div>
+    <div class="axis-end slower">◂ slower</div>
+    <div class="axis-end faster">faster ▸</div>
+
+    <div class="pulse" id="pulse">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="disc">
+        <div class="big" id="bigBpm">120</div>
+        <div class="mark" id="mark">Allegro</div>
+      </div>
+    </div>
+
+    <div id="sideLayer"></div>
+    <div id="centerCol"></div>
   </div>
 
-  <footer>
-    BPM &amp; key data from
-    <a href="https://www.deezer.com" target="_blank" rel="noopener">Deezer</a> and
-    <a href="https://getsongbpm.com" target="_blank" rel="noopener">GetSongBPM</a>.
-    <br />Click any song to set the metronome to its exact tempo.
-  </footer>
+  <div class="hint">drag the line or type a BPM to shift the center · exact matches pour from the beat</div>
+  <div class="attr">
+    BPM &amp; art <a href="https://www.deezer.com" target="_blank" rel="noopener">Deezer</a> ·
+    <a href="https://getsongbpm.com" target="_blank" rel="noopener">GetSongBPM</a>
+  </div>
 </div>
 
 <!-- generated dataset: window.SONGS = [...] -->
@@ -143,129 +294,180 @@
     [0,'Grave'],[40,'Largo'],[60,'Larghetto'],[66,'Adagio'],[76,'Andante'],
     [108,'Moderato'],[120,'Allegro'],[156,'Vivace'],[168,'Presto'],[200,'Prestissimo']
   ];
-  const markingFor = b => { let m='—'; for (const [t,n] of MARKINGS) if (b>=t) m=n; return m; };
-
-  // ---------- state ----------
-  let bpm = 120, playing = false, sig = 4;
-  const genres = new Set();      // empty = all
-  let audioCtx = null, nextNoteTime = 0, beat = 0, timer = null;
-  let noteQueue = [], raf = null;
+  const markingFor = b => { let m = '—'; for (const [t,n] of MARKINGS) if (b >= t) m = n; return m; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
   const $ = id => document.getElementById(id);
-  const slider = $('slider');
+  const stage = $('stage'), field = $('field'), sideLayer = $('sideLayer'), centerCol = $('centerCol');
+  const bpmInput = $('bpmInput'), bigBpm = $('bigBpm'), mark = $('mark'), pulse = $('pulse');
 
-  // ---------- metronome audio (lookahead scheduler + rAF visual, "two clocks") ----------
-  function ensureCtx () { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-  function click (time, accent) {
-    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-    o.frequency.value = accent ? 1500 : 900;
-    g.gain.setValueAtTime(accent ? 0.9 : 0.5, time);
-    g.gain.exponentialRampToValueAtTime(0.0001, time + 0.05);
-    o.connect(g).connect(audioCtx.destination);
-    o.start(time); o.stop(time + 0.06);
+  // ---------- state ----------
+  let bpm = 120;                        // continuous while dragging; round() for display
+  const activeGenres = new Set();       // empty = all (multi-select)
+  let byTempo = new Map();               // bpm -> [songs] (popularity desc), for active genres
+  let tempos = [];                       // sorted distinct bpms present in the filter
+  const sideCols = new Map();            // tempo -> column element (keyed reconcile)
+  let geo = {};
+  let lastCenterKey = null;
+
+  // ---------- geometry (recomputed on resize) ----------
+  function computeGeo () {
+    const w = field.clientWidth, h = field.clientHeight;
+    const slotW = Math.max(150, Math.min(212, w * 0.17));
+    const disc  = Math.max(108, Math.min(150, Math.min(w * 0.12, h * 0.30)));
+    const cardW = Math.max(118, Math.min(170, slotW - 42));
+    const centerCardW = Math.max(158, Math.min(210, slotW - 10));
+    const axisY = Math.max(140, Math.min(h * 0.34, h - 190));
+    const below = h - axisY;
+    geo = {
+      w, h, slotW, disc, cardW, centerCardW, axisY, centerX: w / 2,
+      visN: Math.floor((w / 2) / slotW) + 1,
+      // side cards start ~28px below the axis; center cards start below the disc + a label
+      sideCap:   Math.max(2, Math.min(5, Math.floor((below - 28 - 56) / 66))),
+      centerCap: Math.max(2, Math.min(4, Math.floor((below - disc / 2 - 30 - 24 - 60) / 66)))
+    };
+    const s = stage.style;
+    s.setProperty('--centerX', geo.centerX + 'px');
+    s.setProperty('--axisY', axisY + 'px');
+    s.setProperty('--slotW', slotW + 'px');
+    s.setProperty('--cardW', cardW + 'px');
+    s.setProperty('--centerCardW', centerCardW + 'px');
+    s.setProperty('--disc', disc + 'px');
   }
-  function scheduler () {
-    while (nextNoteTime < audioCtx.currentTime + 0.1) {
-      const beatInBar = beat % sig;
-      const accent = beatInBar === 0;
-      click(nextNoteTime, accent);
-      noteQueue.push({ time: nextNoteTime, beatInBar, accent });
-      nextNoteTime += 60 / bpm;
-      beat++;
+
+  // ---------- rank space: columns are one-per-distinct-tempo, evenly spaced ----------
+  // Positioning by *rank* (not raw BPM) keeps the dense catalogue from piling every
+  // column onto the center; scrubbing slides them smoothly because rank is continuous.
+  function rankOf (b) {
+    const n = tempos.length;
+    if (!n) return 0;
+    if (b <= tempos[0]) return 0;
+    if (b >= tempos[n - 1]) return n - 1;
+    let i = 0; while (i < n - 1 && tempos[i + 1] <= b) i++;
+    const span = tempos[i + 1] - tempos[i] || 1;
+    return i + (b - tempos[i]) / span;
+  }
+  function bpmAtRank (r) {
+    const n = tempos.length; if (!n) return bpm;
+    r = Math.max(0, Math.min(n - 1, r));
+    const i = Math.floor(r), f = r - i;
+    if (i >= n - 1) return tempos[n - 1];
+    return tempos[i] + f * (tempos[i + 1] - tempos[i]);
+  }
+  const clampBpm = v => tempos.length ? Math.max(tempos[0], Math.min(tempos[tempos.length - 1], v)) : v;
+
+  // ---------- filter / index ----------
+  function rebuildData () {
+    const pool = activeGenres.size ? SONGS.filter(s => activeGenres.has(s.genre)) : SONGS;
+    byTempo = new Map();
+    for (const s of pool) {
+      if (!byTempo.has(s.bpm)) byTempo.set(s.bpm, []);
+      byTempo.get(s.bpm).push(s);
     }
-    timer = setTimeout(scheduler, 25);
+    for (const arr of byTempo.values()) arr.sort((a, b) => b.popularity - a.popularity);
+    tempos = [...byTempo.keys()].sort((a, b) => a - b);
+    // filter changed -> song membership changed; rebuild every column fresh
+    sideLayer.innerHTML = ''; sideCols.clear(); lastCenterKey = null;
+    bpm = clampBpm(bpm);
   }
-  function draw () {
-    const now = audioCtx ? audioCtx.currentTime : 0;
-    let current = null;
-    while (noteQueue.length && noteQueue[0].time <= now) current = noteQueue.shift();
-    if (current) lightDot(current.beatInBar);
-    raf = requestAnimationFrame(draw);
+
+  // ---------- render ----------
+  function render () {
+    const disp = Math.round(bpm);
+    bigBpm.textContent = disp;
+    mark.textContent = markingFor(disp);
+    if (document.activeElement !== bpmInput) bpmInput.value = disp;
+    stage.style.setProperty('--beat', (60 / Math.max(1, disp)).toFixed(3) + 's');
+
+    const r = rankOf(bpm);
+    renderCenter(disp);
+    renderSides(r, disp);
   }
-  function lightDot (i) {
-    const dots = $('pulse').children;
-    [...dots].forEach(d => d.classList.remove('on'));
-    if (dots[i]) dots[i].classList.add('on');
-    setTimeout(() => { if (dots[i]) dots[i].classList.remove('on'); }, Math.min(110, 60000 / bpm * 0.5));
+
+  function cardHTML (s) {
+    return `<div class="card" data-bpm="${s.bpm}"><div class="t">${esc(s.title)}</div><div class="a">${esc(s.artist)}</div></div>`;
   }
-  function start () {
-    ensureCtx(); audioCtx.resume();
-    playing = true; beat = 0; noteQueue = []; nextNoteTime = audioCtx.currentTime + 0.06;
-    scheduler();
-    raf = requestAnimationFrame(draw);
-    $('play').classList.add('on'); $('play').textContent = '■ Stop';
+
+  function renderCenter (disp) {
+    const songs = byTempo.get(disp) || [];
+    const key = disp + '|' + songs.length;
+    if (key === lastCenterKey) return;         // content only changes when the beat lands elsewhere
+    lastCenterKey = key;
+
+    if (!songs.length) {
+      centerCol.innerHTML = `<div class="cards"><div class="empty">nothing lands exactly<br>on ${disp} BPM</div></div>`;
+      return;
+    }
+    const cap = geo.centerCap;
+    const shown = songs.slice(0, cap);
+    const rest = songs.length - shown.length;
+    let html = `<div class="cards"><div class="clabel">right on the beat · ${songs.length} song${songs.length > 1 ? 's' : ''}</div>`;
+    shown.forEach((s, i) => {
+      const bg = (0.15 - i * 0.02).toFixed(3), bd = (0.5 - i * 0.05).toFixed(3);
+      html += `<div class="xcard" data-bpm="${s.bpm}" style="background:rgba(var(--accRGB),${bg});border:1.5px solid rgba(var(--accRGB),${bd})">
+        <div class="badge">${s.bpm}<small>BPM</small></div>
+        <div class="meta"><div class="t">${esc(s.title)}</div><div class="a">${esc(s.artist)}</div></div>
+      </div>`;
+    });
+    if (rest > 0) html += `<div class="xmore" data-bpm="${disp}">+${rest} more</div>`;
+    html += '</div>';
+    centerCol.innerHTML = html;
   }
-  function stop () {
-    playing = false; clearTimeout(timer); cancelAnimationFrame(raf); noteQueue = [];
-    $('play').classList.remove('on'); $('play').textContent = '▶ Start';
-    [...$('pulse').children].forEach(d => d.classList.remove('on'));
-  }
-  function buildPulse () {
-    const p = $('pulse'); p.innerHTML = '';
-    for (let i = 0; i < sig; i++) {
-      const d = document.createElement('div');
-      d.className = 'dot' + (i === 0 ? ' accent' : '');
-      p.appendChild(d);
+
+  function renderSides (r, disp) {
+    const seen = new Set();
+    for (let i = 0; i < tempos.length; i++) {
+      const t = tempos[i];
+      if (t === disp) continue;               // the exact tempo is shown as the green center column
+      const d = i - r;                        // rank offset from center
+      if (Math.abs(d) > geo.visN + 0.6) continue;
+      seen.add(t);
+
+      let col = sideCols.get(t);
+      if (!col) col = buildSideColumn(t);
+      const x = d * geo.slotW;
+      const fade = Math.max(0.28, 1 - (Math.abs(d) - 0.5) * 0.34);
+      col.style.transform = `translateX(${x.toFixed(1)}px)`;
+      col.style.opacity = fade.toFixed(2);
+    }
+    // remove columns that scrolled out of the window (or became the center)
+    for (const [t, col] of sideCols) {
+      if (!seen.has(t)) { col.remove(); sideCols.delete(t); }
     }
   }
 
-  // ---------- bpm setter ----------
-  function setBpm (v, fromSlider) {
-    bpm = Math.max(40, Math.min(220, Math.round(v)));
-    $('bpmVal').textContent = bpm;
-    $('marking').textContent = markingFor(bpm);
-    if (!fromSlider) slider.value = bpm;
-    const pct = ((bpm - 40) / (220 - 40)) * 100;
-    slider.style.setProperty('--p', pct + '%');
-    if (playing) { beat = 0; noteQueue = []; nextNoteTime = audioCtx.currentTime + 0.04; } // re-anchor
-    renderSongs();
+  function buildSideColumn (t) {
+    const songs = byTempo.get(t) || [];
+    const shown = songs.slice(0, geo.sideCap);
+    const rest = songs.length - shown.length;
+    const col = document.createElement('div');
+    col.className = 'column';
+    let html = `<div class="chip" data-bpm="${t}">${t} <span class="d">${t > bpm ? '+' : ''}${t - Math.round(bpm)}</span></div><div class="cards">`;
+    html += shown.map(cardHTML).join('');
+    if (rest > 0) html += `<div class="more">+${rest} more</div>`;
+    html += '</div>';
+    col.innerHTML = html;
+    sideLayer.appendChild(col);
+    sideCols.set(t, col);
+    return col;
   }
 
-  // ---------- song surfacing ----------
-  function activeSongs () {
-    return genres.size ? SONGS.filter(s => genres.has(s.genre)) : SONGS;
-  }
-  function renderSongs () {
-    const pool = activeSongs();
-    // widen the window until we have a useful handful
-    let win = 2, near = [];
-    while (win <= 16) {
-      near = pool.filter(s => Math.abs(s.bpm - bpm) <= win);
-      if (near.length >= 6) break;
-      win += 2;
+  // keep the delta labels (−2, +3 …) honest as the center scrubs
+  function refreshDeltas () {
+    const disp = Math.round(bpm);
+    for (const [t, col] of sideCols) {
+      const d = col.querySelector('.chip .d');
+      if (d) d.textContent = (t > disp ? '+' : '') + (t - disp);
     }
-    near.sort((a, b) =>
-      Math.abs(a.bpm - bpm) - Math.abs(b.bpm - bpm) || b.popularity - a.popularity
-    );
-    const top = near.slice(0, 9);
-
-    $('atLabel').textContent = `Songs around ${bpm} BPM`;
-    $('countLabel').textContent = top.length ? `±${win} BPM` : '';
-    const list = $('list');
-    if (!top.length) { list.innerHTML = '<div class="empty">No songs nearby in this genre. Try a wider genre or another tempo.</div>'; return; }
-
-    list.innerHTML = top.map(s => {
-      const d = s.bpm - bpm;
-      const here = Math.abs(d) <= 1;
-      const deltaCls = here ? 'eq' : d > 0 ? 'up' : 'dn';
-      const deltaTxt = here ? 'right here' : (d > 0 ? `+${d} faster` : `${d} slower`);
-      return `<li class="song${here ? ' here' : ''}" data-bpm="${s.bpm}">
-        <div class="sbpm">${s.bpm}<div class="d">BPM</div></div>
-        <div class="smeta">
-          <div class="stitle">${esc(s.title)}</div>
-          <div class="sartist">${esc(s.artist)}${s.year ? ' · ' + s.year : ''}</div>
-        </div>
-        <div class="stag">
-          <div class="delta ${deltaCls}">${deltaTxt}</div>
-          <span class="g">${esc(s.genre)}</span>
-        </div>
-      </li>`;
-    }).join('');
-
-    [...list.querySelectorAll('.song')].forEach(li =>
-      li.addEventListener('click', () => setBpm(+li.dataset.bpm)));
   }
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // ---------- set BPM ----------
+  function setBpm (v, snap) {
+    bpm = clampBpm(v);
+    if (snap && tempos.length) bpm = tempos[Math.round(rankOf(bpm))];   // land on a real tempo
+    render();
+    refreshDeltas();
+  }
 
   // ---------- genres ----------
   function buildGenres () {
@@ -273,52 +475,87 @@
     SONGS.forEach(s => counts[s.genre] = (counts[s.genre] || 0) + 1);
     const order = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
     const wrap = $('genres');
-    wrap.innerHTML = `<button class="chip on" data-g="">All</button>` +
-      order.map(g => `<button class="chip" data-g="${g}">${esc(g)}</button>`).join('');
+    wrap.innerHTML = `<button class="g-chip on" data-g="">All</button>` +
+      order.map(g => `<button class="g-chip" data-g="${esc(g)}">${esc(g)}</button>`).join('');
     [...wrap.children].forEach(ch => ch.addEventListener('click', () => {
       const g = ch.dataset.g;
-      if (g === '') { genres.clear(); }
-      else { genres.has(g) ? genres.delete(g) : genres.add(g); }
-      // sync chip states
-      [...wrap.children].forEach(c => {
-        if (c.dataset.g === '') c.classList.toggle('on', genres.size === 0);
-        else c.classList.toggle('on', genres.has(c.dataset.g));
-      });
-      renderSongs();
+      if (g === '') activeGenres.clear();
+      else activeGenres.has(g) ? activeGenres.delete(g) : activeGenres.add(g);
+      [...wrap.children].forEach(c =>
+        c.classList.toggle('on', c.dataset.g === '' ? activeGenres.size === 0 : activeGenres.has(c.dataset.g)));
+      rebuildData();
+      render();
     }));
   }
 
-  // ---------- tap tempo ----------
-  let taps = [];
-  function tap () {
-    const now = performance.now();
-    taps = taps.filter(t => now - t < 2500);
-    taps.push(now);
-    if (taps.length >= 2) {
-      const intervals = [];
-      for (let i = 1; i < taps.length; i++) intervals.push(taps[i] - taps[i - 1]);
-      const avg = intervals.reduce((a, b) => a + b) / intervals.length;
-      setBpm(60000 / avg);
-    }
+  // ---------- drag / scrub ----------
+  let dragging = false, moved = false, lastX = 0, pid = null;
+  field.addEventListener('pointerdown', e => {
+    if (e.target.closest('.step, .bpmField, .g-chip')) return;
+    dragging = true; moved = false; lastX = e.clientX; pid = e.pointerId;
+    field.setPointerCapture(pid); field.classList.add('dragging');
+  });
+  field.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX; lastX = e.clientX;
+    if (Math.abs(dx) > 0) moved = true;
+    const r = rankOf(bpm) - dx / geo.slotW;           // drag right → ruler right → slower
+    bpm = clampBpm(bpmAtRank(r));
+    render(); refreshDeltas();
+  });
+  function endDrag () {
+    if (!dragging) return;
+    dragging = false; field.classList.remove('dragging');
+    if (pid != null) { try { field.releasePointerCapture(pid); } catch (_) {} pid = null; }
+    if (moved) setBpm(bpm, true);                      // settle onto the nearest real tempo
   }
+  field.addEventListener('pointerup', endDrag);
+  field.addEventListener('pointercancel', endDrag);
 
-  // ---------- wire up ----------
-  slider.addEventListener('input', e => setBpm(+e.target.value, true));
-  $('plus').addEventListener('click', () => setBpm(bpm + 1));
-  $('minus').addEventListener('click', () => setBpm(bpm - 1));
-  $('play').addEventListener('click', () => playing ? stop() : start());
-  $('tap').addEventListener('click', tap);
-  $('sig').addEventListener('change', e => { sig = +e.target.value; buildPulse(); });
-  document.addEventListener('keydown', e => {
-    if (e.target.tagName === 'SELECT') return;
-    if (e.code === 'Space') { e.preventDefault(); playing ? stop() : start(); }
-    else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') setBpm(bpm + 1);
-    else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') setBpm(bpm - 1);
-    else if (e.key.toLowerCase() === 't') tap();
+  // click a card/chip → snap the beat to it (ignored if it was really a drag)
+  field.addEventListener('click', e => {
+    if (moved) return;
+    const el = e.target.closest('[data-bpm]');
+    if (el) setBpm(+el.dataset.bpm);
   });
 
-  buildPulse();
-  boot.then(() => { buildGenres(); setBpm(120); });
+  // trackpad / wheel horizontal scrub
+  field.addEventListener('wheel', e => {
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (!d) return;
+    e.preventDefault();
+    bpm = clampBpm(bpmAtRank(rankOf(bpm) + d / geo.slotW));
+    render(); refreshDeltas();
+    clearTimeout(field._wheelT);
+    field._wheelT = setTimeout(() => setBpm(bpm, true), 160);
+  }, { passive: false });
+
+  // ---------- stepper + typed field ----------
+  $('plus').addEventListener('click', () => setBpm(Math.round(bpm) + 1));
+  $('minus').addEventListener('click', () => setBpm(Math.round(bpm) - 1));
+  bpmInput.addEventListener('change', () => { const v = parseInt(bpmInput.value, 10); if (!isNaN(v)) setBpm(v); });
+  bpmInput.addEventListener('keydown', e => { if (e.key === 'Enter') bpmInput.blur(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.target === bpmInput) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); setBpm(Math.round(bpm) + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); setBpm(Math.round(bpm) - 1); }
+  });
+
+  // ---------- resize ----------
+  let rT;
+  window.addEventListener('resize', () => {
+    clearTimeout(rT);
+    rT = setTimeout(() => { computeGeo(); sideLayer.innerHTML = ''; sideCols.clear(); lastCenterKey = null; render(); }, 120);
+  });
+
+  // ---------- go ----------
+  boot.then(() => {
+    computeGeo();
+    buildGenres();
+    rebuildData();
+    setBpm(120, true);
+  });
 })();
 </script>
 </body>
