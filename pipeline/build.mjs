@@ -27,6 +27,10 @@ if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
 const INPUTS = join(HERE, 'inputs');        // artists / extra_songs / exclude* / bpm_overrides — hand-edited
 const GENERATED = join(HERE, 'generated');  // catalogue / seed-ug / gaps — build+seed outputs (committed)
 if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
+// self-hosted album art lands in public/covers/<md5_image>.jpg. Dormant unless ENABLE_COVERS=1 —
+// otherwise each record carries Deezer's CDN hotlink URL instead. See .dev/reference/cover-art-sourcing.md
+const COVERS = join(SITE, 'covers');
+const ENABLE_COVERS = process.env.ENABLE_COVERS === '1';
 
 // ---- tunables ----------------------------------------------------------
 const SONGS_PER_ARTIST = 6;        // top-N popular songs kept per Songsterr artist
@@ -117,6 +121,26 @@ async function getJson(url, opts = {}) {
   return null;
 }
 
+// ---- cached image download ---------------------------------------------
+// Binary sibling to getJson (which is JSON-only): fetches an image to an arbitrary path under
+// public/. Idempotent — an already-downloaded file is skipped, so re-runs only pull NEW art (same
+// cheap-rerun property as the JSON cache). Used by the ENABLE_COVERS pass to self-host album art.
+async function saveImage(url, destPath) {
+  if (existsSync(destPath)) return true;
+  for (let attempt = 0; attempt < MAX_FETCH_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) { await sleep(1000 * (attempt + 1)); continue; }
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (buf.length < 100) { await sleep(500 * (attempt + 1)); continue; } // empty/error body, not real art
+      writeFileSync(destPath, buf);
+      await sleep(DEFAULT_PACE_MS); // polite — the CDN has no hard limit, but we pace live pulls anyway
+      return true;
+    } catch { await sleep(800 * (attempt + 1)); }
+  }
+  return false;
+}
+
 // ---- Songsterr: discover popular songs per artist ----------------------
 async function songsterrForArtist(name, genre) {
   const url = `https://www.songsterr.com/api/songs?pattern=${encodeURIComponent(name)}&size=${SONGSTERR_PAGE}`;
@@ -186,6 +210,11 @@ async function deezerEnrich(c) {
     deezer_rank: track.rank || best.rank || 0,
     deezer_title: track.title,
     deezer_artist: track.artist?.name,
+    // album art: cover_big is 500×500 (crisp on retina at tile size). md5_image content-addresses
+    // the CDN URL, so it doubles as a dedup-friendly filename when self-hosting (ENABLE_COVERS):
+    // songs sharing an album share one file. Both come free in the /track response we already fetch.
+    cover: track.album?.cover_big || null,
+    cover_id: track.album?.md5_image || null,
   };
 }
 
@@ -385,12 +414,17 @@ async function enrichCandidate(c, overrides) {
     genre: c.genre,
     year: mbYear ?? fallbackYear,
     isrc: enr?.isrc ?? null,
+    // album cover: Deezer's hotlink URL by default; the ENABLE_COVERS pass (step 3c) rewrites this
+    // to a local covers/<md5>.jpg once self-hosted. null when Deezer had no match (front-end -> placeholder).
+    cover: enr?.cover ?? null,
     // popularity is assigned later by the whole-catalogue percentile pass (it needs every
     // song's signals). The raw signals are held in a SIDE MAP (not on the record), so they
     // can never leak into the shipped file — only the derived 0–100 score ships. See §3/§6.
   };
   const raw = { youtube: yt || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
-  return { record, raw, yearSource: mbYear ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
+  // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
+  // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
+  return { record, raw, coverId: enr?.cover_id ?? null, yearSource: mbYear ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
 }
 
 // Load bpm_overrides.json into a normalized { "norm-artist|norm-title": bpm } map.
@@ -515,6 +549,9 @@ async function main() {
   // record -> { youtube, rank, songsterr }: raw popularity signals kept OFF the shipped record,
   // consumed by the percentile blend (step 3b) and the dedup tie-break (step 3). Never written.
   const rawSignals = new Map();
+  // record -> md5_image: the self-host cover filename key, kept OFF the shipped record (see
+  // enrichCandidate). Consumed only by the ENABLE_COVERS download pass (step 3c).
+  const coverIds = new Map();
   let i = 0;
   let yearFromMB = 0, yearFromDeezer = 0; // year-source tally (for the build summary)
   for (const c of catalogue) {
@@ -529,6 +566,7 @@ async function main() {
     } else {
       out.push(enriched.record);
       rawSignals.set(enriched.record, enriched.raw);
+      coverIds.set(enriched.record, enriched.coverId);
       if (enriched.yearSource === 'musicbrainz') yearFromMB++;
       else if (enriched.yearSource === 'deezer') yearFromDeezer++;
     }
@@ -574,6 +612,25 @@ async function main() {
     console.error(`Dumped ${dump.length} raw-signal rows -> pipeline/cache/signals.json (gitignored).`);
   }
 
+  // 3c. album covers (dormant unless ENABLE_COVERS=1): self-host Deezer's art so the shipped site
+  // never hotlinks a third-party CDN. Records already carry the Deezer cover URL (deezerEnrich);
+  // this downloads each to public/covers/<md5_image>.jpg — content-addressed, so songs sharing an
+  // album share one file — and rewrites record.cover to that local path. A failed download keeps
+  // the remote URL (graceful degradation). Runs post-dedup so only shipped songs are fetched.
+  let coversSaved = 0;
+  if (ENABLE_COVERS) {
+    if (!existsSync(COVERS)) mkdirSync(COVERS, { recursive: true });
+    let n = 0;
+    for (const r of deduped) {
+      if (!r.cover) continue;               // no Deezer match -> no art to fetch
+      const id = coverIds.get(r);
+      if (!id) continue;                    // no md5 key -> leave the hotlink URL as-is
+      if (await saveImage(r.cover, join(COVERS, `${id}.jpg`))) { r.cover = `covers/${id}.jpg`; coversSaved++; }
+      if (++n % 50 === 0) console.error(`  covers [${n}/${deduped.length}]`);
+    }
+    console.error(`Covers: ${coversSaved} self-hosted -> public/covers/ (rest keep Deezer hotlink URLs).`);
+  }
+
   deduped.sort((a, b) => a.bpm - b.bpm || b.popularity - a.popularity);
   writeFileSync(join(SITE, 'songs.json'), JSON.stringify(deduped, null, 2));
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
@@ -582,10 +639,12 @@ async function main() {
   // build manifest: provenance git can't infer from songs.json alone (how it was produced).
   // Ships in public/ so it deploys with the data and can double as a version stamp.
   const ytCovered = deduped.filter((s) => rawSignals.get(s).youtube > 0).length;
+  const coversWithArt = deduped.filter((s) => s.cover).length;
   const meta = {
     built: new Date().toISOString().slice(0, 10),
     songs: deduped.length,
     year_sources: { musicbrainz: yearFromMB, deezer: yearFromDeezer },
+    covers: { enabled: ENABLE_COVERS, with_art: coversWithArt, self_hosted: coversSaved },
     popularity: { method: 'percentile-blend', weights: POP_WEIGHTS, youtube: { enabled: YT_ON, coverage: ytCovered } },
     excluded: excluded.length,
     bpm_gaps: gaps.length,
