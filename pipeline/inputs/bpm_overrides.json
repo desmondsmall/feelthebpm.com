@@ -98,6 +98,48 @@
     "avril lavigne|complicated": 78,
     "shakira|hips don't lie": 100,
     "sia|cheap thrills": 90,
-    "luis fonsi|despacito": 89
+    "luis fonsi|despacito": 89,
+
+    "_bpm_audit_2026_07_targets": "Flagged as obviously wrong, settled against songbpm.com + tunebat + GetSongBPM. See .dev/reference/gsb-eval.md. Aerials: Deezer had bpm:0 so GetSongBPM's bogus 200 shipped; real driving pulse is 158 (felt 79). Let It Be: Deezer's 138 is a double-time artifact; felt ballad tempo is 72.",
+    "the beatles|let it be": 72,
+    "system of a down|aerials": 158,
+
+    "_bpm_audit_2026_07_reconcile_guard": "The auto-reconcile rule would wrongly halve this to ~80 (clean 2x, fast side >=150) — but the 1966 original is GENUINELY ~160; the 80 is the artifact. Pin it so the rule can't touch it.",
+    "the monkees|i'm a believer": 160,
+
+    "_bpm_audit_2026_07_deezer_doubled": "Deezer (and the Spotify-lineage DBs) reported ~2x; felt tempo verified as the lower value.",
+    "metallica|nothing else matters": 70,
+    "lynyrd skynyrd|tuesday's gone": 74,
+    "radiohead|fake plastic trees": 74,
+    "bob marley|three little birds": 74,
+    "pearl jam|black": 77,
+    "rage against the machine|killing in the name": 88,
+
+    "_bpm_audit_2026_07_source_outlier": "One machine source misread (not a clean half/double); the databases agree on the value below.",
+    "iron maiden|fear of the dark": 110,
+    "simon & garfunkel|the sounds of silence": 107,
+    "metallica|one": 106,
+    "prince|kiss": 111,
+    "prince|purple rain": 113,
+    "bruce springsteen|the river": 117,
+    "metallica|for whom the bell tolls": 118,
+    "nirvana|about a girl": 132,
+    "soundgarden|spoonman": 93,
+    "cher|believe": 133,
+    "coldplay|sparks": 103,
+    "santana|black magic woman": 123,
+    "rage against the machine|freedom": 113,
+
+    "_bpm_audit_2026_07_gsb_halved": "GetSongBPM halved a genuinely fast song; felt tempo is the HIGHER value. The auto-rule leaves these alone (fast side <150), so pin them here.",
+    "creedence clearwater revival|green river": 140,
+    "green day|holiday": 147,
+    "guns n' roses|nightrain": 149,
+
+    "_bpm_audit_2026_07_half_double_felt": "Genuine half/double songs — the felt/tapped (slow) octave was chosen for the tempo axis over the faster driving pulse.",
+    "pink floyd|comfortably numb": 64,
+    "metallica|the unforgiven": 70,
+    "foo fighters|times like these": 72,
+    "pearl jam|alive": 76,
+    "david bowie|ziggy stardust": 80
   }
 }

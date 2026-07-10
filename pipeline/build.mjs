@@ -254,6 +254,51 @@ async function getsongbpmEnrich(c) {
   return { bpm: Math.round(tempo), year };
 }
 
+// ---- AcousticBrainz: an INDEPENDENT third tempo vote -------------------
+// Essentia's RhythmExtractor2013 — a different DSP codebase from Deezer's and GetSongBPM's — so
+// its octave errors are UNCORRELATED with theirs. That lets it break a tie the other two share
+// (e.g. both double a ballad, or both halve a genuinely fast song). Free, no auth, keyed by
+// MusicBrainz recording MBID (which musicbrainzYear already gathers). The dataset is frozen at
+// 2022-06 and coverage is per-MBID, so it's partial (and blank for post-2022 releases) — used as
+// a corroborating vote, never the sole source. Dormant unless ENABLE_ACOUSTICBRAINZ=1.
+// Docs: https://acousticbrainz.org/data  ·  ~10 req/10s, no key.
+const AB_ENABLED = process.env.ENABLE_ACOUSTICBRAINZ === '1';
+const AB_BASE = 'https://acousticbrainz.org/api/v1';
+async function acousticbrainzBpm(mbids) {
+  if (!AB_ENABLED || !mbids?.length) return 0;
+  const ids = mbids.slice(0, 25).join(';');                    // bulk count endpoint caps at 25 ids
+  const counts = await getJson(`${AB_BASE}/count?recording_ids=${ids}`);
+  if (!counts) return 0;
+  const hit = Object.entries(counts).find(([, v]) => (v?.count || 0) > 0)?.[0];
+  if (!hit) return 0;                                          // none of this song's MBIDs were analysed
+  const ll = await getJson(`${AB_BASE}/${hit}/low-level`);
+  const bpm = ll?.rhythm?.bpm;
+  return bpm > 0 ? Math.round(bpm) : 0;
+}
+
+// ---- reconcile the automated readings into ONE felt BPM ----------------
+// Automated tempo detectors frequently report 2× (or ½) the tempo a listener taps. From the audit
+// (.dev/reference/gsb-eval.md): real felt tempos in this catalogue span ~[70,175] with a hard floor
+// near 70; and when two sources form a CLEAN 2× pair, the LOWER octave is the felt tempo 16/17 times
+// — but only *safely* so when the faster reading is implausibly high (≥150). In the 130–150 band a
+// bare number is ambiguous (a real mid-tempo rocker vs a doubled ballad), so those are left to
+// bpm_overrides.json rather than guessed here. Order: none→drop, one→it, clean-high-2×→felt octave
+// (unless the independent AcousticBrainz vote says it's genuinely fast), else Deezer-first (as before).
+const FELT_CEIL = 150;
+function reconcileBpm([dz = 0, gsb = 0, ab = 0]) {
+  const present = [dz, gsb, ab].filter((x) => x > 0);
+  if (!present.length) return 0;
+  if (present.length === 1) return Math.round(present[0]);
+  if (dz && gsb) {
+    const hi = Math.max(dz, gsb), lo = Math.min(dz, gsb), r = hi / lo;
+    if (r >= 1.9 && r <= 2.1 && hi >= FELT_CEIL && lo >= 60) {
+      if (ab && Math.abs(ab - hi) <= 6) return Math.round(hi);  // independent vote: song really is fast
+      return Math.round(lo);                                    // else the halved (felt) octave
+    }
+  }
+  return Math.round(dz || gsb || ab);                           // no clean high-double -> Deezer's value
+}
+
 // ---- MusicBrainz: ORIGINAL release year --------------------------------
 // Deezer's release_date tracks the *matched* release (often a remaster/comp), so old
 // songs get stamped with recent years. MusicBrainz exposes a recording's earliest
@@ -271,17 +316,19 @@ async function musicbrainzYear(c) {
   const recs = data?.recordings || [];
   const wantA = norm(c.artist), wantT = norm(c.title);
   let best = null;
+  const mbids = [];                             // exact-title recording MBIDs -> AcousticBrainz keys
   for (const r of recs) {
     const credit = (r['artist-credit'] || []).map((x) => x.name).join(' ');
     const a = norm(credit), t = norm(r.title);
     const artistOk = a.includes(wantA) || wantA.includes(a);
     if (!artistOk || t !== wantT) continue;     // exact title -> skip "(Live)/(Remaster)/(Edit)"
+    if (r.id) mbids.push(r.id);
     const d = r['first-release-date'];
     if (!d) continue;
     const y = Number(String(d).slice(0, 4));
     if (y > 1900 && (best === null || y < best)) best = y;
   }
-  return best;
+  return { year: best, mbids };
 }
 
 // ---- YouTube: view count as a breadth (recognizability) signal ---------
@@ -388,22 +435,25 @@ function assignPopularity(songs, raw) {
 // `overrides` is the normalized artist|title -> bpm table. Returns { record, yearSource }.
 async function enrichCandidate(c, overrides) {
   const enr = await deezerEnrich(c);
-  let bpm = enr?.bpm || 0;
-  let gsbYear = null;
+  // Original-release year (Deezer's is reissue-inflated) + the recording MBIDs, which double as
+  // AcousticBrainz keys. Fetched before the BPM gate so an AcousticBrainz vote can join the
+  // reconcile; MB is cached, so re-runs are free and only a first run newly pays an MB call for
+  // the handful of BPM-less gaps.
+  const mb = await musicbrainzYear(c);
   const ov = overrides[key(c.artist, c.title)];
-  if (ov) bpm = ov;
-  // GetSongBPM fallback: only when Deezer AND override both came up empty
-  if (!bpm) {
+  let bpm = 0, gsbYear = null;
+  if (ov) {
+    bpm = ov;                                  // hand-curated tempo wins outright
+  } else {
+    // Reconcile the automated readings into the felt tempo. Deezer AND GetSongBPM are now consulted
+    // for EVERY song (not just Deezer gaps) so the rule always has ≥2 votes; AcousticBrainz joins as
+    // an independent third when ENABLE_ACOUSTICBRAINZ. See reconcileBpm / .dev/reference/gsb-eval.md.
     const gsb = await getsongbpmEnrich(c);
-    if (gsb?.bpm) {
-      bpm = gsb.bpm;
-      gsbYear = gsb.year;
-    }
+    gsbYear = gsb?.year ?? null;
+    const ab = await acousticbrainzBpm(mb.mbids);
+    bpm = reconcileBpm([enr?.bpm || 0, gsb?.bpm || 0, ab]);
   }
-  if (!bpm) return null; // can't tempo it -> gap (quality over quantity)
-  // year: prefer MusicBrainz's original-release year (Deezer's is reissue-inflated).
-  // Only looked up for songs we're keeping, to minimize MB calls (1 req/sec).
-  const mbYear = await musicbrainzYear(c);
+  if (!bpm) return null; // no trustworthy tempo from any source -> gap (quality over quantity)
   // YouTube view breadth — only for kept songs (skip wasted yt-dlp calls on gaps).
   const yt = await youtubeViews(c);
   const fallbackYear = enr?.year ?? gsbYear ?? null;
@@ -412,7 +462,7 @@ async function enrichCandidate(c, overrides) {
     title: c.title,
     bpm,
     genre: c.genre,
-    year: mbYear ?? fallbackYear,
+    year: mb.year ?? fallbackYear,
     isrc: enr?.isrc ?? null,
     // album cover: Deezer's hotlink URL by default; the ENABLE_COVERS pass (step 3c) rewrites this
     // to a local covers/<md5>.jpg once self-hosted. null when Deezer had no match (front-end -> placeholder).
@@ -424,7 +474,7 @@ async function enrichCandidate(c, overrides) {
   const raw = { youtube: yt || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
   // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
   // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
-  return { record, raw, coverId: enr?.cover_id ?? null, yearSource: mbYear ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
+  return { record, raw, coverId: enr?.cover_id ?? null, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
 }
 
 // Load bpm_overrides.json into a normalized { "norm-artist|norm-title": bpm } map.
@@ -516,7 +566,8 @@ async function main() {
         .map((k) => { const [a, t] = k.split('|'); return key(a, t); }))
   );
 
-  console.error(`GetSongBPM gap-filler: ${GSB_KEY ? 'ENABLED' : 'dormant (set GETSONGBPM_API_KEY to enable)'}`);
+  console.error(`GetSongBPM reconcile vote: ${GSB_KEY ? 'ENABLED' : 'dormant (set GETSONGBPM_API_KEY to enable)'}`);
+  console.error(`AcousticBrainz reconcile vote: ${AB_ENABLED ? 'ENABLED' : 'dormant (set ENABLE_ACOUSTICBRAINZ=1 to enable)'}`);
   // YouTube view breadth: needs the opt-in AND the yt-dlp binary; otherwise popularity falls
   // back to the Deezer+Songsterr blend (Tier A). Loud, like GSB — a silent fallback would hide
   // that the recognizability signal is missing.
@@ -666,7 +717,7 @@ async function main() {
 
 // Reusable pieces for sibling tools (e.g. pipeline/tools/eval-gsb.mjs) — exported so the eval
 // runs the EXACT production matching logic instead of a drifting reimplementation.
-export { norm, key, getJson, deezerEnrich, getsongbpmEnrich, loadOverrides, percentileMap, POP_WEIGHTS, gatherCatalogue, writeCatalogue };
+export { norm, key, getJson, deezerEnrich, getsongbpmEnrich, acousticbrainzBpm, reconcileBpm, loadOverrides, percentileMap, POP_WEIGHTS, gatherCatalogue, writeCatalogue };
 
 // Run the build only when invoked directly (node pipeline/build.mjs), not when imported.
 // Fail loud and non-zero on any unhandled error, so a broken run can't masquerade as a
