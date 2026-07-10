@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700&display=swap" rel="stylesheet" />
 
 <style>
   /* ---- Signal Green palette (from the design reference) ---- */
@@ -17,7 +17,8 @@
     --card: #141620; --chip: #0e1017; --btn: #171922;
     --t-hi: #f4f5f7; --t1: #e9ebf0; --t2: #c9cdd4; --t3: #aeb2bb;
     --dim: #7e838d; --dim2: #6a6e78; --faint: #61656f;
-    --num: 'Space Grotesk', system-ui, sans-serif;
+    --num: 'Ubuntu', system-ui, sans-serif;
+    --ui: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --ease: cubic-bezier(.22,.61,.36,1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,7 +26,7 @@
   body {
     background: var(--bg2);
     color: var(--t1);
-    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    font: 14px/1.45 var(--ui);
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     overflow: hidden;
   }
@@ -304,6 +305,7 @@
 
   // ---------- config ----------
   const SHOW_GENRES = false;            // genre filter is hidden for now — flip to re-enable
+  const SHOW_MARKING = false;           // tempo marking (Allegro/Moderato…) under the BPM — off for now
 
   const $ = id => document.getElementById(id);
   const stage = $('stage'), field = $('field'), sideLayer = $('sideLayer'), centerCol = $('centerCol');
@@ -394,7 +396,7 @@
   function render () {
     const disp = Math.round(bpm);
     if (!editingBpm) bigBpm.textContent = disp;   // don't clobber what the user is typing
-    mark.textContent = markingFor(disp);
+    if (SHOW_MARKING) mark.textContent = markingFor(disp);
     stage.style.setProperty('--beat', (60 / Math.max(1, disp)).toFixed(3) + 's');
 
     const r = rankOf(bpm);
@@ -596,6 +598,7 @@
   boot.then(() => {
     if (SHOW_GENRES) buildGenres();
     else $('genres').style.display = 'none';   // hide first so the field measures its true height
+    if (!SHOW_MARKING) mark.style.display = 'none';
     computeGeo();
     rebuildData();
     setBpm(120, true);
