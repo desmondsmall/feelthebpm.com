@@ -23,25 +23,22 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
-    background: var(--page);
+    background: var(--bg2);
     color: var(--t1);
     font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-    display: flex; align-items: center; justify-content: center;
-    padding: 18px; overflow: hidden;
+    overflow: hidden;
   }
   a { color: var(--acc); text-decoration: none; }
   a:hover { color: var(--name); }
 
-  /* ---- Stage: the 1280×820 artboard, fluid down to the viewport ---- */
+  /* ---- Stage: full-bleed, fills the whole viewport, fluid at any size ---- */
   .stage {
     position: relative;
-    width: min(1280px, 100vw - 36px);
-    height: min(820px, 100vh - 36px);
+    width: 100vw;
+    height: 100vh; height: 100dvh;
     background: radial-gradient(120% 100% at 50% 0%, var(--bg1) 0%, var(--bg2) 70%);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 20px; overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0,0,0,.45);
+    overflow: hidden;
     display: flex; flex-direction: column;
     --centerX: 50%; --axisY: 250px; --slotW: 200px;
     --cardW: 150px; --centerCardW: 190px; --disc: 150px;
@@ -49,35 +46,19 @@
   }
 
   /* ---- Toolbar: centered −/+ stepper with an editable BPM field ---- */
-  .toolbar {
-    flex: 0 0 auto; height: 66px; display: flex; align-items: center; justify-content: center;
-    padding: 0 20px; border-bottom: 1px solid rgba(255,255,255,.06);
-  }
-  .stepper { display: flex; align-items: center; gap: 9px; }
-  .step {
-    width: 44px; height: 48px; border-radius: 12px; background: var(--btn);
-    border: 1px solid rgba(255,255,255,.09); color: var(--t2);
-    font-size: 22px; line-height: 1; cursor: pointer; transition: .12s;
+  /* nudge buttons flanking the pulse (− slower / + faster) — the stepper, folded into the center */
+  .nbtn {
+    position: absolute; top: 0; transform: translate(-50%,-50%);
+    width: 42px; height: 42px; border-radius: 50%; background: var(--btn);
+    border: 1px solid rgba(255,255,255,.1); color: var(--t2);
+    font-size: 22px; line-height: 1; cursor: pointer; pointer-events: auto;
     display: flex; align-items: center; justify-content: center; user-select: none;
+    transition: background .12s, border-color .12s, color .12s;
   }
-  .step:hover { background: #1e2029; border-color: rgba(255,255,255,.16); color: var(--t-hi); }
-  .step:active { transform: translateY(1px); }
-  .bpmField {
-    height: 48px; min-width: 120px; border-radius: 12px; background: var(--chip);
-    border: 1.5px solid var(--acc); box-shadow: 0 0 0 4px rgba(var(--accRGB),.14);
-    display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px;
-    transition: box-shadow .15s;
-  }
-  .bpmField:focus-within { box-shadow: 0 0 0 5px rgba(var(--accRGB),.22); }
-  .bpmInput {
-    width: 3ch; background: transparent; border: none; outline: none;
-    font-family: var(--num); font-size: 24px; font-weight: 700; color: var(--t-hi);
-    letter-spacing: .5px; text-align: center; font-variant-numeric: tabular-nums;
-    -moz-appearance: textfield;
-  }
-  .bpmInput::-webkit-outer-spin-button, .bpmInput::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-  .bpmDiv { width: 1.5px; height: 22px; background: var(--acc); }
-  .bpmUnit { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--dim); }
+  .nbtn:hover { background: #1e2029; border-color: rgba(var(--accRGB),.55); color: var(--t-hi); }
+  .nbtn:active { transform: translate(-50%,-50%) scale(.92); }
+  .nbtn.minus { left: calc(var(--disc) / -2 - 38px); }
+  .nbtn.plus  { left: calc(var(--disc) / 2 + 38px); }
 
   /* ---- Genre bar ---- */
   .genres {
@@ -110,37 +91,44 @@
   .axis-end.slower { left: 74px; }
   .axis-end.faster { right: 74px; }
 
-  /* pulse */
+  /* colour pulse — a soft bloom that blooms out from the beat UNDER the cards (z-index below columns) */
+  .glow { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 1; pointer-events: none; }
+  .glow span {
+    position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc); border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--accRGB),.55) 0%, rgba(var(--accRGB),.24) 40%, rgba(var(--accRGB),0) 70%);
+    transform: translate(-50%,-50%) scale(.85);
+    animation: colorpulse var(--beat) ease-out infinite;
+  }
+  @keyframes colorpulse {
+    0%   { transform: translate(-50%,-50%) scale(.85); opacity: 1; }
+    100% { transform: translate(-50%,-50%) scale(3.4); opacity: 0; }
+  }
+
+  /* disc — dark, sits above the cards; its ring lights up bright exactly on the beat, then settles */
   .pulse { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 5;
     transition: left .5s var(--ease); pointer-events: none; }
-  .pulse .ring {
-    position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
-    border-radius: 50%; border: 2px solid var(--acc);
-    transform: translate(-50%,-50%) scale(.85); opacity: 0;
-    animation: pr var(--beat) ease-out infinite;
-  }
-  .pulse .ring.r2 { animation-delay: calc(var(--beat) / -2); }
-  @keyframes pr {
-    0%   { transform: translate(-50%,-50%) scale(.85); opacity: .5; }
-    70%  { transform: translate(-50%,-50%) scale(1.45); opacity: 0; }
-    100% { transform: translate(-50%,-50%) scale(1.45); opacity: 0; }
-  }
   .pulse .disc {
     position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
     transform: translate(-50%,-50%); border-radius: 50%;
     background: radial-gradient(circle at 50% 42%, #181b22, #101219);
-    border: 2px solid rgba(var(--accRGB),.85);
-    box-shadow: 0 0 60px rgba(var(--accRGB),.18), inset 0 0 34px rgba(0,0,0,.4);
+    border: 2px solid rgba(var(--accRGB),.4);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    animation: beat var(--beat) var(--ease) infinite;
+    animation: discbeat var(--beat) ease-out infinite;
   }
-  @keyframes beat { 0%,100% { box-shadow: 0 0 60px rgba(var(--accRGB),.18), inset 0 0 34px rgba(0,0,0,.4); }
-                    8%  { box-shadow: 0 0 78px rgba(var(--accRGB),.34), inset 0 0 34px rgba(0,0,0,.4); } }
+  @keyframes discbeat {
+    0%   { border-color: rgba(var(--accRGB),1);  box-shadow: 0 0 52px rgba(var(--accRGB),.55), inset 0 0 30px rgba(0,0,0,.45); }
+    32%  { border-color: rgba(var(--accRGB),.4); box-shadow: 0 0 18px rgba(var(--accRGB),.10), inset 0 0 34px rgba(0,0,0,.4); }
+    100% { border-color: rgba(var(--accRGB),.4); box-shadow: 0 0 18px rgba(var(--accRGB),.10), inset 0 0 34px rgba(0,0,0,.4); }
+  }
   .pulse .disc .big {
     font-family: var(--num); font-weight: 700; line-height: .9; color: var(--t-hi);
     letter-spacing: -1px; font-variant-numeric: tabular-nums;
     font-size: calc(var(--disc) * .35);
+    pointer-events: auto; cursor: text; outline: none; border-radius: 6px;
+    padding: 0 2px; caret-color: var(--acc);
   }
+  .pulse .disc .big:hover { color: #fff; }
+  .pulse .disc .big:focus { box-shadow: 0 0 0 2px rgba(var(--accRGB),.5); }
   .pulse .disc .mark {
     font-size: calc(var(--disc) * .068); font-weight: 600; letter-spacing: 2.5px;
     color: var(--name); margin-top: 6px; text-transform: uppercase;
@@ -225,8 +213,6 @@
   .attr a { color: var(--dim); }
 
   @media (max-width: 720px) {
-    body { padding: 0; }
-    .stage { width: 100vw; height: 100vh; border-radius: 0; border: none; }
     .axis { left: 24px; right: 24px; }
     .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
     /* single scrollable row keeps the top compact and the field tall */
@@ -241,18 +227,6 @@
 <body>
 <div class="stage" id="stage">
 
-  <div class="toolbar">
-    <div class="stepper">
-      <div class="step" id="minus" role="button" aria-label="slower">−</div>
-      <div class="bpmField">
-        <input class="bpmInput" id="bpmInput" inputmode="numeric" value="120" aria-label="beats per minute" />
-        <span class="bpmDiv"></span>
-        <span class="bpmUnit">BPM</span>
-      </div>
-      <div class="step" id="plus" role="button" aria-label="faster">+</div>
-    </div>
-  </div>
-
   <div class="genres" id="genres"></div>
 
   <div class="field" id="field">
@@ -260,11 +234,13 @@
     <div class="axis-end slower">◂ slower</div>
     <div class="axis-end faster">faster ▸</div>
 
+    <div class="glow" id="glow"><span></span></div>
+
     <div class="pulse" id="pulse">
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
+      <button class="nbtn minus" id="minus" aria-label="slower">−</button>
+      <button class="nbtn plus" id="plus" aria-label="faster">+</button>
       <div class="disc">
-        <div class="big" id="bigBpm">120</div>
+        <div class="big" id="bigBpm" contenteditable="true" inputmode="numeric" spellcheck="false" aria-label="beats per minute">120</div>
         <div class="mark" id="mark">Allegro</div>
       </div>
     </div>
@@ -297,9 +273,13 @@
   const markingFor = b => { let m = '—'; for (const [t,n] of MARKINGS) if (b >= t) m = n; return m; };
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
+  // ---------- config ----------
+  const SHOW_GENRES = false;            // genre filter is hidden for now — flip to re-enable
+
   const $ = id => document.getElementById(id);
   const stage = $('stage'), field = $('field'), sideLayer = $('sideLayer'), centerCol = $('centerCol');
-  const bpmInput = $('bpmInput'), bigBpm = $('bigBpm'), mark = $('mark'), pulse = $('pulse');
+  const bigBpm = $('bigBpm'), mark = $('mark'), pulse = $('pulse');
+  let editingBpm = false;               // true while the center number is being typed into
 
   // ---------- state ----------
   let bpm = 120;                        // continuous while dragging; round() for display
@@ -317,14 +297,22 @@
     const disc  = Math.max(108, Math.min(150, Math.min(w * 0.12, h * 0.30)));
     const cardW = Math.max(118, Math.min(170, slotW - 42));
     const centerCardW = Math.max(158, Math.min(210, slotW - 10));
-    const axisY = Math.max(140, Math.min(h * 0.34, h - 190));
+    // move the whole assembly up and vertically centre it in the reclaimed (top-bar-free) space.
+    // side cards start ~28px below the axis; center cards start below the disc + a label.
+    const cap = (avail, top) => Math.floor((avail - top) / 66);
+    let axisY = h * 0.30;
+    let sideCap   = Math.max(2, Math.min(6, cap(h - axisY, 84)));
+    let centerCap = Math.max(2, Math.min(5, cap(h - axisY, disc / 2 + 130)));
+    const blockBelow = Math.max(38 + sideCap * 66, disc / 2 + 52 + centerCap * 66 + 44);
+    const free = Math.max(0, h - disc / 2 - blockBelow);   // sit the block slightly above center
+    axisY = Math.round(Math.max(disc / 2 + 22, Math.min(h - 120, free * 0.40 + disc / 2)));
     const below = h - axisY;
+    sideCap   = Math.max(2, Math.min(6, cap(below, 84)));
+    centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 130)));
     geo = {
       w, h, slotW, disc, cardW, centerCardW, axisY, centerX: w / 2,
       visN: Math.floor((w / 2) / slotW) + 1,
-      // side cards start ~28px below the axis; center cards start below the disc + a label
-      sideCap:   Math.max(2, Math.min(5, Math.floor((below - 28 - 56) / 66))),
-      centerCap: Math.max(2, Math.min(4, Math.floor((below - disc / 2 - 30 - 24 - 60) / 66)))
+      sideCap, centerCap
     };
     const s = stage.style;
     s.setProperty('--centerX', geo.centerX + 'px');
@@ -374,9 +362,8 @@
   // ---------- render ----------
   function render () {
     const disp = Math.round(bpm);
-    bigBpm.textContent = disp;
+    if (!editingBpm) bigBpm.textContent = disp;   // don't clobber what the user is typing
     mark.textContent = markingFor(disp);
-    if (document.activeElement !== bpmInput) bpmInput.value = disp;
     stage.style.setProperty('--beat', (60 / Math.max(1, disp)).toFixed(3) + 's');
 
     const r = rankOf(bpm);
@@ -491,7 +478,7 @@
   // ---------- drag / scrub ----------
   let dragging = false, moved = false, lastX = 0, pid = null;
   field.addEventListener('pointerdown', e => {
-    if (e.target.closest('.step, .bpmField, .g-chip')) return;
+    if (e.target.closest('.nbtn, .big, .g-chip')) return;
     dragging = true; moved = false; lastX = e.clientX; pid = e.pointerId;
     field.setPointerCapture(pid); field.classList.add('dragging');
   });
@@ -530,31 +517,56 @@
     field._wheelT = setTimeout(() => setBpm(bpm, true), 160);
   }, { passive: false });
 
-  // ---------- stepper + typed field ----------
+  // ---------- nudge buttons + typeable center number ----------
   $('plus').addEventListener('click', () => setBpm(Math.round(bpm) + 1));
   $('minus').addEventListener('click', () => setBpm(Math.round(bpm) - 1));
-  bpmInput.addEventListener('change', () => { const v = parseInt(bpmInput.value, 10); if (!isNaN(v)) setBpm(v); });
-  bpmInput.addEventListener('keydown', e => { if (e.key === 'Enter') bpmInput.blur(); });
+
+  const selectBig = () => {
+    const r = document.createRange(); r.selectNodeContents(bigBpm);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  };
+  bigBpm.addEventListener('focus', () => { editingBpm = true; requestAnimationFrame(selectBig); });
+  bigBpm.addEventListener('input', () => {
+    const digits = bigBpm.textContent.replace(/\D/g, '').slice(0, 3);
+    if (digits !== bigBpm.textContent) {
+      bigBpm.textContent = digits;
+      const r = document.createRange(); r.selectNodeContents(bigBpm); r.collapse(false);
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);   // keep caret at the end
+    }
+  });
+  bigBpm.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); bigBpm.blur(); }
+  });
+  bigBpm.addEventListener('blur', () => {
+    editingBpm = false;
+    const v = parseInt(bigBpm.textContent, 10);
+    if (!isNaN(v)) setBpm(v); else bigBpm.textContent = Math.round(bpm);
+  });
 
   document.addEventListener('keydown', e => {
-    if (e.target === bpmInput) return;
+    if (editingBpm) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); setBpm(Math.round(bpm) + 1); }
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); setBpm(Math.round(bpm) - 1); }
   });
 
-  // ---------- resize ----------
+  // ---------- (re)layout ----------
+  function relayout () {
+    computeGeo();
+    sideLayer.innerHTML = ''; sideCols.clear(); lastCenterKey = null;
+    render(); refreshDeltas();
+  }
   let rT;
-  window.addEventListener('resize', () => {
-    clearTimeout(rT);
-    rT = setTimeout(() => { computeGeo(); sideLayer.innerHTML = ''; sideCols.clear(); lastCenterKey = null; render(); }, 120);
-  });
+  window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(relayout, 120); });
+  window.addEventListener('load', relayout);   // recompute once fonts/layout have settled
 
   // ---------- go ----------
   boot.then(() => {
+    if (SHOW_GENRES) buildGenres();
+    else $('genres').style.display = 'none';   // hide first so the field measures its true height
     computeGeo();
-    buildGenres();
     rebuildData();
     setBpm(120, true);
+    requestAnimationFrame(relayout);           // second pass after the browser has laid out
   });
 })();
 </script>
