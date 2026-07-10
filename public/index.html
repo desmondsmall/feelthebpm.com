@@ -38,13 +38,20 @@
     position: relative;
     width: 100vw;
     height: 100vh; height: 100dvh;
-    background: radial-gradient(120% 100% at 50% 0%, var(--bg1) 0%, var(--bg2) 70%);
+    background:
+      radial-gradient(52% 42% at 50% var(--axisY), rgba(var(--accRGB),.04) 0%, rgba(var(--accRGB),0) 72%),
+      radial-gradient(120% 100% at 50% 0%, var(--bg1) 0%, var(--bg2) 70%);
     overflow: hidden;
     display: flex; flex-direction: column;
     user-select: none; -webkit-user-select: none;   /* dragging must not select text */
     --centerX: 50%; --axisY: 250px; --slotW: 200px;
     --cardW: 150px; --centerCardW: 190px; --disc: 150px;
     --beat: .5s;
+  }
+  /* fine film grain over everything — kills gradient banding, adds a tactile analog feel */
+  .stage::after {
+    content: ''; position: absolute; inset: 0; z-index: 50; pointer-events: none; opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   /* ---- Toolbar: centered −/+ stepper with an editable BPM field ---- */
@@ -127,7 +134,11 @@
   .pulse .disc {
     position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
     transform: translate(-50%,-50%); border-radius: 50%;
-    background: radial-gradient(circle at 50% 42%, #181b22, #101219);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,0) 45%),
+      rgba(15,18,25,.52);
+    backdrop-filter: blur(16px) saturate(1.3);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
     border: 2px solid rgba(var(--accRGB),.4);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     animation: discbeat var(--beat) ease-out infinite;
