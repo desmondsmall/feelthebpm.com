@@ -93,17 +93,32 @@
   }
   .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
 
-  /* colour pulse — a soft bloom that blooms out from the beat UNDER the cards (z-index below columns) */
+  /* pulse — a faint filled bloom for warmth + a crisp sonar ring for the beat instant, both UNDER the cards */
   .glow { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 1; pointer-events: none; }
   .glow span {
     position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc); border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--accRGB),.55) 0%, rgba(var(--accRGB),.24) 40%, rgba(var(--accRGB),0) 70%);
-    transform: translate(-50%,-50%) scale(.85);
-    animation: colorpulse var(--beat) ease-out infinite;
+    transform: translate(-50%,-50%);
   }
-  @keyframes colorpulse {
-    0%   { transform: translate(-50%,-50%) scale(.85); opacity: 1; }
-    100% { transform: translate(-50%,-50%) scale(3.4); opacity: 0; }
+  /* the warmth: a soft filled bloom that clears fast so it never drifts into a cloud */
+  .glow .bloom {
+    background: radial-gradient(circle, rgba(var(--accRGB),.32) 0%, rgba(var(--accRGB),.14) 42%, rgba(var(--accRGB),0) 70%);
+    animation: bloompuff var(--beat) ease-out infinite;
+  }
+  @keyframes bloompuff {
+    0%   { transform: translate(-50%,-50%) scale(.75); opacity: .8; }
+    45%  { opacity: 0; }
+    100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0; }
+  }
+  /* the instant: a thin ring pings off the disc rim and travels outward */
+  .glow .ring {
+    background: none; border: 2px solid rgba(var(--accRGB),.6);
+    box-shadow: 0 0 20px rgba(var(--accRGB),.3), inset 0 0 14px rgba(var(--accRGB),.22);
+    animation: sonar var(--beat) ease-out infinite;
+  }
+  @keyframes sonar {
+    0%   { transform: translate(-50%,-50%) scale(.96); opacity: .9; border-width: 3px; }
+    75%  { opacity: 0; }
+    100% { transform: translate(-50%,-50%) scale(2.15); opacity: 0; border-width: 1px; }
   }
 
   /* disc — dark, sits above the cards; its ring lights up bright exactly on the beat, then settles */
@@ -118,9 +133,10 @@
     animation: discbeat var(--beat) ease-out infinite;
   }
   @keyframes discbeat {
-    0%   { border-color: rgba(var(--accRGB),1);  box-shadow: 0 0 52px rgba(var(--accRGB),.55), inset 0 0 30px rgba(0,0,0,.45); }
+    0%   { transform: translate(-50%,-50%) scale(1.045); border-color: rgba(var(--accRGB),1);  box-shadow: 0 0 60px rgba(var(--accRGB),.6),  inset 0 0 30px rgba(0,0,0,.45); }
+    14%  { transform: translate(-50%,-50%) scale(1); }
     32%  { border-color: rgba(var(--accRGB),.4); box-shadow: 0 0 18px rgba(var(--accRGB),.10), inset 0 0 34px rgba(0,0,0,.4); }
-    100% { border-color: rgba(var(--accRGB),.4); box-shadow: 0 0 18px rgba(var(--accRGB),.10), inset 0 0 34px rgba(0,0,0,.4); }
+    100% { transform: translate(-50%,-50%) scale(1); border-color: rgba(var(--accRGB),.4); box-shadow: 0 0 18px rgba(var(--accRGB),.10), inset 0 0 34px rgba(0,0,0,.4); }
   }
   .pulse .disc .big {
     font-family: var(--num); font-weight: 700; line-height: .9; color: var(--t-hi);
@@ -265,7 +281,7 @@
   <div class="field" id="field">
     <div class="axis"></div>
 
-    <div class="glow" id="glow"><span></span></div>
+    <div class="glow" id="glow"><span class="bloom"></span><span class="ring"></span></div>
 
     <div class="pulse" id="pulse">
       <button class="nbtn minus" id="minus" aria-label="slower">−</button>
