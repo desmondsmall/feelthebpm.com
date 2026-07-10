@@ -40,6 +40,7 @@
     background: radial-gradient(120% 100% at 50% 0%, var(--bg1) 0%, var(--bg2) 70%);
     overflow: hidden;
     display: flex; flex-direction: column;
+    user-select: none; -webkit-user-select: none;   /* dragging must not select text */
     --centerX: 50%; --axisY: 250px; --slotW: 200px;
     --cardW: 150px; --centerCardW: 190px; --disc: 150px;
     --beat: .5s;
@@ -49,16 +50,16 @@
   /* nudge buttons flanking the pulse (− slower / + faster) — the stepper, folded into the center */
   .nbtn {
     position: absolute; top: 0; transform: translate(-50%,-50%);
-    width: 50px; height: 50px; border-radius: 50%; background: var(--btn);
+    width: 45px; height: 45px; border-radius: 50%; background: var(--btn);
     border: 1px solid rgba(255,255,255,.1); color: var(--t2);
-    font-size: 26px; line-height: 1; cursor: pointer; pointer-events: auto;
+    font-size: 23px; line-height: 1; cursor: pointer; pointer-events: auto;
     display: flex; align-items: center; justify-content: center; user-select: none;
     transition: background .12s, border-color .12s, color .12s;
   }
   .nbtn:hover { background: #1e2029; border-color: rgba(var(--accRGB),.55); color: var(--t-hi); }
   .nbtn:active { transform: translate(-50%,-50%) scale(.92); }
-  .nbtn.minus { left: calc(var(--disc) / -2 - 44px); }
-  .nbtn.plus  { left: calc(var(--disc) / 2 + 44px); }
+  .nbtn.minus { left: calc(var(--disc) / -2 - 40px); }
+  .nbtn.plus  { left: calc(var(--disc) / 2 + 40px); }
 
   /* ---- Genre bar ---- */
   .genres {
@@ -77,6 +78,7 @@
 
   /* ---- Field: the tempo axis + columns + pulse ---- */
   .field { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; cursor: grab; touch-action: none; }
+  .field img { -webkit-user-drag: none; user-select: none; pointer-events: none; }   /* cover art shouldn't drag/select */
   .field.dragging { cursor: grabbing; }
   .field.dragging .column, .field.dragging #centerCol, .field.dragging .pulse { transition: none !important; }
 
@@ -85,7 +87,7 @@
     background: rgba(255,255,255,.13); transform: translateY(-50%); pointer-events: none;
   }
   .axis-end {
-    position: absolute; top: calc(var(--axisY) - 46px); font: 500 14px -apple-system, system-ui, sans-serif;
+    position: absolute; top: calc(var(--axisY) - 42px); font: 500 13px -apple-system, system-ui, sans-serif;
     color: var(--dim2); letter-spacing: .3px; pointer-events: none; user-select: none;
   }
   .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
@@ -125,6 +127,7 @@
     font-size: calc(var(--disc) * .35);
     pointer-events: auto; cursor: text; outline: none; border-radius: 6px;
     padding: 0 2px; caret-color: var(--acc);
+    user-select: text; -webkit-user-select: text;   /* still typeable/selectable */
   }
   .pulse .disc .big:hover { color: #fff; }
   .pulse .disc .big:focus { box-shadow: 0 0 0 2px rgba(var(--accRGB),.5); }
@@ -142,29 +145,46 @@
   }
   .column .chip {
     position: absolute; left: 50%; top: 0; transform: translate(-50%,-50%);
-    padding: 7px 14px; border-radius: 12px; background: var(--chip);
+    padding: 6px 13px; border-radius: 11px; background: var(--chip);
     border: 1px solid rgba(255,255,255,.12); font-family: var(--num);
-    font-size: 19px; font-weight: 600; color: var(--t2); white-space: nowrap;
+    font-size: 17px; font-weight: 600; color: var(--t2); white-space: nowrap;
     cursor: pointer; transition: border-color .12s, color .12s;
   }
   .column .chip:hover { border-color: rgba(var(--accRGB),.5); color: var(--t-hi); }
-  .column .chip .d { font-size: 13px; color: #8b909b; }
-  .column .cards { display: flex; flex-direction: column; gap: 12px; padding-top: 34px; }
+  .column .chip .d { font-size: 12px; color: #8b909b; }
+  .column .cards { display: flex; flex-direction: column; gap: 11px; padding-top: 31px; }
 
   .card {
-    height: 66px; background: var(--card); border: 1px solid rgba(255,255,255,.07);
-    border-radius: 13px; padding: 10px 15px; cursor: pointer; overflow: hidden;
-    transition: border-color .12s, background .12s, transform .12s;
+    position: relative; height: 60px; border-radius: 12px; display: flex; align-items: center;
+    gap: 10px; padding: 0 12px 0 9px; cursor: pointer; overflow: hidden;
+    background: var(--card); border: 1px solid rgba(255,255,255,.07);
+    transition: border-color .12s, transform .12s;
   }
-  .card:hover { border-color: rgba(var(--accRGB),.45); background: #171a25; }
+  .card:hover { border-color: rgba(var(--accRGB),.4); }
   .card:active { transform: scale(.98); }
-  .card .t { font-size: 15px; font-weight: 600; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .card .a { font-size: 12.5px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
+  /* muted art wash for the side columns — neutral tint, darker than the center */
+  .card .wash {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.8); filter: blur(16px) brightness(.26) saturate(1.55);
+    z-index: 0; pointer-events: none;
+  }
+  .card::after {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(90deg, rgba(15,17,21,.44) 0%, rgba(15,17,21,.66) 55%, rgba(14,16,20,.85) 100%);
+  }
+  .card .thumb {
+    position: relative; z-index: 2; width: 40px; height: 40px; flex: 0 0 auto;
+    border-radius: 7px; object-fit: cover; background: #1a1d17;
+    box-shadow: 0 2px 6px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.06);
+  }
+  .card .meta { position: relative; z-index: 2; flex: 1; min-width: 0; }
+  .card .t { font-size: 13.5px; font-weight: 600; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+  .card .a { font-size: 11.5px; color: rgba(255,255,255,.5); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
 
   .more {
-    height: 48px; display: flex; align-items: center; justify-content: center;
-    border: 1px dashed rgba(255,255,255,.16); border-radius: 13px;
-    font-size: 14px; font-weight: 600; color: var(--dim);
+    height: 44px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(255,255,255,.16); border-radius: 12px;
+    font-size: 13px; font-weight: 600; color: var(--dim);
   }
 
   /* center exact-match column — pours out of the beat */
@@ -173,43 +193,56 @@
     margin-left: calc(var(--centerCardW) / -2); z-index: 4;
     transition: left .5s var(--ease); pointer-events: none;
   }
-  #centerCol .cards { display: flex; flex-direction: column; gap: 12px;
-    padding-top: calc(var(--disc) / 2 + 34px); }
+  #centerCol .cards { display: flex; flex-direction: column; gap: 11px;
+    padding-top: calc(var(--disc) / 2 + 31px); }
   #centerCol .clabel {
-    font-size: 13px; font-weight: 600; letter-spacing: .5px; color: var(--dim);
-    text-transform: uppercase; text-align: center; margin-bottom: 4px;
+    font-size: 12px; font-weight: 600; letter-spacing: .5px; color: var(--dim);
+    text-transform: uppercase; text-align: center; margin-bottom: 3px;
   }
-  #centerCol .empty { text-align: center; color: var(--dim2); font-size: 14px; line-height: 1.6; }
+  #centerCol .empty { text-align: center; color: var(--dim2); font-size: 13px; line-height: 1.6; }
   .xcard {
-    height: 66px; border-radius: 14px; display: flex; align-items: center; gap: 13px;
-    padding: 0 15px; cursor: pointer; pointer-events: auto; overflow: hidden;
-    transition: transform .12s, filter .12s;
+    position: relative; height: 60px; border-radius: 13px; display: flex; align-items: center;
+    gap: 11px; padding: 0 13px 0 10px; cursor: pointer; pointer-events: auto; overflow: hidden;
+    background: #0f1310; border: 1.5px solid rgba(var(--accRGB),.30);
+    transition: transform .12s, border-color .12s;
   }
-  .xcard:hover { filter: brightness(1.12); }
+  .xcard:hover { border-color: rgba(var(--accRGB),.6); }
   .xcard:active { transform: scale(.98); }
-  .xcard .badge {
-    font-family: var(--num); font-size: 18px; font-weight: 700; color: var(--acc);
-    line-height: 1; text-align: center; flex: 0 0 auto;
+  /* ambient wash: the cover art, blurred + heavily darkened, fills the card */
+  .xcard .wash {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.8); filter: blur(16px) brightness(.34) saturate(2.0);
+    z-index: 0; pointer-events: none;
   }
-  .xcard .badge small { display: block; font-size: 9.5px; font-weight: 600; letter-spacing: 1px; opacity: .85; }
-  .xcard .meta { flex: 1; min-width: 0; }
-  .xcard .t { font-size: 15px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .xcard .a { font-size: 12.5px; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
+  /* keep the hue rich but the luminance low so it stays recessive; darker at the text for legibility */
+  .xcard::after {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(90deg, rgba(5,11,8,.22) 0%, rgba(5,11,8,.42) 52%, rgba(4,9,7,.72) 100%);
+  }
+  .xcard .thumb {
+    position: relative; z-index: 2; width: 42px; height: 42px; flex: 0 0 auto;
+    border-radius: 8px; object-fit: cover; background: #1a1d17;
+    box-shadow: 0 2px 8px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.08);
+  }
+  .xcard .meta { position: relative; z-index: 2; flex: 1; min-width: 0; }
+  .xcard .t { font-size: 13.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .xcard .a { font-size: 11.5px; color: rgba(255,255,255,.62); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
   .xmore {
-    height: 52px; display: flex; align-items: center; justify-content: center;
-    border: 1px dashed rgba(var(--accRGB),.4); border-radius: 14px;
-    font-size: 14px; font-weight: 600; color: var(--acc); pointer-events: auto; cursor: pointer;
+    height: 47px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(var(--accRGB),.4); border-radius: 13px;
+    font-size: 13px; font-weight: 600; color: var(--acc); pointer-events: auto; cursor: pointer;
   }
 
   /* footer hint + attribution */
   .hint {
-    flex: 0 0 auto; text-align: center; font-size: 13px; color: var(--faint);
-    padding: 14px 16px 16px; pointer-events: none;
+    flex: 0 0 auto; text-align: center; font-size: 12px; color: var(--faint);
+    padding: 13px 16px 15px; pointer-events: none;
   }
   .attr {
-    position: absolute; right: 16px; bottom: 12px; font-size: 12px; color: var(--dim2); z-index: 6;
+    position: absolute; right: 15px; bottom: 11px; font-size: 11px; color: var(--faint); z-index: 6;
+    opacity: .5;
   }
-  .attr a { color: var(--dim); }
+  .attr a { color: var(--faint); }
 
   @media (max-width: 720px) {
     .axis { left: 24px; right: 24px; }
@@ -230,8 +263,6 @@
 
   <div class="field" id="field">
     <div class="axis"></div>
-    <div class="axis-end slower">◂ slower</div>
-    <div class="axis-end faster">faster ▸</div>
 
     <div class="glow" id="glow"><span></span></div>
 
@@ -248,7 +279,6 @@
     <div id="centerCol"></div>
   </div>
 
-  <div class="hint">drag the line or type a BPM to shift the center · exact matches pour from the beat</div>
   <div class="attr">
     BPM &amp; art <a href="https://www.deezer.com" target="_blank" rel="noopener">Deezer</a> ·
     <a href="https://getsongbpm.com" target="_blank" rel="noopener">GetSongBPM</a>
@@ -292,23 +322,23 @@
   // ---------- geometry (recomputed on resize) ----------
   function computeGeo () {
     const w = field.clientWidth, h = field.clientHeight;
-    const row = 78;                       // card height 66 + gap 12
-    const slotW = Math.max(196, Math.min(272, w * 0.205));
-    const disc  = Math.max(138, Math.min(192, Math.min(w * 0.135, h * 0.34)));
-    const cardW = Math.max(150, Math.min(214, slotW - 46));
-    const centerCardW = Math.max(196, Math.min(256, slotW - 12));
+    const row = 71;                       // card height 60 + gap 11
+    const slotW = Math.max(190, Math.min(264, w * 0.20));   // wider spacing between columns
+    const disc  = Math.max(124, Math.min(173, Math.min(w * 0.12, h * 0.31)));
+    const cardW = Math.max(135, Math.min(193, slotW - 58));
+    const centerCardW = Math.max(176, Math.min(232, slotW - 20));
     // move the whole assembly up and vertically centre it in the reclaimed space.
-    // side cards start ~34px below the axis; center cards start below the disc + a label.
+    // side cards start ~31px below the axis; center cards start below the disc + a label.
     const cap = (avail, top) => Math.floor((avail - top) / row);
     let axisY = h * 0.30;
-    let sideCap   = Math.max(2, Math.min(6, cap(h - axisY, 100)));
-    let centerCap = Math.max(2, Math.min(5, cap(h - axisY, disc / 2 + 150)));
-    const blockBelow = Math.max(46 + sideCap * row, disc / 2 + 64 + centerCap * row + 52);
+    let sideCap   = Math.max(2, Math.min(6, cap(h - axisY, 90)));
+    let centerCap = Math.max(2, Math.min(5, cap(h - axisY, disc / 2 + 135)));
+    const blockBelow = Math.max(42 + sideCap * row, disc / 2 + 58 + centerCap * row + 47);
     const free = Math.max(0, h - disc / 2 - blockBelow);   // sit the block slightly above center
-    axisY = Math.round(Math.max(disc / 2 + 24, Math.min(h - 130, free * 0.40 + disc / 2)));
+    axisY = Math.round(Math.max(disc / 2 + 22, Math.min(h - 120, free * 0.40 + disc / 2)));
     const below = h - axisY;
-    sideCap   = Math.max(2, Math.min(6, cap(below, 100)));
-    centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 150)));
+    sideCap   = Math.max(2, Math.min(6, cap(below, 90)));
+    centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 135)));
     geo = {
       w, h, slotW, disc, cardW, centerCardW, axisY, centerX: w / 2, row,
       // keep the focus front-and-center: ~2 columns per side (a 3rd only peeks in on wide screens)
@@ -373,7 +403,8 @@
   }
 
   function cardHTML (s) {
-    return `<div class="card" data-bpm="${s.bpm}"><div class="t">${esc(s.title)}</div><div class="a">${esc(s.artist)}</div></div>`;
+    const cover = s.cover ? esc(s.cover) : '';
+    return `<div class="card" data-bpm="${s.bpm}">${cover ? `<img class="wash" src="${cover}" alt="" aria-hidden="true">` : ''}${cover ? `<img class="thumb" src="${cover}" alt="" loading="lazy">` : '<div class="thumb"></div>'}<div class="meta"><div class="t">${esc(s.title)}</div><div class="a">${esc(s.artist)}</div></div></div>`;
   }
 
   function renderCenter (disp) {
@@ -390,10 +421,11 @@
     const shown = songs.slice(0, cap);
     const rest = songs.length - shown.length;
     let html = `<div class="cards"><div class="clabel">right on the beat · ${songs.length} song${songs.length > 1 ? 's' : ''}</div>`;
-    shown.forEach((s, i) => {
-      const bg = (0.15 - i * 0.02).toFixed(3), bd = (0.5 - i * 0.05).toFixed(3);
-      html += `<div class="xcard" data-bpm="${s.bpm}" style="background:rgba(var(--accRGB),${bg});border:1.5px solid rgba(var(--accRGB),${bd})">
-        <div class="badge">${s.bpm}<small>BPM</small></div>
+    shown.forEach((s) => {
+      const cover = s.cover ? esc(s.cover) : '';
+      html += `<div class="xcard" data-bpm="${s.bpm}">
+        ${cover ? `<img class="wash" src="${cover}" alt="" aria-hidden="true">` : ''}
+        ${cover ? `<img class="thumb" src="${cover}" alt="" loading="lazy">` : '<div class="thumb"></div>'}
         <div class="meta"><div class="t">${esc(s.title)}</div><div class="a">${esc(s.artist)}</div></div>
       </div>`;
     });
@@ -430,7 +462,7 @@
     const rest = songs.length - shown.length;
     const col = document.createElement('div');
     col.className = 'column';
-    let html = `<div class="chip" data-bpm="${t}">${t} <span class="d">${t > bpm ? '+' : ''}${t - Math.round(bpm)}</span></div><div class="cards">`;
+    let html = `<div class="chip" data-bpm="${t}">${t}</div><div class="cards">`;
     html += shown.map(cardHTML).join('');
     if (rest > 0) html += `<div class="more">+${rest} more</div>`;
     html += '</div>';
