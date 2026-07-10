@@ -49,16 +49,16 @@
   /* nudge buttons flanking the pulse (− slower / + faster) — the stepper, folded into the center */
   .nbtn {
     position: absolute; top: 0; transform: translate(-50%,-50%);
-    width: 42px; height: 42px; border-radius: 50%; background: var(--btn);
+    width: 50px; height: 50px; border-radius: 50%; background: var(--btn);
     border: 1px solid rgba(255,255,255,.1); color: var(--t2);
-    font-size: 22px; line-height: 1; cursor: pointer; pointer-events: auto;
+    font-size: 26px; line-height: 1; cursor: pointer; pointer-events: auto;
     display: flex; align-items: center; justify-content: center; user-select: none;
     transition: background .12s, border-color .12s, color .12s;
   }
   .nbtn:hover { background: #1e2029; border-color: rgba(var(--accRGB),.55); color: var(--t-hi); }
   .nbtn:active { transform: translate(-50%,-50%) scale(.92); }
-  .nbtn.minus { left: calc(var(--disc) / -2 - 38px); }
-  .nbtn.plus  { left: calc(var(--disc) / 2 + 38px); }
+  .nbtn.minus { left: calc(var(--disc) / -2 - 44px); }
+  .nbtn.plus  { left: calc(var(--disc) / 2 + 44px); }
 
   /* ---- Genre bar ---- */
   .genres {
@@ -85,11 +85,10 @@
     background: rgba(255,255,255,.13); transform: translateY(-50%); pointer-events: none;
   }
   .axis-end {
-    position: absolute; top: calc(var(--axisY) - 24px); font: 500 12px -apple-system, system-ui, sans-serif;
+    position: absolute; top: calc(var(--axisY) - 46px); font: 500 14px -apple-system, system-ui, sans-serif;
     color: var(--dim2); letter-spacing: .3px; pointer-events: none; user-select: none;
   }
-  .axis-end.slower { left: 74px; }
-  .axis-end.faster { right: 74px; }
+  .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
 
   /* colour pulse — a soft bloom that blooms out from the beat UNDER the cards (z-index below columns) */
   .glow { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 1; pointer-events: none; }
@@ -143,29 +142,29 @@
   }
   .column .chip {
     position: absolute; left: 50%; top: 0; transform: translate(-50%,-50%);
-    padding: 6px 12px; border-radius: 10px; background: var(--chip);
+    padding: 7px 14px; border-radius: 12px; background: var(--chip);
     border: 1px solid rgba(255,255,255,.12); font-family: var(--num);
-    font-size: 16px; font-weight: 600; color: var(--t2); white-space: nowrap;
+    font-size: 19px; font-weight: 600; color: var(--t2); white-space: nowrap;
     cursor: pointer; transition: border-color .12s, color .12s;
   }
   .column .chip:hover { border-color: rgba(var(--accRGB),.5); color: var(--t-hi); }
-  .column .chip .d { font-size: 11px; color: #8b909b; }
-  .column .cards { display: flex; flex-direction: column; gap: 10px; padding-top: 28px; }
+  .column .chip .d { font-size: 13px; color: #8b909b; }
+  .column .cards { display: flex; flex-direction: column; gap: 12px; padding-top: 34px; }
 
   .card {
-    height: 56px; background: var(--card); border: 1px solid rgba(255,255,255,.07);
-    border-radius: 11px; padding: 8px 12px; cursor: pointer; overflow: hidden;
+    height: 66px; background: var(--card); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 13px; padding: 10px 15px; cursor: pointer; overflow: hidden;
     transition: border-color .12s, background .12s, transform .12s;
   }
   .card:hover { border-color: rgba(var(--accRGB),.45); background: #171a25; }
   .card:active { transform: scale(.98); }
-  .card .t { font-size: 12.5px; font-weight: 600; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .card .a { font-size: 10.5px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .card .t { font-size: 15px; font-weight: 600; color: var(--t1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .a { font-size: 12.5px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
 
   .more {
-    height: 40px; display: flex; align-items: center; justify-content: center;
-    border: 1px dashed rgba(255,255,255,.16); border-radius: 11px;
-    font-size: 12px; font-weight: 600; color: var(--dim);
+    height: 48px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(255,255,255,.16); border-radius: 13px;
+    font-size: 14px; font-weight: 600; color: var(--dim);
   }
 
   /* center exact-match column — pours out of the beat */
@@ -174,41 +173,41 @@
     margin-left: calc(var(--centerCardW) / -2); z-index: 4;
     transition: left .5s var(--ease); pointer-events: none;
   }
-  #centerCol .cards { display: flex; flex-direction: column; gap: 10px;
-    padding-top: calc(var(--disc) / 2 + 30px); }
+  #centerCol .cards { display: flex; flex-direction: column; gap: 12px;
+    padding-top: calc(var(--disc) / 2 + 34px); }
   #centerCol .clabel {
-    font-size: 11px; font-weight: 600; letter-spacing: .5px; color: var(--dim);
-    text-transform: uppercase; text-align: center; margin-bottom: 2px;
+    font-size: 13px; font-weight: 600; letter-spacing: .5px; color: var(--dim);
+    text-transform: uppercase; text-align: center; margin-bottom: 4px;
   }
-  #centerCol .empty { text-align: center; color: var(--dim2); font-size: 12px; line-height: 1.6; }
+  #centerCol .empty { text-align: center; color: var(--dim2); font-size: 14px; line-height: 1.6; }
   .xcard {
-    height: 56px; border-radius: 12px; display: flex; align-items: center; gap: 11px;
-    padding: 0 13px; cursor: pointer; pointer-events: auto; overflow: hidden;
+    height: 66px; border-radius: 14px; display: flex; align-items: center; gap: 13px;
+    padding: 0 15px; cursor: pointer; pointer-events: auto; overflow: hidden;
     transition: transform .12s, filter .12s;
   }
   .xcard:hover { filter: brightness(1.12); }
   .xcard:active { transform: scale(.98); }
   .xcard .badge {
-    font-family: var(--num); font-size: 15px; font-weight: 700; color: var(--acc);
+    font-family: var(--num); font-size: 18px; font-weight: 700; color: var(--acc);
     line-height: 1; text-align: center; flex: 0 0 auto;
   }
-  .xcard .badge small { display: block; font-size: 8px; font-weight: 600; letter-spacing: 1px; opacity: .85; }
+  .xcard .badge small { display: block; font-size: 9.5px; font-weight: 600; letter-spacing: 1px; opacity: .85; }
   .xcard .meta { flex: 1; min-width: 0; }
-  .xcard .t { font-size: 12.5px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .xcard .a { font-size: 10.5px; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .xcard .t { font-size: 15px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .xcard .a { font-size: 12.5px; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
   .xmore {
-    height: 44px; display: flex; align-items: center; justify-content: center;
-    border: 1px dashed rgba(var(--accRGB),.4); border-radius: 12px;
-    font-size: 12px; font-weight: 600; color: var(--acc); pointer-events: auto; cursor: pointer;
+    height: 52px; display: flex; align-items: center; justify-content: center;
+    border: 1px dashed rgba(var(--accRGB),.4); border-radius: 14px;
+    font-size: 14px; font-weight: 600; color: var(--acc); pointer-events: auto; cursor: pointer;
   }
 
   /* footer hint + attribution */
   .hint {
-    flex: 0 0 auto; text-align: center; font-size: 12px; color: var(--faint);
-    padding: 12px 16px 14px; pointer-events: none;
+    flex: 0 0 auto; text-align: center; font-size: 13px; color: var(--faint);
+    padding: 14px 16px 16px; pointer-events: none;
   }
   .attr {
-    position: absolute; right: 14px; bottom: 10px; font-size: 10.5px; color: var(--dim2); z-index: 6;
+    position: absolute; right: 16px; bottom: 12px; font-size: 12px; color: var(--dim2); z-index: 6;
   }
   .attr a { color: var(--dim); }
 
@@ -293,25 +292,27 @@
   // ---------- geometry (recomputed on resize) ----------
   function computeGeo () {
     const w = field.clientWidth, h = field.clientHeight;
-    const slotW = Math.max(150, Math.min(212, w * 0.17));
-    const disc  = Math.max(108, Math.min(150, Math.min(w * 0.12, h * 0.30)));
-    const cardW = Math.max(118, Math.min(170, slotW - 42));
-    const centerCardW = Math.max(158, Math.min(210, slotW - 10));
-    // move the whole assembly up and vertically centre it in the reclaimed (top-bar-free) space.
-    // side cards start ~28px below the axis; center cards start below the disc + a label.
-    const cap = (avail, top) => Math.floor((avail - top) / 66);
+    const row = 78;                       // card height 66 + gap 12
+    const slotW = Math.max(196, Math.min(272, w * 0.205));
+    const disc  = Math.max(138, Math.min(192, Math.min(w * 0.135, h * 0.34)));
+    const cardW = Math.max(150, Math.min(214, slotW - 46));
+    const centerCardW = Math.max(196, Math.min(256, slotW - 12));
+    // move the whole assembly up and vertically centre it in the reclaimed space.
+    // side cards start ~34px below the axis; center cards start below the disc + a label.
+    const cap = (avail, top) => Math.floor((avail - top) / row);
     let axisY = h * 0.30;
-    let sideCap   = Math.max(2, Math.min(6, cap(h - axisY, 84)));
-    let centerCap = Math.max(2, Math.min(5, cap(h - axisY, disc / 2 + 130)));
-    const blockBelow = Math.max(38 + sideCap * 66, disc / 2 + 52 + centerCap * 66 + 44);
+    let sideCap   = Math.max(2, Math.min(6, cap(h - axisY, 100)));
+    let centerCap = Math.max(2, Math.min(5, cap(h - axisY, disc / 2 + 150)));
+    const blockBelow = Math.max(46 + sideCap * row, disc / 2 + 64 + centerCap * row + 52);
     const free = Math.max(0, h - disc / 2 - blockBelow);   // sit the block slightly above center
-    axisY = Math.round(Math.max(disc / 2 + 22, Math.min(h - 120, free * 0.40 + disc / 2)));
+    axisY = Math.round(Math.max(disc / 2 + 24, Math.min(h - 130, free * 0.40 + disc / 2)));
     const below = h - axisY;
-    sideCap   = Math.max(2, Math.min(6, cap(below, 84)));
-    centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 130)));
+    sideCap   = Math.max(2, Math.min(6, cap(below, 100)));
+    centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 150)));
     geo = {
-      w, h, slotW, disc, cardW, centerCardW, axisY, centerX: w / 2,
-      visN: Math.floor((w / 2) / slotW) + 1,
+      w, h, slotW, disc, cardW, centerCardW, axisY, centerX: w / 2, row,
+      // keep the focus front-and-center: ~2 columns per side (a 3rd only peeks in on wide screens)
+      visN: Math.max(1, Math.min(2, Math.round((w / 2 - disc / 2 - cardW / 2) / slotW))),
       sideCap, centerCap
     };
     const s = stage.style;
@@ -407,7 +408,7 @@
       const t = tempos[i];
       if (t === disp) continue;               // the exact tempo is shown as the green center column
       const d = i - r;                        // rank offset from center
-      if (Math.abs(d) > geo.visN + 0.6) continue;
+      if (Math.abs(d) > geo.visN + 1.3) continue;   // 2 full per side + a faint peek of the next
       seen.add(t);
 
       let col = sideCols.get(t);
