@@ -354,7 +354,10 @@ async function ytDlpPresent() {
 // Returns a slimmed [{title, channel, views}] array, or null on any failure (fail soft).
 async function ytSearch(query) {
   const f = join(CACHE, 'yt-' + createHash('md5').update(query).digest('hex') + '.json');
-  if (existsSync(f)) return JSON.parse(readFileSync(f, 'utf8'));
+  if (existsSync(f)) {
+    const cached = JSON.parse(readFileSync(f, 'utf8'));
+    if (!cached.length || 'id' in cached[0]) return cached;   // old cache (pre-id) → refetch to capture the video id
+  }
   try {
     const { stdout } = await execFileP(
       'yt-dlp',
@@ -362,6 +365,7 @@ async function ytSearch(query) {
       { maxBuffer: 64 * 1024 * 1024 }
     );
     const entries = (JSON.parse(stdout).entries || []).map((e) => ({
+      id: e.id || '',
       title: e.title || '',
       channel: e.channel || e.uploader || '',
       views: e.view_count || 0,
@@ -382,15 +386,15 @@ async function youtubeViews(c) {
   const entries = await ytSearch(`ytsearch${YT_SEARCH_N}:${c.artist} ${c.title}`);
   if (!entries || !entries.length) return null;
   const wantA = norm(c.artist), wantT = norm(c.title);
-  let best = 0;
+  let best = 0, bestId = '';
   for (const e of entries) {
     if (YT_VARIANT_RE.test(e.title)) continue;
     const a = norm(e.channel), t = norm(e.title);
     const artistOk = a.includes(wantA) || wantA.includes(a) || t.includes(wantA);
     const titleOk = t.includes(wantT) || wantT.includes(t);
-    if (artistOk && titleOk && e.views > best) best = e.views;
+    if (artistOk && titleOk && e.views > best) { best = e.views; bestId = e.id || ''; }
   }
-  return best || null;
+  return best ? { views: best, id: bestId } : null;   // canonical video's views + id
 }
 
 // ---- popularity blend (0..100) -----------------------------------------
@@ -469,15 +473,18 @@ async function enrichCandidate(c, overrides) {
     // album cover: Deezer's hotlink URL by default; the ENABLE_COVERS pass (step 3c) rewrites this
     // to a local covers/<md5>.jpg once self-hosted. null when Deezer had no match (front-end -> placeholder).
     cover: enr?.cover ?? null,
+    // canonical YouTube video id for the best-matching upload (from the popularity search) — a
+    // "listen/watch" link + the review tool's full-song embed. https://youtube.com/watch?v=<id>.
+    youtube_id: yt?.id || null,
     // popularity is assigned later by the whole-catalogue percentile pass (it needs every
     // song's signals). The raw signals are held in a SIDE MAP (not on the record), so they
     // can never leak into the shipped file — only the derived 0–100 score ships. See §3/§6.
   };
-  const raw = { youtube: yt || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
-  // review sidecar: the per-source readings the reconcile collapses, plus the Deezer preview clip —
-  // held in a side map (like raw signals) and written to pipeline/generated/review.json for the
-  // curation tool. Never shipped. See .dev/curation-tool.md.
-  const review = { deezer_bpm: dzBpm, gsb_bpm: gsbBpm, ab_bpm: ab, override: ov ?? null, preview: enr?.preview ?? null };
+  const raw = { youtube: yt?.views || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
+  // review sidecar: the per-source readings the reconcile collapses, plus the Deezer preview clip and
+  // the YouTube id (full-song embed) — held in a side map (like raw signals) and written to
+  // pipeline/generated/review.json for the curation tool. Never shipped. See .dev/curation-tool.md.
+  const review = { deezer_bpm: dzBpm, gsb_bpm: gsbBpm, ab_bpm: ab, override: ov ?? null, preview: enr?.preview ?? null, youtube_id: yt?.id || null };
   // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
   // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
   return { record, raw, review, coverId: enr?.cover_id ?? null, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
@@ -728,7 +735,8 @@ async function main() {
       artist: r.artist, title: r.title, genre: r.genre,
       bpm: r.bpm, felt_bpm: felt,
       readings: { deezer: rv.deezer_bpm || 0, gsb: rv.gsb_bpm || 0, ab: rv.ab_bpm || 0 },
-      override: rv.override ?? null, preview: rv.preview ?? null, cover: r.cover ?? null, queue,
+      override: rv.override ?? null, preview: rv.preview ?? null, youtube_id: r.youtube_id ?? null,
+      cover: r.cover ?? null, queue,
     };
   }).sort((a, b) => (b.queue ? 1 : 0) - (a.queue ? 1 : 0) || a.felt_bpm - b.felt_bpm);
   const nQueued = reviewOut.filter((s) => s.queue).length;

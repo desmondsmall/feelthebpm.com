@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REVIEW = join(HERE, 'generated', 'review.json');
 const OVERRIDES = join(HERE, 'inputs', 'bpm_overrides.json');
+const EXCLUDE = join(HERE, 'inputs', 'exclude-review.json');   // review-tool cuts (auto-globbed by build)
 const HTML = join(HERE, 'review.html');
 const COVERS = join(HERE, '..', 'public', 'covers');   // self-hosted art the review UI displays
 const PORT = Number(process.env.PORT) || 5177;
@@ -32,6 +33,20 @@ function saveOverride(artist, title, bpm) {
   doc.overrides[key] = bpm;
   writeFileSync(OVERRIDES, JSON.stringify(doc, null, 2) + '\n');
   return key;
+}
+
+// Add/remove an 'artist|title' from inputs/exclude-review.json (auto-globbed cut list). Creating the
+// file on first use. Same normalize-at-load behaviour as the other exclude*.json files.
+function setExclude(artist, title, add) {
+  const doc = existsSync(EXCLUDE)
+    ? readJson(EXCLUDE)
+    : { _comment: 'Cuts made via the curation review tool (node pipeline/review-server.mjs). Key = artist|title (case/punct normalized at load). Auto-globbed by build.mjs; delete a line to re-include.', exclude: [] };
+  const key = `${artist}|${title}`.toLowerCase();
+  const set = new Set((doc.exclude || []).filter((k) => !k.startsWith('_')));
+  if (add) set.add(key); else set.delete(key);
+  doc.exclude = [...set].sort();
+  writeFileSync(EXCLUDE, JSON.stringify(doc, null, 2) + '\n');
+  return { key, excluded: add };
 }
 
 const server = createServer((req, res) => {
@@ -55,11 +70,21 @@ const server = createServer((req, res) => {
       req.on('data', (d) => (body += d));
       req.on('end', () => {
         try {
-          const { artist, title, bpm } = JSON.parse(body || '{}');
-          if (!artist || !title || !(bpm > 0)) return send(res, 400, JSON.stringify({ error: 'need artist, title, bpm>0' }));
-          const key = saveOverride(artist, title, Math.round(bpm));
-          console.error(`  saved  ${key} = ${Math.round(bpm)}`);
-          send(res, 200, JSON.stringify({ ok: true, key, bpm: Math.round(bpm) }));
+          const d = JSON.parse(body || '{}');
+          const action = d.action || (d.bpm > 0 ? 'felt' : null);   // default: a felt-bpm save
+          if (!d.artist || !d.title) return send(res, 400, JSON.stringify({ error: 'need artist, title' }));
+          if (action === 'felt') {
+            if (!(d.bpm > 0)) return send(res, 400, JSON.stringify({ error: 'felt needs bpm>0' }));
+            const key = saveOverride(d.artist, d.title, Math.round(d.bpm));
+            console.error(`  felt     ${key} = ${Math.round(d.bpm)}`);
+            return send(res, 200, JSON.stringify({ ok: true, action, key, bpm: Math.round(d.bpm) }));
+          }
+          if (action === 'exclude' || action === 'include') {
+            const { key, excluded } = setExclude(d.artist, d.title, action === 'exclude');
+            console.error(`  ${action}${' '.repeat(Math.max(0, 8 - action.length))} ${key}`);
+            return send(res, 200, JSON.stringify({ ok: true, action, key, excluded }));
+          }
+          send(res, 400, JSON.stringify({ error: 'unknown action (felt | exclude | include)' }));
         } catch (e) { send(res, 400, JSON.stringify({ error: String(e) })); }
       });
       return;

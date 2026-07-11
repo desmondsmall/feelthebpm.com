@@ -49,7 +49,13 @@
   .save:hover{filter:brightness(1.08);color:#08160d}
   .ghost{background:transparent}
   #num{width:92px;text-align:center;font:700 17px var(--num);background:#0e1017;color:#fff}
-  audio{width:100%;margin-top:16px;height:38px;filter:invert(.9) hue-rotate(180deg)}
+  .players{margin-top:16px}
+  audio{width:100%;height:38px;filter:invert(.9) hue-rotate(180deg)}
+  .yt{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;margin-top:12px;background:#000}
+  .ytlink{display:inline-block;margin-top:8px;font-size:12px;color:var(--dim)}
+  .ytlink:hover{color:var(--acc)}
+  .danger{border-color:rgba(255,90,90,.4);color:#ff8f8f}
+  .danger:hover{background:rgba(255,80,80,.12);border-color:#ff6b6b;color:#ffb3b3}
   .tap{position:relative}
   .tap .est{position:absolute;top:-19px;left:0;font:600 12px var(--num);color:var(--acc)}
   .foot{display:flex;gap:8px;margin-top:18px}
@@ -70,8 +76,8 @@
 <main id="main"></main>
 <div class="hint">
   <b>space</b> play/pause · <b>T</b> tap tempo · <b>1/2/3</b> use Deezer/GSB/AB · <b>H</b> halve ·
-  <b>D</b> double · <b>S</b> save+next · <b>←/→</b> prev/next. Saves write to
-  <b>bpm_overrides.json</b> — rebuild to apply.
+  <b>D</b> double · <b>S</b> save felt · <b>X</b> remove · <b>←/→</b> prev/next. Felt saves →
+  <b>bpm_overrides.json</b>, removes → <b>exclude-review.json</b> — rebuild to apply.
 </div>
 <div class="toast" id="toast"></div>
 
@@ -120,10 +126,15 @@ function render(){
         </div>
       </div>
     </div>
-    <audio id="au" controls src="${esc(s.preview||'')}"></audio>
+    <div class="players">
+      <audio id="au" controls src="${esc(s.preview||'')}"></audio>
+      ${s.youtube_id ? `<iframe class="yt" src="https://www.youtube.com/embed/${esc(s.youtube_id)}?rel=0&modestbranding=1" allow="encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <a class="ytlink" href="https://www.youtube.com/watch?v=${esc(s.youtube_id)}" target="_blank" rel="noopener">watch on YouTube ↗</a>` : ''}
+    </div>
     <div class="foot">
       <button class="ghost" data-prev>← prev</button>
-      <button class="save" data-save>Save + next <span class="kbd">S</span></button>
+      <button class="save" data-save>Save felt + next <span class="kbd">S</span></button>
+      <button class="danger" data-exclude>Remove ✕ <span class="kbd">X</span></button>
       <button class="ghost" data-skip>skip →</button>
     </div>`;
   const au=$('#au'); if(au && s.preview) au.play().catch(()=>{});
@@ -133,6 +144,7 @@ function render(){
   $('#tapBtn').addEventListener('click',tap);
   $('#num').addEventListener('input',e=>{ const v=+e.target.value; if(v>0){pending=Math.round(v); $('#val').textContent=pending;} });
   $('[data-save]').addEventListener('click',save);
+  $('[data-exclude]').addEventListener('click',excludeSong);
   $('[data-skip]').addEventListener('click',()=>{ i++; render(); });
   $('[data-prev]').addEventListener('click',()=>{ if(i>0){i--; render();} });
 }
@@ -147,14 +159,17 @@ function tap(){
   } else $('#est').textContent='tap…';
 }
 
+function post(payload,ok){
+  fetch('/decide',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(r=>r.json()).then(res=>{ res.ok?ok(res):toast('error: '+(res.error||'?')); }).catch(()=>toast('request failed'));
+}
 function save(){
   const s=queue[i]; if(!s) return;
-  fetch('/decide',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({artist:s.artist,title:s.title,bpm:pending})})
-    .then(r=>r.json()).then(res=>{
-      if(res.ok){ decided.set(key(s),pending); toast(`saved ${pending}`); i++; render(); }
-      else toast('error: '+(res.error||'?'));
-    }).catch(()=>toast('save failed'));
+  post({action:'felt',artist:s.artist,title:s.title,bpm:pending},()=>{ decided.set(key(s),pending); toast(`felt ${pending} saved`); i++; render(); });
+}
+function excludeSong(){
+  const s=queue[i]; if(!s) return;
+  post({action:'exclude',artist:s.artist,title:s.title},()=>{ toast('removed — will drop next build'); i++; render(); });
 }
 
 document.addEventListener('keydown',e=>{
@@ -165,6 +180,7 @@ document.addEventListener('keydown',e=>{
   else if(k==='h'){ setPending(pending/2); }
   else if(k==='d'){ setPending(pending*2); }
   else if(k==='s'||k==='enter'){ e.preventDefault(); save(); }
+  else if(k==='x'){ e.preventDefault(); excludeSong(); }
   else if(k==='arrowright'){ i=Math.min(queue.length,i+1); render(); }
   else if(k==='arrowleft'){ if(i>0){ i--; render(); } }
   else if(k==='1'||k==='2'||k==='3'){ const src={1:'deezer',2:'gsb',3:'ab'}[k]; const b=queue[i]?.readings?.[src]; if(b>0) setPending(b); }
