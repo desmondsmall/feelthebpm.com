@@ -216,6 +216,7 @@ async function deezerEnrich(c) {
     // songs sharing an album share one file. Both come free in the /track response we already fetch.
     cover: track.album?.cover_big || null,
     cover_id: track.album?.md5_image || null,
+    preview: track.preview || null,   // 30s MP3 clip — powers the review tool's listen+tap
   };
 }
 
@@ -473,9 +474,13 @@ async function enrichCandidate(c, overrides) {
     // can never leak into the shipped file — only the derived 0–100 score ships. See §3/§6.
   };
   const raw = { youtube: yt || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
+  // review sidecar: the per-source readings the reconcile collapses, plus the Deezer preview clip —
+  // held in a side map (like raw signals) and written to pipeline/generated/review.json for the
+  // curation tool. Never shipped. See .dev/curation-tool.md.
+  const review = { deezer_bpm: dzBpm, gsb_bpm: gsbBpm, ab_bpm: ab, override: ov ?? null, preview: enr?.preview ?? null };
   // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
   // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
-  return { record, raw, coverId: enr?.cover_id ?? null, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
+  return { record, raw, review, coverId: enr?.cover_id ?? null, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
 }
 
 // Load bpm_overrides.json into a normalized { "norm-artist|norm-title": bpm } map.
@@ -601,6 +606,9 @@ async function main() {
   // record -> { youtube, rank, songsterr }: raw popularity signals kept OFF the shipped record,
   // consumed by the percentile blend (step 3b) and the dedup tie-break (step 3). Never written.
   const rawSignals = new Map();
+  // record -> { deezer_bpm, gsb_bpm, ab_bpm, override, preview }: per-source tempo readings + the
+  // preview clip, written to review.json for the curation tool (never shipped). See enrichCandidate.
+  const reviewData = new Map();
   // record -> md5_image: the self-host cover filename key, kept OFF the shipped record (see
   // enrichCandidate). Consumed only by the ENABLE_COVERS download pass (step 3c).
   const coverIds = new Map();
@@ -618,6 +626,7 @@ async function main() {
     } else {
       out.push(enriched.record);
       rawSignals.set(enriched.record, enriched.raw);
+      reviewData.set(enriched.record, enriched.review);
       coverIds.set(enriched.record, enriched.coverId);
       if (enriched.yearSource === 'musicbrainz') yearFromMB++;
       else if (enriched.yearSource === 'deezer') yearFromDeezer++;
@@ -707,6 +716,24 @@ async function main() {
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
   writeFileSync(join(GENERATED, 'gaps.json'), JSON.stringify(gaps, null, 2));
+  // review sidecar for the curation tool (.dev/curation-tool.md): per-song source readings + the
+  // Deezer preview clip, plus a `queue` flag marking songs a human should confirm by ear. Gitignored
+  // (regenerable per build; carries preview URLs). felt≥140 → suspected double-time; ≤66 → half-time;
+  // already-hand-overridden songs are considered decided and not queued.
+  const reviewOut = deduped.map((r) => {
+    const rv = reviewData.get(r) || {};
+    const felt = r.felt_bpm;
+    const queue = rv.override != null ? null : felt >= 140 ? 'high' : felt <= 66 ? 'low' : null;
+    return {
+      artist: r.artist, title: r.title, genre: r.genre,
+      bpm: r.bpm, felt_bpm: felt,
+      readings: { deezer: rv.deezer_bpm || 0, gsb: rv.gsb_bpm || 0, ab: rv.ab_bpm || 0 },
+      override: rv.override ?? null, preview: rv.preview ?? null, cover: r.cover ?? null, queue,
+    };
+  }).sort((a, b) => (b.queue ? 1 : 0) - (a.queue ? 1 : 0) || a.felt_bpm - b.felt_bpm);
+  const nQueued = reviewOut.filter((s) => s.queue).length;
+  writeFileSync(join(GENERATED, 'review.json'),
+    JSON.stringify({ generated: new Date().toISOString().slice(0, 10), count: reviewOut.length, queued: nQueued, songs: reviewOut }, null, 2) + '\n');
   // build manifest: provenance git can't infer from songs.json alone (how it was produced).
   // Ships in public/ so it deploys with the data and can double as a version stamp.
   const ytCovered = deduped.filter((s) => rawSignals.get(s).youtube > 0).length;
@@ -734,6 +761,7 @@ async function main() {
   console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
   console.error(`Done. ${deduped.length} songs -> songs.json`);
   console.error(`${gaps.length} BPM gaps -> pipeline/generated/gaps.json (add to bpm_overrides.json)`);
+  console.error(`Review queue: ${nQueued} song(s) to confirm by ear -> pipeline/generated/review.json (node pipeline/review-server.mjs)`);
 }
 
 // Reusable pieces for sibling tools (e.g. pipeline/tools/eval-gsb.mjs) — exported so the eval

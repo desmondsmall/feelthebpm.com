@@ -11,6 +11,9 @@ pipeline/cache/
 pipeline/raw/
 
 # GSB evaluation raw data (regenerable — re-run pipeline/eval-gsb.mjs to refresh).
-# The human-readable report (.dev/reference/gsb-eval.md) is a tracked doc; only the
+# The human-readable report (.dev/gsb-eval.md) is a tracked doc; only the
 # large raw rows are ignored.
 .dev/gsb-eval.json
+
+# curation-tool review sidecar (regenerable per build; carries Deezer preview URLs)
+pipeline/generated/review.json
