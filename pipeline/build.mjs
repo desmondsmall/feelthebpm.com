@@ -33,7 +33,8 @@ const COVERS = join(SITE, 'covers');
 const ENABLE_COVERS = process.env.ENABLE_COVERS === '1';
 
 // ---- tunables ----------------------------------------------------------
-const SONGS_PER_ARTIST = 6;        // top-N popular songs kept per Songsterr artist
+const SONGS_PER_ARTIST = 6;        // top-N popular songs kept per Songsterr artist (discovery scrape)
+const SONGS_PER_ARTIST_FINAL = 3;  // hard cap per artist on the ASSEMBLED list (extra_songs/UG bypass the discovery cap)
 const SONGSTERR_PAGE = 40;         // Songsterr /api/songs hits to scan per artist
 const DEEZER_SEARCH_LIMIT = 5;     // Deezer search hits to consider when matching
 const MB_SEARCH_LIMIT = 25;        // MusicBrainz recordings to scan for the earliest year
@@ -441,26 +442,26 @@ async function enrichCandidate(c, overrides) {
   // the handful of BPM-less gaps.
   const mb = await musicbrainzYear(c);
   const ov = overrides[key(c.artist, c.title)];
-  let bpm = 0, gsbYear = null;
-  if (ov) {
-    bpm = ov;                                  // hand-curated tempo wins outright
-  } else {
-    // Reconcile the automated readings into the felt tempo. Deezer AND GetSongBPM are now consulted
-    // for EVERY song (not just Deezer gaps) so the rule always has ≥2 votes; AcousticBrainz joins as
-    // an independent third when ENABLE_ACOUSTICBRAINZ. See reconcileBpm / .dev/reference/gsb-eval.md.
-    const gsb = await getsongbpmEnrich(c);
-    gsbYear = gsb?.year ?? null;
-    const ab = await acousticbrainzBpm(mb.mbids);
-    bpm = reconcileBpm([enr?.bpm || 0, gsb?.bpm || 0, ab]);
-  }
-  if (!bpm) return null; // no trustworthy tempo from any source -> gap (quality over quantity)
+  // Two tempos per song: `technical` = the raw detector reading (honest, may be a 2× artifact);
+  // `felt` = the human-tapped tempo the UI shows. A hand override wins felt outright; otherwise the
+  // felt octave comes from reconcileBpm over Deezer+GSB (+ an independent AcousticBrainz vote when
+  // ENABLE_ACOUSTICBRAINZ). Deezer AND GetSongBPM are consulted for EVERY song so the rule always has
+  // ≥2 votes. See reconcileBpm / .dev/gsb-eval.md. (Skip the GSB/AB calls when an override already wins.)
+  const gsb = ov ? null : await getsongbpmEnrich(c);
+  const gsbYear = gsb?.year ?? null;
+  const ab = ov ? 0 : await acousticbrainzBpm(mb.mbids);
+  const dzBpm = enr?.bpm || 0, gsbBpm = gsb?.bpm || 0;
+  const technical = dzBpm || gsbBpm || ab || ov || 0;
+  const felt = ov || reconcileBpm([dzBpm, gsbBpm, ab]);
+  if (!felt) return null; // no trustworthy tempo from any source -> gap (quality over quantity)
   // YouTube view breadth — only for kept songs (skip wasted yt-dlp calls on gaps).
   const yt = await youtubeViews(c);
   const fallbackYear = enr?.year ?? gsbYear ?? null;
   const record = {
     artist: c.artist,
     title: c.title,
-    bpm,
+    bpm: technical || felt,   // honest raw detector reading (technical)
+    felt_bpm: felt,           // the tapped tempo the UI shows — not a 2× artifact
     genre: c.genre,
     year: mb.year ?? fallbackYear,
     isrc: enr?.isrc ?? null,
@@ -646,8 +647,27 @@ async function main() {
     const keep = morePopularRaw(r, prev);
     if (keep !== prev) byDup.set(k, keep);
   }
-  const deduped = [...byDup.values()];
+  let deduped = [...byDup.values()];
   const nDropped = out.length - deduped.length;
+
+  // 3a. per-artist cap: keep at most SONGS_PER_ARTIST_FINAL of each artist's songs, ranked by the same
+  // raw-signal popularity used for dedup (the 0–100 score isn't computed until 3b). Trims catalogue
+  // bloat (e.g. six Rage Against the Machine entries) to the recognizable few. extra_songs / UG bypass
+  // the discovery-time cap, so this is the only place the ASSEMBLED list is bounded per artist.
+  const rawRank = (a, b) => {   // descending: more-popular first
+    const ra = rawSignals.get(a), rb = rawSignals.get(b);
+    return (rb.youtube - ra.youtube) || (rb.rank - ra.rank) || (rb.songsterr - ra.songsterr) || (a.title.length - b.title.length);
+  };
+  const perArtist = new Map();
+  for (const r of deduped) { const a = norm(r.artist); if (!perArtist.has(a)) perArtist.set(a, []); perArtist.get(a).push(r); }
+  let nCapped = 0;
+  const capped = [];
+  for (const list of perArtist.values()) {
+    list.sort(rawRank);
+    capped.push(...list.slice(0, SONGS_PER_ARTIST_FINAL));
+    nCapped += Math.max(0, list.length - SONGS_PER_ARTIST_FINAL);
+  }
+  deduped = capped;
 
   // 3b. popularity: percentile-ranked, breadth-weighted blend over the FULL surviving set
   // (needs every song's signals, so it runs here, not per-song). Raw signals stay in rawSignals
@@ -682,7 +702,7 @@ async function main() {
     console.error(`Covers: ${coversSaved} self-hosted -> public/covers/ (rest keep Deezer hotlink URLs).`);
   }
 
-  deduped.sort((a, b) => a.bpm - b.bpm || b.popularity - a.popularity);
+  deduped.sort((a, b) => a.felt_bpm - b.felt_bpm || b.popularity - a.popularity);
   writeFileSync(join(SITE, 'songs.json'), JSON.stringify(deduped, null, 2));
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
@@ -709,6 +729,7 @@ async function main() {
   );
   console.error(`YouTube coverage: ${ytCovered}/${deduped.length} songs have a view count (${YT_ON ? 'enabled' : 'dormant'}).`);
   console.error(`Deduped ${nDropped} arrangement variant(s).`);
+  console.error(`Capped ${nCapped} song(s) over ${SONGS_PER_ARTIST_FINAL}/artist.`);
   console.error(`Excluded ${excluded.length} multi-tempo song(s) via exclude.json: ${excluded.join(', ') || '(none matched)'}`);
   console.error(`Year source: ${yearFromMB} from MusicBrainz (original release), ${yearFromDeezer} from Deezer fallback.`);
   console.error(`Done. ${deduped.length} songs -> songs.json`);

@@ -1,0 +1,25 @@
+{
+  "_comment": "RECOGNIZABILITY prune — album cuts / deep tracks by famous artists that fail the 'everyone knows it' test as a tap-your-foot anchor. Hand-flagged in a data-quality review (2026-07). Same rationale as exclude-obscure.json (recognizability, NOT popularity score); split into its own file only so the review batch stays reviewable. Key = 'artist|title' (case/punctuation normalized at load). Delete a line to re-include. Auto-globbed by build.mjs (^exclude.*\\.json$).",
+  "exclude": [
+    "Toto|Jake To The Bone",
+    "Toto|Georgy Porgy",
+    "Aerosmith|Mama Kin",
+    "Aerosmith|Eat The Rich",
+    "Eric Johnson|Cliffs Of Dover",
+    "Eric Clapton|Old Love",
+    "Fall Out Boy|I Slept With Someone In Fall Out Boy And All I Got Was This Stupid Song Written About Me",
+    "The Killers|Jenny Was A Friend Of Mine",
+    "Blink-182|Carousel",
+    "Lamb of God|Laid To Rest",
+    "My Chemical Romance|Demolition Lovers",
+    "Pixies|All I Think About Now",
+    "Dire Straits|Telegraph Road",
+    "Dire Straits|Lady Writer",
+    "Led Zeppelin|The Rain Song",
+    "Lynyrd Skynyrd|I Need You",
+    "Kings of Leon|Molly's Chambers",
+    "Oasis|Married With Children",
+    "Weezer|Go Away",
+    "Ed Sheeran|Blow"
+  ]
+}

@@ -3,1976 +3,1525 @@
     "artist": "Linkin Park",
     "title": "Numb",
     "bpm": 56,
+    "felt_bpm": 56,
     "genre": "rock",
     "year": 2003,
     "isrc": "USWB10300474",
     "cover": "covers/882448ab63952aa16e502c82db2df160.jpg",
-    "popularity": 77
-  },
-  {
-    "artist": "My Chemical Romance",
-    "title": "Demolition Lovers",
-    "bpm": 59,
-    "genre": "rock",
-    "year": 2002,
-    "isrc": "US5660602211",
-    "cover": "covers/dafef999cc8651971389bedbd79643b8.jpg",
-    "popularity": 15
+    "popularity": 75
   },
   {
     "artist": "Pink Floyd",
     "title": "Comfortably Numb",
-    "bpm": 64,
+    "bpm": 127,
+    "felt_bpm": 64,
     "genre": "rock",
     "year": 1988,
     "isrc": "GBN9Y1100113",
     "cover": "covers/2bea643b92a8fc6b19a23756f718cbd4.jpg",
-    "popularity": 69
-  },
-  {
-    "artist": "Eric Clapton",
-    "title": "Old Love",
-    "bpm": 66,
-    "genre": "rock",
-    "year": 1993,
-    "isrc": "USRE11300323",
-    "cover": "covers/d260fbfe4ead225d9e91b3763bdf4a17.jpg",
-    "popularity": 11
+    "popularity": 60
   },
   {
     "artist": "Metallica",
     "title": "Nothing Else Matters",
-    "bpm": 70,
+    "bpm": 143,
+    "felt_bpm": 70,
     "genre": "metal",
     "year": 1993,
     "isrc": "USEE10001999",
     "cover": "covers/c67cda92f863a089d7dfeedf48be191e.jpg",
-    "popularity": 78
+    "popularity": 76
   },
   {
     "artist": "Metallica",
     "title": "The Unforgiven",
-    "bpm": 70,
+    "bpm": 139,
+    "felt_bpm": 70,
     "genre": "rock",
     "year": 1992,
     "isrc": "USEE10001995",
     "cover": "covers/c67cda92f863a089d7dfeedf48be191e.jpg",
-    "popularity": 54
+    "popularity": 48
   },
   {
     "artist": "The Beatles",
     "title": "Let It Be",
-    "bpm": 72,
+    "bpm": 138,
+    "felt_bpm": 72,
     "genre": "rock",
     "year": 1980,
     "isrc": "GBAYE0601713",
     "cover": "covers/fcf05300b7c17ec77a6d01028a4bef61.jpg",
-    "popularity": 64
-  },
-  {
-    "artist": "Foo Fighters",
-    "title": "Times Like These",
-    "bpm": 72,
-    "genre": "rock",
-    "year": 2003,
-    "isrc": "USRW30200005",
-    "cover": "covers/106f595f32552192b5af96fde11317c1.jpg",
-    "popularity": 37
+    "popularity": 54
   },
   {
     "artist": "Radiohead",
     "title": "No Surprises",
     "bpm": 74,
+    "felt_bpm": 74,
     "genre": "alternative",
     "year": 1997,
     "isrc": "GBAYE9700386",
     "cover": "covers/7a378976d3ff1b1fd7b21ee0c7f95fa5.jpg",
-    "popularity": 72
+    "popularity": 63
   },
   {
     "artist": "Bob Marley",
     "title": "Three Little Birds",
-    "bpm": 74,
+    "bpm": 148,
+    "felt_bpm": 74,
     "genre": "reggae",
     "year": 1977,
     "isrc": "USIR27700016",
     "cover": "covers/c43e3b1d83e0107dfff7e4238096fe5b.jpg",
-    "popularity": 59
-  },
-  {
-    "artist": "Bon Jovi",
-    "title": "Wanted Dead Or Alive",
-    "bpm": 74,
-    "genre": "rock",
-    "year": 1988,
-    "isrc": "USPR39402222",
-    "cover": "covers/f513327c13908b0def56f1fa0ca79789.jpg",
-    "popularity": 59
+    "popularity": 50
   },
   {
     "artist": "Radiohead",
     "title": "Karma Police",
-    "bpm": 74,
+    "bpm": 151,
+    "felt_bpm": 74,
     "genre": "alternative",
     "year": 1997,
     "isrc": "GBAYE9701368",
     "cover": "covers/05a186e0a859a36f9cd51cdae2158fe1.jpg",
-    "popularity": 55
-  },
-  {
-    "artist": "Radiohead",
-    "title": "Fake Plastic Trees",
-    "bpm": 74,
-    "genre": "alternative",
-    "year": 1995,
-    "isrc": "GBAYE9400056",
-    "cover": "covers/0d2ccaf5f7b35af57f3d9c8f4504a6e6.jpg",
     "popularity": 44
   },
   {
     "artist": "Lynyrd Skynyrd",
     "title": "Tuesday's Gone",
-    "bpm": 74,
+    "bpm": 146,
+    "felt_bpm": 74,
     "genre": "rock",
     "year": 1973,
     "isrc": "USMC17347089",
     "cover": "covers/64e01d54ee2590fa5d3c2d1e2a3e3725.jpg",
-    "popularity": 18
+    "popularity": 11
   },
   {
     "artist": "Eagles",
     "title": "Hotel California",
-    "bpm": 75,
+    "bpm": 147,
+    "felt_bpm": 75,
     "genre": "rock",
     "year": 1993,
     "isrc": "USEE11300353",
     "cover": "covers/7a6c7b49cfdaf4ee233f66c3070d2f40.jpg",
-    "popularity": 79
-  },
-  {
-    "artist": "Rage Against the Machine",
-    "title": "Bombtrack",
-    "bpm": 75,
-    "genre": "rock",
-    "year": 1991,
-    "isrc": "USSM11205432",
-    "cover": "covers/73a4d0cb2f3ec27583b9e0bc724b50c7.jpg",
-    "popularity": 20
+    "popularity": 74
   },
   {
     "artist": "No Doubt",
     "title": "Don't Speak",
-    "bpm": 76,
+    "bpm": 152,
+    "felt_bpm": 76,
     "genre": "rock",
     "year": 1995,
     "isrc": "USIR19500279",
     "cover": "covers/97b81fddd1fa280adb7ebc41c5a255e6.jpg",
-    "popularity": 79
+    "popularity": 76
   },
   {
     "artist": "Ed Sheeran",
     "title": "I See Fire",
     "bpm": 76,
+    "felt_bpm": 76,
     "genre": "pop",
     "year": 2013,
     "isrc": "USNLR1300700",
     "cover": "covers/9c820c446ce09f461ec99f34aef7c8a2.jpg",
-    "popularity": 68
+    "popularity": 60
   },
   {
     "artist": "Weezer",
     "title": "Say It Ain't So",
     "bpm": 76,
+    "felt_bpm": 76,
     "genre": "rock",
     "year": 1995,
     "isrc": "USGF19962907",
     "cover": "covers/638ad930e4f20376e8a2851d9c41be00.jpg",
-    "popularity": 52
-  },
-  {
-    "artist": "Fleetwood Mac",
-    "title": "The Chain",
-    "bpm": 76,
-    "genre": "rock",
-    "year": 1977,
-    "isrc": "USWB10400053",
-    "cover": "covers/9732751ce91d786dcf30069853697078.jpg",
-    "popularity": 49
-  },
-  {
-    "artist": "Pearl Jam",
-    "title": "Alive",
-    "bpm": 76,
-    "genre": "grunge",
-    "year": 1992,
-    "isrc": "USSM19100003",
-    "cover": "covers/00ee8c40862fb4e258fcbeaa17d7199e.jpg",
-    "popularity": 48
-  },
-  {
-    "artist": "Bob Marley",
-    "title": "One Love",
-    "bpm": 76,
-    "genre": "reggae",
-    "year": 1978,
-    "isrc": "GBAAN7790002",
-    "cover": "covers/c43e3b1d83e0107dfff7e4238096fe5b.jpg",
-    "popularity": 28
-  },
-  {
-    "artist": "Green Day",
-    "title": "Brain Stew",
-    "bpm": 76,
-    "genre": "punk",
-    "year": 1995,
-    "isrc": "USRE19500211",
-    "cover": "covers/99f91f6f65dc1904065f19e611aa4bee.jpg",
-    "popularity": 28
+    "popularity": 41
   },
   {
     "artist": "Pearl Jam",
     "title": "Black",
-    "bpm": 77,
+    "bpm": 153,
+    "felt_bpm": 77,
     "genre": "grunge",
     "year": 1992,
     "isrc": "USSM19100412",
     "cover": "covers/00ee8c40862fb4e258fcbeaa17d7199e.jpg",
-    "popularity": 59
+    "popularity": 49
   },
   {
     "artist": "Black Sabbath",
     "title": "Iron Man",
-    "bpm": 77,
+    "bpm": 154,
+    "felt_bpm": 77,
     "genre": "metal",
     "year": 1974,
     "isrc": "GBAJE7000085",
     "cover": "covers/e85b785588bea93fce9e4672c07d57c7.jpg",
-    "popularity": 27
-  },
-  {
-    "artist": "Bill Withers",
-    "title": "Use Me",
-    "bpm": 77,
-    "genre": "soul",
-    "year": 1972,
-    "isrc": "USSM10207818",
-    "cover": "covers/a21685522410a1b07d544a79ca4e4b7a.jpg",
-    "popularity": 11
+    "popularity": 17
   },
   {
     "artist": "Avril Lavigne",
     "title": "Complicated",
-    "bpm": 78,
+    "bpm": 156,
+    "felt_bpm": 78,
     "genre": "pop",
     "year": 2002,
     "isrc": "USAR10200223",
     "cover": "covers/1130d6301d5e87976279ea2f706fcc26.jpg",
-    "popularity": 74
+    "popularity": 68
   },
   {
     "artist": "Aerosmith",
     "title": "Dream On",
     "bpm": 78,
+    "felt_bpm": 78,
     "genre": "rock",
     "year": 1990,
     "isrc": "USSM10011897",
     "cover": "covers/394ba7ecd87e1fc148ceba031a806e8f.jpg",
-    "popularity": 68
+    "popularity": 60
   },
   {
     "artist": "Bill Withers",
     "title": "Ain't No Sunshine",
-    "bpm": 78,
+    "bpm": 160,
+    "felt_bpm": 78,
     "genre": "soul",
     "year": 1971,
     "isrc": "USSM10000372",
     "cover": "covers/0a582ace7dda823714f8eaaa74ab9505.jpg",
-    "popularity": 50
-  },
-  {
-    "artist": "Led Zeppelin",
-    "title": "The Rain Song",
-    "bpm": 78,
-    "genre": "rock",
-    "year": 1989,
-    "isrc": "USAT21300891",
-    "cover": "covers/87df66f7805c5bd5fdf353def5c3425f.jpg",
-    "popularity": 13
-  },
-  {
-    "artist": "The White Stripes",
-    "title": "Dead Leaves And The Dirty Ground",
-    "bpm": 78,
-    "genre": "rock",
-    "year": 2001,
-    "isrc": "GBBKS0100349",
-    "cover": "covers/aaab9b09e238e498268b07890cd2d91c.jpg",
-    "popularity": 11
+    "popularity": 39
   },
   {
     "artist": "Dire Straits",
     "title": "Brothers In Arms",
     "bpm": 79,
+    "felt_bpm": 79,
     "genre": "rock",
     "year": 1985,
     "isrc": "GBF088500681",
     "cover": "covers/0aeeab7a9ef9dcc03e3c6490f9bf822d.jpg",
-    "popularity": 60
-  },
-  {
-    "artist": "Nirvana",
-    "title": "In Bloom",
-    "bpm": 79,
-    "genre": "grunge",
-    "year": 1993,
-    "isrc": "USGF19942502",
-    "cover": "covers/10e6b28ed3ec7c157844b3187d0ac2f4.jpg",
-    "popularity": 49
+    "popularity": 50
   },
   {
     "artist": "Coolio",
     "title": "Gangsta's Paradise",
-    "bpm": 80,
+    "bpm": 160,
+    "felt_bpm": 80,
     "genre": "hip-hop",
     "year": 1995,
     "isrc": "USTB10400128",
     "cover": "covers/a123b2c32996a8c8664a82cb4219ce0c.jpg",
-    "popularity": 88
-  },
-  {
-    "artist": "Eminem",
-    "title": "Stan",
-    "bpm": 80,
-    "genre": "hip-hop",
-    "year": 2000,
-    "isrc": "USIR10001280",
-    "cover": "covers/e2b36a9fda865cb2e9ed1476b6291a7d.jpg",
-    "popularity": 77
-  },
-  {
-    "artist": "Bon Jovi",
-    "title": "Bed Of Roses",
-    "bpm": 80,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "USPG19290093",
-    "cover": "covers/4a2821c5cfa61955ddd982c15cc21882.jpg",
-    "popularity": 70
-  },
-  {
-    "artist": "Green Day",
-    "title": "21 Guns",
-    "bpm": 80,
-    "genre": "rock",
-    "year": 2009,
-    "isrc": "USRE10900679",
-    "cover": "covers/ebd6fc49c3c87cbd5441424f151c04f2.jpg",
-    "popularity": 65
+    "popularity": 87
   },
   {
     "artist": "Eric Clapton",
     "title": "Tears In Heaven",
     "bpm": 80,
+    "felt_bpm": 80,
     "genre": "rock",
     "year": 1992,
     "isrc": "USRE11300314",
     "cover": "covers/9e15b1190ae6d8ca6a90beb8b5817e2f.jpg",
-    "popularity": 50
-  },
-  {
-    "artist": "David Bowie",
-    "title": "Ziggy Stardust",
-    "bpm": 80,
-    "genre": "rock",
-    "year": 1990,
-    "isrc": "USJT11200009",
-    "cover": "covers/23bdeda0503dec55e7ba6a9f56d0c3c2.jpg",
-    "popularity": 24
+    "popularity": 37
   },
   {
     "artist": "Queen",
     "title": "We Will Rock You",
     "bpm": 81,
+    "felt_bpm": 81,
     "genre": "rock",
     "year": 1979,
     "isrc": "GBUM71029618",
     "cover": "covers/780b4f2e2ed49cafc20e88c029062c2c.jpg",
-    "popularity": 66
-  },
-  {
-    "artist": "Green Day",
-    "title": "Boulevard Of Broken Dreams",
-    "bpm": 82,
-    "genre": "rock",
-    "year": 2004,
-    "isrc": "USRE10401426",
-    "cover": "covers/4a2497e819405074b107b3bce1d95cf9.jpg",
-    "popularity": 78
+    "popularity": 61
   },
   {
     "artist": "Oasis",
     "title": "Don't Look Back In Anger",
     "bpm": 82,
+    "felt_bpm": 82,
     "genre": "rock",
     "year": 1995,
     "isrc": "GBAAW9500190",
     "cover": "covers/c4368c79bbe5c88b38b5c2a2527c51e5.jpg",
-    "popularity": 72
+    "popularity": 64
   },
   {
     "artist": "Wham!",
     "title": "Wake Me Up Before You Go-Go",
     "bpm": 82,
+    "felt_bpm": 82,
     "genre": "pop",
     "year": 1984,
     "isrc": "GBBBN0009712",
     "cover": "covers/3c1858a4aa5d732a60c8cfcf424f24ef.jpg",
-    "popularity": 71
-  },
-  {
-    "artist": "Gorillaz",
-    "title": "Clint Eastwood",
-    "bpm": 83,
-    "genre": "rock",
-    "year": 2000,
-    "isrc": "GBAYE0001408",
-    "cover": "covers/f4d581f4b86c869547704d7db9aa2c43.jpg",
-    "popularity": 79
+    "popularity": 64
   },
   {
     "artist": "John Denver",
     "title": "Take Me Home, Country Roads",
-    "bpm": 83,
+    "bpm": 164,
+    "felt_bpm": 83,
     "genre": "country",
     "year": 1971,
     "isrc": "USRC11100481",
     "cover": "covers/31383f3d2c444ca382c19c1def301e95.jpg",
-    "popularity": 69
-  },
-  {
-    "artist": "The Beatles",
-    "title": "Come Together",
-    "bpm": 83,
-    "genre": "rock",
-    "year": 1969,
-    "isrc": "GBAYE0601690",
-    "cover": "covers/aa94ab293730bb7845d2aa8c672b2c29.jpg",
-    "popularity": 58
-  },
-  {
-    "artist": "Rage Against the Machine",
-    "title": "Bulls On Parade",
-    "bpm": 83,
-    "genre": "rock",
-    "year": 1996,
-    "isrc": "USSM19502563",
-    "cover": "covers/bd78622abc0f6f8ef811b4c99fc4fcb1.jpg",
-    "popularity": 45
-  },
-  {
-    "artist": "Tom Petty",
-    "title": "Free Fallin'",
-    "bpm": 83,
-    "genre": "rock",
-    "year": 1989,
-    "isrc": "USMC18925673",
-    "cover": "covers/6e9c12e4095a8642b8d5ccfa25087e4b.jpg",
-    "popularity": 43
+    "popularity": 62
   },
   {
     "artist": "The Cranberries",
     "title": "Zombie",
     "bpm": 84,
+    "felt_bpm": 84,
     "genre": "rock",
     "year": 1994,
     "isrc": "USIR29400443",
     "cover": "covers/4435d836a439cada70b6e968ca498320.jpg",
-    "popularity": 78
-  },
-  {
-    "artist": "Jimi Hendrix",
-    "title": "Hey Joe",
-    "bpm": 84,
-    "genre": "rock",
-    "year": 1978,
-    "isrc": "USQX90900767",
-    "cover": "covers/b83888148da4c3978b9c3870d8cb3166.jpg",
-    "popularity": 33
+    "popularity": 75
   },
   {
     "artist": "Nas",
     "title": "N.Y. State of Mind",
     "bpm": 84,
+    "felt_bpm": 84,
     "genre": "hip-hop",
     "year": 1994,
     "isrc": "USSM10017351",
     "cover": "covers/4c2dc31af4f87864afcdb6ab599c7960.jpg",
-    "popularity": 26
+    "popularity": 14
   },
   {
     "artist": "Arctic Monkeys",
     "title": "Do I Wanna Know?",
     "bpm": 85,
+    "felt_bpm": 85,
     "genre": "indie",
     "year": 2013,
     "isrc": "GBCEL1300362",
     "cover": "covers/64e54e307bd5e2bdb27ffeb662fd910d.jpg",
-    "popularity": 95
+    "popularity": 94
   },
   {
     "artist": "Marvin Gaye",
     "title": "Let's Get It On",
-    "bpm": 85,
+    "bpm": 168,
+    "felt_bpm": 85,
     "genre": "soul",
     "year": 1974,
     "isrc": "USMO17300037",
     "cover": "covers/e8bf5369b0d4a9211e209952ff903265.jpg",
-    "popularity": 36
-  },
-  {
-    "artist": "Rage Against the Machine",
-    "title": "Wake Up",
-    "bpm": 85,
-    "genre": "rock",
-    "year": 1993,
-    "isrc": "USSM19200665",
-    "cover": "covers/a3a5690b75d3b43e3b676d7e33ccb111.jpg",
-    "popularity": 19
+    "popularity": 25
   },
   {
     "artist": "Alanis Morissette",
     "title": "Ironic",
-    "bpm": 86,
+    "bpm": 171,
+    "felt_bpm": 86,
     "genre": "rock",
     "year": 1995,
     "isrc": "USMV20500296",
     "cover": "covers/191593fa5b96cd100998796195095c8f.jpg",
-    "popularity": 56
-  },
-  {
-    "artist": "Michael Jackson",
-    "title": "Give In To Me",
-    "bpm": 86,
-    "genre": "pop",
-    "year": 1991,
-    "isrc": "USSM10024729",
-    "cover": "covers/93a5354699d552666448e1c87c976605.jpg",
-    "popularity": 56
+    "popularity": 47
   },
   {
     "artist": "Oasis",
     "title": "Stand By Me",
     "bpm": 86,
+    "felt_bpm": 86,
     "genre": "rock",
     "year": 1997,
     "isrc": "GBBQY9700008",
     "cover": "covers/91672e3dc63cfe88532286d18fb14ae6.jpg",
-    "popularity": 55
+    "popularity": 44
   },
   {
     "artist": "Coldplay",
     "title": "Yellow",
     "bpm": 87,
+    "felt_bpm": 87,
     "genre": "pop",
     "year": 2001,
     "isrc": "GBAYE0000267",
     "cover": "covers/970dce98eeea6729244c0ae71707a83d.jpg",
-    "popularity": 90
+    "popularity": 88
   },
   {
     "artist": "Oasis",
     "title": "Wonderwall",
     "bpm": 87,
+    "felt_bpm": 87,
     "genre": "rock",
     "year": 1995,
     "isrc": "GBAAW9500189",
     "cover": "covers/ddb062c517401ee74d8a4df6f895d75e.jpg",
-    "popularity": 82
-  },
-  {
-    "artist": "Foo Fighters",
-    "title": "Monkey Wrench",
-    "bpm": 87,
-    "genre": "rock",
-    "year": 1997,
-    "isrc": "USRW29600001",
-    "cover": "covers/266f01f1c7a04843d11cd08f9c07d11f.jpg",
-    "popularity": 28
+    "popularity": 77
   },
   {
     "artist": "Bob Dylan",
     "title": "Blowin' in the Wind",
     "bpm": 87,
+    "felt_bpm": 87,
     "genre": "rock",
     "year": 1978,
     "isrc": "USSM19900534",
     "cover": "covers/83f505835a6525c9754d6f1f0ab7479d.jpg",
-    "popularity": 22
+    "popularity": 13
   },
   {
-    "artist": "Oasis",
-    "title": "Married With Children",
-    "bpm": 87,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "GBQCP1400019",
-    "cover": "covers/c2ba6e9c72949c33df02ce5fac4580f8.jpg",
-    "popularity": 17
+    "artist": "Calvin Harris",
+    "title": "One Kiss",
+    "bpm": 88,
+    "felt_bpm": 88,
+    "genre": "electronic",
+    "year": 2018,
+    "isrc": "GBARL1800368",
+    "cover": "covers/0397baea24f861db7ee63fb1c70391f9.jpg",
+    "popularity": 75
   },
   {
     "artist": "Rage Against the Machine",
     "title": "Killing in the Name",
-    "bpm": 88,
+    "bpm": 163,
+    "felt_bpm": 88,
     "genre": "rock",
     "year": 1992,
     "isrc": "USSM11205433",
     "cover": "covers/73a4d0cb2f3ec27583b9e0bc724b50c7.jpg",
-    "popularity": 73
-  },
-  {
-    "artist": "Kanye West",
-    "title": "Heartless",
-    "bpm": 88,
-    "genre": "hip-hop",
-    "year": 2008,
-    "isrc": "USUM70840511",
-    "cover": "covers/2877c6bf4fad750c54dd212fb50a366b.jpg",
-    "popularity": 55
+    "popularity": 65
   },
   {
     "artist": "Maroon 5",
     "title": "Sunday Morning",
     "bpm": 88,
+    "felt_bpm": 88,
     "genre": "pop",
     "year": 2002,
     "isrc": "USJAY0300086",
     "cover": "covers/39fe38574c7af3181d1e56ad7c03fce3.jpg",
-    "popularity": 55
+    "popularity": 46
   },
   {
-    "artist": "Earth, Wind & Fire",
-    "title": "Fantasy",
+    "artist": "Kanye West",
+    "title": "Heartless",
     "bpm": 88,
-    "genre": "funk",
-    "year": 1988,
-    "isrc": "USSM17700629",
-    "cover": "covers/18f41ecd3781fb96bffa2b0b49955db5.jpg",
-    "popularity": 29
+    "felt_bpm": 88,
+    "genre": "hip-hop",
+    "year": 2008,
+    "isrc": "USUM70840511",
+    "cover": "covers/2877c6bf4fad750c54dd212fb50a366b.jpg",
+    "popularity": 45
   },
   {
     "artist": "Red Hot Chili Peppers",
     "title": "Scar Tissue",
-    "bpm": 90,
+    "bpm": 179,
+    "felt_bpm": 90,
     "genre": "rock",
     "year": 1999,
     "isrc": "USWB19900674",
     "cover": "covers/5e61e8290a4d1d64ca58920656c9602d.jpg",
-    "popularity": 83
+    "popularity": 77
+  },
+  {
+    "artist": "50 Cent",
+    "title": "In Da Club",
+    "bpm": 180,
+    "felt_bpm": 90,
+    "genre": "hip-hop",
+    "year": 2002,
+    "isrc": "USIR10300033",
+    "cover": "covers/58ec83e8f74b55096f2115523eb9e7df.jpg",
+    "popularity": 71
   },
   {
     "artist": "Alicia Keys",
     "title": "No One",
     "bpm": 90,
+    "felt_bpm": 90,
     "genre": "r&b",
     "year": 2007,
     "isrc": "USJAY0700190",
     "cover": "covers/b9f3ff7c0514902ec94751360154f25b.jpg",
-    "popularity": 75
-  },
-  {
-    "artist": "50 Cent",
-    "title": "In Da Club",
-    "bpm": 90,
-    "genre": "hip-hop",
-    "year": 2002,
-    "isrc": "USIR10300033",
-    "cover": "covers/58ec83e8f74b55096f2115523eb9e7df.jpg",
-    "popularity": 72
-  },
-  {
-    "artist": "Creedence Clearwater Revival",
-    "title": "Bad Moon Rising",
-    "bpm": 90,
-    "genre": "rock",
-    "year": 1972,
-    "isrc": "USC4R0817604",
-    "cover": "covers/8cf6b18eba8e0fa730b9a37f7d00f9a4.jpg",
-    "popularity": 36
+    "popularity": 70
   },
   {
     "artist": "John Mayer",
     "title": "Stop This Train",
     "bpm": 90,
+    "felt_bpm": 90,
     "genre": "pop",
     "year": 2006,
     "isrc": "USSM10603631",
     "cover": "covers/a49f22668c3f7f26d9de7fcc93537742.jpg",
-    "popularity": 12
+    "popularity": 9
   },
   {
     "artist": "Johnny Cash",
     "title": "Hurt",
     "bpm": 91,
+    "felt_bpm": 91,
     "genre": "country",
     "year": 2002,
     "isrc": "USDJ20200650",
     "cover": "covers/3ee70b0cf1729759dbe18934ea34c8c1.jpg",
-    "popularity": 67
+    "popularity": 58
   },
   {
     "artist": "U2",
     "title": "One",
-    "bpm": 91,
+    "bpm": 181,
+    "felt_bpm": 91,
     "genre": "rock",
     "year": 1992,
     "isrc": "GBUM71106457",
     "cover": "covers/64b797ea83d52f3869593a448c790a4d.jpg",
-    "popularity": 61
+    "popularity": 52
   },
   {
     "artist": "Black Sabbath",
     "title": "War Pigs",
-    "bpm": 91,
+    "bpm": 178,
+    "felt_bpm": 91,
     "genre": "metal",
     "year": 1975,
     "isrc": "GBAJE7000063",
     "cover": "covers/e85b785588bea93fce9e4672c07d57c7.jpg",
-    "popularity": 39
+    "popularity": 28
   },
   {
     "artist": "Radiohead",
     "title": "Creep",
     "bpm": 92,
+    "felt_bpm": 92,
     "genre": "alternative",
     "year": 1993,
     "isrc": "GBAYE9200070",
     "cover": "covers/1dd56fd8824492e1a5106c99a00a85ec.jpg",
-    "popularity": 95
-  },
-  {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Can't Stop",
-    "bpm": 92,
-    "genre": "rock",
-    "year": 2002,
-    "isrc": "USWB10201694",
-    "cover": "covers/49b073f55550d41055e02c493f9a7d39.jpg",
-    "popularity": 81
+    "popularity": 93
   },
   {
     "artist": "Snoop Dogg",
     "title": "Drop It Like It's Hot",
     "bpm": 92,
+    "felt_bpm": 92,
     "genre": "hip-hop",
     "year": 2004,
     "isrc": "USMC10400902",
     "cover": "covers/b448b3ea65a447ea14a7bc0e6a0c6162.jpg",
-    "popularity": 58
+    "popularity": 49
   },
   {
     "artist": "Marilyn Manson",
     "title": "Sweet Dreams Are Made Of This",
     "bpm": 92,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1996,
     "isrc": "USIR19500314",
     "cover": "covers/3c90baf4f8dcd1ed638ff61ba97a73ef.jpg",
-    "popularity": 50
+    "popularity": 42
   },
   {
     "artist": "Simon & Garfunkel",
     "title": "Mrs. Robinson",
-    "bpm": 92,
+    "bpm": 184,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM16800249",
     "cover": "covers/bb0905baf2a3a0f915ae902a3b719525.jpg",
-    "popularity": 41
+    "popularity": 30
   },
   {
     "artist": "Santana",
     "title": "Samba Pa Ti",
-    "bpm": 92,
+    "bpm": 188,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1974,
     "isrc": "USSM17000297",
     "cover": "covers/a2e25782bf1639818d5204fa78b5a5a5.jpg",
-    "popularity": 39
+    "popularity": 27
   },
   {
     "artist": "Semisonic",
     "title": "Closing Time",
-    "bpm": 92,
+    "bpm": 185,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1998,
     "isrc": "USUM71810665",
     "cover": "covers/051e2547fcaa760b2ba40cc685791b47.jpg",
-    "popularity": 37
+    "popularity": 26
   },
   {
     "artist": "Simon & Garfunkel",
     "title": "The Boxer",
-    "bpm": 92,
+    "bpm": 187,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1969,
     "isrc": "USSM16900831",
     "cover": "covers/6f7036f2c3632d9e1df142f1078cb5c1.jpg",
-    "popularity": 37
+    "popularity": 25
   },
   {
     "artist": "Joan Jett & the Blackhearts",
     "title": "I Love Rock 'n' Roll",
     "bpm": 92,
+    "felt_bpm": 92,
     "genre": "rock",
     "year": 1981,
     "isrc": "USBH18100118",
     "cover": "covers/e995c9ca9bfc2d021c4fa09ad30d5be2.jpg",
-    "popularity": 30
-  },
-  {
-    "artist": "Ed Sheeran",
-    "title": "Blow",
-    "bpm": 92,
-    "genre": "pop",
-    "year": 2019,
-    "isrc": "GBAHS1900727",
-    "cover": "covers/faf828874a2e23083e30f7d0fecc36e7.jpg",
-    "popularity": 19
+    "popularity": 20
   },
   {
     "artist": "Tupac",
     "title": "California Love",
-    "bpm": 92,
+    "bpm": 183,
+    "felt_bpm": 92,
     "genre": "hip-hop",
     "year": 2006,
     "isrc": "USUG10702629",
     "cover": "covers/924830874f01bb19bfa6153f0e428e15.jpg",
-    "popularity": 15
+    "popularity": 14
   },
   {
     "artist": "Toto",
     "title": "Africa",
-    "bpm": 93,
+    "bpm": 92,
+    "felt_bpm": 93,
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM19801941",
     "cover": "covers/153332e88a14255a8c3d5959a5a21882.jpg",
-    "popularity": 88
+    "popularity": 86
   },
   {
     "artist": "Dr. Dre",
     "title": "Still D.R.E.",
     "bpm": 93,
+    "felt_bpm": 93,
     "genre": "hip-hop",
     "year": 1999,
     "isrc": "USIR19905031",
     "cover": "covers/0d9a24d054cbc5ab11843beed9f1422b.jpg",
-    "popularity": 85
+    "popularity": 84
   },
   {
     "artist": "Britney Spears",
     "title": "...Baby One More Time",
     "bpm": 93,
+    "felt_bpm": 93,
     "genre": "pop",
     "year": 1999,
     "isrc": "USJI19810404",
     "cover": "covers/f685d32254a59b6162be0d1082ff8805.jpg",
-    "popularity": 82
+    "popularity": 79
   },
   {
     "artist": "Extreme",
     "title": "More Than Words",
     "bpm": 93,
+    "felt_bpm": 93,
     "genre": "rock",
     "year": 1989,
     "isrc": "USAM19090005",
     "cover": "covers/1e5d50193b0a906c4cffe0c91a39a26b.jpg",
-    "popularity": 66
+    "popularity": 59
   },
   {
     "artist": "Kanye West",
     "title": "Gold Digger",
     "bpm": 93,
+    "felt_bpm": 93,
     "genre": "hip-hop",
     "year": 2005,
     "isrc": "USUM70500143",
     "cover": "covers/7cbfc94084895e59b5a313a98ab1bd9a.jpg",
-    "popularity": 61
+    "popularity": 52
   },
   {
     "artist": "Soundgarden",
     "title": "Spoonman",
-    "bpm": 93,
+    "bpm": 121,
+    "felt_bpm": 93,
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400008",
     "cover": "covers/8823907821c34b505189a2122bace787.jpg",
-    "popularity": 22
+    "popularity": 13
   },
   {
     "artist": "AC/DC",
     "title": "Back In Black",
-    "bpm": 94,
+    "bpm": 191,
+    "felt_bpm": 94,
     "genre": "rock",
     "year": 1986,
     "isrc": "AUAP08000046",
     "cover": "covers/41041b14873956eff0459c8ea2c296a8.jpg",
-    "popularity": 93
-  },
-  {
-    "artist": "The Beatles",
-    "title": "Blackbird",
-    "bpm": 94,
-    "genre": "rock",
-    "year": 1968,
-    "isrc": "GBAYE0601654",
-    "cover": "covers/f8b236243adae6bc187d27157bc61ae9.jpg",
-    "popularity": 43
+    "popularity": 90
   },
   {
     "artist": "Maroon 5",
     "title": "This Love",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "pop",
     "year": 2002,
     "isrc": "USJAY0300080",
     "cover": "covers/39fe38574c7af3181d1e56ad7c03fce3.jpg",
-    "popularity": 70
+    "popularity": 62
   },
   {
     "artist": "Vanessa Carlton",
     "title": "A Thousand Miles",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "pop",
     "year": 2000,
     "isrc": "USIR10210955",
     "cover": "covers/990e08407e928abdbb14db86e5563ed0.jpg",
-    "popularity": 67
+    "popularity": 59
   },
   {
     "artist": "Outkast",
     "title": "Ms. Jackson",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "hip-hop",
     "year": 2000,
     "isrc": "USLF20000357",
     "cover": "covers/646d6414a24faaccf67c1d7e01f7d095.jpg",
-    "popularity": 66
+    "popularity": 58
   },
   {
     "artist": "Wheatus",
     "title": "Teenage Dirtbag",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "rock",
     "year": 2000,
     "isrc": "USSM10008431",
     "cover": "covers/d49aa5d2e2917a46f6d1ad1fb7c2584b.jpg",
-    "popularity": 62
+    "popularity": 53
   },
   {
     "artist": "Phil Collins",
     "title": "In The Air Tonight",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "rock",
     "year": 1981,
     "isrc": "USAT21502120",
     "cover": "covers/73e6481676a8ab3e93f0f7b79a9cff68.jpg",
-    "popularity": 60
+    "popularity": 51
   },
   {
     "artist": "Eric Clapton",
     "title": "Wonderful Tonight",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "rock",
     "year": 1983,
     "isrc": "NLF057790025",
     "cover": "covers/196eaf4d3f7437f744a71d867a543dbb.jpg",
-    "popularity": 55
-  },
-  {
-    "artist": "Linkin Park",
-    "title": "One Step Closer",
-    "bpm": 95,
-    "genre": "rock",
-    "year": 2000,
-    "isrc": "USWB10002399",
-    "cover": "covers/033a271b5ec10842c287827c39244fb5.jpg",
-    "popularity": 55
+    "popularity": 45
   },
   {
     "artist": "Bill Withers",
     "title": "Lean On Me",
-    "bpm": 95,
+    "bpm": 150,
+    "felt_bpm": 95,
     "genre": "soul",
     "year": 1972,
     "isrc": "USSM17200084",
     "cover": "covers/50be86c54073b0f6550eecb273780f9c.jpg",
-    "popularity": 29
-  },
-  {
-    "artist": "Soundgarden",
-    "title": "Outshined",
-    "bpm": 95,
-    "genre": "grunge",
-    "year": 1991,
-    "isrc": "USAM19104304",
-    "cover": "covers/ed4bb82a29a4bea1282b79c41f5407a0.jpg",
-    "popularity": 21
+    "popularity": 19
   },
   {
     "artist": "Jay-Z",
     "title": "99 Problems",
     "bpm": 95,
+    "felt_bpm": 95,
     "genre": "hip-hop",
     "year": 2003,
     "isrc": "USWB10403683",
     "cover": "covers/7245b8fe756d39f20a53020163168dbe.jpg",
-    "popularity": 4
+    "popularity": 3
   },
   {
     "artist": "Taylor Swift",
     "title": "Blank Space",
     "bpm": 96,
+    "felt_bpm": 96,
     "genre": "pop",
     "year": 2014,
     "isrc": "USUG12306673",
     "cover": "covers/5aad85c12f4c5370d3bbb2e3549d07d9.jpg",
-    "popularity": 77
+    "popularity": 75
   },
   {
     "artist": "Toto",
     "title": "Hold The Line",
     "bpm": 96,
+    "felt_bpm": 96,
     "genre": "rock",
     "year": 1992,
     "isrc": "USSM17800444",
     "cover": "covers/18a61113ea28b3261a97c6ca167f00ba.jpg",
-    "popularity": 73
+    "popularity": 64
   },
   {
     "artist": "The Notorious B.I.G.",
     "title": "Juicy",
     "bpm": 96,
+    "felt_bpm": 96,
     "genre": "hip-hop",
     "year": 1994,
     "isrc": "USBB40580814",
     "cover": "covers/7143c2cd04a78c9c969d230c69465a03.jpg",
-    "popularity": 69
-  },
-  {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Dani California",
-    "bpm": 96,
-    "genre": "rock",
-    "year": 2006,
-    "isrc": "USWB10600700",
-    "cover": "covers/a3a4028b1192c50d82a579439cbfc4af.jpg",
-    "popularity": 65
+    "popularity": 62
   },
   {
     "artist": "Natalie Imbruglia",
     "title": "Torn",
-    "bpm": 96,
+    "bpm": 192,
+    "felt_bpm": 96,
     "genre": "pop",
     "year": 1998,
     "isrc": "GBARL9700412",
     "cover": "covers/62f49979daf12319e406af9389e9c487.jpg",
-    "popularity": 61
+    "popularity": 52
   },
   {
     "artist": "Bob Dylan",
     "title": "Like A Rolling Stone",
-    "bpm": 96,
+    "bpm": 191,
+    "felt_bpm": 96,
     "genre": "rock",
     "year": 1990,
     "isrc": "USSM19922509",
     "cover": "covers/96193f14db0501c035bd43ab93960317.jpg",
-    "popularity": 35
+    "popularity": 24
   },
   {
     "artist": "George Michael",
     "title": "Faith",
-    "bpm": 96,
+    "bpm": 191,
+    "felt_bpm": 96,
     "genre": "pop",
     "year": 1987,
     "isrc": "GBARL1000855",
     "cover": "covers/f24a4351040ae09175cbd775607aafe6.jpg",
-    "popularity": 32
-  },
-  {
-    "artist": "Toto",
-    "title": "Georgy Porgy",
-    "bpm": 96,
-    "genre": "rock",
-    "year": 1984,
-    "isrc": "USSM17800433",
-    "cover": "covers/18a61113ea28b3261a97c6ca167f00ba.jpg",
-    "popularity": 25
-  },
-  {
-    "artist": "The White Stripes",
-    "title": "We're Going To Be Friends",
-    "bpm": 96,
-    "genre": "rock",
-    "year": 2001,
-    "isrc": "GBBKS0100357",
-    "cover": "covers/aaab9b09e238e498268b07890cd2d91c.jpg",
-    "popularity": 15
-  },
-  {
-    "artist": "The Strokes",
-    "title": "Is This It",
-    "bpm": 96,
-    "genre": "indie",
-    "year": 2001,
-    "isrc": "USRC10100762",
-    "cover": "covers/700f0375d5ac8570f16a2c7eb128303f.jpg",
-    "popularity": 13
+    "popularity": 20
   },
   {
     "artist": "Red Hot Chili Peppers",
     "title": "Californication",
     "bpm": 97,
+    "felt_bpm": 97,
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB19900690",
     "cover": "covers/5e61e8290a4d1d64ca58920656c9602d.jpg",
-    "popularity": 94
+    "popularity": 91
   },
   {
     "artist": "Beyoncé",
     "title": "Single Ladies",
     "bpm": 97,
+    "felt_bpm": 97,
     "genre": "r&b",
     "year": 2008,
     "isrc": "USSM10803760",
     "cover": "covers/1f0450a010b5a825194d7ca00b3067ab.jpg",
-    "popularity": 77
+    "popularity": 73
   },
   {
     "artist": "My Chemical Romance",
     "title": "Welcome To The Black Parade",
     "bpm": 97,
+    "felt_bpm": 97,
     "genre": "rock",
     "year": 2006,
     "isrc": "USRE10602613",
     "cover": "covers/ae78cd7f32230593392c8b76519e9044.jpg",
-    "popularity": 69
-  },
-  {
-    "artist": "The Beatles",
-    "title": "Yesterday",
-    "bpm": 97,
-    "genre": "rock",
-    "year": 1965,
-    "isrc": "GBUM71505917",
-    "cover": "covers/c65b3bd84e81056e060be144381c06c8.jpg",
-    "popularity": 48
+    "popularity": 60
   },
   {
     "artist": "Ace of Base",
     "title": "The Sign",
     "bpm": 97,
+    "felt_bpm": 97,
     "genre": "pop",
     "year": 1993,
     "isrc": "SEVJH0803404",
     "cover": "covers/cbd01c1f0b97725e2e069f579a0020f8.jpg",
-    "popularity": 45
+    "popularity": 33
   },
   {
     "artist": "Adele",
     "title": "Hello",
     "bpm": 98,
+    "felt_bpm": 98,
     "genre": "pop",
     "year": 2005,
     "isrc": "GBBKS1500214",
     "cover": "covers/eaeadce7932a97533fe495881d2fcd7a.jpg",
-    "popularity": 84
+    "popularity": 83
   },
   {
     "artist": "Lynyrd Skynyrd",
     "title": "Sweet Home Alabama",
-    "bpm": 98,
+    "bpm": 196,
+    "felt_bpm": 98,
     "genre": "rock",
     "year": 1977,
     "isrc": "USMC17446153",
     "cover": "covers/cb4c2efc2d1f2877ae6457d1feddc31b.jpg",
-    "popularity": 59
+    "popularity": 48
   },
   {
     "artist": "Bill Withers",
     "title": "Lovely Day",
     "bpm": 98,
+    "felt_bpm": 98,
     "genre": "soul",
     "year": 1977,
     "isrc": "USSM10207844",
     "cover": "covers/a21685522410a1b07d544a79ca4e4b7a.jpg",
-    "popularity": 47
+    "popularity": 35
   },
   {
     "artist": "Survivor",
     "title": "Burning Heart",
     "bpm": 98,
+    "felt_bpm": 98,
     "genre": "rock",
     "year": 1985,
     "isrc": "USVR19300003",
     "cover": "covers/e66b5d3a40f69690c1633afb73cc590c.jpg",
-    "popularity": 37
-  },
-  {
-    "artist": "Johnny Cash",
-    "title": "I Walk The Line",
-    "bpm": 98,
-    "genre": "country",
-    "year": 1969,
-    "isrc": "USSM19902102",
-    "cover": "covers/b3eeee262d8cbd07c1b4f0373b09e750.jpg",
     "popularity": 25
   },
   {
     "artist": "Backstreet Boys",
     "title": "I Want It That Way",
     "bpm": 99,
+    "felt_bpm": 99,
     "genre": "pop",
     "year": 1999,
     "isrc": "USJI19910614",
     "cover": "covers/d61eaad8f321ea876a5f5c7219aae892.jpg",
-    "popularity": 83
+    "popularity": 81
   },
   {
     "artist": "Beyoncé",
     "title": "Crazy in Love",
     "bpm": 99,
+    "felt_bpm": 99,
     "genre": "r&b",
     "year": 2003,
     "isrc": "USSM10305425",
     "cover": "covers/1ea1a631aa5235bbd0063643beb96fa8.jpg",
-    "popularity": 80
+    "popularity": 75
   },
   {
     "artist": "3 Doors Down",
     "title": "Kryptonite",
     "bpm": 99,
+    "felt_bpm": 99,
     "genre": "rock",
     "year": 1997,
     "isrc": "USUR19980187",
     "cover": "covers/e075197e5985cd4269f829f1ea217cad.jpg",
-    "popularity": 66
-  },
-  {
-    "artist": "Aerosmith",
-    "title": "Sweet Emotion",
-    "bpm": 99,
-    "genre": "rock",
-    "year": 1991,
-    "isrc": "USSM19906482",
-    "cover": "covers/0cb25ced2a862fc8d6b67f0ad31322bc.jpg",
-    "popularity": 29
+    "popularity": 58
   },
   {
     "artist": "Pixies",
     "title": "Hey",
     "bpm": 99,
+    "felt_bpm": 99,
     "genre": "alternative",
     "year": 1991,
     "isrc": "GBAFL8900017",
     "cover": "covers/ad3c04ab094d37133ccbca4b3b54a193.jpg",
-    "popularity": 27
+    "popularity": 17
   },
   {
-    "artist": "My Chemical Romance",
-    "title": "Dead!",
-    "bpm": 99,
-    "genre": "rock",
-    "year": 2006,
-    "isrc": "USRE10602904",
-    "cover": "covers/ae78cd7f32230593392c8b76519e9044.jpg",
-    "popularity": 20
+    "artist": "Marshmello",
+    "title": "Happier",
+    "bpm": 100,
+    "felt_bpm": 100,
+    "genre": "electronic",
+    "year": 2018,
+    "isrc": "USUG11801651",
+    "cover": "covers/28d79ed4bdb8a267f6eb83b18414043a.jpg",
+    "popularity": 74
   },
   {
     "artist": "Guns N' Roses",
     "title": "Paradise City",
     "bpm": 100,
+    "felt_bpm": 100,
     "genre": "rock",
     "year": 1989,
     "isrc": "USGF18714806",
     "cover": "covers/8bfe7b3b0985d9ff0751090fb2b6f73f.jpg",
-    "popularity": 75
-  },
-  {
-    "artist": "Nirvana",
-    "title": "Heart-Shaped Box",
-    "bpm": 100,
-    "genre": "grunge",
-    "year": 1994,
-    "isrc": "USGF19960703",
-    "cover": "covers/4d0dfaf6d522f5323aebcc85903d92ac.jpg",
-    "popularity": 67
-  },
-  {
-    "artist": "Linkin Park",
-    "title": "Given Up",
-    "bpm": 100,
-    "genre": "rock",
-    "year": 2007,
-    "isrc": "USWB10701211",
-    "cover": "covers/2dd699adcd68089f49f3ab558a2bd296.jpg",
-    "popularity": 65
+    "popularity": 69
   },
   {
     "artist": "Stevie Wonder",
     "title": "Superstition",
-    "bpm": 100,
+    "bpm": 201,
+    "felt_bpm": 100,
     "genre": "funk",
     "year": 1974,
     "isrc": "USMO10000310",
     "cover": "covers/dc11aaf0240dbaf1548639e1c5df8db8.jpg",
-    "popularity": 55
+    "popularity": 45
   },
   {
     "artist": "U2",
     "title": "Pride (In The Name Of Love)",
-    "bpm": 100,
+    "bpm": 210,
+    "felt_bpm": 100,
     "genre": "rock",
     "year": 2009,
     "isrc": "GBUM70817519",
     "cover": "covers/6895509ae173331d8bf4bc7508a2c015.jpg",
-    "popularity": 46
+    "popularity": 34
   },
   {
     "artist": "Led Zeppelin",
     "title": "Over The Hills And Far Away",
     "bpm": 100,
+    "felt_bpm": 100,
     "genre": "rock",
     "year": 2000,
     "isrc": "USAT21300892",
     "cover": "covers/87df66f7805c5bd5fdf353def5c3425f.jpg",
-    "popularity": 16
+    "popularity": 12
   },
   {
     "artist": "ABBA",
     "title": "Dancing Queen",
-    "bpm": 101,
+    "bpm": 201,
+    "felt_bpm": 101,
     "genre": "disco",
     "year": 1977,
     "isrc": "SEAYD7601020",
     "cover": "covers/b8b70d474b7a8f27799e0d665e9b737e.jpg",
-    "popularity": 82
+    "popularity": 78
   },
   {
     "artist": "David Bowie",
     "title": "Starman",
     "bpm": 101,
+    "felt_bpm": 101,
     "genre": "rock",
     "year": 1984,
     "isrc": "USJT11200004",
     "cover": "covers/23bdeda0503dec55e7ba6a9f56d0c3c2.jpg",
-    "popularity": 45
-  },
-  {
-    "artist": "U2",
-    "title": "Sunday Bloody Sunday",
-    "bpm": 101,
-    "genre": "rock",
-    "year": 1987,
-    "isrc": "GBUM70713138",
-    "cover": "covers/c66b126bb3afe75c7fedd62f9df4956b.jpg",
-    "popularity": 41
+    "popularity": 34
   },
   {
     "artist": "Soundgarden",
     "title": "Fell On Black Days",
     "bpm": 101,
+    "felt_bpm": 101,
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400003",
     "cover": "covers/abe4f446abfe1e44c86ad01445c69e22.jpg",
-    "popularity": 36
-  },
-  {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Aeroplane",
-    "bpm": 101,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "USWB19500363",
-    "cover": "covers/c180338f0287476b3cc2babdecfb2289.jpg",
-    "popularity": 34
-  },
-  {
-    "artist": "System of a Down",
-    "title": "B.Y.O.B.",
-    "bpm": 102,
-    "genre": "metal",
-    "year": 2005,
-    "isrc": "USSM10501327",
-    "cover": "covers/4954f43cc6033ddfa0fa3ee5514a26ca.jpg",
-    "popularity": 77
+    "popularity": 23
   },
   {
     "artist": "Mariah Carey",
     "title": "Fantasy",
     "bpm": 102,
+    "felt_bpm": 102,
     "genre": "pop",
     "year": 1995,
     "isrc": "USSM19501031",
     "cover": "covers/98ab83037b73f9fab9d97b5644ea2668.jpg",
-    "popularity": 45
+    "popularity": 33
   },
   {
     "artist": "Third Eye Blind",
     "title": "Semi-Charmed Life",
     "bpm": 102,
+    "felt_bpm": 102,
     "genre": "rock",
     "year": 1994,
     "isrc": "USEE19701203",
     "cover": "covers/a09799fc8ef1ea18aa32435bac9cf496.jpg",
-    "popularity": 20
-  },
-  {
-    "artist": "Earth, Wind & Fire",
-    "title": "Shining Star",
-    "bpm": 102,
-    "genre": "funk",
-    "year": 1975,
-    "isrc": "USSM17400660",
-    "cover": "covers/dced85766846f9faa3f097f092941f36.jpg",
-    "popularity": 12
+    "popularity": 9
   },
   {
     "artist": "Drake",
     "title": "One Dance",
     "bpm": 103,
+    "felt_bpm": 103,
     "genre": "hip-hop",
     "year": 2016,
     "isrc": "USCM51600028",
     "cover": "covers/56bdb7a86a27fadb96332c0c8f1b8e81.jpg",
-    "popularity": 69
+    "popularity": 62
   },
   {
     "artist": "Bob Marley",
     "title": "Could You Be Loved",
-    "bpm": 103,
+    "bpm": 207,
+    "felt_bpm": 103,
     "genre": "reggae",
     "year": 1979,
     "isrc": "USIR28000016",
     "cover": "covers/8d66bb5d623fed6a464415dbc744df21.jpg",
-    "popularity": 56
+    "popularity": 46
   },
   {
     "artist": "Los del Río",
     "title": "Macarena",
     "bpm": 103,
+    "felt_bpm": 103,
     "genre": "pop",
     "year": 1996,
     "isrc": "ES5109500538",
     "cover": "covers/6a827921da4e6afde64294d7483cbf0e.jpg",
-    "popularity": 40
-  },
-  {
-    "artist": "Coldplay",
-    "title": "Sparks",
-    "bpm": 103,
-    "genre": "pop",
-    "year": 2000,
-    "isrc": "GBAYE0000569",
-    "cover": "covers/970dce98eeea6729244c0ae71707a83d.jpg",
-    "popularity": 38
+    "popularity": 27
   },
   {
     "artist": "Arctic Monkeys",
     "title": "I Bet You Look Good On The Dancefloor",
     "bpm": 103,
+    "felt_bpm": 103,
     "genre": "indie",
     "year": 2004,
     "isrc": "GBCEL0501181",
     "cover": "covers/f7a0a1ca91431861989efe5a22aad557.jpg",
-    "popularity": 37
+    "popularity": 25
   },
   {
     "artist": "Al Green",
     "title": "Let's Stay Together",
     "bpm": 103,
+    "felt_bpm": 103,
     "genre": "soul",
     "year": 1984,
     "isrc": "US2HK0913701",
     "cover": "covers/636b12f33731e3c4415c5e02a149237b.jpg",
-    "popularity": 26
-  },
-  {
-    "artist": "My Chemical Romance",
-    "title": "Thank You for the Venom",
-    "bpm": 103,
-    "genre": "rock",
-    "year": 2004,
-    "isrc": "USRE10400664",
-    "cover": "covers/9aba5b418a311c0bbefb6699ebc58a4b.jpg",
-    "popularity": 23
+    "popularity": 15
   },
   {
     "artist": "Talking Heads",
     "title": "Burning Down The House",
     "bpm": 103,
+    "felt_bpm": 103,
     "genre": "rock",
     "year": 1983,
     "isrc": "USWB10901938",
     "cover": "covers/2ca9751695393aaa6682016cc83bd51d.jpg",
-    "popularity": 20
-  },
-  {
-    "artist": "Lamb of God",
-    "title": "Laid To Rest",
-    "bpm": 103,
-    "genre": "rock",
-    "year": 2004,
-    "isrc": "USSM10409073",
-    "cover": "covers/14d44bc358592c3bff238d9b74d83e2d.jpg",
-    "popularity": 15
+    "popularity": 11
   },
   {
     "artist": "Eminem",
     "title": "The Real Slim Shady",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "hip-hop",
     "year": 1999,
     "isrc": "USIR10000448",
     "cover": "covers/e2b36a9fda865cb2e9ed1476b6291a7d.jpg",
-    "popularity": 81
+    "popularity": 78
   },
   {
     "artist": "Bee Gees",
     "title": "Stayin' Alive",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "disco",
     "year": 1977,
     "isrc": "NLF057790034",
     "cover": "covers/315772aec36013c1c0653d9dee37cffd.jpg",
-    "popularity": 69
+    "popularity": 63
   },
   {
     "artist": "Smash Mouth",
     "title": "All Star",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "rock",
     "year": 1997,
     "isrc": "USIR19902220",
     "cover": "covers/34a4542cb4e8a54639674ed6aab1bd65.jpg",
-    "popularity": 66
+    "popularity": 58
   },
   {
     "artist": "Kanye West",
     "title": "Stronger",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "hip-hop",
     "year": 2007,
     "isrc": "USUM70741299",
     "cover": "covers/8c6578a2099561992fb7544e6826f767.jpg",
-    "popularity": 61
+    "popularity": 53
   },
   {
     "artist": "Tina Turner",
     "title": "The Best",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "pop",
     "year": 1989,
     "isrc": "USCA28900109",
     "cover": "covers/837d79a1e17f7bc27f3884b7d7e3f4fa.jpg",
-    "popularity": 60
+    "popularity": 51
   },
   {
     "artist": "The Strokes",
     "title": "Last Nite",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "indie",
     "year": 2001,
     "isrc": "USRC10100765",
     "cover": "covers/700f0375d5ac8570f16a2c7eb128303f.jpg",
-    "popularity": 50
+    "popularity": 39
   },
   {
     "artist": "The Smiths",
     "title": "This Charming Man",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "indie",
     "year": 1983,
     "isrc": "GBCRL0800302",
     "cover": "covers/d1005397b8a3a743fb0c8aad35f42db3.jpg",
-    "popularity": 48
+    "popularity": 36
   },
   {
     "artist": "Otis Redding",
     "title": "Sittin' On The Dock of the Bay",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "soul",
     "year": 1964,
     "isrc": "USAT20804257",
     "cover": "covers/539e2e0041a338e69e2aa4b3469470f7.jpg",
-    "popularity": 46
-  },
-  {
-    "artist": "Oasis",
-    "title": "Supersonic",
-    "bpm": 104,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "GBAAW9400021",
-    "cover": "covers/c1c6ebb93069d1a4781a27e47cb5b0c5.jpg",
-    "popularity": 44
+    "popularity": 35
   },
   {
     "artist": "Chumbawamba",
     "title": "Tubthumping",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "pop",
     "year": 1997,
     "isrc": "DEA349700542",
     "cover": "covers/8f413bb5a92d3006c86b998a8dc8bcd3.jpg",
-    "popularity": 37
+    "popularity": 25
   },
   {
     "artist": "Pink Floyd",
     "title": "Another Brick In The Wall, Part 2",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "rock",
     "year": 1979,
     "isrc": "GBN9X1900031",
     "cover": "covers/2a00a906933603d09959ec1f2472ae76.jpg",
-    "popularity": 31
+    "popularity": 21
   },
   {
     "artist": "Johnny Cash",
     "title": "Ring Of Fire",
     "bpm": 104,
+    "felt_bpm": 104,
     "genre": "country",
     "year": 1981,
     "isrc": "USSM19917137",
     "cover": "covers/77f80bcc424dd22e4c9242c1c392f9c9.jpg",
-    "popularity": 29
+    "popularity": 18
   },
   {
     "artist": "Adele",
     "title": "Rolling in the Deep",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "pop",
     "year": 2010,
     "isrc": "GBBKS1000335",
     "cover": "covers/dc1ce848d830ecc93521be5a78350364.jpg",
-    "popularity": 88
+    "popularity": 87
   },
   {
     "artist": "Usher",
     "title": "Yeah!",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "r&b",
     "year": 2003,
     "isrc": "USAR10301423",
     "cover": "covers/b89c20012cccb051c8a4e04d98386f95.jpg",
-    "popularity": 81
+    "popularity": 77
   },
   {
     "artist": "Soundgarden",
     "title": "Black Hole Sun",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "grunge",
     "year": 1994,
     "isrc": "USAM19400007",
     "cover": "covers/94248b664be0890be31cabf62a068293.jpg",
-    "popularity": 70
-  },
-  {
-    "artist": "Green Day",
-    "title": "Wake Me Up When September Ends",
-    "bpm": 105,
-    "genre": "punk",
-    "year": 2004,
-    "isrc": "USRE10400992",
-    "cover": "covers/c14f698c45f445a5ba9dba395f26d642.jpg",
-    "popularity": 53
+    "popularity": 61
   },
   {
     "artist": "Pearl Jam",
     "title": "Jeremy",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "grunge",
     "year": 1992,
     "isrc": "USSM19100674",
     "cover": "covers/00ee8c40862fb4e258fcbeaa17d7199e.jpg",
-    "popularity": 48
+    "popularity": 37
   },
   {
     "artist": "Jet",
     "title": "Are You Gonna Be My Girl",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "rock",
     "year": 2004,
     "isrc": "USEE10701504",
     "cover": "covers/4bd1b9573246b9323bd54d41b1c838e0.jpg",
-    "popularity": 47
+    "popularity": 36
   },
   {
     "artist": "The Temptations",
     "title": "My Girl",
     "bpm": 105,
+    "felt_bpm": 105,
     "genre": "soul",
     "year": 1975,
     "isrc": "USMO16490001",
     "cover": "covers/cf1e8f2557ef4c71da1e3203e841891b.jpg",
-    "popularity": 26
-  },
-  {
-    "artist": "Eric Clapton",
-    "title": "Cocaine",
-    "bpm": 105,
-    "genre": "rock",
-    "year": 1984,
-    "isrc": "NLF057790024",
-    "cover": "covers/196eaf4d3f7437f744a71d867a543dbb.jpg",
-    "popularity": 24
+    "popularity": 13
   },
   {
     "artist": "Pearl Jam",
     "title": "Even Flow",
     "bpm": 106,
+    "felt_bpm": 106,
     "genre": "grunge",
     "year": 1991,
     "isrc": "USSM19100673",
     "cover": "covers/00ee8c40862fb4e258fcbeaa17d7199e.jpg",
-    "popularity": 60
-  },
-  {
-    "artist": "Metallica",
-    "title": "One",
-    "bpm": 106,
-    "genre": "rock",
-    "year": 1991,
-    "isrc": "QMKHM1700138",
-    "cover": "covers/4e696adc7e253dcba6e8011d556512be.jpg",
     "popularity": 50
   },
   {
     "artist": "Depeche Mode",
     "title": "Never Let Me Down Again",
     "bpm": 106,
+    "felt_bpm": 106,
     "genre": "electronic",
     "year": 1987,
     "isrc": "GBAJH9800141",
     "cover": "covers/e73716d037ee24f1331a8c0332526590.jpg",
-    "popularity": 45
+    "popularity": 35
   },
   {
     "artist": "Dolly Parton",
     "title": "9 to 5",
     "bpm": 106,
+    "felt_bpm": 106,
     "genre": "country",
     "year": 1980,
     "isrc": "USRN19400384",
     "cover": "covers/62438de920e4943c653d545999cd120e.jpg",
-    "popularity": 33
-  },
-  {
-    "artist": "Stevie Wonder",
-    "title": "I Wish",
-    "bpm": 106,
-    "genre": "funk",
-    "year": 1976,
-    "isrc": "USMO17682657",
-    "cover": "covers/ed7d05fc8407ff367c7fe39bd0d28a56.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Snow (Hey Oh)",
-    "bpm": 107,
-    "genre": "rock",
-    "year": 2006,
-    "isrc": "USWB10601591",
-    "cover": "covers/a3a4028b1192c50d82a579439cbfc4af.jpg",
-    "popularity": 77
-  },
-  {
-    "artist": "AC/DC",
-    "title": "Hells Bells",
-    "bpm": 107,
-    "genre": "rock",
-    "year": 1981,
-    "isrc": "AUAP08000041",
-    "cover": "covers/41041b14873956eff0459c8ea2c296a8.jpg",
-    "popularity": 72
+    "popularity": 20
   },
   {
     "artist": "House of Pain",
     "title": "Jump Around",
     "bpm": 107,
+    "felt_bpm": 107,
     "genre": "hip-hop",
     "year": 1998,
     "isrc": "USTB10300119",
     "cover": "covers/1ce36b34e34715e1b513f89651b868a5.jpg",
-    "popularity": 44
+    "popularity": 32
   },
   {
     "artist": "Eagles",
     "title": "Tequila Sunrise",
     "bpm": 107,
+    "felt_bpm": 107,
     "genre": "rock",
     "year": 1973,
     "isrc": "USWWW0202465",
     "cover": "covers/2d8ad0dfdf16395cf21cb153f806b094.jpg",
-    "popularity": 24
+    "popularity": 15
   },
   {
     "artist": "Simon & Garfunkel",
     "title": "The Sounds Of Silence",
-    "bpm": 107,
+    "bpm": 88,
+    "felt_bpm": 107,
     "genre": "rock",
     "year": 1964,
     "isrc": "USQX91402206",
     "cover": "covers/383e6947d314dffb8ff985c166381212.jpg",
-    "popularity": 12
+    "popularity": 8
   },
   {
     "artist": "Aerosmith",
     "title": "Walk This Way",
     "bpm": 108,
+    "felt_bpm": 108,
     "genre": "rock",
     "year": 1975,
     "isrc": "USSM19906481",
     "cover": "covers/0452f403863e9c216eff7e975da2c765.jpg",
-    "popularity": 50
+    "popularity": 39
   },
   {
-    "artist": "Creedence Clearwater Revival",
-    "title": "Down On The Corner",
+    "artist": "Stevie Wonder",
+    "title": "Signed, Sealed, Delivered (I'm Yours)",
     "bpm": 108,
-    "genre": "rock",
-    "year": 1969,
-    "isrc": "USC4R0817613",
-    "cover": "covers/7ada3abad33c88c4cb2354623b4f4700.jpg",
-    "popularity": 22
+    "felt_bpm": 108,
+    "genre": "funk",
+    "year": 1970,
+    "isrc": "USMO17082643",
+    "cover": "covers/0c02b871a05443d19dd79e3ca4bc3865.jpg",
+    "popularity": 15
   },
   {
     "artist": "Garth Brooks",
     "title": "Friends in Low Places",
     "bpm": 108,
+    "felt_bpm": 108,
     "genre": "country",
     "year": 1990,
     "isrc": "CAM460419243",
     "cover": "covers/b59ba7caaa806201aaab4ef611a1ad22.jpg",
-    "popularity": 2
+    "popularity": 1
   },
   {
     "artist": "Survivor",
     "title": "Eye Of The Tiger",
     "bpm": 109,
+    "felt_bpm": 109,
     "genre": "rock",
     "year": 1982,
     "isrc": "USVR19600010",
     "cover": "covers/e66b5d3a40f69690c1633afb73cc590c.jpg",
-    "popularity": 87
-  },
-  {
-    "artist": "Blink-182",
-    "title": "Dammit",
-    "bpm": 109,
-    "genre": "punk",
-    "year": 1997,
-    "isrc": "USCR29753148",
-    "cover": "covers/50627ad1a5ce0215359f0e8b2e37a01f.jpg",
-    "popularity": 37
+    "popularity": 84
   },
   {
     "artist": "Spice Girls",
     "title": "Wannabe",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "pop",
     "year": 1996,
     "isrc": "GBAAA9600008",
     "cover": "covers/18c4f2d9608910a2b8eb1835052e895b.jpg",
-    "popularity": 77
+    "popularity": 72
   },
   {
     "artist": "Maroon 5",
     "title": "Payphone",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "pop",
     "year": 2012,
     "isrc": "USUM71203844",
     "cover": "covers/44f3324a7951ac6ebd2962caf60e9cd0.jpg",
-    "popularity": 70
+    "popularity": 66
   },
   {
     "artist": "Queen",
     "title": "Another One Bites the Dust",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "rock",
     "year": 1980,
     "isrc": "GBUM71029605",
     "cover": "covers/8b8fc5d117f9357b79f0a0a410a170e8.jpg",
-    "popularity": 70
+    "popularity": 64
   },
   {
     "artist": "U2",
     "title": "With Or Without You",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "rock",
     "year": 1998,
     "isrc": "GBAAN8790003",
     "cover": "covers/76c4322b0ea4ab5ed1e3a9f7d3208e28.jpg",
-    "popularity": 62
+    "popularity": 54
   },
   {
     "artist": "Iron Maiden",
     "title": "Fear Of The Dark",
-    "bpm": 110,
+    "bpm": 74,
+    "felt_bpm": 110,
     "genre": "metal",
     "year": 1992,
     "isrc": "GBCHB1800082",
     "cover": "covers/f0a2bbd32cdc42b5bf13f3344797bf94.jpg",
-    "popularity": 42
+    "popularity": 29
   },
   {
     "artist": "Dolly Parton",
     "title": "Jolene",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "country",
     "year": 1989,
     "isrc": "USRN19600096",
     "cover": "covers/d47fc7a27a0d40cc2a8c119ed2bc53b7.jpg",
-    "popularity": 41
+    "popularity": 28
   },
   {
     "artist": "Johnny Cash",
     "title": "Folsom Prison Blues",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "country",
     "year": 1964,
     "isrc": "USSM11201764",
     "cover": "covers/39e2b79d24bb11a16af1a6124104a430.jpg",
-    "popularity": 26
-  },
-  {
-    "artist": "Johnny Cash",
-    "title": "Ghost Riders In The Sky",
-    "bpm": 110,
-    "genre": "country",
-    "year": 1981,
-    "isrc": "USSM17900687",
-    "cover": "covers/4573338fa1cb375d20f8e2148ad923e6.jpg",
-    "popularity": 18
+    "popularity": 16
   },
   {
     "artist": "Fatboy Slim",
     "title": "Praise You",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "electronic",
     "year": 1999,
     "isrc": "GBBMQ9800092",
     "cover": "covers/3893ecf99ac169ed8587ec2e22ef6b89.jpg",
-    "popularity": 12
+    "popularity": 4
   },
   {
     "artist": "KC and the Sunshine Band",
     "title": "That's the Way (I Like It)",
     "bpm": 110,
+    "felt_bpm": 110,
     "genre": "disco",
     "year": 1975,
     "isrc": "USMC30710031",
@@ -1983,26 +1532,18 @@
     "artist": "Prince",
     "title": "Kiss",
     "bpm": 111,
+    "felt_bpm": 111,
     "genre": "funk",
     "year": 1991,
     "isrc": "USWB19903319",
     "cover": "covers/6488e3e2ba3121f6e5c0b06a82c4effe.jpg",
-    "popularity": 38
-  },
-  {
-    "artist": "Bob Dylan",
-    "title": "Don't Think Twice, It's All Right",
-    "bpm": 111,
-    "genre": "rock",
-    "year": 1987,
-    "isrc": "USSM16200322",
-    "cover": "covers/f2ed944435cd7a9819a98b3c6f0268ca.jpg",
-    "popularity": 18
+    "popularity": 26
   },
   {
     "artist": "Eminem",
     "title": "Without Me",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "hip-hop",
     "year": 2002,
     "isrc": "USIR10211038",
@@ -2013,346 +1554,315 @@
     "artist": "Madonna",
     "title": "Like a Prayer",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "pop",
     "year": 1989,
     "isrc": "USWB10002775",
     "cover": "covers/cb3560d83ededa230d78f7bf047c583a.jpg",
-    "popularity": 67
+    "popularity": 59
   },
   {
     "artist": "David Bowie",
     "title": "Heroes",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "rock",
     "year": 1980,
     "isrc": "USJT11700005",
     "cover": "covers/5fb91018679f65199308256be3c584ab.jpg",
-    "popularity": 65
+    "popularity": 57
   },
   {
     "artist": "Tears for Fears",
     "title": "Everybody Wants to Rule the World",
-    "bpm": 112,
+    "bpm": 168,
+    "felt_bpm": 112,
     "genre": "pop",
     "year": 1985,
     "isrc": "GBF088590110",
     "cover": "covers/5413c924601f881a7209bab7b1909880.jpg",
-    "popularity": 61
+    "popularity": 53
   },
   {
     "artist": "Gnarls Barkley",
     "title": "Crazy",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "r&b",
     "year": 2006,
     "isrc": "USAT20611041",
     "cover": "covers/c01d623e7189b170cf5d7af2643105cb.jpg",
-    "popularity": 54
+    "popularity": 47
+  },
+  {
+    "artist": "Eric Clapton",
+    "title": "Layla",
+    "bpm": 112,
+    "felt_bpm": 112,
+    "genre": "rock",
+    "year": 1993,
+    "isrc": "USRE19900125",
+    "cover": "covers/ec784e20f09d844d4f297560c341049b.jpg",
+    "popularity": 41
   },
   {
     "artist": "Arctic Monkeys",
     "title": "Fluorescent Adolescent",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "indie",
     "year": 2007,
     "isrc": "GBCEL0700067",
     "cover": "covers/5f5beea1c209a589796b81dd0d8f86dc.jpg",
-    "popularity": 48
-  },
-  {
-    "artist": "Metallica",
-    "title": "Fade to Black",
-    "bpm": 112,
-    "genre": "metal",
-    "year": 1989,
-    "isrc": "USEE10170110",
-    "cover": "covers/a0bd8b90e4b7fac3fd99f46497e803a7.jpg",
-    "popularity": 44
+    "popularity": 39
   },
   {
     "artist": "Aretha Franklin",
     "title": "Respect",
     "bpm": 112,
+    "felt_bpm": 112,
     "genre": "soul",
     "year": 1971,
     "isrc": "USAT20801240",
     "cover": "covers/9e9ba9115d0fb62879d1bb672ee67c07.jpg",
-    "popularity": 39
-  },
-  {
-    "artist": "Weezer",
-    "title": "Go Away",
-    "bpm": 112,
-    "genre": "rock",
-    "year": 2014,
-    "isrc": "USUM71412843",
-    "cover": "covers/f4705a52f1afab77db2665dff05b3c77.jpg",
-    "popularity": 19
-  },
-  {
-    "artist": "Depeche Mode",
-    "title": "Enjoy The Silence",
-    "bpm": 113,
-    "genre": "electronic",
-    "year": 1985,
-    "isrc": "GBAJH9800146",
-    "cover": "covers/e73716d037ee24f1331a8c0332526590.jpg",
-    "popularity": 80
+    "popularity": 27
   },
   {
     "artist": "Rick Astley",
     "title": "Never Gonna Give You Up",
     "bpm": 113,
+    "felt_bpm": 113,
     "genre": "pop",
     "year": 1988,
     "isrc": "GBARL0600786",
     "cover": "covers/a37761cd98b72998ff1d8cbfedbf0863.jpg",
-    "popularity": 80
+    "popularity": 77
   },
   {
-    "artist": "System of a Down",
-    "title": "Lonely Day",
+    "artist": "Depeche Mode",
+    "title": "Enjoy The Silence",
     "bpm": 113,
-    "genre": "metal",
-    "year": 2005,
-    "isrc": "USSM10505340",
-    "cover": "covers/047bea0f3708bd88049e675c918f9605.jpg",
-    "popularity": 79
+    "felt_bpm": 113,
+    "genre": "electronic",
+    "year": 1985,
+    "isrc": "GBAJH9800146",
+    "cover": "covers/e73716d037ee24f1331a8c0332526590.jpg",
+    "popularity": 74
   },
   {
     "artist": "Prince",
     "title": "Purple Rain",
-    "bpm": 113,
+    "bpm": 114,
+    "felt_bpm": 113,
     "genre": "rock",
     "year": 1992,
     "isrc": "USWB11700470",
     "cover": "covers/8cc37398de3ee92bd31d286f30e7972d.jpg",
-    "popularity": 62
+    "popularity": 54
   },
   {
     "artist": "The Clash",
     "title": "Should I Stay Or Should I Go",
     "bpm": 113,
+    "felt_bpm": 113,
     "genre": "punk",
     "year": 1982,
     "isrc": "GBARL1200670",
     "cover": "covers/dcb57e195538467662fbce4492f89c20.jpg",
-    "popularity": 58
+    "popularity": 48
   },
   {
     "artist": "Rage Against the Machine",
     "title": "Freedom",
-    "bpm": 113,
+    "bpm": 143,
+    "felt_bpm": 113,
     "genre": "rock",
     "year": 1991,
     "isrc": "USSM19200668",
     "cover": "covers/a3a5690b75d3b43e3b676d7e33ccb111.jpg",
-    "popularity": 17
+    "popularity": 12
+  },
+  {
+    "artist": "Imagine Dragons",
+    "title": "bones",
+    "bpm": 114,
+    "felt_bpm": 114,
+    "genre": "pop",
+    "year": 2022,
+    "isrc": "USUM72201759",
+    "cover": "covers/1e70dfe85b51bacc19ff4df6f8726800.jpg",
+    "popularity": 64
   },
   {
     "artist": "Jimi Hendrix",
     "title": "All Along The Watchtower",
     "bpm": 114,
+    "felt_bpm": 114,
     "genre": "rock",
     "year": 1971,
     "isrc": "USQX90900749",
     "cover": "covers/021ddfb48a222859aa12da805116ca8d.jpg",
-    "popularity": 56
+    "popularity": 46
   },
   {
     "artist": "My Chemical Romance",
     "title": "Teenagers",
     "bpm": 114,
+    "felt_bpm": 114,
     "genre": "rock",
     "year": 2006,
     "isrc": "USRE10602912",
     "cover": "covers/ae78cd7f32230593392c8b76519e9044.jpg",
-    "popularity": 56
+    "popularity": 46
   },
   {
     "artist": "The Smiths",
     "title": "Heaven Knows I'm Miserable Now",
     "bpm": 114,
+    "felt_bpm": 114,
     "genre": "indie",
     "year": 1984,
     "isrc": "GBCRL0800305",
     "cover": "covers/d1005397b8a3a743fb0c8aad35f42db3.jpg",
-    "popularity": 39
+    "popularity": 27
   },
   {
     "artist": "Deep Purple",
     "title": "Smoke On The Water",
     "bpm": 114,
+    "felt_bpm": 114,
     "genre": "rock",
     "year": 1973,
     "isrc": "GBDXG1200006",
     "cover": "covers/05e28ef146d566db492347d8ffdcc7f0.jpg",
-    "popularity": 15
-  },
-  {
-    "artist": "Oasis",
-    "title": "Cigarettes & Alcohol",
-    "bpm": 114,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "GBQCP1400016",
-    "cover": "covers/62f871c0944ba89eb9308507de7b5cc1.jpg",
-    "popularity": 13
-  },
-  {
-    "artist": "Tom Petty",
-    "title": "American Girl",
-    "bpm": 114,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "USUG10400001",
-    "cover": "covers/fc7a9b132524c63f26a70d26d15cff58.jpg",
-    "popularity": 11
-  },
-  {
-    "artist": "The Killers",
-    "title": "Jenny Was A Friend Of Mine",
-    "bpm": 114,
-    "genre": "indie",
-    "year": 2004,
-    "isrc": "USIR20400268",
-    "cover": "covers/8d9fdd5ce1f7e5a4a3774697df0347f3.jpg",
-    "popularity": 5
+    "popularity": 6
   },
   {
     "artist": "Bruno Mars",
     "title": "Uptown Funk",
     "bpm": 115,
+    "felt_bpm": 115,
     "genre": "pop",
     "year": 2014,
     "isrc": "GBARL1401524",
     "cover": "covers/3734366a73152d0367a83a4b09fd163f.jpg",
-    "popularity": 93
+    "popularity": 94
   },
   {
     "artist": "Fall Out Boy",
     "title": "Dance, Dance",
     "bpm": 115,
+    "felt_bpm": 115,
     "genre": "pop",
     "year": 2005,
     "isrc": "USDJ20500174",
     "cover": "covers/c11ee620979e5e6f99bfd08470876ecd.jpg",
-    "popularity": 52
+    "popularity": 41
   },
   {
     "artist": "Weezer",
     "title": "Island In The Sun",
     "bpm": 115,
+    "felt_bpm": 115,
     "genre": "rock",
     "year": 2001,
     "isrc": "USIR10110358",
     "cover": "covers/a67a3dc5916907b9d5679c068d874451.jpg",
-    "popularity": 46
+    "popularity": 35
   },
   {
     "artist": "Cream",
     "title": "Sunshine Of Your Love",
     "bpm": 115,
+    "felt_bpm": 115,
     "genre": "rock",
     "year": 1967,
     "isrc": "GBA076700020",
     "cover": "covers/196eaf4d3f7437f744a71d867a543dbb.jpg",
-    "popularity": 18
-  },
-  {
-    "artist": "Tom Petty",
-    "title": "Breakdown",
-    "bpm": 115,
-    "genre": "rock",
-    "year": 1976,
-    "isrc": "USUG10400002",
-    "cover": "covers/fc7a9b132524c63f26a70d26d15cff58.jpg",
     "popularity": 8
   },
   {
     "artist": "AC/DC",
     "title": "Highway To Hell",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "rock",
     "year": 1979,
     "isrc": "AUAP07900028",
     "cover": "covers/de48d988a82fc401f4b9bafc2639f7d0.jpg",
-    "popularity": 87
+    "popularity": 81
   },
   {
     "artist": "Nirvana",
     "title": "The Man Who Sold The World",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "grunge",
     "year": 1994,
     "isrc": "USGF19972704",
     "cover": "covers/fe1082c5ef54876802146897e76b592e.jpg",
-    "popularity": 81
+    "popularity": 75
   },
   {
     "artist": "Daft Punk",
     "title": "Get Lucky",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "electronic",
     "year": 2013,
     "isrc": "USQX91300809",
     "cover": "covers/bc49adb87758e0c8c4e508a9c5cce85d.jpg",
-    "popularity": 79
-  },
-  {
-    "artist": "Santana",
-    "title": "Smooth",
-    "bpm": 116,
-    "genre": "rock",
-    "year": 1999,
-    "isrc": "USAR19900033",
-    "cover": "covers/929132f50492c7acfab23b32722f4537.jpg",
-    "popularity": 70
+    "popularity": 74
   },
   {
     "artist": "Creedence Clearwater Revival",
     "title": "Have You Ever Seen The Rain",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "rock",
     "year": 1970,
     "isrc": "USC4R0817643",
     "cover": "covers/2662bc3d67ae7c0b2c737a881683b55e.jpg",
-    "popularity": 69
+    "popularity": 62
+  },
+  {
+    "artist": "Santana",
+    "title": "Smooth",
+    "bpm": 116,
+    "felt_bpm": 116,
+    "genre": "rock",
+    "year": 1999,
+    "isrc": "USAR19900033",
+    "cover": "covers/929132f50492c7acfab23b32722f4537.jpg",
+    "popularity": 61
   },
   {
     "artist": "Vanilla Ice",
     "title": "Ice Ice Baby",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "hip-hop",
     "year": 1992,
     "isrc": "USA560845821",
     "cover": "covers/177bec5553a37b3ecf7d548ca8f6d370.jpg",
-    "popularity": 65
+    "popularity": 58
   },
   {
     "artist": "Madonna",
     "title": "Vogue",
     "bpm": 116,
+    "felt_bpm": 116,
     "genre": "pop",
     "year": 1990,
     "isrc": "USWB19903855",
     "cover": "covers/329c772be6103678d4c53c43d293cd51.jpg",
-    "popularity": 52
-  },
-  {
-    "artist": "Pixies",
-    "title": "Monkey Gone To Heaven",
-    "bpm": 116,
-    "genre": "alternative",
-    "year": 1992,
-    "isrc": "GBAFL9700103",
-    "cover": "covers/ad3c04ab094d37133ccbca4b3b54a193.jpg",
-    "popularity": 8
+    "popularity": 42
   },
   {
     "artist": "Michael Jackson",
     "title": "Billie Jean",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "pop",
     "year": 1982,
     "isrc": "USSM19902991",
@@ -2362,2227 +1872,1636 @@
   {
     "artist": "The Police",
     "title": "Every Breath You Take",
-    "bpm": 117,
+    "bpm": 118,
+    "felt_bpm": 117,
     "genre": "rock",
     "year": 1984,
     "isrc": "GBAAM8300001",
     "cover": "covers/316afdaed93c4a18cf730389648d03d6.jpg",
-    "popularity": 96
+    "popularity": 94
   },
   {
     "artist": "Nirvana",
     "title": "Smells Like Teen Spirit",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "grunge",
     "year": 1991,
     "isrc": "USGF19610505",
     "cover": "covers/10e6b28ed3ec7c157844b3187d0ac2f4.jpg",
-    "popularity": 84
+    "popularity": 82
   },
   {
     "artist": "Gloria Gaynor",
     "title": "I Will Survive",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "disco",
     "year": 1992,
     "isrc": "FR6V88200357",
     "cover": "covers/9087e3caed31dabf7d60cb07bb18354c.jpg",
-    "popularity": 53
-  },
-  {
-    "artist": "Queen",
-    "title": "Killer Queen",
-    "bpm": 117,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "GBUM71029606",
-    "cover": "covers/8b8fc5d117f9357b79f0a0a410a170e8.jpg",
-    "popularity": 53
+    "popularity": 43
   },
   {
     "artist": "Tom Petty",
     "title": "Learning To Fly",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "rock",
     "year": 1991,
     "isrc": "USMC19135647",
     "cover": "covers/9e60cb17ff666bd8a299fb71043c1cf2.jpg",
-    "popularity": 37
+    "popularity": 25
   },
   {
     "artist": "Talking Heads",
     "title": "Once In A Lifetime",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "rock",
     "year": 1980,
     "isrc": "USWB10502869",
     "cover": "covers/1f829d18efbdb8a54fbca7701d5098a9.jpg",
-    "popularity": 34
-  },
-  {
-    "artist": "Bruce Springsteen",
-    "title": "The River",
-    "bpm": 117,
-    "genre": "rock",
-    "year": 1980,
-    "isrc": "USSM18000407",
-    "cover": "covers/a971f0ed2fda6d017adeb5e3af3c1619.jpg",
-    "popularity": 29
+    "popularity": 22
   },
   {
     "artist": "Marvin Gaye",
     "title": "I Heard It Through the Grapevine",
     "bpm": 117,
+    "felt_bpm": 117,
     "genre": "soul",
     "year": 1974,
     "isrc": "USMO16884718",
     "cover": "covers/b760cebcf550348ca53c4f76200d6ce0.jpg",
-    "popularity": 9
+    "popularity": 4
   },
   {
     "artist": "Michael Jackson",
     "title": "Smooth Criminal",
     "bpm": 118,
+    "felt_bpm": 118,
     "genre": "pop",
     "year": 1987,
     "isrc": "USSM10905822",
     "cover": "covers/a0ad67d1beb761f2cb9f8b60e5bcf07a.jpg",
-    "popularity": 89
+    "popularity": 87
   },
   {
     "artist": "Europe",
     "title": "The Final Countdown",
     "bpm": 118,
+    "felt_bpm": 118,
     "genre": "rock",
     "year": 1986,
     "isrc": "USSM18600196",
     "cover": "covers/da44873bbb18e25f946863209fcbbbe0.jpg",
-    "popularity": 76
-  },
-  {
-    "artist": "Metallica",
-    "title": "For Whom The Bell Tolls",
-    "bpm": 118,
-    "genre": "metal",
-    "year": 1984,
-    "isrc": "USEE10170109",
-    "cover": "covers/a0bd8b90e4b7fac3fd99f46497e803a7.jpg",
-    "popularity": 50
+    "popularity": 72
   },
   {
     "artist": "Muse",
     "title": "Time Is Running Out",
     "bpm": 118,
+    "felt_bpm": 118,
     "genre": "rock",
     "year": 2003,
     "isrc": "GBCVT0300078",
     "cover": "covers/3a2d055d82de71b1d370d01cf2ca33d9.jpg",
-    "popularity": 47
-  },
-  {
-    "artist": "Bruce Springsteen",
-    "title": "Glory Days",
-    "bpm": 118,
-    "genre": "rock",
-    "year": 1984,
-    "isrc": "USSM18400415",
-    "cover": "covers/106f651bf559796879b90e83c50b3e96.jpg",
-    "popularity": 29
-  },
-  {
-    "artist": "Led Zeppelin",
-    "title": "Since I've Been Loving You",
-    "bpm": 118,
-    "genre": "rock",
-    "year": 1993,
-    "isrc": "USAT21300937",
-    "cover": "covers/37788af586af4ab83c7cfdc6fe4ad3bc.jpg",
-    "popularity": 18
-  },
-  {
-    "artist": "Rage Against the Machine",
-    "title": "Know Your Enemy",
-    "bpm": 118,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "USSM19200664",
-    "cover": "covers/a3a5690b75d3b43e3b676d7e33ccb111.jpg",
-    "popularity": 16
+    "popularity": 34
   },
   {
     "artist": "Lady Gaga",
     "title": "Bad Romance",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "pop",
     "year": 2009,
     "isrc": "USUM70903859",
     "cover": "covers/113b8636fb6571bd9d6a50a5fe9b37ff.jpg",
-    "popularity": 87
-  },
-  {
-    "artist": "Michael Jackson",
-    "title": "Thriller",
-    "bpm": 119,
-    "genre": "pop",
-    "year": 1986,
-    "isrc": "USSM19902989",
-    "cover": "covers/92a024220a9532489c75c9d994835697.jpg",
-    "popularity": 87
-  },
-  {
-    "artist": "Ben E. King",
-    "title": "Stand By Me",
-    "bpm": 119,
-    "genre": "soul",
-    "year": 1987,
-    "isrc": "USAT21205862",
-    "cover": "covers/efe117f19e86acfddfb8d047f2d1ab06.jpg",
-    "popularity": 73
-  },
-  {
-    "artist": "Nirvana",
-    "title": "Come As You Are",
-    "bpm": 119,
-    "genre": "grunge",
-    "year": 1992,
-    "isrc": "USGF19972702",
-    "cover": "covers/fe1082c5ef54876802146897e76b592e.jpg",
-    "popularity": 73
+    "popularity": 85
   },
   {
     "artist": "Lady Gaga",
     "title": "Poker Face",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "pop",
     "year": 2008,
     "isrc": "USUM70824409",
     "cover": "covers/fad7de079aa103d60ec1e2d1582c2281.jpg",
-    "popularity": 72
+    "popularity": 69
+  },
+  {
+    "artist": "Ben E. King",
+    "title": "Stand By Me",
+    "bpm": 119,
+    "felt_bpm": 119,
+    "genre": "soul",
+    "year": 1987,
+    "isrc": "USAT21205862",
+    "cover": "covers/efe117f19e86acfddfb8d047f2d1ab06.jpg",
+    "popularity": 67
+  },
+  {
+    "artist": "Nirvana",
+    "title": "Come As You Are",
+    "bpm": 119,
+    "felt_bpm": 119,
+    "genre": "grunge",
+    "year": 1992,
+    "isrc": "USGF19972702",
+    "cover": "covers/fe1082c5ef54876802146897e76b592e.jpg",
+    "popularity": 67
   },
   {
     "artist": "Whitney Houston",
     "title": "I Wanna Dance with Somebody",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "pop",
     "year": 1987,
     "isrc": "USAR18700121",
     "cover": "covers/26b5030b971a5fd363f82cad8cff7453.jpg",
-    "popularity": 70
+    "popularity": 62
   },
   {
     "artist": "Lynyrd Skynyrd",
     "title": "Simple Man",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "rock",
     "year": 1973,
     "isrc": "USMC17301726",
     "cover": "covers/64e01d54ee2590fa5d3c2d1e2a3e3725.jpg",
-    "popularity": 68
+    "popularity": 59
   },
   {
     "artist": "Stevie Wonder",
     "title": "Isn't She Lovely",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "funk",
     "year": 1976,
     "isrc": "USMO19682655",
     "cover": "covers/36aaf615fe6f66a6778bad4b501be11f.jpg",
-    "popularity": 43
+    "popularity": 31
   },
   {
     "artist": "Frank Sinatra",
     "title": "Fly Me to the Moon",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "jazz",
     "year": 1977,
     "isrc": "USRH10723029",
     "cover": "covers/621c706e3416c6c52671ab7fe11878f6.jpg",
-    "popularity": 24
+    "popularity": 15
   },
   {
     "artist": "Chic",
     "title": "Le Freak",
     "bpm": 119,
+    "felt_bpm": 119,
     "genre": "disco",
     "year": 1978,
     "isrc": "USAT27800012",
     "cover": "covers/9c44d9af981048f20672aaccdc45d489.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "David Bowie",
-    "title": "The Man Who Sold The World",
-    "bpm": 119,
-    "genre": "rock",
-    "year": 1996,
-    "isrc": "USJT11500099",
-    "cover": "covers/a06e3683f2f404938ff801d877ca4995.jpg",
-    "popularity": 19
-  },
-  {
-    "artist": "Lynyrd Skynyrd",
-    "title": "I Need You",
-    "bpm": 119,
-    "genre": "rock",
-    "year": 1974,
-    "isrc": "USMC17402686",
-    "cover": "covers/cb4c2efc2d1f2877ae6457d1feddc31b.jpg",
-    "popularity": 14
-  },
-  {
-    "artist": "Pink Floyd",
-    "title": "Is There Anybody Out There?",
-    "bpm": 119,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "GBN9Y1100109",
-    "cover": "covers/2bea643b92a8fc6b19a23756f718cbd4.jpg",
-    "popularity": 12
+    "popularity": 11
   },
   {
     "artist": "Bon Jovi",
     "title": "It's My Life",
     "bpm": 120,
+    "felt_bpm": 120,
     "genre": "rock",
     "year": 1993,
     "isrc": "USIR20000145",
     "cover": "covers/58ca1d20e8d19c1e5f8e821d07412c74.jpg",
-    "popularity": 86
+    "popularity": 84
   },
   {
     "artist": "Fleetwood Mac",
     "title": "Dreams",
     "bpm": 120,
+    "felt_bpm": 120,
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10400046",
     "cover": "covers/9732751ce91d786dcf30069853697078.jpg",
-    "popularity": 65
+    "popularity": 57
   },
   {
     "artist": "Santana",
     "title": "Corazon Espinado",
     "bpm": 120,
+    "felt_bpm": 120,
     "genre": "rock",
     "year": 1999,
     "isrc": "USAR19900037",
     "cover": "covers/6a77ec8399155071fa09c822ad68bd34.jpg",
-    "popularity": 61
-  },
-  {
-    "artist": "Muse",
-    "title": "Supermassive Black Hole",
-    "bpm": 120,
-    "genre": "rock",
-    "year": 2006,
-    "isrc": "GBAHT0500593",
-    "cover": "covers/fc457d27a8c0b7fc6f9b56fb94e22a0d.jpg",
-    "popularity": 50
+    "popularity": 53
   },
   {
     "artist": "Madonna",
     "title": "Like a Virgin",
     "bpm": 120,
+    "felt_bpm": 120,
     "genre": "pop",
     "year": 1984,
     "isrc": "USWB10002748",
     "cover": "covers/3836708e2d450cdaa61341112b972228.jpg",
-    "popularity": 41
-  },
-  {
-    "artist": "Creedence Clearwater Revival",
-    "title": "Proud Mary",
-    "bpm": 120,
-    "genre": "rock",
-    "year": 1972,
-    "isrc": "USC4R0817594",
-    "cover": "covers/9314fa8ec39fcf15bfb2f1d1ac3afa4a.jpg",
-    "popularity": 33
+    "popularity": 29
   },
   {
     "artist": "Sister Sledge",
     "title": "We Are Family",
     "bpm": 120,
+    "felt_bpm": 120,
     "genre": "disco",
     "year": 1980,
     "isrc": "USAT20102166",
     "cover": "covers/b384580ff1e772c40db28546a9811d32.jpg",
-    "popularity": 16
+    "popularity": 9
   },
   {
     "artist": "Cyndi Lauper",
     "title": "Girls Just Want to Have Fun",
     "bpm": 121,
+    "felt_bpm": 121,
     "genre": "pop",
     "year": 1984,
     "isrc": "USSM18300548",
     "cover": "covers/48bcf7415317ec8dc1181ee55b4b0aeb.jpg",
-    "popularity": 85
+    "popularity": 84
   },
   {
     "artist": "Journey",
     "title": "Don't Stop Believin'",
     "bpm": 121,
+    "felt_bpm": 121,
     "genre": "rock",
     "year": 1981,
     "isrc": "USSM18100116",
     "cover": "covers/b4ec4a1a920d792dd7d8d15dc29f0a39.jpg",
-    "popularity": 70
+    "popularity": 63
   },
   {
     "artist": "Kool & the Gang",
     "title": "Celebration",
     "bpm": 121,
+    "felt_bpm": 121,
     "genre": "funk",
     "year": 1990,
     "isrc": "USPR38007190",
     "cover": "covers/9953aecd3b6bad65f5b0acf711316fdd.jpg",
-    "popularity": 58
+    "popularity": 48
   },
   {
     "artist": "The Strokes",
     "title": "You Only Live Once",
     "bpm": 121,
+    "felt_bpm": 121,
     "genre": "indie",
     "year": 2005,
     "isrc": "USRC10503559",
     "cover": "covers/26b25d58623f89e163b8e4c4a5ae2ca2.jpg",
-    "popularity": 57
+    "popularity": 47
   },
   {
     "artist": "Donna Summer",
     "title": "Hot Stuff",
     "bpm": 121,
+    "felt_bpm": 121,
     "genre": "disco",
     "year": 1979,
     "isrc": "USPR37907202",
     "cover": "covers/2d6faf79614d81cf881f8500dd25598b.jpg",
-    "popularity": 32
-  },
-  {
-    "artist": "The Strokes",
-    "title": "Selfless",
-    "bpm": 121,
-    "genre": "indie",
-    "year": 2020,
-    "isrc": "USRC11902727",
-    "cover": "covers/f8a0a2e1ec12c1026cd03208237cd934.jpg",
-    "popularity": 27
+    "popularity": 19
   },
   {
     "artist": "Bon Jovi",
     "title": "Livin' On A Prayer",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "rock",
     "year": 1987,
     "isrc": "USPR38619998",
     "cover": "covers/1f0365311a9d03c267f175e0ef79f40c.jpg",
-    "popularity": 91
+    "popularity": 89
   },
   {
     "artist": "Daft Punk",
     "title": "One More Time",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "electronic",
     "year": 2000,
     "isrc": "GBDUW0000053",
     "cover": "covers/5718f7c81c27e0b2417e2a4c45224f8a.jpg",
-    "popularity": 72
+    "popularity": 66
   },
   {
     "artist": "Pink Floyd",
     "title": "Wish You Were Here",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "rock",
     "year": 1988,
     "isrc": "GBN9Y1100088",
     "cover": "covers/cb029c785b8d0cd624ddee9d4127ceff.jpg",
-    "popularity": 71
+    "popularity": 62
   },
   {
     "artist": "Muse",
     "title": "Starlight",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "rock",
     "year": 2006,
     "isrc": "GBAHT0500592",
     "cover": "covers/fc457d27a8c0b7fc6f9b56fb94e22a0d.jpg",
-    "popularity": 64
+    "popularity": 55
   },
   {
     "artist": "Bob Marley",
     "title": "Is This Love",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "reggae",
     "year": 1977,
     "isrc": "USIR27800259",
     "cover": "covers/6367879e2e914efb1a5e546c7492ca0f.jpg",
-    "popularity": 59
+    "popularity": 50
   },
   {
     "artist": "Weezer",
     "title": "Buddy Holly",
     "bpm": 122,
+    "felt_bpm": 122,
     "genre": "rock",
     "year": 1995,
     "isrc": "USGF19562907",
     "cover": "covers/638ad930e4f20376e8a2851d9c41be00.jpg",
-    "popularity": 39
-  },
-  {
-    "artist": "Pink Floyd",
-    "title": "Money",
-    "bpm": 122,
-    "genre": "rock",
-    "year": 1990,
-    "isrc": "GBN9Y1100081",
-    "cover": "covers/e635a8510c1a74bc089b3566ebbb9cb8.jpg",
-    "popularity": 38
-  },
-  {
-    "artist": "Aerosmith",
-    "title": "Eat The Rich",
-    "bpm": 122,
-    "genre": "rock",
-    "year": 1993,
-    "isrc": "USIR10000439",
-    "cover": "covers/04cfb163fee3a6dcf025525eb6b57f44.jpg",
-    "popularity": 9
-  },
-  {
-    "artist": "Guns N' Roses",
-    "title": "Welcome To The Jungle",
-    "bpm": 123,
-    "genre": "rock",
-    "year": 1986,
-    "isrc": "USGF18714801",
-    "cover": "covers/8bfe7b3b0985d9ff0751090fb2b6f73f.jpg",
-    "popularity": 83
+    "popularity": 26
   },
   {
     "artist": "Bon Jovi",
     "title": "You Give Love a Bad Name!",
     "bpm": 123,
+    "felt_bpm": 123,
     "genre": "rock",
     "year": 1986,
     "isrc": "USPR39402224",
     "cover": "covers/58ca1d20e8d19c1e5f8e821d07412c74.jpg",
-    "popularity": 75
+    "popularity": 67
   },
   {
     "artist": "Talking Heads",
     "title": "Psycho Killer",
     "bpm": 123,
+    "felt_bpm": 123,
     "genre": "rock",
     "year": 1977,
     "isrc": "USWB10302417",
     "cover": "covers/8c00dcb9a1eae464bc5e5336fd86608f.jpg",
-    "popularity": 58
+    "popularity": 47
   },
   {
     "artist": "Daft Punk",
     "title": "Harder Better Faster Stronger",
     "bpm": 123,
+    "felt_bpm": 123,
     "genre": "electronic",
     "year": 2001,
     "isrc": "GBDUW0000059",
     "cover": "covers/5718f7c81c27e0b2417e2a4c45224f8a.jpg",
-    "popularity": 48
-  },
-  {
-    "artist": "Nirvana",
-    "title": "Lithium",
-    "bpm": 123,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "USGF19942505",
-    "cover": "covers/753428fbca4850a4a63ce9e59a73a21c.jpg",
-    "popularity": 48
-  },
-  {
-    "artist": "Santana",
-    "title": "Black Magic Woman",
-    "bpm": 123,
-    "genre": "rock",
-    "year": 1989,
-    "isrc": "USSM17000311",
-    "cover": "covers/a2e25782bf1639818d5204fa78b5a5a5.jpg",
-    "popularity": 32
-  },
-  {
-    "artist": "Johnny Cash",
-    "title": "Personal Jesus",
-    "bpm": 123,
-    "genre": "country",
-    "year": 2002,
-    "isrc": "USDJ20200647",
-    "cover": "covers/3ee70b0cf1729759dbe18934ea34c8c1.jpg",
-    "popularity": 15
+    "popularity": 37
   },
   {
     "artist": "The White Stripes",
     "title": "Seven Nation Army",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "rock",
     "year": 2003,
     "isrc": "USVT10300001",
     "cover": "covers/ed0929a4c44d77c4dc524a10748fc2f6.jpg",
-    "popularity": 86
-  },
-  {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Otherside",
-    "bpm": 124,
-    "genre": "rock",
-    "year": 1999,
-    "isrc": "USWB19900693",
-    "cover": "covers/5e61e8290a4d1d64ca58920656c9602d.jpg",
-    "popularity": 79
+    "popularity": 81
   },
   {
     "artist": "Katy Perry",
     "title": "Firework",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "pop",
     "year": 2010,
     "isrc": "USCA21001262",
     "cover": "covers/99578b0bb8c838383c414a5b62b5e15d.jpg",
-    "popularity": 78
+    "popularity": 75
+  },
+  {
+    "artist": "Red Hot Chili Peppers",
+    "title": "Otherside",
+    "bpm": 124,
+    "felt_bpm": 124,
+    "genre": "rock",
+    "year": 1999,
+    "isrc": "USWB19900693",
+    "cover": "covers/5e61e8290a4d1d64ca58920656c9602d.jpg",
+    "popularity": 74
   },
   {
     "artist": "Haddaway",
     "title": "What Is Love",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "electronic",
     "year": 1993,
     "isrc": "DEA410500401",
     "cover": "covers/3fb1136475de9b9159ab8ab9a3773ed4.jpg",
-    "popularity": 70
+    "popularity": 63
   },
   {
     "artist": "John Mayer",
     "title": "Gravity",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "pop",
     "year": 2005,
     "isrc": "USSM10603628",
     "cover": "covers/a49f22668c3f7f26d9de7fcc93537742.jpg",
-    "popularity": 46
+    "popularity": 34
   },
   {
     "artist": "Scorpions",
     "title": "Rock You Like A Hurricane",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "rock",
     "year": 1984,
     "isrc": "DEE861101522",
     "cover": "covers/948018bb2183e9b6b26cbf7e6a3d3c9a.jpg",
-    "popularity": 34
+    "popularity": 21
   },
   {
     "artist": "Pixies",
     "title": "Here Comes Your Man",
     "bpm": 124,
+    "felt_bpm": 124,
     "genre": "alternative",
     "year": 1989,
     "isrc": "GBAFL9700090",
     "cover": "covers/ad3c04ab094d37133ccbca4b3b54a193.jpg",
-    "popularity": 27
-  },
-  {
-    "artist": "Stevie Wonder",
-    "title": "Sir Duke",
-    "bpm": 124,
-    "genre": "funk",
-    "year": 1976,
-    "isrc": "USMO17600526",
-    "cover": "covers/36aaf615fe6f66a6778bad4b501be11f.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "Dire Straits",
-    "title": "Telegraph Road",
-    "bpm": 124,
-    "genre": "rock",
-    "year": 1982,
-    "isrc": "GBF088400779",
-    "cover": "covers/d7c9b0fa303e6c251bdbd0fb7a8c4e74.jpg",
     "popularity": 17
   },
   {
     "artist": "Guns N' Roses",
     "title": "Sweet Child O' Mine",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "rock",
     "year": 1988,
     "isrc": "USGF18714809",
     "cover": "covers/8bfe7b3b0985d9ff0751090fb2b6f73f.jpg",
-    "popularity": 96
+    "popularity": 95
   },
   {
     "artist": "Eurythmics",
     "title": "Sweet Dreams (Are Made of This)",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "pop",
     "year": 1987,
     "isrc": "GBARL0300589",
     "cover": "covers/364f0d4ea4b5452b59e6664b9e5480f0.jpg",
-    "popularity": 83
+    "popularity": 79
   },
   {
     "artist": "Guns N' Roses",
     "title": "Don't Cry",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "rock",
     "year": 1991,
     "isrc": "USGF19141504",
     "cover": "covers/546fe1eca5d3bf48c6a48fb3c0ddac63.jpg",
-    "popularity": 83
+    "popularity": 78
   },
   {
     "artist": "Metallica",
     "title": "Enter Sandman",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "metal",
     "year": 1992,
     "isrc": "USEE10001992",
     "cover": "covers/c67cda92f863a089d7dfeedf48be191e.jpg",
-    "popularity": 72
+    "popularity": 67
   },
   {
     "artist": "Earth, Wind & Fire",
     "title": "Let's Groove",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "funk",
     "year": 1983,
     "isrc": "USSM18100641",
     "cover": "covers/7fb42454a4875274e1e30a5a185a985c.jpg",
-    "popularity": 65
+    "popularity": 57
   },
   {
     "artist": "Shania Twain",
     "title": "Man! I Feel Like a Woman!",
     "bpm": 125,
+    "felt_bpm": 125,
     "genre": "country",
     "year": 1998,
     "isrc": "USMR19887508",
     "cover": "covers/74246a0cb90313ed6e81552b616e81eb.jpg",
-    "popularity": 64
-  },
-  {
-    "artist": "The Rolling Stones",
-    "title": "Honky Tonk Women",
-    "bpm": 125,
-    "genre": "rock",
-    "year": 1982,
-    "isrc": "USA176910010",
-    "cover": "covers/eae6c5d63a8bb21228925ae8fbd9d1e0.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "The Killers",
-    "title": "Smile Like You Mean It",
-    "bpm": 125,
-    "genre": "indie",
-    "year": 2004,
-    "isrc": "USIR20400275",
-    "cover": "covers/727528cdf2e2a99d397e872fe2bd856e.jpg",
-    "popularity": 15
+    "popularity": 55
   },
   {
     "artist": "Earth, Wind & Fire",
     "title": "September",
     "bpm": 126,
+    "felt_bpm": 126,
     "genre": "funk",
     "year": 1995,
     "isrc": "USSM17800845",
     "cover": "covers/18f41ecd3781fb96bffa2b0b49955db5.jpg",
-    "popularity": 78
+    "popularity": 73
   },
   {
     "artist": "Kylie Minogue",
     "title": "Can't Get You Out of My Head",
     "bpm": 126,
+    "felt_bpm": 126,
     "genre": "pop",
     "year": 2001,
     "isrc": "GBAYE0100913",
     "cover": "covers/786064c48201a628c6ac78028ab4d06f.jpg",
-    "popularity": 76
-  },
-  {
-    "artist": "U2",
-    "title": "Where The Streets Have No Name",
-    "bpm": 126,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "GBAAN0400084",
-    "cover": "covers/76c4322b0ea4ab5ed1e3a9f7d3208e28.jpg",
-    "popularity": 35
-  },
-  {
-    "artist": "David Bowie",
-    "title": "Rebel Rebel",
-    "bpm": 126,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "USJT19900087",
-    "cover": "covers/141c9639bd95e780ac26e4a0a527e768.jpg",
-    "popularity": 34
+    "popularity": 70
   },
   {
     "artist": "Billy Joel",
     "title": "Vienna",
     "bpm": 126,
+    "felt_bpm": 126,
     "genre": "pop",
     "year": 1977,
     "isrc": "USSM17700373",
     "cover": "covers/5c68316092e84b703d2118e7f1c7baed.jpg",
-    "popularity": 32
+    "popularity": 22
   },
   {
     "artist": "Van Halen",
     "title": "Hot For Teacher",
     "bpm": 126,
+    "felt_bpm": 126,
     "genre": "rock",
     "year": 1984,
     "isrc": "USWB11403684",
     "cover": "covers/0649448bcdeeeb48c25edc0e83653711.jpg",
-    "popularity": 29
-  },
-  {
-    "artist": "Weezer",
-    "title": "Hash Pipe",
-    "bpm": 126,
-    "genre": "rock",
-    "year": 2001,
-    "isrc": "USIR10110319",
-    "cover": "covers/a67a3dc5916907b9d5679c068d874451.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "Pearl Jam",
-    "title": "Better Man",
-    "bpm": 126,
-    "genre": "grunge",
-    "year": 1994,
-    "isrc": "USSM11100237",
-    "cover": "covers/fe6bb4fba9c1a3892e0dcacf5df5465e.jpg",
-    "popularity": 19
+    "popularity": 18
   },
   {
     "artist": "Roy Orbison",
     "title": "Oh, Pretty Woman",
     "bpm": 127,
+    "felt_bpm": 127,
     "genre": "rock and roll",
     "year": 1985,
     "isrc": "USSM16401425",
     "cover": "covers/057141cf6b44141b44cbda46b2d38a10.jpg",
-    "popularity": 56
+    "popularity": 47
   },
   {
     "artist": "Neil Diamond",
     "title": "Sweet Caroline",
     "bpm": 127,
+    "felt_bpm": 127,
     "genre": "pop",
     "year": 1969,
     "isrc": "USMC16991138",
     "cover": "covers/40becf4d411046c50caa85ec376fbb2b.jpg",
-    "popularity": 37
+    "popularity": 24
   },
   {
     "artist": "Village People",
     "title": "Y.M.C.A.",
     "bpm": 127,
+    "felt_bpm": 127,
     "genre": "disco",
     "year": 1985,
     "isrc": "USPR37800001",
     "cover": "covers/32808bf23ed95a777ed63c8368276214.jpg",
-    "popularity": 18
+    "popularity": 8
   },
   {
     "artist": "The Black Eyed Peas",
     "title": "I Gotta Feeling",
     "bpm": 128,
+    "felt_bpm": 128,
     "genre": "pop",
     "year": 2008,
     "isrc": "USUM70965169",
     "cover": "covers/98dea136cba839ae2591094eafb92778.jpg",
-    "popularity": 65
+    "popularity": 60
   },
   {
     "artist": "The Beatles",
     "title": "Here Comes the Sun",
     "bpm": 128,
+    "felt_bpm": 128,
     "genre": "rock",
     "year": 1969,
     "isrc": "GBAYE0601696",
     "cover": "covers/aa94ab293730bb7845d2aa8c672b2c29.jpg",
-    "popularity": 64
+    "popularity": 54
   },
   {
     "artist": "Elton John",
     "title": "Your Song",
     "bpm": 128,
+    "felt_bpm": 128,
     "genre": "pop",
     "year": 1971,
     "isrc": "GBAMB9500072",
     "cover": "covers/dba55570a13a8be5d20e457a75091dd5.jpg",
-    "popularity": 45
+    "popularity": 34
   },
   {
     "artist": "Sir Mix-a-Lot",
     "title": "Baby Got Back",
     "bpm": 128,
+    "felt_bpm": 128,
     "genre": "hip-hop",
     "year": 1992,
     "isrc": "USSM19100221",
     "cover": "covers/65fb62f29304249595fe78ecff8298a8.jpg",
-    "popularity": 29
+    "popularity": 18
   },
   {
     "artist": "The White Stripes",
     "title": "The Hardest Button To Button",
     "bpm": 128,
+    "felt_bpm": 128,
     "genre": "rock",
     "year": 2003,
     "isrc": "USVT10300009",
     "cover": "covers/370483b6b448fafeeff053a1556467da.jpg",
-    "popularity": 27
-  },
-  {
-    "artist": "The Rolling Stones",
-    "title": "Brown Sugar",
-    "bpm": 128,
-    "genre": "rock",
-    "year": 1971,
-    "isrc": "GBUM70909464",
-    "cover": "covers/cf61e42ee4036325e8d151489e6f38f7.jpg",
-    "popularity": 24
+    "popularity": 17
   },
   {
     "artist": "System of a Down",
     "title": "Chop Suey!",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "metal",
     "year": 2001,
     "isrc": "USSM10107256",
     "cover": "covers/9a26018a2c9bf0eed86e6c5ae6b3decb.jpg",
-    "popularity": 91
+    "popularity": 89
   },
   {
     "artist": "Calvin Harris",
     "title": "Summer",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "electronic",
     "year": 2014,
     "isrc": "GBARL1400296",
     "cover": "covers/a72e5db10e9168cd6f5065fbe750cdbb.jpg",
-    "popularity": 86
-  },
-  {
-    "artist": "AC/DC",
-    "title": "You Shook Me All Night Long",
-    "bpm": 129,
-    "genre": "rock",
-    "year": 1980,
-    "isrc": "AUAP08000047",
-    "cover": "covers/41041b14873956eff0459c8ea2c296a8.jpg",
-    "popularity": 76
+    "popularity": 84
   },
   {
     "artist": "Earth, Wind & Fire",
     "title": "Boogie Wonderland",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "funk",
     "year": 1981,
     "isrc": "USSM19922860",
     "cover": "covers/e192f4eaf270f9f36ccc59264fb05c7c.jpg",
-    "popularity": 71
+    "popularity": 64
   },
   {
     "artist": "The Killers",
     "title": "When You Were Young",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "indie",
     "year": 2007,
     "isrc": "USUM70605164",
     "cover": "covers/daaf443d20af3ec952c2504a02032e49.jpg",
-    "popularity": 52
+    "popularity": 41
   },
   {
     "artist": "Fleetwood Mac",
     "title": "Rhiannon",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "rock",
     "year": 1980,
     "isrc": "USWB19900188",
     "cover": "covers/fae8305ef18ac327a4c19436672d5d5b.jpg",
-    "popularity": 38
-  },
-  {
-    "artist": "Santana",
-    "title": "Oye Como Va",
-    "bpm": 129,
-    "genre": "rock",
-    "year": 1973,
-    "isrc": "USSM17000293",
-    "cover": "covers/6a77ec8399155071fa09c822ad68bd34.jpg",
-    "popularity": 21
-  },
-  {
-    "artist": "Simon & Garfunkel",
-    "title": "Scarborough Fair / Canticle",
-    "bpm": 129,
-    "genre": "rock",
-    "year": 1966,
-    "isrc": "USSM16600723",
-    "cover": "covers/86cc48ace3e1914f936b55a1e1e43842.jpg",
-    "popularity": 16
+    "popularity": 26
   },
   {
     "artist": "Frank Ocean",
     "title": "Thinkin Bout You",
     "bpm": 129,
+    "felt_bpm": 129,
     "genre": "r&b",
     "year": 2012,
     "isrc": "USUM71202995",
     "cover": "covers/e545e4c96ae929e8cce56808afd7756f.jpg",
-    "popularity": 11
-  },
-  {
-    "artist": "Bob Dylan",
-    "title": "All Along The Watchtower",
-    "bpm": 129,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "USSM19922549",
-    "cover": "covers/a946cd8e997bff201fa0d0ee740883b4.jpg",
     "popularity": 8
   },
   {
     "artist": "Cyndi Lauper",
     "title": "Time After Time",
     "bpm": 130,
+    "felt_bpm": 130,
     "genre": "pop",
     "year": 1984,
     "isrc": "USSM18300650",
     "cover": "covers/48bcf7415317ec8dc1181ee55b4b0aeb.jpg",
-    "popularity": 72
+    "popularity": 65
   },
   {
     "artist": "Blur",
     "title": "Song 2",
     "bpm": 130,
+    "felt_bpm": 130,
     "genre": "rock",
     "year": 1997,
     "isrc": "GBAYE9600015",
     "cover": "covers/1e6f6130ca0ccbdd0cde4dc2b05e6df9.jpg",
-    "popularity": 59
+    "popularity": 50
   },
   {
     "artist": "Depeche Mode",
     "title": "Personal Jesus",
     "bpm": 130,
+    "felt_bpm": 130,
     "genre": "electronic",
     "year": 1993,
     "isrc": "GBAJH0602195",
     "cover": "covers/55972109f7c4049deb78402a94ee3b7b.jpg",
-    "popularity": 58
+    "popularity": 48
   },
   {
     "artist": "The Clash",
     "title": "Rock The Casbah",
     "bpm": 130,
+    "felt_bpm": 130,
     "genre": "punk",
     "year": 1982,
     "isrc": "GBARL1200671",
     "cover": "covers/dcb57e195538467662fbce4492f89c20.jpg",
-    "popularity": 43
-  },
-  {
-    "artist": "Coldplay",
-    "title": "Clocks",
-    "bpm": 131,
-    "genre": "pop",
-    "year": 2002,
-    "isrc": "GBAYE0200771",
-    "cover": "covers/5ba1787e1ec36dbbca38ff01fea8fb21.jpg",
-    "popularity": 76
-  },
-  {
-    "artist": "Michael Jackson",
-    "title": "Dirty Diana",
-    "bpm": 131,
-    "genre": "pop",
-    "year": 1987,
-    "isrc": "USSM11204988",
-    "cover": "covers/fb0a49a91ab8137ec9d028c4dbb04021.jpg",
-    "popularity": 69
-  },
-  {
-    "artist": "System of a Down",
-    "title": "Sugar",
-    "bpm": 131,
-    "genre": "metal",
-    "year": 1995,
-    "isrc": "USSM19800759",
-    "cover": "covers/d861e28aa0c976db91a019d6fe7c5463.jpg",
-    "popularity": 50
+    "popularity": 31
   },
   {
     "artist": "Kelly Clarkson",
     "title": "Since U Been Gone",
     "bpm": 131,
+    "felt_bpm": 131,
     "genre": "pop",
     "year": 2003,
     "isrc": "GBCTA0400231",
     "cover": "covers/4e96bc714cb67543de9b30461a2de88e.jpg",
-    "popularity": 40
-  },
-  {
-    "artist": "Stevie Wonder",
-    "title": "Master Blaster (Jammin')",
-    "bpm": 131,
-    "genre": "funk",
-    "year": 1980,
-    "isrc": "USMO18082595",
-    "cover": "covers/dc11aaf0240dbaf1548639e1c5df8db8.jpg",
-    "popularity": 24
+    "popularity": 28
   },
   {
     "artist": "The Police",
     "title": "Roxanne",
     "bpm": 132,
+    "felt_bpm": 132,
     "genre": "rock",
     "year": 1988,
     "isrc": "GBAAM7800003",
     "cover": "covers/316afdaed93c4a18cf730389648d03d6.jpg",
-    "popularity": 60
-  },
-  {
-    "artist": "Nirvana",
-    "title": "About A Girl",
-    "bpm": 132,
-    "genre": "grunge",
-    "year": 1994,
-    "isrc": "USGF19972701",
-    "cover": "covers/fe1082c5ef54876802146897e76b592e.jpg",
-    "popularity": 48
+    "popularity": 51
   },
   {
     "artist": "The Proclaimers",
     "title": "I'm Gonna Be (500 Miles)",
     "bpm": 132,
+    "felt_bpm": 132,
     "genre": "pop",
     "year": 1994,
     "isrc": "GBAYK8800055",
     "cover": "covers/4d1b96be3c5bce860156f4fc53e661d0.jpg",
-    "popularity": 35
-  },
-  {
-    "artist": "Elton John",
-    "title": "Bennie And The Jets",
-    "bpm": 132,
-    "genre": "pop",
-    "year": 1973,
-    "isrc": "GBUM71304955",
-    "cover": "covers/b34f389d15bcc5842d140c9c29e3bbd5.jpg",
-    "popularity": 28
-  },
-  {
-    "artist": "Toto",
-    "title": "Jake To The Bone",
-    "bpm": 132,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "USSM19801962",
-    "cover": "covers/b8d48b340c32be7253441a8dd39da1ff.jpg",
-    "popularity": 4
+    "popularity": 24
   },
   {
     "artist": "AC/DC",
     "title": "Thunderstruck",
     "bpm": 133,
+    "felt_bpm": 133,
     "genre": "rock",
     "year": 1991,
     "isrc": "AUAP09000014",
     "cover": "covers/e715766b21a8db6076f6a9a89e25cf82.jpg",
-    "popularity": 95
+    "popularity": 94
   },
   {
     "artist": "MC Hammer",
     "title": "U Can't Touch This",
     "bpm": 133,
+    "felt_bpm": 133,
     "genre": "hip-hop",
     "year": 1990,
     "isrc": "USCA29000294",
     "cover": "covers/18bc1a407224067b1a400be8e86aec89.jpg",
-    "popularity": 70
+    "popularity": 64
   },
   {
     "artist": "Cher",
     "title": "Believe",
     "bpm": 133,
+    "felt_bpm": 133,
     "genre": "pop",
     "year": 1998,
     "isrc": "GBAHT9803002",
     "cover": "covers/af263778ad6ef2f3f5be381292ed02a8.jpg",
-    "popularity": 67
-  },
-  {
-    "artist": "Guns N' Roses",
-    "title": "Knockin' On Heaven's Door",
-    "bpm": 133,
-    "genre": "rock",
-    "year": 1992,
-    "isrc": "USGF19142004",
-    "cover": "covers/c32f893b8670d5a3d9b1e70078bbc8fa.jpg",
-    "popularity": 61
+    "popularity": 59
   },
   {
     "artist": "Creedence Clearwater Revival",
     "title": "Fortunate Son",
     "bpm": 133,
+    "felt_bpm": 133,
     "genre": "rock",
     "year": 1969,
     "isrc": "USC4R0817618",
     "cover": "covers/7ada3abad33c88c4cb2354623b4f4700.jpg",
-    "popularity": 54
-  },
-  {
-    "artist": "Linkin Park",
-    "title": "A Place For My Head",
-    "bpm": 133,
-    "genre": "rock",
-    "year": 2000,
-    "isrc": "USWB10001203",
-    "cover": "covers/033a271b5ec10842c287827c39244fb5.jpg",
-    "popularity": 28
-  },
-  {
-    "artist": "U2",
-    "title": "New Year's Day",
-    "bpm": 133,
-    "genre": "rock",
-    "year": 1983,
-    "isrc": "GBUM70809759",
-    "cover": "covers/c66b126bb3afe75c7fedd62f9df4956b.jpg",
-    "popularity": 27
-  },
-  {
-    "artist": "AC/DC",
-    "title": "Tnt",
-    "bpm": 133,
-    "genre": "rock",
-    "year": 2000,
-    "isrc": "AUAP09000014",
-    "cover": "covers/e715766b21a8db6076f6a9a89e25cf82.jpg",
-    "popularity": 20
+    "popularity": 45
   },
   {
     "artist": "Adele",
     "title": "Someone Like You",
     "bpm": 134,
+    "felt_bpm": 134,
     "genre": "pop",
     "year": 2010,
     "isrc": "GBBKS1000351",
     "cover": "covers/dc1ce848d830ecc93521be5a78350364.jpg",
-    "popularity": 85
+    "popularity": 84
   },
   {
     "artist": "Bonnie Tyler",
     "title": "Total Eclipse of the Heart",
     "bpm": 134,
+    "felt_bpm": 134,
     "genre": "rock",
     "year": 1983,
     "isrc": "GBBBN8300002",
     "cover": "covers/9bc5fa03c897154eded3719e512567cc.jpg",
-    "popularity": 81
+    "popularity": 78
   },
   {
     "artist": "Dire Straits",
     "title": "Money For Nothing",
     "bpm": 134,
+    "felt_bpm": 134,
     "genre": "rock",
     "year": 1985,
     "isrc": "GBF088500674",
     "cover": "covers/0aeeab7a9ef9dcc03e3c6490f9bf822d.jpg",
-    "popularity": 63
+    "popularity": 53
   },
   {
     "artist": "The Clash",
     "title": "London Calling",
     "bpm": 134,
+    "felt_bpm": 134,
     "genre": "punk",
     "year": 1979,
     "isrc": "GBARL1200680",
     "cover": "covers/1dbb7d7bee08ed2b18deabffd675bd36.jpg",
-    "popularity": 39
+    "popularity": 27
   },
   {
     "artist": "John Mayer",
     "title": "Slow Dancing In A Burning Room",
     "bpm": 134,
+    "felt_bpm": 134,
     "genre": "pop",
     "year": 2006,
     "isrc": "USSM10603632",
     "cover": "covers/a49f22668c3f7f26d9de7fcc93537742.jpg",
-    "popularity": 22
-  },
-  {
-    "artist": "Billy Joel",
-    "title": "Movin' Out",
-    "bpm": 134,
-    "genre": "pop",
-    "year": 1977,
-    "isrc": "USSM17700369",
-    "cover": "covers/26dba905656c8ae9c5adfd44793d2daa.jpg",
-    "popularity": 12
+    "popularity": 14
   },
   {
     "artist": "Blink-182",
     "title": "Adam's Song",
     "bpm": 135,
+    "felt_bpm": 135,
     "genre": "punk",
     "year": 1999,
     "isrc": "USMC19959122",
     "cover": "covers/50627ad1a5ce0215359f0e8b2e37a01f.jpg",
-    "popularity": 51
-  },
-  {
-    "artist": "Pixies",
-    "title": "Debaser",
-    "bpm": 135,
-    "genre": "alternative",
-    "year": 1992,
-    "isrc": "GBAFL9700091",
-    "cover": "covers/f2ea8050f0540c5f08316832cf9ec2cb.jpg",
-    "popularity": 12
+    "popularity": 41
   },
   {
     "artist": "Drake",
     "title": "Hotline Bling",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "hip-hop",
     "year": 2015,
     "isrc": "USCM51500238",
     "cover": "covers/56bdb7a86a27fadb96332c0c8f1b8e81.jpg",
-    "popularity": 83
+    "popularity": 81
   },
   {
     "artist": "Linkin Park",
     "title": "Faint",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "rock",
     "year": 2003,
     "isrc": "USWB10300468",
     "cover": "covers/882448ab63952aa16e502c82db2df160.jpg",
-    "popularity": 83
+    "popularity": 77
   },
   {
     "artist": "Foo Fighters",
     "title": "Learn To Fly",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "rock",
     "year": 1999,
     "isrc": "USRW39900002",
     "cover": "covers/266f01f1c7a04843d11cd08f9c07d11f.jpg",
-    "popularity": 58
+    "popularity": 49
   },
   {
     "artist": "The Rolling Stones",
     "title": "(I Can't Get No) Satisfaction",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "rock",
     "year": 1966,
     "isrc": "USA176510160",
     "cover": "covers/0d3be6936cd5a5e81db72f04ed75e4fb.jpg",
-    "popularity": 57
+    "popularity": 47
   },
   {
     "artist": "Elton John",
     "title": "Rocket Man",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "pop",
     "year": 1976,
     "isrc": "GBAMB7200006",
     "cover": "covers/56121010d25e75058e2cc817037ad19b.jpg",
-    "popularity": 55
+    "popularity": 45
   },
   {
     "artist": "The Smiths",
     "title": "There Is A Light That Never Goes Out",
     "bpm": 136,
+    "felt_bpm": 136,
     "genre": "indie",
     "year": 1986,
     "isrc": "GBCRL0800315",
     "cover": "covers/d1005397b8a3a743fb0c8aad35f42db3.jpg",
-    "popularity": 36
-  },
-  {
-    "artist": "Muse",
-    "title": "Plug In Baby",
-    "bpm": 136,
-    "genre": "rock",
-    "year": 2001,
-    "isrc": "GBCVT0000025",
-    "cover": "covers/fc3b4badb5f375776e3edd28e6cabcc1.jpg",
-    "popularity": 26
+    "popularity": 24
   },
   {
     "artist": "ABBA",
     "title": "Mamma Mia",
     "bpm": 137,
+    "felt_bpm": 137,
     "genre": "disco",
     "year": 1975,
     "isrc": "SEAYD7501010",
     "cover": "covers/b8b70d474b7a8f27799e0d665e9b737e.jpg",
-    "popularity": 62
+    "popularity": 53
   },
   {
     "artist": "David Bowie",
     "title": "Space Oddity",
     "bpm": 137,
+    "felt_bpm": 137,
     "genre": "rock",
     "year": 1972,
     "isrc": "USJT11500173",
     "cover": "covers/8bd4a046f3d8c8895d9aff00a3b7c2df.jpg",
-    "popularity": 54
+    "popularity": 44
   },
   {
     "artist": "The Cure",
     "title": "Friday I'm in Love",
     "bpm": 137,
+    "felt_bpm": 137,
     "genre": "alternative",
     "year": 1992,
     "isrc": "GBALB9200002",
     "cover": "covers/6c1e813a08d24fe28512c8c8fa4cf8c3.jpg",
-    "popularity": 42
-  },
-  {
-    "artist": "Muse",
-    "title": "Knights Of Cydonia",
-    "bpm": 137,
-    "genre": "rock",
-    "year": 2006,
-    "isrc": "GBAHT0500600",
-    "cover": "covers/fc457d27a8c0b7fc6f9b56fb94e22a0d.jpg",
-    "popularity": 31
-  },
-  {
-    "artist": "Dire Straits",
-    "title": "Tunnel Of Love",
-    "bpm": 137,
-    "genre": "rock",
-    "year": 1980,
-    "isrc": "GBF088000674",
-    "cover": "covers/2b0f3464bdb5407626f0219471fe723b.jpg",
-    "popularity": 28
+    "popularity": 33
   },
   {
     "artist": "Coldplay",
     "title": "Viva La Vida",
     "bpm": 138,
+    "felt_bpm": 138,
     "genre": "pop",
     "year": 2008,
     "isrc": "GBAYE0800265",
     "cover": "covers/eede3cd0dc3a5a87c7a5b1085b022e2d.jpg",
-    "popularity": 85
+    "popularity": 83
   },
   {
     "artist": "Gorillaz",
     "title": "Feel Good Inc",
     "bpm": 138,
+    "felt_bpm": 138,
     "genre": "rock",
     "year": 2004,
     "isrc": "GBAYE0500172",
     "cover": "covers/3dc29a565149240729afc08e1f251b46.jpg",
-    "popularity": 82
+    "popularity": 79
   },
   {
     "artist": "The Killers",
     "title": "Somebody Told Me",
     "bpm": 138,
+    "felt_bpm": 138,
     "genre": "indie",
     "year": 2004,
     "isrc": "USIR20400195",
     "cover": "covers/727528cdf2e2a99d397e872fe2bd856e.jpg",
-    "popularity": 53
+    "popularity": 44
   },
   {
     "artist": "Ozzy Osbourne",
     "title": "Crazy Train",
     "bpm": 138,
+    "felt_bpm": 138,
     "genre": "rock",
     "year": 1984,
     "isrc": "USSM11002845",
     "cover": "covers/556c8cec95f9b26ba9e90b13a2956144.jpg",
-    "popularity": 34
-  },
-  {
-    "artist": "The Beatles",
-    "title": "Day Tripper",
-    "bpm": 138,
-    "genre": "rock",
-    "year": 1966,
-    "isrc": "GBUM71505892",
-    "cover": "covers/c65b3bd84e81056e060be144381c06c8.jpg",
-    "popularity": 29
+    "popularity": 21
   },
   {
     "artist": "Michael Jackson",
     "title": "Beat It",
     "bpm": 139,
+    "felt_bpm": 139,
     "genre": "pop",
     "year": 1983,
     "isrc": "USSM19902990",
     "cover": "covers/a0ad67d1beb761f2cb9f8b60e5bcf07a.jpg",
-    "popularity": 94
+    "popularity": 91
   },
   {
     "artist": "Aerosmith",
     "title": "Amazing",
     "bpm": 139,
+    "felt_bpm": 139,
     "genre": "rock",
     "year": 1993,
     "isrc": "USIR10000426",
     "cover": "covers/04cfb163fee3a6dcf025525eb6b57f44.jpg",
-    "popularity": 51
+    "popularity": 44
   },
   {
     "artist": "Bryan Adams",
     "title": "Summer of '69",
     "bpm": 139,
+    "felt_bpm": 139,
     "genre": "rock",
     "year": 1988,
     "isrc": "USAM18490006",
     "cover": "covers/f5c062034dbbf74f9c158c51ba783871.jpg",
-    "popularity": 45
+    "popularity": 33
   },
   {
     "artist": "The Rolling Stones",
     "title": "Angie",
     "bpm": 139,
+    "felt_bpm": 139,
     "genre": "rock",
     "year": 1974,
     "isrc": "GBCJN0500011",
     "cover": "covers/8ec39c97a5fd77144962bc6a8c2451d3.jpg",
-    "popularity": 42
-  },
-  {
-    "artist": "Van Halen",
-    "title": "You Really Got Me",
-    "bpm": 139,
-    "genre": "rock",
-    "year": 1981,
-    "isrc": "USWB11403670",
-    "cover": "covers/4b833c9a27e8b9e6522037ce94db6658.jpg",
-    "popularity": 22
-  },
-  {
-    "artist": "Blink-182",
-    "title": "Carousel",
-    "bpm": 139,
-    "genre": "punk",
-    "year": 1994,
-    "isrc": "USCR29458603",
-    "cover": "covers/50627ad1a5ce0215359f0e8b2e37a01f.jpg",
-    "popularity": 10
+    "popularity": 30
   },
   {
     "artist": "Kings of Leon",
     "title": "Use Somebody",
     "bpm": 140,
+    "felt_bpm": 140,
     "genre": "rock",
     "year": 2008,
     "isrc": "USRC10800301",
     "cover": "covers/34c0ff08b56fbc210b81f4163173ab51.jpg",
-    "popularity": 64
+    "popularity": 56
   },
   {
     "artist": "Bob Dylan",
     "title": "Knockin' On Heaven's Door",
     "bpm": 140,
+    "felt_bpm": 140,
     "genre": "rock",
     "year": 1985,
     "isrc": "USSM11304547",
     "cover": "covers/83f505835a6525c9754d6f1f0ab7479d.jpg",
-    "popularity": 37
+    "popularity": 26
   },
   {
     "artist": "Creedence Clearwater Revival",
     "title": "Green River",
-    "bpm": 140,
+    "bpm": 142,
+    "felt_bpm": 140,
     "genre": "rock",
     "year": 1980,
     "isrc": "USC4R0817600",
     "cover": "covers/8cf6b18eba8e0fa730b9a37f7d00f9a4.jpg",
-    "popularity": 36
+    "popularity": 26
   },
   {
     "artist": "Van Halen",
     "title": "Ain't Talkin' 'Bout Love",
     "bpm": 140,
+    "felt_bpm": 140,
     "genre": "rock",
     "year": 1992,
     "isrc": "USWB17700031",
     "cover": "covers/f36fbade737849d9dcc227c7f9e5b519.jpg",
-    "popularity": 36
-  },
-  {
-    "artist": "The Cure",
-    "title": "Lovesong",
-    "bpm": 140,
-    "genre": "alternative",
-    "year": 1989,
-    "isrc": "GBALB8900003",
-    "cover": "covers/6c1e813a08d24fe28512c8c8fa4cf8c3.jpg",
-    "popularity": 33
-  },
-  {
-    "artist": "Arctic Monkeys",
-    "title": "505",
-    "bpm": 140,
-    "genre": "indie",
-    "year": 2007,
-    "isrc": "GBCEL0700074",
-    "cover": "covers/6e6ed4cec42a05829e8f7d10d7ef59f3.jpg",
-    "popularity": 23
-  },
-  {
-    "artist": "Pearl Jam",
-    "title": "Yellow Ledbetter",
-    "bpm": 141,
-    "genre": "grunge",
-    "year": 1995,
-    "isrc": "USSM19200006",
-    "cover": "covers/96faa60d22790a60b0bf1d6243ca4f1a.jpg",
-    "popularity": 45
+    "popularity": 24
   },
   {
     "artist": "Van Halen",
     "title": "Panama",
     "bpm": 141,
+    "felt_bpm": 141,
     "genre": "rock",
     "year": 1984,
     "isrc": "USWB11403681",
     "cover": "covers/0649448bcdeeeb48c25edc0e83653711.jpg",
-    "popularity": 36
-  },
-  {
-    "artist": "Green Day",
-    "title": "Longview",
-    "bpm": 142,
-    "genre": "punk",
-    "year": 1993,
-    "isrc": "USRE19900148",
-    "cover": "covers/1e17054b7bfa6576f64ea867b71ef479.jpg",
-    "popularity": 21
+    "popularity": 24
   },
   {
     "artist": "Britney Spears",
     "title": "Toxic",
     "bpm": 143,
+    "felt_bpm": 143,
     "genre": "pop",
     "year": 2003,
     "isrc": "USJI10301005",
     "cover": "covers/8a2b95cda407d004d829831d20e2e20b.jpg",
-    "popularity": 75
+    "popularity": 70
   },
   {
     "artist": "Motörhead",
     "title": "Ace Of Spades",
     "bpm": 144,
+    "felt_bpm": 144,
     "genre": "rock",
     "year": 1985,
     "isrc": "GBAJE0417839",
     "cover": "covers/95961cbe60b950ea9e96bf6ecf6d3cc8.jpg",
-    "popularity": 25
+    "popularity": 13
   },
   {
     "artist": "Billy Joel",
     "title": "We Didn't Start The Fire",
     "bpm": 145,
+    "felt_bpm": 145,
     "genre": "pop",
     "year": 1990,
     "isrc": "USSM18900217",
     "cover": "covers/8a44cff0ab7a842716dc62235a211a30.jpg",
-    "popularity": 51
+    "popularity": 42
   },
   {
     "artist": "Coldplay",
     "title": "The Scientist",
     "bpm": 146,
+    "felt_bpm": 146,
     "genre": "pop",
     "year": 2003,
     "isrc": "GBAYE0200772",
     "cover": "covers/5ba1787e1ec36dbbca38ff01fea8fb21.jpg",
-    "popularity": 88
-  },
-  {
-    "artist": "The Police",
-    "title": "Walking On The Moon",
-    "bpm": 146,
-    "genre": "rock",
-    "year": 1980,
-    "isrc": "GBAAM7900007",
-    "cover": "covers/316afdaed93c4a18cf730389648d03d6.jpg",
-    "popularity": 33
-  },
-  {
-    "artist": "Kings of Leon",
-    "title": "Molly's Chambers",
-    "bpm": 146,
-    "genre": "rock",
-    "year": 2003,
-    "isrc": "USRC10200826",
-    "cover": "covers/787852ad859d4cb6ddcec658b08d2117.jpg",
-    "popularity": 13
-  },
-  {
-    "artist": "Green Day",
-    "title": "Holiday",
-    "bpm": 147,
-    "genre": "punk",
-    "year": 2004,
-    "isrc": "USRE10500451",
-    "cover": "covers/cee32dee76dea2c67a13764457fbac48.jpg",
-    "popularity": 54
+    "popularity": 86
   },
   {
     "artist": "Steppenwolf",
     "title": "Born To Be Wild",
     "bpm": 147,
+    "felt_bpm": 147,
     "genre": "rock",
     "year": 1968,
     "isrc": "USMC16846563",
     "cover": "covers/164e4c358a1984b300a62de87cbd2948.jpg",
-    "popularity": 39
+    "popularity": 26
   },
   {
     "artist": "Bruce Springsteen",
     "title": "Born To Run",
     "bpm": 147,
+    "felt_bpm": 147,
     "genre": "rock",
     "year": 1981,
     "isrc": "USSM17500423",
     "cover": "covers/c071343c0d0e73ceec13218e08f28aae.jpg",
-    "popularity": 29
-  },
-  {
-    "artist": "Dire Straits",
-    "title": "Lady Writer",
-    "bpm": 147,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "GBF087900662",
-    "cover": "covers/e7ee5354d91be62dd1a26a7dd909d91d.jpg",
-    "popularity": 20
-  },
-  {
-    "artist": "Blink-182",
-    "title": "All The Small Things",
-    "bpm": 148,
-    "genre": "punk",
-    "year": 1999,
-    "isrc": "USMC19959123",
-    "cover": "covers/50627ad1a5ce0215359f0e8b2e37a01f.jpg",
-    "popularity": 74
+    "popularity": 18
   },
   {
     "artist": "The Killers",
     "title": "Mr. Brightside",
     "bpm": 148,
+    "felt_bpm": 148,
     "genre": "indie",
     "year": 2003,
     "isrc": "USIR20400274",
     "cover": "covers/727528cdf2e2a99d397e872fe2bd856e.jpg",
-    "popularity": 73
+    "popularity": 66
+  },
+  {
+    "artist": "Blink-182",
+    "title": "All The Small Things",
+    "bpm": 148,
+    "felt_bpm": 148,
+    "genre": "punk",
+    "year": 1999,
+    "isrc": "USMC19959123",
+    "cover": "covers/50627ad1a5ce0215359f0e8b2e37a01f.jpg",
+    "popularity": 65
   },
   {
     "artist": "The Beatles",
     "title": "Hey Jude",
     "bpm": 148,
+    "felt_bpm": 148,
     "genre": "rock",
     "year": 1970,
     "isrc": "GBUM71505902",
     "cover": "covers/c65b3bd84e81056e060be144381c06c8.jpg",
-    "popularity": 66
+    "popularity": 57
   },
   {
     "artist": "Dire Straits",
     "title": "Sultans Of Swing",
-    "bpm": 149,
+    "bpm": 148,
+    "felt_bpm": 149,
     "genre": "rock",
     "year": 1979,
     "isrc": "GBF089601041",
     "cover": "covers/1bf2bc47623db2ec36a38be064131ce5.jpg",
-    "popularity": 85
+    "popularity": 78
   },
   {
     "artist": "Bruce Springsteen",
     "title": "Dancing In The Dark",
     "bpm": 149,
+    "felt_bpm": 149,
     "genre": "rock",
     "year": 1984,
     "isrc": "USSM18400416",
     "cover": "covers/106f651bf559796879b90e83c50b3e96.jpg",
-    "popularity": 70
-  },
-  {
-    "artist": "Guns N' Roses",
-    "title": "Nightrain",
-    "bpm": 149,
-    "genre": "rock",
-    "year": 1987,
-    "isrc": "USGF18714803",
-    "cover": "covers/8bfe7b3b0985d9ff0751090fb2b6f73f.jpg",
-    "popularity": 26
-  },
-  {
-    "artist": "Fall Out Boy",
-    "title": "The Take Over, The Breaks Over",
-    "bpm": 149,
-    "genre": "pop",
-    "year": 2007,
-    "isrc": "USUM70700329",
-    "cover": "covers/cfc8ab8353cf2ad3d789c05bfc4d23ad.jpg",
-    "popularity": 22
+    "popularity": 64
   },
   {
     "artist": "Linkin Park",
     "title": "Papercut",
     "bpm": 150,
+    "felt_bpm": 150,
     "genre": "rock",
     "year": 2000,
     "isrc": "USWB10002403",
     "cover": "covers/033a271b5ec10842c287827c39244fb5.jpg",
-    "popularity": 57
+    "popularity": 49
   },
   {
     "artist": "The Cure",
     "title": "Just Like Heaven",
     "bpm": 150,
+    "felt_bpm": 150,
     "genre": "alternative",
     "year": 1991,
     "isrc": "GBALB8700003",
     "cover": "covers/6c1e813a08d24fe28512c8c8fa4cf8c3.jpg",
-    "popularity": 43
-  },
-  {
-    "artist": "Maroon 5",
-    "title": "Harder To Breathe",
-    "bpm": 150,
-    "genre": "pop",
-    "year": 2002,
-    "isrc": "USJAY0300079",
-    "cover": "covers/39fe38574c7af3181d1e56ad7c03fce3.jpg",
-    "popularity": 25
+    "popularity": 34
   },
   {
     "artist": "The Police",
     "title": "Message In A Bottle",
     "bpm": 151,
+    "felt_bpm": 151,
     "genre": "rock",
     "year": 1979,
     "isrc": "GBAAM7900002",
     "cover": "covers/316afdaed93c4a18cf730389648d03d6.jpg",
-    "popularity": 57
-  },
-  {
-    "artist": "The Clash",
-    "title": "I Fought The Law",
-    "bpm": 151,
-    "genre": "punk",
-    "year": 1979,
-    "isrc": "GBARL1201017",
-    "cover": "covers/feca97420dd6f5679e7cae61d6d22438.jpg",
-    "popularity": 22
-  },
-  {
-    "artist": "The White Stripes",
-    "title": "Blue Orchid",
-    "bpm": 151,
-    "genre": "rock",
-    "year": 2005,
-    "isrc": "USVT10500076",
-    "cover": "covers/c3f3d779fbd7ad2a42d56d1807c76205.jpg",
-    "popularity": 15
-  },
-  {
-    "artist": "Billy Joel",
-    "title": "You May Be Right",
-    "bpm": 151,
-    "genre": "pop",
-    "year": 1980,
-    "isrc": "USSM17900398",
-    "cover": "covers/26dba905656c8ae9c5adfd44793d2daa.jpg",
-    "popularity": 13
-  },
-  {
-    "artist": "Bon Jovi",
-    "title": "Runaway",
-    "bpm": 152,
-    "genre": "rock",
-    "year": 1984,
-    "isrc": "USPR39402231",
-    "cover": "covers/b7667d1cc5f1b97af32c8160f2198547.jpg",
-    "popularity": 53
-  },
-  {
-    "artist": "Aerosmith",
-    "title": "Mama Kin",
-    "bpm": 152,
-    "genre": "rock",
-    "year": 1973,
-    "isrc": "USSM10207881",
-    "cover": "covers/55c4c68b9a83e446f425600a28d37b7b.jpg",
-    "popularity": 6
+    "popularity": 47
   },
   {
     "artist": "Kings of Leon",
     "title": "Sex On Fire",
     "bpm": 153,
+    "felt_bpm": 153,
     "genre": "rock",
     "year": 2008,
     "isrc": "USRC10800300",
     "cover": "covers/a4d41f829fac22196b44e97824ee9180.jpg",
-    "popularity": 79
-  },
-  {
-    "artist": "Queen",
-    "title": "Crazy Little Thing Called Love",
-    "bpm": 153,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "GBUM71029612",
-    "cover": "covers/8b8fc5d117f9357b79f0a0a410a170e8.jpg",
-    "popularity": 49
-  },
-  {
-    "artist": "Elton John",
-    "title": "Saturday Night's Alright For Fighting",
-    "bpm": 153,
-    "genre": "pop",
-    "year": 1973,
-    "isrc": "GBUM71304966",
-    "cover": "covers/b34f389d15bcc5842d140c9c29e3bbd5.jpg",
-    "popularity": 16
+    "popularity": 73
   },
   {
     "artist": "Goo Goo Dolls",
     "title": "Iris",
     "bpm": 154,
+    "felt_bpm": 154,
     "genre": "rock",
     "year": 1998,
     "isrc": "USWB19800160",
     "cover": "covers/fb8ad0c24c1a3fef50c7ec20f157923b.jpg",
-    "popularity": 78
+    "popularity": 73
   },
   {
     "artist": "Queen",
     "title": "Don't Stop Me Now",
     "bpm": 154,
+    "felt_bpm": 154,
     "genre": "rock",
     "year": 1978,
     "isrc": "GBCEG9400014",
     "cover": "covers/99a1c587efe3c4ac4a415ca3ee3efd55.jpg",
-    "popularity": 75
-  },
-  {
-    "artist": "Foo Fighters",
-    "title": "My Hero",
-    "bpm": 154,
-    "genre": "rock",
-    "year": 1997,
-    "isrc": "USRW29600007",
-    "cover": "covers/266f01f1c7a04843d11cd08f9c07d11f.jpg",
-    "popularity": 43
+    "popularity": 70
   },
   {
     "artist": "Fall Out Boy",
     "title": "Thnks Fr Th Mmrs",
     "bpm": 155,
+    "felt_bpm": 155,
     "genre": "pop",
     "year": 2007,
     "isrc": "USUM70700326",
     "cover": "covers/cfc8ab8353cf2ad3d789c05bfc4d23ad.jpg",
-    "popularity": 52
-  },
-  {
-    "artist": "The Police",
-    "title": "Synchronicity II",
-    "bpm": 156,
-    "genre": "rock",
-    "year": 1995,
-    "isrc": "GBAAM0201109",
-    "cover": "covers/e9d3dbc325eebdaf6bc442c2f9a05daa.jpg",
-    "popularity": 13
-  },
-  {
-    "artist": "Blink-182",
-    "title": "What's My Age Again?",
-    "bpm": 157,
-    "genre": "punk",
-    "year": 1998,
-    "isrc": "USMC19959007",
-    "cover": "covers/c25db71db5267c6919391c5f6d8b0d37.jpg",
-    "popularity": 50
+    "popularity": 43
   },
   {
     "artist": "System of a Down",
     "title": "Aerials",
     "bpm": 158,
+    "felt_bpm": 158,
     "genre": "metal",
     "year": 2001,
     "isrc": "USSM10107264",
     "cover": "covers/6baa3ad626e859f67bbddae6528fd949.jpg",
-    "popularity": 80
+    "popularity": 73
   },
   {
     "artist": "Foo Fighters",
     "title": "Everlong",
     "bpm": 158,
+    "felt_bpm": 158,
     "genre": "rock",
     "year": 1999,
     "isrc": "USRW29600011",
     "cover": "covers/266f01f1c7a04843d11cd08f9c07d11f.jpg",
-    "popularity": 74
+    "popularity": 65
   },
   {
     "artist": "The Strokes",
     "title": "Reptilia",
     "bpm": 158,
+    "felt_bpm": 158,
     "genre": "indie",
     "year": 2003,
     "isrc": "USRC10301519",
     "cover": "covers/3d1246b483aefa9bd0bcd07dfc926be8.jpg",
-    "popularity": 64
-  },
-  {
-    "artist": "AC/DC",
-    "title": "Whole Lotta Rosie",
-    "bpm": 158,
-    "genre": "rock",
-    "year": 1979,
-    "isrc": "AUAP07700011",
-    "cover": "covers/57340d30b084ed406f86f1e40fc9d862.jpg",
-    "popularity": 50
+    "popularity": 54
   },
   {
     "artist": "The Rolling Stones",
     "title": "Paint It Black",
     "bpm": 159,
+    "felt_bpm": 159,
     "genre": "rock",
     "year": 1977,
     "isrc": "USA171010213",
     "cover": "covers/3aed94e2a791cd0f1a3ec5c306f65e9e.jpg",
-    "popularity": 80
+    "popularity": 73
   },
   {
     "artist": "Pharrell Williams",
     "title": "Happy",
     "bpm": 160,
+    "felt_bpm": 160,
     "genre": "pop",
     "year": 2012,
     "isrc": "USQ4E1300686",
     "cover": "covers/a1939a9a40dc97ed404cc4597c6a32bc.jpg",
-    "popularity": 84
+    "popularity": 81
   },
   {
     "artist": "Outkast",
     "title": "Hey Ya!",
     "bpm": 160,
+    "felt_bpm": 160,
     "genre": "hip-hop",
     "year": 2003,
     "isrc": "USAR10300924",
     "cover": "covers/f81783b6cc6030733cd475f820855562.jpg",
-    "popularity": 75
+    "popularity": 70
   },
   {
     "artist": "Fleetwood Mac",
     "title": "Landslide",
     "bpm": 160,
+    "felt_bpm": 160,
     "genre": "rock",
     "year": 1975,
     "isrc": "USWB19903197",
     "cover": "covers/35b5526dd0df498eb85355c7427a5a3b.jpg",
-    "popularity": 49
-  },
-  {
-    "artist": "Weezer",
-    "title": "Undone - The Sweater Song",
-    "bpm": 160,
-    "genre": "rock",
-    "year": 1994,
-    "isrc": "USGF19962905",
-    "cover": "covers/638ad930e4f20376e8a2851d9c41be00.jpg",
-    "popularity": 33
+    "popularity": 37
   },
   {
     "artist": "The Monkees",
     "title": "I'm a Believer",
     "bpm": 160,
+    "felt_bpm": 160,
     "genre": "pop",
     "year": 1984,
     "isrc": "USRH10651278",
     "cover": "covers/6e6a035031deac68c0d498fe311ac145.jpg",
-    "popularity": 9
+    "popularity": 6
   },
   {
     "artist": "Fall Out Boy",
     "title": "Sugar, We're Goin Down",
     "bpm": 161,
+    "felt_bpm": 161,
     "genre": "pop",
     "year": 2005,
     "isrc": "USIR20500201",
     "cover": "covers/c11ee620979e5e6f99bfd08470876ecd.jpg",
-    "popularity": 52
-  },
-  {
-    "artist": "The Strokes",
-    "title": "The Adults Are Talking",
-    "bpm": 161,
-    "genre": "indie",
-    "year": 2020,
-    "isrc": "USRC11902726",
-    "cover": "covers/f8a0a2e1ec12c1026cd03208237cd934.jpg",
-    "popularity": 45
-  },
-  {
-    "artist": "Linkin Park",
-    "title": "Lying From You",
-    "bpm": 161,
-    "genre": "rock",
-    "year": 2003,
-    "isrc": "USWB10300465",
-    "cover": "covers/882448ab63952aa16e502c82db2df160.jpg",
-    "popularity": 38
+    "popularity": 41
   },
   {
     "artist": "Bruno Mars",
     "title": "Runaway Baby",
     "bpm": 161,
+    "felt_bpm": 161,
     "genre": "pop",
     "year": 2010,
     "isrc": "USAT21001885",
     "cover": "covers/5b59dc18e109515420f8237719bd2186.jpg",
-    "popularity": 21
+    "popularity": 12
   },
   {
     "artist": "Pixies",
     "title": "Where Is My Mind?",
     "bpm": 162,
+    "felt_bpm": 162,
     "genre": "alternative",
     "year": 1992,
     "isrc": "GBAFL9700100",
     "cover": "covers/f2ea8050f0540c5f08316832cf9ec2cb.jpg",
-    "popularity": 66
+    "popularity": 57
   },
   {
-    "artist": "The Cure",
-    "title": "A Forest",
-    "bpm": 162,
-    "genre": "alternative",
-    "year": 1990,
-    "isrc": "GBCBR1900125",
-    "cover": "covers/ddbf1468bdced3ed53ee86f9cefa6f10.jpg",
-    "popularity": 25
+    "artist": "Billie Eilish",
+    "title": "Happier Than Ever",
+    "bpm": 163,
+    "felt_bpm": 163,
+    "genre": "pop",
+    "year": 2021,
+    "isrc": "USUM72105936",
+    "cover": "covers/bb2880548dd3bc71fb97def2eedec130.jpg",
+    "popularity": 60
+  },
+  {
+    "artist": "Green Day",
+    "title": "21 Guns",
+    "bpm": 163,
+    "felt_bpm": 163,
+    "genre": "rock",
+    "year": 2009,
+    "isrc": "USRE10900679",
+    "cover": "covers/ebd6fc49c3c87cbd5441424f151c04f2.jpg",
+    "popularity": 58
   },
   {
     "artist": "Black Sabbath",
     "title": "Paranoid",
     "bpm": 163,
+    "felt_bpm": 163,
     "genre": "metal",
     "year": 1980,
     "isrc": "USWB11304628",
     "cover": "covers/2e4dbd533ee46c7a712c5fabfe284fb3.jpg",
-    "popularity": 61
+    "popularity": 53
   },
   {
     "artist": "Iron Maiden",
     "title": "The Trooper",
     "bpm": 163,
+    "felt_bpm": 163,
     "genre": "metal",
     "year": 1993,
     "isrc": "GBAYE9801390",
     "cover": "covers/f4df1d0cc2d586cefd98dde8da717acd.jpg",
-    "popularity": 51
+    "popularity": 39
   },
   {
     "artist": "Led Zeppelin",
     "title": "Black Dog",
     "bpm": 163,
+    "felt_bpm": 163,
     "genre": "rock",
     "year": 1982,
     "isrc": "USAT21300956",
     "cover": "covers/460a0edd96f743be03b7405eac38c633.jpg",
-    "popularity": 38
-  },
-  {
-    "artist": "Santana",
-    "title": "Europa (Earth's Cry Heaven's Smile)",
-    "bpm": 163,
-    "genre": "rock",
-    "year": 1976,
-    "isrc": "USSM10013400",
-    "cover": "covers/0dd8c7d12d583d0be9196a1a11b2e072.jpg",
-    "popularity": 18
+    "popularity": 26
   },
   {
     "artist": "Paramore",
     "title": "Decode",
     "bpm": 164,
+    "felt_bpm": 164,
     "genre": "rock",
     "year": 2008,
     "isrc": "USAT20804057",
     "cover": "covers/7f8a4d742317d145cb1495e5940bd562.jpg",
-    "popularity": 72
-  },
-  {
-    "artist": "Radiohead",
-    "title": "Jigsaw Falling Into Place",
-    "bpm": 165,
-    "genre": "alternative",
-    "year": 2007,
-    "isrc": "GBSTK0700009",
-    "cover": "covers/a175af9b7d329bc678cb4d26fc13d6de.jpg",
-    "popularity": 40
+    "popularity": 65
   },
   {
     "artist": "Toto",
     "title": "Rosanna",
     "bpm": 166,
+    "felt_bpm": 166,
     "genre": "rock",
     "year": 1982,
     "isrc": "USSM18200245",
     "cover": "covers/153332e88a14255a8c3d5959a5a21882.jpg",
-    "popularity": 50
+    "popularity": 39
   },
   {
-    "artist": "Red Hot Chili Peppers",
-    "title": "Under The Bridge",
-    "bpm": 168,
+    "artist": "Green Day",
+    "title": "Boulevard Of Broken Dreams",
+    "bpm": 167,
+    "felt_bpm": 167,
     "genre": "rock",
-    "year": 1992,
-    "isrc": "USWB19901576",
-    "cover": "covers/e3f1bee87b1d5d1313641762f375a3fb.jpg",
+    "year": 2004,
+    "isrc": "USRE10401426",
+    "cover": "covers/4a2497e819405074b107b3bce1d95cf9.jpg",
     "popularity": 74
+  },
+  {
+    "artist": "Gorillaz",
+    "title": "Clint Eastwood",
+    "bpm": 168,
+    "felt_bpm": 168,
+    "genre": "rock",
+    "year": 2000,
+    "isrc": "GBAYE0001408",
+    "cover": "covers/f4d581f4b86c869547704d7db9aa2c43.jpg",
+    "popularity": 75
   },
   {
     "artist": "The Black Keys",
     "title": "Lonely Boy",
     "bpm": 168,
+    "felt_bpm": 168,
     "genre": "rock",
     "year": 2011,
     "isrc": "USNO11100273",
     "cover": "covers/f1e189eb93b8508d102931bcd9293ce8.jpg",
-    "popularity": 55
+    "popularity": 45
+  },
+  {
+    "artist": "Rage Against the Machine",
+    "title": "Bulls On Parade",
+    "bpm": 168,
+    "felt_bpm": 168,
+    "genre": "rock",
+    "year": 1996,
+    "isrc": "USSM19502563",
+    "cover": "covers/bd78622abc0f6f8ef811b4c99fc4fcb1.jpg",
+    "popularity": 32
+  },
+  {
+    "artist": "Jimi Hendrix",
+    "title": "Hey Joe",
+    "bpm": 168,
+    "felt_bpm": 168,
+    "genre": "rock",
+    "year": 1978,
+    "isrc": "USQX90900767",
+    "cover": "covers/b83888148da4c3978b9c3870d8cb3166.jpg",
+    "popularity": 21
   },
   {
     "artist": "a-ha",
     "title": "Take On Me",
     "bpm": 169,
+    "felt_bpm": 169,
     "genre": "pop",
     "year": 1984,
     "isrc": "USWB19901214",
@@ -4593,280 +3512,264 @@
     "artist": "The Cure",
     "title": "Boys Don't Cry",
     "bpm": 169,
+    "felt_bpm": 169,
     "genre": "alternative",
     "year": 1993,
     "isrc": "GBALB7800001",
     "cover": "covers/6c1e813a08d24fe28512c8c8fa4cf8c3.jpg",
-    "popularity": 44
+    "popularity": 34
+  },
+  {
+    "artist": "Tom Petty",
+    "title": "Free Fallin'",
+    "bpm": 169,
+    "felt_bpm": 169,
+    "genre": "rock",
+    "year": 1989,
+    "isrc": "USMC18925673",
+    "cover": "covers/6e9c12e4095a8642b8d5ccfa25087e4b.jpg",
+    "popularity": 32
   },
   {
     "artist": "Tom Petty",
     "title": "Mary Jane's Last Dance",
     "bpm": 169,
+    "felt_bpm": 169,
     "genre": "rock",
     "year": 1993,
     "isrc": "USMC19341704",
     "cover": "covers/fc7a9b132524c63f26a70d26d15cff58.jpg",
-    "popularity": 35
-  },
-  {
-    "artist": "Tom Petty",
-    "title": "Runnin' Down a Dream",
-    "bpm": 170,
-    "genre": "rock",
-    "year": 1989,
-    "isrc": "USMC18925680",
-    "cover": "covers/fc7a9b132524c63f26a70d26d15cff58.jpg",
-    "popularity": 22
+    "popularity": 23
   },
   {
     "artist": "Chuck Berry",
     "title": "Johnny B Goode",
     "bpm": 171,
+    "felt_bpm": 171,
     "genre": "rock",
     "year": 1972,
     "isrc": "QM7281450274",
     "cover": "covers/d46d03b9add5f223aa7523036896af86.jpg",
-    "popularity": 29
+    "popularity": 18
   },
   {
     "artist": "System of a Down",
     "title": "Toxicity",
     "bpm": 172,
+    "felt_bpm": 172,
     "genre": "metal",
     "year": 2001,
     "isrc": "USSM10107262",
     "cover": "covers/6baa3ad626e859f67bbddae6528fd949.jpg",
-    "popularity": 89
+    "popularity": 86
   },
   {
     "artist": "Eminem",
     "title": "Lose Yourself",
     "bpm": 172,
+    "felt_bpm": 172,
     "genre": "hip-hop",
     "year": 2002,
     "isrc": "USIR10211559",
     "cover": "covers/e2b36a9fda865cb2e9ed1476b6291a7d.jpg",
-    "popularity": 85
+    "popularity": 83
   },
   {
     "artist": "Megan Thee Stallion",
     "title": "Savage",
     "bpm": 172,
+    "felt_bpm": 172,
     "genre": "hip-hop",
     "year": 2020,
     "isrc": "QMCE32000145",
     "cover": "covers/a67c0b2f7d605e7752cf81adb7f83a5b.jpg",
-    "popularity": 33
+    "popularity": 21
   },
   {
     "artist": "Ray Charles",
     "title": "Hit the Road Jack",
     "bpm": 172,
+    "felt_bpm": 172,
     "genre": "soul",
     "year": 1989,
     "isrc": "QZR8K2111005",
     "cover": "covers/8e0e1e3f2854791bb4915ea74ea64b0a.jpg",
-    "popularity": 31
+    "popularity": 19
   },
   {
     "artist": "Foo Fighters",
     "title": "The Pretender",
     "bpm": 173,
+    "felt_bpm": 173,
     "genre": "rock",
     "year": 2007,
     "isrc": "USRW30700007",
     "cover": "covers/266f01f1c7a04843d11cd08f9c07d11f.jpg",
-    "popularity": 76
+    "popularity": 70
   },
   {
     "artist": "Paramore",
     "title": "Misery Business",
     "bpm": 173,
+    "felt_bpm": 173,
     "genre": "rock",
     "year": 2007,
     "isrc": "USAT20702617",
     "cover": "covers/1a48b36fe9dd29b2bef2f5058cbe0c25.jpg",
-    "popularity": 64
+    "popularity": 55
   },
   {
     "artist": "Rihanna",
     "title": "Umbrella",
     "bpm": 174,
+    "felt_bpm": 174,
     "genre": "r&b",
     "year": 2007,
     "isrc": "USUM70736771",
     "cover": "covers/91276466fbc876d96be9e6926060af60.jpg",
-    "popularity": 83
+    "popularity": 81
   },
   {
     "artist": "Led Zeppelin",
     "title": "Whole Lotta Love",
     "bpm": 174,
+    "felt_bpm": 174,
     "genre": "rock",
     "year": 1981,
     "isrc": "USAT21300925",
     "cover": "covers/a5fdd04471cb7d6ec8a663621bdd9bee.jpg",
-    "popularity": 65
+    "popularity": 56
   },
   {
     "artist": "Green Day",
     "title": "Basket Case",
     "bpm": 175,
+    "felt_bpm": 175,
     "genre": "punk",
     "year": 1994,
     "isrc": "USRE19900151",
     "cover": "covers/1e17054b7bfa6576f64ea867b71ef479.jpg",
-    "popularity": 74
+    "popularity": 66
   },
   {
     "artist": "Elton John",
     "title": "I'm Still Standing",
     "bpm": 177,
+    "felt_bpm": 177,
     "genre": "pop",
     "year": 1984,
     "isrc": "GBALX8300190",
     "cover": "covers/3f099560bed3f4813a8bf71e203cd3f0.jpg",
-    "popularity": 67
+    "popularity": 60
   },
   {
     "artist": "Billy Joel",
     "title": "Piano Man",
     "bpm": 177,
+    "felt_bpm": 177,
     "genre": "pop",
     "year": 1973,
     "isrc": "USSM17300504",
     "cover": "covers/f61883eed26156899dc5086ce8e25885.jpg",
-    "popularity": 63
+    "popularity": 54
   },
   {
     "artist": "Bruce Springsteen",
     "title": "I'm On Fire",
     "bpm": 177,
+    "felt_bpm": 177,
     "genre": "rock",
     "year": 1985,
     "isrc": "USSM18400411",
     "cover": "covers/106f651bf559796879b90e83c50b3e96.jpg",
-    "popularity": 38
+    "popularity": 27
   },
   {
     "artist": "My Chemical Romance",
     "title": "I'm Not Okay (I Promise)",
     "bpm": 180,
+    "felt_bpm": 180,
     "genre": "rock",
     "year": 2004,
     "isrc": "USRE10400660",
     "cover": "covers/9aba5b418a311c0bbefb6699ebc58a4b.jpg",
-    "popularity": 47
+    "popularity": 36
   },
   {
     "artist": "Bill Haley & His Comets",
     "title": "Rock Around the Clock",
     "bpm": 180,
+    "felt_bpm": 180,
     "genre": "rock and roll",
     "year": 1981,
     "isrc": "USA560728489",
     "cover": "covers/0fa6793907d0fa6cfa5b7f9adcdd68f9.jpg",
-    "popularity": 22
+    "popularity": 11
   },
   {
     "artist": "Muse",
     "title": "Hysteria",
     "bpm": 184,
+    "felt_bpm": 184,
     "genre": "rock",
     "year": 2002,
     "isrc": "GBAHT1901186",
     "cover": "covers/fc1237878aab62be8ff624f575961e68.jpg",
-    "popularity": 59
-  },
-  {
-    "artist": "Pixies",
-    "title": "All I Think About Now",
-    "bpm": 185,
-    "genre": "alternative",
-    "year": 2016,
-    "isrc": "GBENL1601640",
-    "cover": "covers/fe2f4a9afdffb61b70700e7fec71550b.jpg",
-    "popularity": 12
-  },
-  {
-    "artist": "Green Day",
-    "title": "American Idiot",
-    "bpm": 186,
-    "genre": "punk",
-    "year": 2004,
-    "isrc": "USRE10400888",
-    "cover": "covers/c14f698c45f445a5ba9dba395f26d642.jpg",
-    "popularity": 56
+    "popularity": 48
   },
   {
     "artist": "Kansas",
     "title": "Dust In The Wind",
     "bpm": 187,
+    "felt_bpm": 187,
     "genre": "rock",
     "year": 1978,
     "isrc": "USSM19803732",
     "cover": "covers/244d3ccecdf95e7117d26e2c7f3d37e0.jpg",
-    "popularity": 60
+    "popularity": 51
   },
   {
     "artist": "The White Stripes",
     "title": "Fell In Love With a Girl",
     "bpm": 190,
+    "felt_bpm": 190,
     "genre": "rock",
     "year": 2001,
     "isrc": "GBBKS0100352",
     "cover": "covers/aaab9b09e238e498268b07890cd2d91c.jpg",
-    "popularity": 22
+    "popularity": 13
   },
   {
     "artist": "Blink-182",
     "title": "First Date",
     "bpm": 191,
+    "felt_bpm": 191,
     "genre": "rock",
     "year": 1999,
     "isrc": "USMC10110874",
     "cover": "covers/4f57b6d9f1e1d3a063b3beb0b3577eb5.jpg",
-    "popularity": 52
+    "popularity": 42
   },
   {
     "artist": "Iron Maiden",
     "title": "2 Minutes To Midnight",
     "bpm": 192,
+    "felt_bpm": 192,
     "genre": "metal",
     "year": 1991,
     "isrc": "GBCHB1800038",
     "cover": "covers/dc4e2bcc61acc3c1bb834de9a241bf7a.jpg",
-    "popularity": 26
-  },
-  {
-    "artist": "Eric Johnson",
-    "title": "Cliffs Of Dover",
-    "bpm": 192,
-    "genre": "rock",
-    "year": 1990,
-    "isrc": "US27Q0508410",
-    "cover": "covers/dc82f144687f200c3c96b5de4ebde356.jpg",
-    "popularity": 9
-  },
-  {
-    "artist": "Fall Out Boy",
-    "title": "I Slept With Someone In Fall Out Boy And All I Got Was This Stupid Song Written About Me",
-    "bpm": 196,
-    "genre": "pop",
-    "year": 2005,
-    "isrc": "USIR20500323",
-    "cover": "covers/c11ee620979e5e6f99bfd08470876ecd.jpg",
-    "popularity": 5
+    "popularity": 16
   },
   {
     "artist": "DragonForce",
     "title": "Through The Fire And Flames",
     "bpm": 200,
+    "felt_bpm": 200,
     "genre": "rock",
     "year": 2005,
     "isrc": "GBAJE0508258",
     "cover": "covers/d6b27ca7cc8be42e40b5a20d87261927.jpg",
-    "popularity": 40
+    "popularity": 29
   }
 ]

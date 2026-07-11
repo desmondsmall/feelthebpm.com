@@ -1,14 +1,14 @@
 {
-  "built": "2026-07-10",
-  "songs": 487,
+  "built": "2026-07-11",
+  "songs": 343,
   "year_sources": {
-    "musicbrainz": 486,
+    "musicbrainz": 475,
     "deezer": 2
   },
   "covers": {
     "enabled": true,
-    "with_art": 487,
-    "self_hosted": 487
+    "with_art": 343,
+    "self_hosted": 343
   },
   "popularity": {
     "method": "percentile-blend",
@@ -19,9 +19,9 @@
     },
     "youtube": {
       "enabled": true,
-      "coverage": 486
+      "coverage": 342
     }
   },
-  "excluded": 177,
-  "bpm_gaps": 26
+  "excluded": 197,
+  "bpm_gaps": 17
 }

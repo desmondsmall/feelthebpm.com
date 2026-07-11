@@ -502,7 +502,7 @@
     const cap = geo.centerCap;
     const shown = songs.slice(0, cap);
     const rest = songs.length - shown.length;
-    let html = `<div class="cards"><div class="clabel">right on the beat · ${songs.length} song${songs.length > 1 ? 's' : ''}</div>`;
+    let html = `<div class="cards"><div class="clabel">right on the beat</div>`;
     shown.forEach((s) => {
       const cover = s.cover ? esc(s.cover) : '';
       html += `<div class="xcard" data-bpm="${s.bpm}">
@@ -786,6 +786,9 @@
 
   // ---------- go ----------
   boot.then(() => {
+    // the app is about FEEL: display/position by the tapped tempo (felt_bpm), not the raw detector
+    // reading (bpm), which can be a 2× artifact. Fall back to bpm for records without a felt value.
+    SONGS.forEach(s => { if (s.felt_bpm > 0) s.bpm = s.felt_bpm; });
     if (SHOW_GENRES) buildGenres();
     else $('genres').style.display = 'none';   // hide first so the field measures its true height
     if (!SHOW_MARKING) mark.style.display = 'none';
