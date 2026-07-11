@@ -128,12 +128,27 @@
     100% { transform: translate(-50%,-50%) scale(2.15); opacity: 0; border-width: 1px; }
   }
 
+  /* pendulum — a sharp light rides the top edge full-width, reaching each side on the beat like a metronome arm */
+  .pendulum { position: absolute; top: 14px; left: var(--centerX); width: 0; height: 0; z-index: 3; pointer-events: none; --amp: calc(50vw - 12px); }
+  .pendulum span {
+    position: absolute; left: 0; top: 0; width: 11px; height: 11px; border-radius: 50%;
+    background: var(--acc);
+    box-shadow: 0 0 14px 3px rgba(var(--accRGB),.5), 0 0 5px 1px rgba(var(--accRGB),.85);
+    transform: translate(-50%,-50%);
+    animation: swing var(--beat) ease-in-out infinite alternate;
+  }
+  @keyframes swing {
+    from { transform: translate(calc(-50% - var(--amp)), -50%); }
+    to   { transform: translate(calc(-50% + var(--amp)), -50%); }
+  }
+
   /* disc — dark, sits above the cards; its ring lights up bright exactly on the beat, then settles */
   .pulse { position: absolute; top: var(--axisY); left: var(--centerX); width: 0; height: 0; z-index: 5;
     transition: left .5s var(--ease); pointer-events: none; }
   .pulse .disc {
     position: absolute; left: 0; top: 0; width: var(--disc); height: var(--disc);
     transform: translate(-50%,-50%); border-radius: 50%;
+    pointer-events: auto; cursor: pointer;   /* tap the disc body to play/stop */
     background:
       linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,0) 45%),
       rgba(15,18,25,.52);
@@ -272,6 +287,32 @@
   }
   .attr a { color: var(--faint); }
 
+  /* ---- metronome: sound controls + audio-locked beat ---- */
+  /* while playing, the beat visuals are re-triggered on every scheduled audio beat,
+     so the flash always lands exactly on the click (no CSS-vs-audio clock drift). */
+  .stage.nobeat .disc,
+  .stage.nobeat .glow .bloom,
+  .stage.nobeat .glow .ring { animation: none !important; }
+  .stage.playing .pulse .disc { border-color: rgba(var(--accRGB),.62); }   /* subtle "armed" tell */
+
+  .sound {
+    position: absolute; left: 16px; bottom: 16px; z-index: 40;
+    display: flex; align-items: center; gap: 9px;
+    padding: 6px 12px; border-radius: 999px;
+    background: rgba(15,18,25,.55); border: 1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    opacity: .75; transition: opacity .2s; user-select: none;
+  }
+  .sound:hover { opacity: 1; }
+  .s-btn {
+    background: none; border: none; color: var(--t2); cursor: pointer;
+    font-size: 15px; line-height: 1; padding: 2px 3px; border-radius: 6px;
+  }
+  .s-btn:hover { color: var(--t-hi); }
+  .s-btn.on { color: var(--acc); }
+  #playBtn { font-size: 15px; min-width: 18px; }
+  .s-vol { width: 72px; accent-color: var(--acc); cursor: pointer; }
+
   @media (max-width: 720px) {
     .axis { left: 24px; right: 24px; }
     .axis-end.slower { left: 30px; } .axis-end.faster { right: 30px; }
@@ -292,6 +333,8 @@
   <div class="field" id="field">
     <div class="axis"></div>
 
+    <div class="pendulum"><span></span></div>
+
     <div class="glow" id="glow"><span class="bloom"></span><span class="ring"></span></div>
 
     <div class="pulse" id="pulse">
@@ -310,6 +353,13 @@
   <div class="attr">
     BPM &amp; art <a href="https://www.deezer.com" target="_blank" rel="noopener">Deezer</a> ·
     <a href="https://getsongbpm.com" target="_blank" rel="noopener">GetSongBPM</a>
+  </div>
+
+  <div class="sound" id="sound">
+    <button class="s-btn" id="playBtn" aria-label="play/stop metronome" title="play / stop (space)">▶</button>
+    <button class="s-btn" id="muteBtn" aria-label="mute" title="mute">🔊</button>
+    <input class="s-vol" id="vol" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="volume" />
+    <button class="s-btn on" id="accentBtn" aria-label="accent downbeat" title="accent the first beat of each bar (4/4)">4/4</button>
   </div>
 </div>
 
@@ -540,7 +590,7 @@
   // ---------- drag / scrub ----------
   let dragging = false, moved = false, lastX = 0, pid = null;
   field.addEventListener('pointerdown', e => {
-    if (e.target.closest('.nbtn, .big, .g-chip')) return;
+    if (e.target.closest('.nbtn, .big, .g-chip, .disc')) return;   // disc body is the play/stop transport
     dragging = true; moved = false; lastX = e.clientX; pid = e.pointerId;
     field.setPointerCapture(pid); field.classList.add('dragging');
   });
@@ -607,8 +657,111 @@
 
   document.addEventListener('keydown', e => {
     if (editingBpm) return;
+    if (e.code === 'Space') { e.preventDefault(); togglePlay(); return; }   // start/stop the metronome
     if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); setBpm(Math.round(bpm) + 1); }
     else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); setBpm(Math.round(bpm) - 1); }
+  });
+
+  // ---------- metronome (Web Audio, sample-accurate) ----------
+  // setInterval drifts, so we schedule clicks on the AudioContext hardware clock and look
+  // ~100ms ahead; a loose 25ms timer just tops up the queue. The beat visuals are retriggered
+  // on each scheduled beat so the flash always lands on the click. ("Two clocks" pattern.)
+  const disc = document.querySelector('.pulse .disc');
+  const pendSpan = document.querySelector('.pendulum span');
+  const playBtn = $('playBtn'), muteBtn = $('muteBtn'), volEl = $('vol'), accentBtn = $('accentBtn');
+
+  const BEATS_PER_BAR = 4, LOOKAHEAD_MS = 25, SCHEDULE_AHEAD = 0.1;
+  let audioCtx = null, masterGain = null;
+  let playing = false, schedTimer = null;
+  let nextNoteTime = 0, beatInBar = 0, beatNumber = 0;
+  let volume = 0.6, muted = false, accentOn = true;
+
+  const beatSeconds = () => 60 / Math.max(1, Math.round(bpm));
+
+  function clickAt (time, accent) {
+    const osc = audioCtx.createOscillator(), env = audioCtx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.value = accent ? 1500 : 1000;           // accented downbeat sits higher
+    env.gain.setValueAtTime(0.0001, time);
+    env.gain.exponentialRampToValueAtTime(accent ? 1 : 0.6, time + 0.002);   // fast attack
+    env.gain.exponentialRampToValueAtTime(0.0001, time + 0.045);             // short decay → a "tick"
+    osc.connect(env); env.connect(masterGain);
+    osc.start(time); osc.stop(time + 0.06);
+  }
+
+  function retriggerBeatVisuals () {        // re-align disc/bloom/ring to this exact beat
+    stage.classList.add('nobeat');
+    void stage.offsetWidth;                 // reflow so the animations restart from 0%
+    stage.classList.remove('nobeat');
+  }
+  function rephasePendulum () {              // restart the swing so an extreme lands on the beat
+    if (!pendSpan) return;
+    pendSpan.style.animation = 'none';
+    void pendSpan.offsetWidth;
+    pendSpan.style.animation = '';
+  }
+  function scheduleVisual (time, num) {
+    const delay = Math.max(0, (time - audioCtx.currentTime) * 1000);
+    setTimeout(() => {
+      if (!playing) return;
+      retriggerBeatVisuals();
+      if (num % 2 === 0) rephasePendulum();  // pendulum is at an extreme every 2 beats → seamless resync
+    }, delay);
+  }
+
+  function scheduler () {
+    while (nextNoteTime < audioCtx.currentTime + SCHEDULE_AHEAD) {
+      clickAt(nextNoteTime, accentOn && beatInBar === 0);
+      scheduleVisual(nextNoteTime, beatNumber);
+      nextNoteTime += beatSeconds();
+      beatInBar = (beatInBar + 1) % BEATS_PER_BAR;
+      beatNumber++;
+    }
+  }
+
+  function startMetro () {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = muted ? 0 : volume;
+      masterGain.connect(audioCtx.destination);
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    playing = true;
+    stage.classList.add('playing');
+    beatInBar = 0; beatNumber = 0;
+    nextNoteTime = audioCtx.currentTime + 0.12;   // brief lead-in before the first click
+    schedTimer = setInterval(scheduler, LOOKAHEAD_MS);
+    updateTransport();
+  }
+  function stopMetro () {
+    playing = false;
+    stage.classList.remove('playing');
+    if (schedTimer) { clearInterval(schedTimer); schedTimer = null; }
+    updateTransport();
+  }
+  function togglePlay () { playing ? stopMetro() : startMetro(); }
+
+  function updateTransport () {
+    playBtn.textContent = playing ? '⏸' : '▶';
+    playBtn.classList.toggle('on', playing);
+  }
+
+  // tap the disc body (not the number or the ± buttons) to play/stop
+  disc.addEventListener('click', e => { if (!e.target.closest('.nbtn, .big')) togglePlay(); });
+  playBtn.addEventListener('click', togglePlay);
+  muteBtn.addEventListener('click', () => {
+    muted = !muted;
+    muteBtn.textContent = muted ? '🔇' : '🔊';
+    if (masterGain) masterGain.gain.value = muted ? 0 : volume;
+  });
+  volEl.addEventListener('input', () => {
+    volume = +volEl.value;
+    if (masterGain && !muted) masterGain.gain.value = volume;
+  });
+  accentBtn.addEventListener('click', () => {
+    accentOn = !accentOn;
+    accentBtn.classList.toggle('on', accentOn);
   });
 
   // ---------- (re)layout ----------
