@@ -321,7 +321,9 @@
     .g-chip { flex: 0 0 auto; }
     /* the long hint collides with the (required) attribution on narrow screens */
     .hint { display: none; }
-    .attr { left: 0; right: 0; text-align: center; }
+    /* controls pinned to bottom-centre; attribution dropped on phones to save space */
+    .sound { left: 50%; right: auto; transform: translateX(-50%); bottom: 14px; }
+    .attr { display: none; }
   }
 </style>
 </head>
@@ -402,10 +404,11 @@
   function computeGeo () {
     const w = field.clientWidth, h = field.clientHeight;
     const row = 71;                       // card height 60 + gap 11
-    const slotW = Math.max(190, Math.min(264, w * 0.20));   // wider spacing between columns
-    const disc  = Math.max(124, Math.min(173, Math.min(w * 0.12, h * 0.31)));
-    const cardW = Math.max(135, Math.min(193, slotW - 58));
-    const centerCardW = Math.max(176, Math.min(232, slotW - 20));
+    const mob = w < 560;                  // phones: shrink only the side columns; keep the middle full so it breathes
+    const slotW = Math.max(190, Math.min(264, w * 0.20));   // column spacing — full, so the centre isn't crowded
+    const disc  = Math.max(mob ? 132 : 124, Math.min(173, Math.min(w * 0.12, h * 0.31)));
+    const cardW = Math.max(mob ? 116 : 135, Math.min(193, slotW - 58));   // side cards only get slimmer on phones
+    const centerCardW = Math.max(mob ? 192 : 176, Math.min(232, slotW - 20));
     // move the whole assembly up and vertically centre it in the reclaimed space.
     // side cards start ~31px below the axis; center cards start below the disc + a label.
     const cap = (avail, top) => Math.floor((avail - top) / row);
@@ -415,7 +418,7 @@
     const blockBelow = Math.max(42 + sideCap * row, disc / 2 + 58 + centerCap * row + 47);
     const free = Math.max(0, h - disc / 2 - blockBelow);   // sit the block slightly above center
     axisY = Math.round(Math.max(disc / 2 + 22, Math.min(h - 120, free * 0.40 + disc / 2)));
-    const below = h - axisY;
+    const below = h - axisY - (mob ? 56 : 0);   // reserve room for the bottom-centered controls on phones
     sideCap   = Math.max(2, Math.min(6, cap(below, 90)));
     centerCap = Math.max(2, Math.min(5, cap(below, disc / 2 + 135)));
     geo = {
@@ -588,17 +591,24 @@
   }
 
   // ---------- drag / scrub ----------
-  let dragging = false, moved = false, lastX = 0, pid = null;
+  let dragging = false, moved = false, lastX = 0, lastY = 0, pid = null, dragAxis = null;
   field.addEventListener('pointerdown', e => {
     if (e.target.closest('.nbtn, .big, .g-chip, .disc')) return;   // disc body is the play/stop transport
-    dragging = true; moved = false; lastX = e.clientX; pid = e.pointerId;
+    dragging = true; moved = false; lastX = e.clientX; lastY = e.clientY; dragAxis = null; pid = e.pointerId;
     field.setPointerCapture(pid); field.classList.add('dragging');
   });
   field.addEventListener('pointermove', e => {
     if (!dragging) return;
-    const dx = e.clientX - lastX; lastX = e.clientX;
-    if (Math.abs(dx) > 0) moved = true;
-    const r = rankOf(bpm) - dx / geo.slotW;           // drag right → ruler right → slower
+    const dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    if (dx || dy) moved = true;
+    if (dragAxis === null) {                          // lock the scrub axis on the first real movement
+      if (e.pointerType !== 'touch') dragAxis = 'x';                        // mouse/trackpad: horizontal, matching the axis
+      else if (Math.abs(dx) > 2 || Math.abs(dy) > 2) dragAxis = Math.abs(dy) > Math.abs(dx) ? 'y' : 'x';
+      else return;
+    }
+    const delta = dragAxis === 'y' ? dy : dx;         // phone vertical: swipe up → faster, down → slower
+    const r = rankOf(bpm) - delta / geo.slotW;        // horizontal: drag right → ruler right → slower
     bpm = clampBpm(bpmAtRank(r));
     render(); refreshDeltas();
   });
