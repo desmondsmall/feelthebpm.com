@@ -54,7 +54,7 @@ jobs:
 
       - name: Set up SSH
         run: |
-          # Fail loudly here rather than with a cryptic "rsync: des@:" further down.
+          # Fail loudly here rather than with a cryptic empty-host rsync error further down.
           test -n "$DEPLOY_HOST" || { echo "::error::DEPLOY_HOST secret is unset"; exit 1; }
           test -n "$DEPLOY_USER" || { echo "::error::DEPLOY_USER secret is unset"; exit 1; }
           mkdir -p ~/.ssh
