@@ -1,4 +1,4 @@
-# Tempo — feel the BPM through songs you know
+# [feelthebpm.com](https://feelthebpm.com)
 
 A metronome that answers "*what does 90 BPM feel like?*" — slide the tempo and it
 surfaces popular songs sitting at that BPM (Billie Jean is right here, Seven Nation
