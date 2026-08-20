@@ -1,4 +1,4 @@
-// Hand-labeled recognizability ground truth (see .dev/reference/popularity-rework.md §5).
+// Hand-labeled recognizability ground truth (see .dev/popularity-rework.md §5).
 // Shared by eval-popularity.mjs (the release gate) and sweep-weights.mjs (offline weight
 // comparison). KNOWS = songs ~everyone recognizes; the metric must rank these HIGH.
 //

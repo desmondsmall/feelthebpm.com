@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Validate the popularity metric against the hand-labeled KNOWS set (the recognizability gate
-// from .dev/reference/popularity-rework.md §5). Read-only — reads public/songs.json, writes a
+// from .dev/popularity-rework.md §5). Read-only — reads public/songs.json, writes a
 // markdown report into the doc vault. Non-zero exit if the gate fails, so it can gate a release.
 //
 //   node pipeline/tools/eval-popularity.mjs
@@ -67,7 +67,7 @@ L.push('');
 L.push(...tbl([...SONGS].sort((a, b) => a.popularity - b.popularity).slice(0, 15)));
 L.push('');
 
-const DEV = join(HERE, '..', '..', '.dev', 'reference');
+const DEV = join(HERE, '..', '..', '.dev');
 mkdirSync(DEV, { recursive: true });
 const reportPath = join(DEV, 'popularity-eval.md');
 writeFileSync(reportPath, L.join('\n') + '\n');

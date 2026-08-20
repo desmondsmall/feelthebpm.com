@@ -100,7 +100,7 @@
     "sia|cheap thrills": 90,
     "luis fonsi|despacito": 89,
 
-    "_bpm_audit_2026_07_targets": "Flagged as obviously wrong, settled against songbpm.com + tunebat + GetSongBPM. See .dev/reference/gsb-eval.md. Aerials: Deezer had bpm:0 so GetSongBPM's bogus 200 shipped; real driving pulse is 158 (felt 79). Let It Be: Deezer's 138 is a double-time artifact; felt ballad tempo is 72.",
+    "_bpm_audit_2026_07_targets": "Flagged as obviously wrong, settled against songbpm.com + tunebat + GetSongBPM. See .dev/gsb-eval.md. Aerials: Deezer had bpm:0 so GetSongBPM's bogus 200 shipped; real driving pulse is 158 (felt 79). Let It Be: Deezer's 138 is a double-time artifact; felt ballad tempo is 72.",
     "the beatles|let it be": 72,
     "system of a down|aerials": 158,
 

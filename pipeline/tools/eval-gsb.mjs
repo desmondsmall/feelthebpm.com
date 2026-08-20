@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Evaluate GetSongBPM as a canonical BPM/key source WITHOUT touching public/.
 // Reuses build.mjs's real matching helpers so the report reflects what the pipeline
-// would actually do. Writes the markdown report + raw JSON into .dev/reference/ (the
+// would actually do. Writes the markdown report + raw JSON into .dev/ (the
 // project's doc vault); neither is deployed.
 //
 //   GETSONGBPM_API_KEY=your_key node pipeline/tools/eval-gsb.mjs
@@ -140,7 +140,7 @@ if (dzSplit.length) {
   L.push('');
 }
 
-const DEV = join(HERE, '..', '..', '.dev', 'reference');   // project doc vault — docs live here, not pipeline/
+const DEV = join(HERE, '..', '..', '.dev');   // project doc vault — docs live here, not pipeline/
 mkdirSync(DEV, { recursive: true });
 const reportPath = join(DEV, 'gsb-eval.md');
 const jsonPath = join(DEV, 'gsb-eval.json');

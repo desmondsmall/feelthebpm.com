@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Parse manually-harvested Ultimate Guitar "Top 100 tabs by hits" charts into pipeline/generated/seed-ug.json
-// — a MEMBERSHIP + ug_hits source for the build's SEED layer (see .dev/reference/pipeline-architecture.md).
+// — a MEMBERSHIP + ug_hits source for the build's SEED layer (see .dev/pipeline-architecture.md).
 // UG is Cloudflare-protected (no keyless fetch like Songsterr), so harvesting is manual: copy each
 // chart's rendered text into pipeline/raw/ug-<type>.txt, then:
 //   node pipeline/seed-ug.mjs        # raw/ -> seed-ug.json

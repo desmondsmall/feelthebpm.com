@@ -23,12 +23,12 @@ const SITE = join(HERE, '..', 'public');
 if (!existsSync(SITE)) mkdirSync(SITE, { recursive: true });
 const CACHE = join(HERE, 'cache');
 if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
-// hand-curated config vs. generated artifacts (see .dev/reference/pipeline-architecture.md)
+// hand-curated config vs. generated artifacts (see .dev/pipeline-architecture.md)
 const INPUTS = join(HERE, 'inputs');        // artists / extra_songs / exclude* / bpm_overrides — hand-edited
 const GENERATED = join(HERE, 'generated');  // catalogue / seed-ug / gaps — build+seed outputs (committed)
 if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
 // self-hosted album art lands in public/covers/<md5_image>.jpg. Dormant unless ENABLE_COVERS=1 —
-// otherwise each record carries Deezer's CDN hotlink URL instead. See .dev/reference/cover-art-sourcing.md
+// otherwise each record carries Deezer's CDN hotlink URL instead. See .dev/cover-art-sourcing.md
 const COVERS = join(SITE, 'covers');
 const ENABLE_COVERS = process.env.ENABLE_COVERS === '1';
 
@@ -42,7 +42,7 @@ const MAX_FETCH_ATTEMPTS = 3;      // tries before getJson gives up (returns nul
 const DEFAULT_PACE_MS = 250;       // polite delay after a live (uncached) fetch
 const YT_SEARCH_N = 8;             // YouTube search hits to scan per song (max-views match)
 const YT_PACE_MS = 800;            // polite delay after a live yt-dlp call (unauthed scraping)
-// Popularity blend weights — percentile-ranked breadth signals (see .dev/reference/popularity-rework.md
+// Popularity blend weights — percentile-ranked breadth signals (see .dev/popularity-rework.md
 // and pipeline-architecture.md). YouTube view breadth is PRIMARY (recognizability); Deezer rank
 // (streaming reach) is secondary; Songsterr tab views (a known guitar-canon bias) are minimized.
 // A song missing a signal scores percentile 0 for it — a penalty, not a dropped term (see §4b);
@@ -280,7 +280,7 @@ async function acousticbrainzBpm(mbids) {
 
 // ---- reconcile the automated readings into ONE felt BPM ----------------
 // Automated tempo detectors frequently report 2× (or ½) the tempo a listener taps. From the audit
-// (.dev/reference/gsb-eval.md): real felt tempos in this catalogue span ~[70,175] with a hard floor
+// (.dev/gsb-eval.md): real felt tempos in this catalogue span ~[70,175] with a hard floor
 // near 70; and when two sources form a CLEAN 2× pair, the LOWER octave is the felt tempo 16/17 times
 // — but only *safely* so when the faster reading is implausibly high (≥150). In the 130–150 band a
 // bare number is ambiguous (a real mid-tempo rocker vs a doubled ballad), so those are left to
@@ -404,7 +404,7 @@ async function youtubeViews(c) {
 // drummer's anchor metric, "nobody tabs this" should count *against* a song (it's likely a
 // vocal/production-led track, a weaker tempo anchor), not be quietly ignored. Songsterr coverage
 // is ~50%, so this penalty is the lever that pushes musician-anchor songs above streaming-pop.
-// See .dev/reference/popularity-rework.md §4b. Percentile still guarantees an even spread (no
+// See .dev/popularity-rework.md §4b. Percentile still guarantees an even spread (no
 // lognorm saturation). Returns null if the signal is entirely absent (all 0 -> dormant, e.g.
 // YouTube with no opt-in), so the caller drops it and renormalizes onto the remaining signals.
 function percentileMap(items, getVal) {
@@ -511,7 +511,7 @@ function loadOverrides() {
 // reviewable, prunable artifact — and the build reads it back, so DISCOVERY and BUILD are
 // decoupled: refresh the seed occasionally, build off it every run. songsterr_views rides on the
 // seed entry because it's captured for free during the Songsterr scrape (it doubles as the
-// Songsterr popularity signal). See .dev/reference/pipeline-architecture.md.
+// Songsterr popularity signal). See .dev/pipeline-architecture.md.
 const CATALOGUE = join(GENERATED, 'catalogue.json');
 
 async function gatherCatalogue() {
