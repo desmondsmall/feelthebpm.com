@@ -4,7 +4,7 @@
 //   SEARCH_DB=pipeline/cache/open-data/search.db node api/server.mjs
 //
 //   GET /api/songs?q=&bpm_min=&bpm_max=&sort=&limit=&after=&curated=   → { items, next }
-//   GET /api/health                                                    → { ok, songs, schema_version, built_at }
+//   GET /api/health                                                    → { ok, songs, schema_version, built_at, commit }
 //
 // Environment: SEARCH_DB (required), PORT (default 8090), HOST (default 127.0.0.1: meant to sit
 // behind a reverse proxy), QUERY_TIMEOUT_MS (default 500), QUEUE_MAX (default 100).
@@ -13,6 +13,7 @@
 // database (after a new search.db is swapped in); SIGTERM/SIGINT shut down cleanly.
 // What the query parameters mean: api/search.mjs.
 import { createServer } from 'node:http';
+import { readFileSync } from 'node:fs';
 import { Worker } from 'node:worker_threads';
 
 const DB = process.env.SEARCH_DB;
@@ -23,6 +24,9 @@ const QUEUE_MAX = Number(process.env.QUEUE_MAX || 100);
 const TEST_HOOKS = process.env.SEARCH_TEST_HOOKS === '1';
 if (!DB) { console.error('SEARCH_DB is not set'); process.exit(1); }
 const log = (s) => console.log(`[search] ${s}`);
+// The git commit this code came from: a deploy writes it to api/COMMIT. Reported by /api/health,
+// so a deploy can tell the new code is the code answering.
+const COMMIT = (() => { try { return readFileSync(new URL('./COMMIT', import.meta.url), 'utf8').trim() || null; } catch { return null; } })();
 
 // ---- the worker: one query at a time, with a deadline ----
 let worker = null, ready = false, inflight = null, reopenPending = false, seq = 0;
@@ -95,7 +99,7 @@ const server = createServer(async (req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') return send(res, 405, { error: 'method not allowed' });
   if (url.pathname === '/api/health') {
     const m = await ask('health', null);
-    return m.result?.ok ? send(res, 200, m.result) : send(res, 503, { ok: false, error: m.error ?? 'unavailable' });
+    return m.result?.ok ? send(res, 200, { ...m.result, commit: COMMIT }) : send(res, 503, { ok: false, commit: COMMIT, error: m.error ?? 'unavailable' });
   }
   if (url.pathname === '/api/songs') {
     const params = {};
@@ -113,7 +117,7 @@ const server = createServer(async (req, res) => {
 });
 
 startWorker();
-server.listen(PORT, HOST, () => log(`listening on ${HOST}:${server.address().port}`));
+server.listen(PORT, HOST, () => log(`listening on ${HOST}:${server.address().port}${COMMIT ? ` (commit ${COMMIT.slice(0, 7)})` : ''}`));
 process.on('SIGHUP', () => {
   log('SIGHUP: reopening the database');
   if (inflight) reopenPending = true; else restart('to reopen the database');

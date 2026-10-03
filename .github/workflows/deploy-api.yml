@@ -1,0 +1,63 @@
+name: Deploy search API
+
+on:
+  push:
+    branches: [main]
+    paths:                       # only when the endpoint (or this file) changes
+      - 'api/**'
+      - '.github/workflows/deploy-api.yml'
+  workflow_dispatch:             # manual redeploy button in the Actions tab
+
+concurrency:                     # never let two API deploys race
+  group: deploy-api
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Same login as the site deploy. CI only copies files: once api/COMMIT changes, the server
+    # restarts the service itself, so the deploy user needs no root access. The search data
+    # (search.db, ~2 GB, built on a laptop) is deployed separately, not from here.
+    env:
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      API_PATH: /srv/feelthebpm-search/api
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Test (gate the deploy)
+        run: |
+          # The tests build a tiny search database through the real pipeline: needs zstd and sqlite3.
+          command -v zstd >/dev/null && command -v sqlite3 >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq zstd sqlite3; }
+          node --test api/*.test.mjs pipeline/search/*.test.mjs
+
+      - name: Set up SSH
+        run: |
+          test -n "$DEPLOY_HOST" || { echo "::error::DEPLOY_HOST secret is unset"; exit 1; }
+          test -n "$DEPLOY_USER" || { echo "::error::DEPLOY_USER secret is unset"; exit 1; }
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Deploy (copy api/, then write COMMIT to trigger the restart)
+        run: |
+          SSH="ssh -i $HOME/.ssh/id_ed25519 -o IdentitiesOnly=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          rsync -rlptz --delete --exclude='*.test.mjs' --exclude='COMMIT' -e "$SSH" api/ "$DEPLOY_USER@$DEPLOY_HOST:$API_PATH/"
+          $SSH "$DEPLOY_USER@$DEPLOY_HOST" "printf '%s\n' '$GITHUB_SHA' > $API_PATH/COMMIT"
+
+      - name: Health check (the new commit is the one answering)
+        run: |
+          for i in $(seq 1 30); do
+            body=$(curl -fsS --max-time 5 https://feelthebpm.com/api/health || true)
+            if echo "$body" | grep -q "\"commit\":\"$GITHUB_SHA\"" && echo "$body" | grep -q '"ok":true'; then
+              echo "live: $body"; exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::/api/health never reported commit $GITHUB_SHA: $body"
+          exit 1

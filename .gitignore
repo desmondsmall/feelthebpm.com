@@ -21,3 +21,6 @@ pipeline/generated/review.json
 
 # The agent's mind (mind plugin), kept out of this repo
 .mind/
+
+# written by deploys: the commit the search endpoint is running
+api/COMMIT
