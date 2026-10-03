@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Validate the popularity metric against the hand-labeled KNOWS set (the recognizability gate
-// from .dev/popularity-rework.md §5). Read-only — reads public/songs.json, writes a
-// markdown report into the doc vault. Non-zero exit if the gate fails, so it can gate a release.
+// from .mind/reference/popularity.md). Read-only — reads public/songs.json, writes a
+// markdown report into the mind (.mind/). Non-zero exit if the gate fails, so it can gate a release.
 //
 //   node pipeline/tools/eval-popularity.mjs
 //
@@ -45,8 +45,7 @@ const tbl = (rows) => {
 const L = [];
 L.push(`# Popularity validation — ${new Date().toISOString().slice(0, 10)}`);
 L.push('');
-L.push(`Population: **${SONGS.length}** songs from \`public/songs.json\`. Read-only. The metric should`);
-L.push('rank **recognizability** — famous anchors high.');
+L.push(`Population: **${SONGS.length}** songs from \`public/songs.json\`. Read-only. The metric should rank **recognizability** — famous anchors high.`);
 L.push('');
 L.push('## Verdict');
 L.push('');
@@ -67,9 +66,9 @@ L.push('');
 L.push(...tbl([...SONGS].sort((a, b) => a.popularity - b.popularity).slice(0, 15)));
 L.push('');
 
-const DEV = join(HERE, '..', '..', '.dev');
-mkdirSync(DEV, { recursive: true });
-const reportPath = join(DEV, 'popularity-eval.md');
+const MIND = join(HERE, '..', '..', '.mind');   // the gitignored doc store — reports land in its root
+mkdirSync(MIND, { recursive: true });
+const reportPath = join(MIND, 'popularity-eval.md');
 writeFileSync(reportPath, L.join('\n') + '\n');
 
 console.error('');

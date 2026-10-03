@@ -7,7 +7,7 @@
 //   node pipeline/tools/sweep-weights.mjs                 # compare a built-in set of configs
 //   node pipeline/tools/sweep-weights.mjs 0.6 0.25 0.15   # add a custom YT/RANK/SONG config
 //
-// Use it to tune weights against the §5 set, then ship the winner with
+// Use it to tune weights against the KNOWS set (labeled-set.mjs), then ship the winner with
 //   POP_W_YT=.. POP_W_RANK=.. POP_W_SONG=.. ENABLE_YOUTUBE=1 node pipeline/build.mjs
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';

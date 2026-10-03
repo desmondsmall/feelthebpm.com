@@ -23,12 +23,12 @@ const SITE = join(HERE, '..', 'public');
 if (!existsSync(SITE)) mkdirSync(SITE, { recursive: true });
 const CACHE = join(HERE, 'cache');
 if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
-// hand-curated config vs. generated artifacts (see .dev/pipeline-architecture.md)
+// hand-curated config vs. generated artifacts (see .mind/reference/pipeline.md)
 const INPUTS = join(HERE, 'inputs');        // artists / extra_songs / exclude* / bpm_overrides — hand-edited
 const GENERATED = join(HERE, 'generated');  // catalogue / seed-ug / gaps — build+seed outputs (committed)
 if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
 // self-hosted album art lands in public/covers/<md5_image>.jpg. Dormant unless ENABLE_COVERS=1 —
-// otherwise each record carries Deezer's CDN hotlink URL instead. See .dev/cover-art-sourcing.md
+// otherwise each record carries Deezer's CDN hotlink URL instead. See .mind/reference/pipeline.md
 const COVERS = join(SITE, 'covers');
 const ENABLE_COVERS = process.env.ENABLE_COVERS === '1';
 
@@ -42,10 +42,10 @@ const MAX_FETCH_ATTEMPTS = 3;      // tries before getJson gives up (returns nul
 const DEFAULT_PACE_MS = 250;       // polite delay after a live (uncached) fetch
 const YT_SEARCH_N = 8;             // YouTube search hits to scan per song (max-views match)
 const YT_PACE_MS = 800;            // polite delay after a live yt-dlp call (unauthed scraping)
-// Popularity blend weights — percentile-ranked breadth signals (see .dev/popularity-rework.md
-// and pipeline-architecture.md). YouTube view breadth is PRIMARY (recognizability); Deezer rank
+// Popularity blend weights — percentile-ranked breadth signals (see .mind/reference/popularity.md).
+// YouTube view breadth is PRIMARY (recognizability); Deezer rank
 // (streaming reach) is secondary; Songsterr tab views (a known guitar-canon bias) are minimized.
-// A song missing a signal scores percentile 0 for it — a penalty, not a dropped term (see §4b);
+// A song missing a signal scores percentile 0 for it — a penalty, not a dropped term;
 // only a signal that's entirely dormant across the catalogue (e.g. YouTube disabled) is dropped,
 // with the remaining weights renormalizing. Env-overridable (POP_W_YT / POP_W_RANK / POP_W_SONG)
 // to tune/sweep without a code edit; compare configs offline with pipeline/tools/sweep-weights.mjs.
@@ -280,7 +280,7 @@ async function acousticbrainzBpm(mbids) {
 
 // ---- reconcile the automated readings into ONE felt BPM ----------------
 // Automated tempo detectors frequently report 2× (or ½) the tempo a listener taps. From the audit
-// (.dev/gsb-eval.md): real felt tempos in this catalogue span ~[70,175] with a hard floor
+// (.mind/archive/gsb-eval/gsb-eval.md): real felt tempos in this catalogue span ~[70,175] with a hard floor
 // near 70; and when two sources form a CLEAN 2× pair, the LOWER octave is the felt tempo 16/17 times
 // — but only *safely* so when the faster reading is implausibly high (≥150). In the 130–150 band a
 // bare number is ambiguous (a real mid-tempo rocker vs a doubled ballad), so those are left to
@@ -338,7 +338,7 @@ async function musicbrainzYear(c) {
 // --flat-playlist search returns per-result view_count in one fast call (no video download).
 // YouTube's universal reach is the broadest free "how many people know this" proxy and fixes
 // Last.fm's rock/English skew. Caveat: views ≈ plays (not distinct listeners) and partly track
-// artist fame, which is why it's weighted 0.55, not 1.0. See popularity-rework.md §4a.
+// artist fame, which is why it's weighted below 1.0. See .mind/reference/popularity.md.
 // Dormant unless ENABLE_YOUTUBE=1 AND yt-dlp is on PATH (set in main()); misses fail soft.
 let YT_ON = false;
 const YT_ENABLED = process.env.ENABLE_YOUTUBE === '1';
@@ -404,7 +404,7 @@ async function youtubeViews(c) {
 // drummer's anchor metric, "nobody tabs this" should count *against* a song (it's likely a
 // vocal/production-led track, a weaker tempo anchor), not be quietly ignored. Songsterr coverage
 // is ~50%, so this penalty is the lever that pushes musician-anchor songs above streaming-pop.
-// See .dev/popularity-rework.md §4b. Percentile still guarantees an even spread (no
+// See .mind/reference/popularity.md. Percentile still guarantees an even spread (no
 // lognorm saturation). Returns null if the signal is entirely absent (all 0 -> dormant, e.g.
 // YouTube with no opt-in), so the caller drops it and renormalizes onto the remaining signals.
 function percentileMap(items, getVal) {
@@ -451,7 +451,7 @@ async function enrichCandidate(c, overrides) {
   // `felt` = the human-tapped tempo the UI shows. A hand override wins felt outright; otherwise the
   // felt octave comes from reconcileBpm over Deezer+GSB (+ an independent AcousticBrainz vote when
   // ENABLE_ACOUSTICBRAINZ). Deezer AND GetSongBPM are consulted for EVERY song so the rule always has
-  // ≥2 votes. See reconcileBpm / .dev/gsb-eval.md. (Skip the GSB/AB calls when an override already wins.)
+  // ≥2 votes. See reconcileBpm / .mind/reference/felt-bpm.md. (Skip the GSB/AB calls when an override already wins.)
   const gsb = ov ? null : await getsongbpmEnrich(c);
   const gsbYear = gsb?.year ?? null;
   const ab = ov ? 0 : await acousticbrainzBpm(mb.mbids);
@@ -478,12 +478,12 @@ async function enrichCandidate(c, overrides) {
     youtube_id: yt?.id || null,
     // popularity is assigned later by the whole-catalogue percentile pass (it needs every
     // song's signals). The raw signals are held in a SIDE MAP (not on the record), so they
-    // can never leak into the shipped file — only the derived 0–100 score ships. See §3/§6.
+    // can never leak into the shipped file — only the derived 0–100 score ships. See .mind/reference/pipeline.md (the shipped record).
   };
   const raw = { youtube: yt?.views || 0, rank: enr?.deezer_rank || 0, songsterr: c.songsterr_views || 0 };
   // review sidecar: the per-source readings the reconcile collapses, plus the Deezer preview clip and
   // the YouTube id (full-song embed) — held in a side map (like raw signals) and written to
-  // pipeline/generated/review.json for the curation tool. Never shipped. See .dev/curation-tool.md.
+  // pipeline/generated/review.json for the curation tool. Never shipped. See .mind/reference/felt-bpm.md.
   const review = { deezer_bpm: dzBpm, gsb_bpm: gsbBpm, ab_bpm: ab, override: ov ?? null, preview: enr?.preview ?? null, youtube_id: yt?.id || null };
   // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
   // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
@@ -511,7 +511,7 @@ function loadOverrides() {
 // reviewable, prunable artifact — and the build reads it back, so DISCOVERY and BUILD are
 // decoupled: refresh the seed occasionally, build off it every run. songsterr_views rides on the
 // seed entry because it's captured for free during the Songsterr scrape (it doubles as the
-// Songsterr popularity signal). See .dev/pipeline-architecture.md.
+// Songsterr popularity signal). See .mind/reference/pipeline.md.
 const CATALOGUE = join(GENERATED, 'catalogue.json');
 
 async function gatherCatalogue() {
@@ -570,7 +570,7 @@ async function main() {
   // (normalized like the candidates so 'queen|bohemian rhapsody' matches). By file: exclude.json =
   // no single meaningful tempo (multi-movement/rubato); exclude-obscure.json = guitar/drum-tab
   // "canon" musicians know but laypeople don't; exclude-contemporary.json = too-recent-for-karaoke
-  // streaming hits. All unioned, applied as a build-time filter. See pipeline-architecture.md.
+  // streaming hits. All unioned, applied as a build-time filter. See .mind/reference/pipeline.md.
   const excludeSet = new Set(
     readdirSync(INPUTS)
       .filter((f) => /^exclude.*\.json$/.test(f))
@@ -691,7 +691,7 @@ async function main() {
   assignPopularity(deduped, rawSignals);
 
   // optional: dump the deduped set's RAW signals so weights can be swept offline (no network).
-  // Lands in the gitignored cache — raw provider signals must never be committed (see §3) —
+  // Lands in the gitignored cache — raw provider signals must never be committed —
   // and is read by pipeline/tools/sweep-weights.mjs. Enable with DUMP_SIGNALS=1.
   if (process.env.DUMP_SIGNALS) {
     const dump = deduped.map((s) => ({ artist: s.artist, title: s.title, bpm: s.bpm, raw: rawSignals.get(s) }));
@@ -723,7 +723,7 @@ async function main() {
   // songs.js lets index.html load via <script> so it works on file:// (no server / no CORS)
   writeFileSync(join(SITE, 'songs.js'), `window.SONGS = ${JSON.stringify(deduped)};\n`);
   writeFileSync(join(GENERATED, 'gaps.json'), JSON.stringify(gaps, null, 2));
-  // review sidecar for the curation tool (.dev/curation-tool.md): per-song source readings + the
+  // review sidecar for the curation tool (.mind/reference/felt-bpm.md): per-song source readings + the
   // Deezer preview clip, plus a `queue` flag marking songs a human should confirm by ear. Gitignored
   // (regenerable per build; carries preview URLs). felt≥140 → suspected double-time; ≤66 → half-time;
   // already-hand-overridden songs are considered decided and not queued.

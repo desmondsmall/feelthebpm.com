@@ -110,9 +110,9 @@ and logged to `pipeline/generated/gaps.json` — review that file to grow the ov
 ## Design docs
 
 Design records, source evaluations, and the deployment runbook live in a local-only
-Obsidian vault at `.dev/` — gitignored, so it is not part of this repo. Code comments
-pointing at `.dev/<name>.md` are breadcrumbs for whoever holds the working copy, not
-files you will find in a clone.
+`.mind/` folder — gitignored, so it is not part of this repo. Code comments pointing at
+`.mind/<path>.md` are breadcrumbs for whoever holds the working copy, not files you will
+find in a clone.
 
 ## Sources & attribution
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Local curation tool (no deps). Serves the felt-BPM review UI, the review.json sidecar, and writes
 // decisions back to inputs/bpm_overrides.json. Decisions are the same git-tracked overrides the build
-// already reads — rebuild to apply them. See .dev/curation-tool.md.
+// already reads — rebuild to apply them. See .mind/reference/felt-bpm.md.
 //
 //   node pipeline/build.mjs            # (re)generate pipeline/generated/review.json
 //   node pipeline/review-server.mjs    # → http://localhost:5177  — listen, tap, save

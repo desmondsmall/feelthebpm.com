@@ -1,11 +1,11 @@
-// Hand-labeled recognizability ground truth (see .dev/popularity-rework.md §5).
+// Hand-labeled recognizability ground truth (see .mind/reference/popularity.md).
 // Shared by eval-popularity.mjs (the release gate) and sweep-weights.mjs (offline weight
 // comparison). KNOWS = songs ~everyone recognizes; the metric must rank these HIGH.
 //
 // A DEEP_CUTS counter-set used to live here (beloved-but-obscure tracks that should rank LOW),
 // but the recognizability prune (exclude-obscure.json / exclude-contemporary.json) removed those
 // songs from the catalogue entirely — so the gate is now KNOWS-only, with eval-popularity.mjs's
-// bottom-of-catalogue list as the floor sanity check. See pipeline-architecture.md.
+// bottom-of-catalogue list as the floor sanity check. See .mind/reference/popularity.md.
 export const KNOWS = [
   ['Michael Jackson', 'Billie Jean'],
   ['Spice Girls', 'Wannabe'],

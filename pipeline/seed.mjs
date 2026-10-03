@@ -8,7 +8,7 @@
 // The build (pipeline/build.mjs) READS catalogue.json; it only auto-generates it on a first run
 // when the file is absent. Keeping discovery here decouples it from scoring — the build no longer
 // scrapes Songsterr on every run, and the catalogue can be eyeballed / hand-pruned between runs.
-// See .dev/pipeline-architecture.md.
+// See .mind/reference/pipeline.md.
 import { gatherCatalogue, writeCatalogue } from './build.mjs';
 
 try {
