@@ -87,7 +87,7 @@ test('build-search.mjs writes the search database', () => {
   assert.equal(u16(t.bpm)[id], 855); assert.equal(u16(t.bpm_alt)[id], 1710);
   assert.equal(u16(row('SELECT weight FROM tempo').weight)[row("SELECT id FROM song WHERE title = 'Let It Be'").id], 1001);
   assert.equal(all(`SELECT s.title FROM fts JOIN song s ON s.id = fts.rowid WHERE fts MATCH '"blind"*'`)[0].title, 'Blinding Lights');
-  assert.equal(JSON.parse(row("SELECT value FROM meta WHERE key = 'manifest'").value).schema_version, 4);
+  assert.equal(JSON.parse(row("SELECT value FROM meta WHERE key = 'manifest'").value).schema_version, 5);
   // Title-start index: ^ anchors to the first word of the title.
   const starts = (m) => all('SELECT s.title FROM tstart JOIN song s ON s.id = tstart.rowid WHERE tstart MATCH ? ORDER BY tstart.rowid', m).map((r) => r.title);
   assert.deepEqual(starts('^ "let" + "it"*'), ['Let It Be']);
@@ -98,7 +98,7 @@ test('build-search.mjs writes the search database', () => {
   assert.equal(manifest.counts.curated_matched, 3);
   assert.equal(manifest.counts.curated_added, 1);
   assert.equal(manifest.counts.songs, 10);   // 11 loaded − duplicate Let It Be − duplicate California Love + Three Little Birds
-  assert.equal(manifest.schema_version, 4);
+  assert.equal(manifest.schema_version, 5);
 });
 
 test.after(() => rmSync(dir, { recursive: true, force: true }));

@@ -97,13 +97,15 @@ export class Search {
     this.curatedIds = new Set(db.prepare('SELECT id FROM song WHERE curated = 1').all().map((r) => r.id));
     const meta = db.prepare("SELECT value FROM meta WHERE key = 'manifest'").get();
     this.manifest = meta ? JSON.parse(meta.value) : null;
+    // release arrived in schema 5; a file built before it has no such column
+    const release = db.prepare("SELECT 1 FROM pragma_table_info('song') WHERE name = 'release'").get() ? 'release' : 'NULL AS release';
     this.q = {
       norms: db.prepare('SELECT artist_norm, title_norm FROM song WHERE id = ?'),
       bpmAsc: db.prepare('SELECT id, bpm AS v FROM song WHERE bpm BETWEEN ? AND ? AND (bpm > ? OR (bpm = ? AND id > ?)) ORDER BY bpm, id LIMIT ?'),
       altAsc: db.prepare('SELECT id, bpm_alt AS v FROM song WHERE bpm_alt BETWEEN ? AND ? AND NOT (bpm BETWEEN ? AND ?) AND (bpm_alt > ? OR (bpm_alt = ? AND id > ?)) ORDER BY bpm_alt, id LIMIT ?'),
       artistAsc: db.prepare("SELECT id, artist_norm AS v FROM song WHERE artist_norm <> '' AND (artist_norm > ? OR (artist_norm = ? AND id > ?)) ORDER BY artist_norm, id LIMIT ?"),
       titleAsc: db.prepare("SELECT id, title_norm AS v FROM song WHERE title_norm <> '' AND (title_norm > ? OR (title_norm = ? AND id > ?)) ORDER BY title_norm, id LIMIT ?"),   // titles of pure punctuation ("------") normalize to ''
-      rows: db.prepare('SELECT id, mbid, artist, title, bpm, bpm_alt, curated, genre, year, isrc, cover, youtube_id FROM song WHERE id IN (SELECT value FROM json_each(?))'),
+      rows: db.prepare(`SELECT id, mbid, ${release}, artist, title, bpm, bpm_alt, curated, genre, year, isrc, cover, youtube_id FROM song WHERE id IN (SELECT value FROM json_each(?))`),
     };
     this.db?.close();
     this.db = db;
@@ -285,6 +287,7 @@ export class Search {
       const r = byId.get(id);
       const item = { artist: r.artist, title: r.title, bpm: r.bpm, bpm_alt: r.bpm_alt, curated: r.curated === 1 };
       if (r.mbid) item.mbid = r.mbid;
+      if (r.release) item.release = r.release;
       if (r.curated) for (const k of ['genre', 'year', 'isrc', 'cover', 'youtube_id']) if (r[k] != null) item[k] = r[k];
       return item;
     });

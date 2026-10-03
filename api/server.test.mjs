@@ -48,7 +48,7 @@ test('invalid parameters are a 400, unknown paths a 404, other methods a 405', a
 test('GET /api/health reports the data version, uncached', async () => {
   const r = await get('/api/health');
   assert.equal(r.status, 200);
-  assert.equal(r.body.ok, true); assert.equal(r.body.songs, 2); assert.equal(r.body.schema_version, 4);
+  assert.equal(r.body.ok, true); assert.equal(r.body.songs, 2); assert.equal(r.body.schema_version, 5);
   assert.ok('commit' in r.body);   // null when run from a checkout (deploys write api/COMMIT)
   assert.equal(r.headers.get('cache-control'), 'no-store');
 });

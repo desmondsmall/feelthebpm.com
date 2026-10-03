@@ -31,15 +31,13 @@ import { join } from 'node:path';
 import { normalize } from '../../api/normalize.mjs';
 import { norm, key } from '../build.mjs';
 import { CURATED, MANIFEST, OPEN_DATA, OPEN_DATA_DB, SEARCH_DB } from './paths.mjs';
+import { ARTIST_ALIASES } from './aliases.mjs';
 
 const ALT_MIN = 60, ALT_MAX = 180;   // a plausible felt tempo, a little wider than the curated 70–175
-// Artists the curated catalogue names differently from MusicBrainz, which neither the exact key nor
-// the "one name contains the other" fallback can bridge. Keys and values are build.mjs norm() form.
-const ARTIST_ALIASES = { tupac: ['2pac'] };
 // A curated song outweighs all but the most-read open-data songs (readings: 92% of songs have
 // fewer than 10, the curated average is ~310, real songs top out around 1,300).
 const CURATED_BONUS = 1000;
-const SCHEMA_VERSION = 4;   // 4: tstart title-start index, packed weights
+const SCHEMA_VERSION = 5;   // 5: release (for cover art); 4: tstart title-start index, packed weights
 const log = (s) => console.error(`[${new Date().toISOString().slice(11, 19)}] ${s}`);
 
 const TMP = `${SEARCH_DB}.tmp`;
@@ -59,8 +57,9 @@ log('staging songs');
 db.exec(`
   CREATE TEMP TABLE stage AS
     SELECT mbid, artist, title, bpm, readings, spread,
+           (SELECT release_mbid FROM src.meta WHERE recording_mbid = s.mbid ORDER BY score LIMIT 1) AS release,
            ckey(artist, title) AS ckey, tkey(title) AS tkey, 0 AS dropped
-    FROM src.songs WHERE artist <> '' AND title <> '';
+    FROM src.songs s WHERE artist <> '' AND title <> '';
   CREATE INDEX temp.stage_ckey ON stage (ckey);
   CREATE INDEX temp.stage_tkey ON stage (tkey);
 `);
@@ -110,7 +109,8 @@ log('writing song table');
 db.exec(`
   CREATE TABLE song (
     id INTEGER PRIMARY KEY,          -- rank by weight: 1 = heaviest
-    mbid TEXT,                       -- MusicBrainz recording; null for a curated song with no open-data match
+    mbid TEXT,                       -- MusicBrainz recording; null for a curated song
+    release TEXT,                    -- MusicBrainz canonical release, for a Cover Art Archive cover; null for a curated song (it has a cover)
     artist TEXT NOT NULL, title TEXT NOT NULL,
     artist_norm TEXT NOT NULL, title_norm TEXT NOT NULL,
     bpm REAL NOT NULL,               -- curated: felt BPM; otherwise the raw reading (median of readings)
@@ -120,16 +120,16 @@ db.exec(`
     weight INT NOT NULL,             -- readings, + ${CURATED_BONUS} if curated
     genre TEXT, year INT, isrc TEXT, cover TEXT, youtube_id TEXT
   );
-  INSERT INTO song (mbid, artist, title, artist_norm, title_norm, bpm, bpm_alt, readings, spread, curated, weight, genre, year, isrc, cover, youtube_id)
-    SELECT mbid, artist, title, normalize(artist), normalize(title), bpm, bpm_alt, readings, spread, curated,
+  INSERT INTO song (mbid, release, artist, title, artist_norm, title_norm, bpm, bpm_alt, readings, spread, curated, weight, genre, year, isrc, cover, youtube_id)
+    SELECT mbid, release, artist, title, normalize(artist), normalize(title), bpm, bpm_alt, readings, spread, curated,
            coalesce(readings, 0) + curated * ${CURATED_BONUS} AS weight, genre, year, isrc, cover, youtube_id FROM (
-      SELECT mbid, artist, title, bpm,
+      SELECT mbid, release, artist, title, bpm,
              round(CASE WHEN bpm / 2 >= ${ALT_MIN} THEN bpm / 2 WHEN bpm * 2 <= ${ALT_MAX} THEN bpm * 2 END, 1) AS bpm_alt,
              readings, spread, 0 AS curated,
              NULL AS genre, NULL AS year, NULL AS isrc, NULL AS cover, NULL AS youtube_id
         FROM stage WHERE dropped = 0
       UNION ALL
-      SELECT NULL, artist, title, bpm, NULL, readings, NULL, 1, genre, year, isrc, cover, youtube_id FROM cur
+      SELECT NULL, NULL, artist, title, bpm, NULL, readings, NULL, 1, genre, year, isrc, cover, youtube_id FROM cur
     ) ORDER BY weight DESC, artist, title;
   DETACH src;
 `);

@@ -73,7 +73,7 @@ test('results carry both octaves, and curated fields only for curated songs', ()
   assert.deepEqual(lucky, { artist: 'Daft Punk', title: 'Get Lucky', bpm: 116, bpm_alt: null, curated: true, genre: 'disco', year: 2013 });
   const [rhap] = search.search({ q: 'bohemian' }).items;
   assert.equal(rhap.bpm, 72); assert.equal(rhap.bpm_alt, 144); assert.equal(rhap.curated, false);
-  assert.ok(rhap.mbid); assert.equal(rhap.genre, undefined);
+  assert.ok(rhap.mbid); assert.equal(rhap.release, 'r'); assert.equal(rhap.genre, undefined);
 });
 
 test('a BPM range matches the reading or its other octave', () => {
@@ -119,5 +119,5 @@ test('bad input is rejected', () => {
 
 test('health reports the data version', () => {
   const h = search.health();
-  assert.equal(h.ok, true); assert.equal(h.schema_version, 4); assert.ok(h.built_at); assert.equal(h.songs, 19);
+  assert.equal(h.ok, true); assert.equal(h.schema_version, 5); assert.ok(h.built_at); assert.equal(h.songs, 19);
 });
