@@ -7,11 +7,17 @@
 // (public/songs.json). What goes in, and why (reasoning and measurements: .mind/song-search/):
 // - Every song with a tempo and a name: search is for finding a specific song, so nothing is
 //   filtered out for being obscure.
-// - song.id is the tie-break rank: curated songs first, then by the number of AcousticBrainz
-//   readings (how many people analysed the song from their own libraries — a free measure of how
-//   common it is, which put the expected song first for common titles better than ListenBrainz
-//   listener counts did). Search ranks by match quality first and uses id to order songs within
-//   a match tier, so every index ends in id.
+// - song.weight: how well-known a song is, for ordering equally good matches. The number of
+//   AcousticBrainz readings (how many people analysed the song from their own libraries — a free
+//   measure of how common it is, which put the expected song first for common titles better than
+//   ListenBrainz listener counts did), plus CURATED_BONUS for a curated song. song.id is the rank
+//   by weight, so every index ends in id and any index range streams in weight order; the
+//   endpoint blends match types by multiplying weights (api/search.mjs).
+// - Packed copies of every song's tempos and weight (table tempo), so the endpoint can filter by
+//   BPM and blend match types in memory instead of reading a row per candidate.
+// - Two FTS5 indexes over the normalized columns: fts (any word, artist or title) and tstart
+//   (title starts with these words, via FTS5's ^ initial-token queries). Both return songs in id
+//   order, so the endpoint streams them without sorting.
 // - artist_norm / title_norm (api/normalize.mjs) with indexes, for exact and prefix title/artist
 //   matches; an FTS5 index over artist and title for word matches.
 // - bpm_alt: the raw reading's other octave when that is a plausible felt tempo (60–180), because
@@ -30,7 +36,10 @@ const ALT_MIN = 60, ALT_MAX = 180;   // a plausible felt tempo, a little wider t
 // Artists the curated catalogue names differently from MusicBrainz, which neither the exact key nor
 // the "one name contains the other" fallback can bridge. Keys and values are build.mjs norm() form.
 const ARTIST_ALIASES = { tupac: ['2pac'] };
-const SCHEMA_VERSION = 2;   // 2: no listener counts; id ranks curated first, then by readings
+// A curated song outweighs all but the most-read open-data songs (readings: 92% of songs have
+// fewer than 10, the curated average is ~310, real songs top out around 1,300).
+const CURATED_BONUS = 1000;
+const SCHEMA_VERSION = 4;   // 4: tstart title-start index, packed weights
 const log = (s) => console.error(`[${new Date().toISOString().slice(11, 19)}] ${s}`);
 
 const TMP = `${SEARCH_DB}.tmp`;
@@ -100,7 +109,7 @@ for (const { c, readings } of [...matched, ...added.map((c) => ({ c, readings: n
 log('writing song table');
 db.exec(`
   CREATE TABLE song (
-    id INTEGER PRIMARY KEY,          -- tie-break rank: curated songs first, then most AcousticBrainz readings
+    id INTEGER PRIMARY KEY,          -- rank by weight: 1 = heaviest
     mbid TEXT,                       -- MusicBrainz recording; null for a curated song with no open-data match
     artist TEXT NOT NULL, title TEXT NOT NULL,
     artist_norm TEXT NOT NULL, title_norm TEXT NOT NULL,
@@ -108,10 +117,12 @@ db.exec(`
     bpm_alt REAL,                    -- the other octave when plausible; null for curated songs
     readings INT, spread REAL,       -- how many readings, and max/min between them; null for an added curated song
     curated INT NOT NULL DEFAULT 0,
+    weight INT NOT NULL,             -- readings, + ${CURATED_BONUS} if curated
     genre TEXT, year INT, isrc TEXT, cover TEXT, youtube_id TEXT
   );
-  INSERT INTO song (mbid, artist, title, artist_norm, title_norm, bpm, bpm_alt, readings, spread, curated, genre, year, isrc, cover, youtube_id)
-    SELECT mbid, artist, title, normalize(artist), normalize(title), bpm, bpm_alt, readings, spread, curated, genre, year, isrc, cover, youtube_id FROM (
+  INSERT INTO song (mbid, artist, title, artist_norm, title_norm, bpm, bpm_alt, readings, spread, curated, weight, genre, year, isrc, cover, youtube_id)
+    SELECT mbid, artist, title, normalize(artist), normalize(title), bpm, bpm_alt, readings, spread, curated,
+           coalesce(readings, 0) + curated * ${CURATED_BONUS} AS weight, genre, year, isrc, cover, youtube_id FROM (
       SELECT mbid, artist, title, bpm,
              round(CASE WHEN bpm / 2 >= ${ALT_MIN} THEN bpm / 2 WHEN bpm * 2 <= ${ALT_MAX} THEN bpm * 2 END, 1) AS bpm_alt,
              readings, spread, 0 AS curated,
@@ -119,7 +130,7 @@ db.exec(`
         FROM stage WHERE dropped = 0
       UNION ALL
       SELECT NULL, artist, title, bpm, NULL, readings, NULL, 1, genre, year, isrc, cover, youtube_id FROM cur
-    ) ORDER BY curated DESC, readings DESC, artist, title;
+    ) ORDER BY weight DESC, artist, title;
   DETACH src;
 `);
 
@@ -130,22 +141,44 @@ db.exec(`
   CREATE INDEX song_artist ON song (artist_norm, id);
   CREATE INDEX song_bpm ON song (bpm, id);
   CREATE INDEX song_bpm_alt ON song (bpm_alt, id) WHERE bpm_alt IS NOT NULL;
-  CREATE VIRTUAL TABLE fts USING fts5(artist, title, content='song', content_rowid='id',
+  -- Over the normalized columns, so FTS splits words exactly as api/normalize.mjs does ("Don't"
+  -- is one word, "dont", for both the index and a query).
+  CREATE VIRTUAL TABLE fts USING fts5(artist_norm, title_norm, content='song', content_rowid='id',
     tokenize='unicode61 remove_diacritics 2', prefix='1 2 3', detail=none);
   INSERT INTO fts (fts) VALUES ('rebuild');
   INSERT INTO fts (fts) VALUES ('optimize');
+  -- Title starts with the query's words: ^ "smells" + "like"*. A title prefix range on
+  -- (title_norm, id) can't return songs in id order without sorting the whole range (10 s for
+  -- "the" with a BPM filter); this returns them in id order directly. detail=full is what ^ and
+  -- phrases need (+327 MB on 6M songs).
+  CREATE VIRTUAL TABLE tstart USING fts5(title_norm, content='song', content_rowid='id',
+    tokenize='unicode61 remove_diacritics 0', prefix='1 2 3');
+  INSERT INTO tstart (tstart) VALUES ('rebuild');
+  INSERT INTO tstart (tstart) VALUES ('optimize');
 `);
+
+// Packed arrays, element i for song i, little-endian uint16: bpm × 10 and bpm_alt × 10 (0 = none),
+// and weight. The endpoint loads these (12 MB each for 6M songs) in milliseconds and filters BPM
+// ranges and orders candidates in memory: ~0.6 µs a candidate instead of a random row read (~15 µs).
+log('packing tempos and weights');
+const n = db.prepare('SELECT max(id) AS n FROM song').get().n ?? 0;
+const bpm = new Uint16Array(n + 1), alt = new Uint16Array(n + 1), weight = new Uint16Array(n + 1);
+for (const r of db.prepare('SELECT id, bpm, bpm_alt, weight FROM song').iterate()) {
+  bpm[r.id] = Math.round(r.bpm * 10);
+  alt[r.id] = r.bpm_alt == null ? 0 : Math.round(r.bpm_alt * 10);
+  weight[r.id] = Math.min(r.weight, 65535);
+}
+const le = (a) => { const b = Buffer.from(a.buffer); if (new Uint8Array(new Uint16Array([1]).buffer)[0] !== 1) b.swap16(); return b; };
+db.exec('CREATE TABLE tempo (bpm BLOB NOT NULL, bpm_alt BLOB NOT NULL, weight BLOB NOT NULL)');
+db.prepare('INSERT INTO tempo VALUES (?, ?, ?)').run(le(bpm), le(alt), le(weight));
 const count = (sql) => db.prepare(sql).get().n;
 const stats = {
   songs: count('SELECT count(*) AS n FROM song'),
   curated: count('SELECT count(*) AS n FROM song WHERE curated = 1'),
   with_bpm_alt: count('SELECT count(*) AS n FROM song WHERE bpm_alt IS NOT NULL'),
 };
-db.close();
-const v = new DatabaseSync(TMP); v.exec('VACUUM'); v.close();
-renameSync(TMP, SEARCH_DB);
 
-// ---- 5. manifest: what this file was built from ----
+// ---- 5. manifest: what this file was built from (inside the file too, for /api/health) ----
 const readMaybe = (f) => (existsSync(f) ? readFileSync(f, 'utf8').trim() : null);
 const git = (cmd) => { try { return execSync(`git ${cmd}`, { encoding: 'utf8' }).trim(); } catch { return null; } };
 const manifest = {
@@ -159,8 +192,13 @@ const manifest = {
     curated_songs: curated.length,
   },
   counts: { ...stats, curated_matched: matched.length, curated_added: added.length },
-  bytes: statSync(SEARCH_DB).size,
 };
+db.exec('CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
+db.prepare("INSERT INTO meta VALUES ('manifest', ?)").run(JSON.stringify(manifest));
+db.close();
+const v = new DatabaseSync(TMP); v.exec('VACUUM'); v.close();
+renameSync(TMP, SEARCH_DB);
+manifest.bytes = statSync(SEARCH_DB).size;
 writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
 writeFileSync(join(OPEN_DATA, 'curated-merge.txt'), report.join('\n') + '\n');
 log(`${SEARCH_DB}: ${stats.songs} songs, ${(manifest.bytes / 1e6).toFixed(0)} MB; manifest and curated-merge.txt written`);

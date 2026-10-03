@@ -4,72 +4,38 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { execFileSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { readFileSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+import { makeFixture } from './fixture.mjs';
 
-const HERE = dirname(fileURLToPath(import.meta.url));
-const dir = mkdtempSync(join(tmpdir(), 'search-test-'));
-const env = { ...process.env, SEARCH_OPEN_DATA: dir, SEARCH_CURATED: join(dir, 'songs.json') };
-
-// MBIDs: short readable stand-ins (the pipeline treats them as opaque text).
-const csv = (rows) => rows.map((r) => r.join(',')).join('\n') + '\n';
-function tarZst(name, files) {   // files: { 'path/in/tar': contents }
-  const stage = join(dir, 'stage');
-  for (const [p, body] of Object.entries(files)) { mkdirSync(dirname(join(stage, p)), { recursive: true }); writeFileSync(join(stage, p), body); }
-  execFileSync('sh', ['-c', `tar -cf - -C '${stage}' ${Object.keys(files).map((p) => `'${p}'`).join(' ')} | zstd -q -o '${join(dir, name)}'`]);
-  rmSync(stage, { recursive: true });
-}
-
-// AcousticBrainz readings (mbid, offset, bpm, 4 histogram columns, danceability, onset_rate).
-const ab = [['mbid', 'submission_offset', 'bpm', 'p1m', 'p1md', 'p2m', 'p2md', 'danceability', 'onset_rate']];
-const reading = (mbid, bpm) => ab.push([mbid, 0, bpm, 0, 0, 0, 0, 0, 0]);
-reading('yest-canon', 96.0); reading('yest-remaster', 98.0); reading('yest-remaster', 97.0);  // 3 readings (merged) → median 97
-reading('letitbe', 139.6);       // octave case: alt = 69.8
-reading('blinding', 85.5);       // alt = 171
-reading('mid', 105.0);           // neither octave plausible → no alt
-reading('obscure', 120.0);       // one reading: kept anyway (nothing is filtered for being obscure)
-reading('marley', 76.0);         // curated by "Bob Marley" (artist-contains match)
-reading('cover', 140.0);         // a cover with the same title as a curated song
-reading('dup', 139.0);           // a second "Let It Be" by the same artist: dropped as a duplicate
-reading('cyrillic', 110.0);
-reading('calilove', 92.0);       // credited to "2Pac"; the curated catalogue says "Tupac"
-reading('calilove2', 91.0);
-tarZst('ab-rhythm.tar.zst', { 'acousticbrainz-lowlevel-features-20220623/acousticbrainz-lowlevel-features-20220623-rhythm.csv': csv(ab), 'acousticbrainz-lowlevel-features-20220623/COPYING': 'CC0\n' });
-
-const meta = [['id', 'artist_credit_id', 'artist_mbids', 'artist_credit_name', 'release_mbid', 'release_name', 'recording_mbid', 'recording_name', 'combined_lookup', 'score']];
-const song = (id, mbid, artist, title) => meta.push([id, 1, 'a', `"${artist}"`, 'r', 'R', mbid, `"${title}"`, 'x', 1]);
-song(1, 'yest-canon', 'The Beatles', 'Yesterday');
-song(2, 'letitbe', 'The Beatles', 'Let It Be');
-song(3, 'blinding', 'The Weeknd', 'Blinding Lights');
-song(4, 'mid', 'Some Band', 'Middle');
-song(5, 'obscure', 'Nobody', 'Unheard');
-song(6, 'marley', 'Bob Marley & The Wailers', 'Is This Love');
-song(7, 'cover', 'Cover Band', 'Is This Love');
-song(8, 'dup', 'The Beatles', 'Let It Be');
-song(9, 'cyrillic', 'Кино', 'Группа крови');
-song(10, 'calilove', '2Pac feat. Dr. Dre', 'California Love');
-song(11, 'calilove2', '2Pac', 'California Love');                   // the same song again, plain credit
-const redirect = [['recording_mbid', 'canonical_recording_mbid', 'canonical_release_mbid'], ['yest-remaster', 'yest-canon', 'r']];
-tarZst('canonical.tar.zst', {
-  'musicbrainz-canonical-dump-test/canonical/canonical_musicbrainz_data.csv': csv(meta),
-  'musicbrainz-canonical-dump-test/canonical/canonical_recording_redirect.csv': csv(redirect),
-  'musicbrainz-canonical-dump-test/COPYING': 'CC0\n',
+// MBIDs are short readable stand-ins (the pipeline treats them as opaque text).
+const fx = makeFixture({
+  songs: [
+    { mbid: 'yest-canon', artist: 'The Beatles', title: 'Yesterday', bpms: [96.0] },        // + the remaster's 2 → median 97
+    { mbid: 'letitbe', artist: 'The Beatles', title: 'Let It Be', bpms: [139.6] },          // octave case: alt 69.8
+    { mbid: 'blinding', artist: 'The Weeknd', title: 'Blinding Lights', bpms: [85.5] },     // alt 171
+    { mbid: 'mid', artist: 'Some Band', title: 'Middle', bpms: [105.0] },                   // no plausible other octave
+    { mbid: 'obscure', artist: 'Nobody', title: 'Unheard', bpms: [120.0] },                 // one reading: kept anyway
+    { mbid: 'marley', artist: 'Bob Marley & The Wailers', title: 'Is This Love', bpms: [76.0] },   // curated as "Bob Marley"
+    { mbid: 'cover', artist: 'Cover Band', title: 'Is This Love', bpms: [140.0] },          // a cover with a curated title
+    { mbid: 'dup', artist: 'The Beatles', title: 'Let It Be', bpms: [139.0] },              // same song again: dropped
+    { mbid: 'cyrillic', artist: 'Кино', title: 'Группа крови', bpms: [110.0] },
+    { mbid: 'calilove', artist: '2Pac feat. Dr. Dre', title: 'California Love', bpms: [92.0] },   // curated says "Tupac"
+    { mbid: 'calilove2', artist: '2Pac', title: 'California Love', bpms: [91.0] },          // the same song, plain credit
+  ],
+  redirects: [['yest-remaster', 'yest-canon', [98.0, 97.0]]],
+  // Curated: Let It Be (exact), Is This Love by "Bob Marley" (contains), California Love by
+  // "Tupac" (alias), Three Little Birds (no open-data row → added).
+  curated: [
+    { artist: 'The Beatles', title: 'Let It Be', bpm: 139, felt_bpm: 72, genre: 'rock', year: 1970, isrc: 'GBAYE0601690', cover: 'covers/a.jpg', youtube_id: 'x1' },
+    { artist: 'Bob Marley', title: 'Is This Love', bpm: 122, felt_bpm: 61, genre: 'reggae', year: 1978 },
+    { artist: 'Bob Marley', title: 'Three Little Birds', bpm: 74, felt_bpm: 74, genre: 'reggae', year: 1977 },
+    { artist: 'Tupac', title: 'California Love', bpm: 92, felt_bpm: 92, genre: 'hip-hop', year: 1995 },
+  ],
 });
-
-// Curated catalogue: Let It Be (exact match), Is This Love by "Bob Marley" (contains match),
-// and Three Little Birds (no open-data row → added).
-writeFileSync(env.SEARCH_CURATED, JSON.stringify([
-  { artist: 'The Beatles', title: 'Let It Be', bpm: 139, felt_bpm: 72, genre: 'rock', year: 1970, isrc: 'GBAYE0601690', cover: 'covers/a.jpg', youtube_id: 'x1' },
-  { artist: 'Bob Marley', title: 'Is This Love', bpm: 122, felt_bpm: 61, genre: 'reggae', year: 1978 },
-  { artist: 'Bob Marley', title: 'Three Little Birds', bpm: 74, felt_bpm: 74, genre: 'reggae', year: 1977 },
-  { artist: 'Tupac', title: 'California Love', bpm: 92, felt_bpm: 92, genre: 'hip-hop', year: 1995 },
-]));
+const dir = fx.dir;
 
 test('load.sh builds songs and redirects from the dumps', () => {
-  execFileSync(join(HERE, 'load.sh'), { env, stdio: 'pipe' });
   const db = new DatabaseSync(join(dir, 'open-data.db'));
   assert.equal(db.prepare('SELECT count(*) AS n FROM songs').get().n, 11);
   assert.equal(db.prepare("SELECT bpm FROM songs WHERE mbid = 'yest-canon'").get().bpm, 97);   // median of 96, 97, 98
@@ -78,7 +44,7 @@ test('load.sh builds songs and redirects from the dumps', () => {
 });
 
 test('build-search.mjs writes the search database', () => {
-  execFileSync(process.execPath, ['--no-warnings', join(HERE, 'build-search.mjs')], { env, stdio: 'pipe' });
+  fx.build();
   const db = new DatabaseSync(join(dir, 'search.db'), { readOnly: true });
   const row = (sql, ...a) => db.prepare(sql).get(...a);
   const all = (sql, ...a) => db.prepare(sql).all(...a);
@@ -109,14 +75,30 @@ test('build-search.mjs writes the search database', () => {
   // Indexes the endpoint relies on.
   assert.equal(row("SELECT id FROM song WHERE title_norm = 'yesterday'").id, 5);
   assert.equal(row("SELECT count(*) AS n FROM pragma_table_info('song') WHERE name IN ('users', 'listens')").n, 0);
+  // Weight: readings, + 1000 for curated; id follows weight.
+  assert.equal(row("SELECT weight FROM song WHERE title = 'Yesterday'").weight, 3);
+  assert.equal(row("SELECT weight FROM song WHERE title = 'Let It Be'").weight, 1001);
+  const w = all('SELECT weight FROM song ORDER BY id').map((r) => r.weight);
+  assert.deepEqual(w, [...w].sort((x, y) => y - x));
+  // Packed tempos match the rows.
+  const t = row('SELECT bpm, bpm_alt FROM tempo');
+  const u16 = (b) => new Uint16Array(b.buffer, b.byteOffset, b.byteLength / 2);
+  const id = row("SELECT id FROM song WHERE title = 'Blinding Lights'").id;
+  assert.equal(u16(t.bpm)[id], 855); assert.equal(u16(t.bpm_alt)[id], 1710);
+  assert.equal(u16(row('SELECT weight FROM tempo').weight)[row("SELECT id FROM song WHERE title = 'Let It Be'").id], 1001);
   assert.equal(all(`SELECT s.title FROM fts JOIN song s ON s.id = fts.rowid WHERE fts MATCH '"blind"*'`)[0].title, 'Blinding Lights');
+  assert.equal(JSON.parse(row("SELECT value FROM meta WHERE key = 'manifest'").value).schema_version, 4);
+  // Title-start index: ^ anchors to the first word of the title.
+  const starts = (m) => all('SELECT s.title FROM tstart JOIN song s ON s.id = tstart.rowid WHERE tstart MATCH ? ORDER BY tstart.rowid', m).map((r) => r.title);
+  assert.deepEqual(starts('^ "let" + "it"*'), ['Let It Be']);
+  assert.deepEqual(starts('^ "love"*'), []);   // "Is This Love" contains love but doesn't start with it
   db.close();
 
   const manifest = JSON.parse(readFileSync(join(dir, 'manifest.json'), 'utf8'));
   assert.equal(manifest.counts.curated_matched, 3);
   assert.equal(manifest.counts.curated_added, 1);
   assert.equal(manifest.counts.songs, 10);   // 11 loaded − duplicate Let It Be − duplicate California Love + Three Little Birds
-  assert.equal(manifest.schema_version, 2);
+  assert.equal(manifest.schema_version, 4);
 });
 
 test.after(() => rmSync(dir, { recursive: true, force: true }));
