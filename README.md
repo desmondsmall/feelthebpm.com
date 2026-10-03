@@ -33,16 +33,20 @@ Each song in `public/songs.json` / `public/songs.js` (written there by the pipel
 {
   "artist": "The White Stripes",
   "title": "Seven Nation Army",
-  "bpm": 124,
+  "bpm": 124,                     // the raw detector reading
+  "felt_bpm": 124,                // the tempo people tap; the UI shows and positions by this
   "genre": "rock",
   "year": 2003,                   // original release year (MusicBrainz; Deezer fallback)
   "isrc": "USVT10300001",
-  "popularity": 98               // 0–100, derived blend (see below)
+  "cover": "covers/<id>.jpg",     // self-hosted album art (Cover Art Archive); null if none
+  "youtube_id": "0J2QdDbelmY",
+  "popularity": 81                // 0–100, derived blend (see below)
 }
 ```
 
 Alongside them the pipeline writes `public/version.json` — a small build manifest
-(date, song count, year-source tally, exclusions, BPM gaps) for provenance/versioning.
+(date, song count, year sources, cover source and counts, popularity weights, exclusions,
+BPM gaps) for provenance/versioning.
 
 `songs.json` is canonical (the source of truth CI validates); `songs.js` is a
 generated `<script>`-loadable mirror (`window.SONGS=[…]`) so `index.html` works on
@@ -51,61 +55,75 @@ fallback — but both are written from the same array by the pipeline and CI fai
 deploy if they drift out of sync, so treat `.json` as authoritative.
 
 The shipped dataset is **facts + one derived score** only. The raw provider signals
-used to compute popularity (Songsterr per-instrument views, Deezer rank) are computed
-at build time but deliberately **not** included in `songs.json` / `songs.js` — so the
-published file redistributes no provider-specific data. To inspect those signals,
-re-run the pipeline or check `pipeline/cache/`.
+used to compute popularity (YouTube views, Deezer rank, Songsterr views) and the
+per-source tempo readings are used at build time but deliberately **not** included in
+`songs.json` / `songs.js` — so the published file redistributes no provider-specific data
+(CI fails the deploy if one appears). To inspect those signals, re-run the pipeline or
+check `pipeline/cache/`.
 
 ## How the data is built
 
-`node pipeline/build.mjs` runs a multi-source pipeline (no API keys needed for the core,
-results cached to `pipeline/cache/` so re-runs are instant):
+```bash
+ENABLE_ACOUSTICBRAINZ=1 ENABLE_YOUTUBE=1 ENABLE_COVERS=1 node --env-file=.env pipeline/build.mjs
+```
 
-1. **Songsterr** (`/api/songs`) — discovers *popular, recognizable* songs and gives a
-   real popularity signal (per-instrument view counts). Great for rock/pop/metal;
-   covers/variants and tab-arrangement suffixes are filtered/cleaned out.
-2. **Curated cross-genre list** (`pipeline/inputs/extra_songs.json`) — fills what Songsterr
-   covers poorly (hip-hop, electronic, R&B, disco, reggae), genre-tagged by hand.
-3. **Deezer** (`api.deezer.com`) — the BPM source of record (audio-analysis tempo) plus
-   ISRC / popularity rank. Free, no auth.
-4. **MusicBrainz** (`musicbrainz.org/ws/2`) — the **year** source of record. Deezer's
-   `release_date` reports whichever release it matched (often a remaster/compilation), so
-   old songs come back with inflated years (*The Boxer* → 2025). MusicBrainz exposes a
-   recording's earliest release date — the real original year. We search by artist+title
-   and take the minimum first-release-date across **exact-title** matches, so live/
-   remaster/edit recordings (which carry their own later dates) are ignored. Deezer's year
-   is kept only as a fallback when MusicBrainz has no match. Free, no auth — but requires a
-   descriptive `User-Agent` and allows ~1 request/sec, so the first run is slow (~8–10 min);
-   responses cache to `pipeline/cache/`, so re-runs are instant.
+A multi-source pipeline, plain Node 22 with no npm dependencies (`yt-dlp` is the only
+external binary). It runs on a laptop, never in CI; every response is cached to
+`pipeline/cache/`, so re-runs are fast. `.env` (gitignored) holds `GETSONGBPM_API_KEY`.
+A bare `node pipeline/build.mjs` runs, but without the flags and the key it drops tempo
+votes, popularity and covers.
 
-**Override table** (`pipeline/inputs/bpm_overrides.json`) handles two known Deezer weaknesses:
-- *Coverage gaps* — Deezer returns `bpm: 0` for much of the classic-rock canon
-  (Highway to Hell, Wonderwall, Creep…), so canonical tempos live here.
-- *Half/double-tempo artifacts* — audio analysis sometimes reports 2× the real tempo
-  (Dancing Queen 201→101, Superstition 201→100); corrected here.
+1. **Membership** — which songs exist: a Songsterr artist scrape (popular, recognizable
+   guitar-band songs), a hand-kept cross-genre list (`pipeline/inputs/extra_songs.json`)
+   for what Songsterr covers poorly, and a hand-copied Ultimate Guitar chart harvest.
+2. **Tempo** — three independent readings, reconciled: **Deezer** (audio analysis),
+   **GetSongBPM** and **AcousticBrainz**. Audio analysis often reports half or double the
+   tempo people feel (Dancing Queen 201 → 101), and Deezer has no tempo for much of the
+   classic-rock canon, so the votes are reconciled into `felt_bpm`, and a hand override
+   (`pipeline/inputs/bpm_overrides.json`) wins outright.
+3. **Year** — **MusicBrainz**: the earliest release date across exact-title recordings,
+   because Deezer's date is whichever release it matched (*The Boxer* → 2025). Deezer's
+   year is only a fallback.
+4. **Popularity** — a percentile blend of **YouTube** views of the canonical upload (via
+   `yt-dlp`, which also supplies `youtube_id`), Deezer rank and Songsterr tab views. Only
+   the blended 0–100 score ships.
+5. **Covers** — the **Cover Art Archive**: the front cover of the earliest studio album
+   the song is on, falling back to the song's canonical MusicBrainz release and then to
+   other releases. Downloaded once to `public/covers/` and served from there; the site
+   hotlinks nothing. Nothing is taken from Deezer, whose terms don't allow storing its
+   images.
 
 Songs the pipeline can't find a trustworthy BPM for are dropped (quality over quantity)
 and logged to `pipeline/generated/gaps.json` — review that file to grow the override table.
 
+## Song search
+
+`https://feelthebpm.com/api/songs` looks up the tempo of any of ~6 million songs. The data
+is built by `pipeline/search/` from two bulk, **CC0** dumps — AcousticBrainz tempos (frozen
+in 2022) and MusicBrainz canonical names — plus the curated catalogue, into one SQLite file;
+nothing in it is scraped or comes from a provider that restricts storage. The endpoint is
+`api/` (Node 22, `node:sqlite`, no dependencies). Open-data results show the raw reading
+and, when plausible, its other octave; curated songs show their felt tempo. Each open-data
+result carries its MusicBrainz release id, so a page can show its cover straight from the
+Cover Art Archive.
+
+```bash
+node --test api/*.test.mjs pipeline/search/*.test.mjs   # needs zstd and sqlite3
+```
+
 ## Extending
 
 - **More songs:** add artists to `pipeline/inputs/artists.json` (Songsterr-friendly genres) or
-  songs to `pipeline/inputs/extra_songs.json` (anything else), then re-run the pipeline.
+  songs to `pipeline/inputs/extra_songs.json` (anything else), run `node pipeline/seed.mjs`,
+  then the build. `node pipeline/search/cover-releases.mjs` refreshes the cover lookup for new
+  songs where the search pipeline's working database exists; without it they still get a
+  cover, picked from their MusicBrainz releases.
 - **Fix a tempo:** add `"artist|title": bpm` to `pipeline/inputs/bpm_overrides.json`
-  (punctuation/case are normalized, so `"AC/DC|Back in Black"` matches).
+  (punctuation/case are normalized, so `"AC/DC|Back in Black"` matches), or use the local
+  review tool (`node pipeline/review-server.mjs`).
 - **Drop a multi-tempo song:** add `"artist|title"` to `pipeline/inputs/exclude.json`. Songs with
   no single meaningful tempo (multi-movement or rubato — Bohemian Rhapsody, Stairway, Free
   Bird…) make poor "feel this BPM" anchors, so they're dropped even if they have a BPM.
-- **GetSongBPM gap-filler (wired, dormant):** any song Deezer can't tempo falls through to
-  GetSongBPM for a tempo. Off until you provide a free key (register at getsongbpm.com/api —
-  requires a visible backlink):
-  ```bash
-  GETSONGBPM_API_KEY=your_key node pipeline/build.mjs
-  ```
-  GSB also doubles as a **BPM verifier** — `pipeline/tools/eval-gsb.mjs` cross-checks every shipped
-  tempo against GSB and emits an override worklist for songs where Deezer and GSB disagree
-  (useful for finding which canonical tempos to add to `bpm_overrides.json`).
-- **Better BPM source later:** SoundCharts (paid B2B, industry-grade) can augment at the same seam.
 
 ## Design docs
 
@@ -114,10 +132,22 @@ Design records, source evaluations, and the deployment runbook live in a local-o
 `.mind/<path>.md` are breadcrumbs for whoever holds the working copy, not files you will
 find in a clone.
 
-## Sources & attribution
+## Sources, terms & attribution
 
-BPM from Deezer audio analysis; original-release year from MusicBrainz; popularity & song
-discovery from Songsterr. All are free public endpoints; this is a personal/educational
-project. If you ship it publicly, review each provider's ToS (Deezer restricts long-term
-caching; MusicBrainz requires a descriptive User-Agent + ~1 req/sec; GetSongBPM requires a
-visible backlink).
+This is a personal, non-commercial project: no ads, no accounts, nothing sold. What each
+source is used for, what the site keeps from it, and the condition that applies:
+
+| source | used for | kept in the published site | condition we follow |
+|---|---|---|---|
+| [Deezer](https://developers.deezer.com) API | a tempo reading, ISRC, and rank as one popularity input | the reconciled tempo and the ISRC; no images, audio or rank | non-commercial use only; its images may not be stored, so none are; credited in the footer |
+| [GetSongBPM](https://getsongbpm.com) API | a tempo reading | the reconciled tempo | free key in exchange for a visible backlink, which is in the footer; 3,000 requests/hour |
+| [MusicBrainz](https://musicbrainz.org) API and canonical dump | original year; names and release ids for search | year; artist, title and ids | core data is CC0; a descriptive User-Agent and ~1 request/second |
+| [AcousticBrainz](https://acousticbrainz.org) API and dump | a tempo reading; every tempo in search | tempos | CC0 |
+| [Cover Art Archive](https://coverartarchive.org) | album covers | one 500 px front cover per curated song | no storage or rate rule; the images remain copyrighted by their owners and the archive grants no licence to them; credited in the footer |
+| YouTube, read with `yt-dlp` | view counts as the main popularity input | the video id; never the counts | not an official API |
+| Songsterr | which songs to include; tab views as a minor popularity input | song membership only | an undocumented public endpoint |
+| Ultimate Guitar | which songs to include | song membership only | copied by hand from its public charts, never fetched |
+
+Album art, song titles and artist names belong to their owners. If you reuse this code for
+anything commercial, the Deezer row no longer holds and the cover question needs a real
+answer: read each provider's terms yourself.

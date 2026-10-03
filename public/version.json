@@ -1,5 +1,5 @@
 {
-  "built": "2026-07-11",
+  "built": "2026-10-03",
   "songs": 343,
   "year_sources": {
     "musicbrainz": 475,
@@ -7,6 +7,7 @@
   },
   "covers": {
     "enabled": true,
+    "source": "coverartarchive.org",
     "with_art": 343,
     "self_hosted": 343
   },

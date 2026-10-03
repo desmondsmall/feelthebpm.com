@@ -27,8 +27,8 @@ if (!existsSync(CACHE)) mkdirSync(CACHE, { recursive: true });
 const INPUTS = join(HERE, 'inputs');        // artists / extra_songs / exclude* / bpm_overrides — hand-edited
 const GENERATED = join(HERE, 'generated');  // catalogue / seed-ug / gaps — build+seed outputs (committed)
 if (!existsSync(GENERATED)) mkdirSync(GENERATED, { recursive: true });
-// self-hosted album art lands in public/covers/<md5_image>.jpg. Dormant unless ENABLE_COVERS=1 —
-// otherwise each record carries Deezer's CDN hotlink URL instead. See .mind/reference/pipeline.md
+// self-hosted album art lands in public/covers/<MusicBrainz id>.jpg, from the Cover Art Archive.
+// Dormant unless ENABLE_COVERS=1 — otherwise records ship with no cover. See .mind/reference/pipeline.md
 const COVERS = join(SITE, 'covers');
 const ENABLE_COVERS = process.env.ENABLE_COVERS === '1';
 
@@ -122,26 +122,6 @@ async function getJson(url, opts = {}) {
   return null;
 }
 
-// ---- cached image download ---------------------------------------------
-// Binary sibling to getJson (which is JSON-only): fetches an image to an arbitrary path under
-// public/. Idempotent — an already-downloaded file is skipped, so re-runs only pull NEW art (same
-// cheap-rerun property as the JSON cache). Used by the ENABLE_COVERS pass to self-host album art.
-async function saveImage(url, destPath) {
-  if (existsSync(destPath)) return true;
-  for (let attempt = 0; attempt < MAX_FETCH_ATTEMPTS; attempt++) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) { await sleep(1000 * (attempt + 1)); continue; }
-      const buf = Buffer.from(await res.arrayBuffer());
-      if (buf.length < 100) { await sleep(500 * (attempt + 1)); continue; } // empty/error body, not real art
-      writeFileSync(destPath, buf);
-      await sleep(DEFAULT_PACE_MS); // polite — the CDN has no hard limit, but we pace live pulls anyway
-      return true;
-    } catch { await sleep(800 * (attempt + 1)); }
-  }
-  return false;
-}
-
 // ---- Songsterr: discover popular songs per artist ----------------------
 async function songsterrForArtist(name, genre) {
   const url = `https://www.songsterr.com/api/songs?pattern=${encodeURIComponent(name)}&size=${SONGSTERR_PAGE}`;
@@ -211,11 +191,6 @@ async function deezerEnrich(c) {
     deezer_rank: track.rank || best.rank || 0,
     deezer_title: track.title,
     deezer_artist: track.artist?.name,
-    // album art: cover_big is 500×500 (crisp on retina at tile size). md5_image content-addresses
-    // the CDN URL, so it doubles as a dedup-friendly filename when self-hosting (ENABLE_COVERS):
-    // songs sharing an album share one file. Both come free in the /track response we already fetch.
-    cover: track.album?.cover_big || null,
-    cover_id: track.album?.md5_image || null,
     preview: track.preview || null,   // 30s MP3 clip — powers the review tool's listen+tap
   };
 }
@@ -311,19 +286,22 @@ function reconcileBpm([dz = 0, gsb = 0, ab = 0]) {
 // Docs: https://musicbrainz.org/doc/MusicBrainz_API  ·  rate limit: /doc/MusicBrainz_API/Rate_Limiting
 const MB_BASE = 'https://musicbrainz.org/ws/2';
 const MB_UA = 'feelthebpm/1.0 ( https://feelthebpm.com )';
-async function musicbrainzYear(c) {
-  const query = `artist:"${c.artist}" AND recording:"${c.title}"`;
-  const url = `${MB_BASE}/recording?query=${encodeURIComponent(query)}&limit=${MB_SEARCH_LIMIT}&fmt=json`;
+// The song's recordings on MusicBrainz: exact title (skips "(Live)/(Remaster)/(Edit)") by this artist.
+// `extra` narrows the search (and `limit` widens it) for the cover pass.
+async function mbRecordings(c, extra = '', limit = MB_SEARCH_LIMIT) {
+  const query = `artist:"${c.artist}" AND recording:"${c.title}"${extra}`;
+  const url = `${MB_BASE}/recording?query=${encodeURIComponent(query)}&limit=${limit}&fmt=json`;
   const data = await getJson(url, { headers: { 'User-Agent': MB_UA }, pace: 1100 });
-  const recs = data?.recordings || [];
   const wantA = norm(c.artist), wantT = norm(c.title);
+  return (data?.recordings || []).filter((r) => {
+    const a = norm((r['artist-credit'] || []).map((x) => x.name).join(' '));
+    return (a.includes(wantA) || wantA.includes(a)) && norm(r.title) === wantT;
+  });
+}
+async function musicbrainzYear(c) {
   let best = null;
   const mbids = [];                             // exact-title recording MBIDs -> AcousticBrainz keys
-  for (const r of recs) {
-    const credit = (r['artist-credit'] || []).map((x) => x.name).join(' ');
-    const a = norm(credit), t = norm(r.title);
-    const artistOk = a.includes(wantA) || wantA.includes(a);
-    if (!artistOk || t !== wantT) continue;     // exact title -> skip "(Live)/(Remaster)/(Edit)"
+  for (const r of await mbRecordings(c)) {
     if (r.id) mbids.push(r.id);
     const d = r['first-release-date'];
     if (!d) continue;
@@ -331,6 +309,97 @@ async function musicbrainzYear(c) {
     if (y > 1900 && (best === null || y < best)) best = y;
   }
   return { year: best, mbids };
+}
+
+// ---- Cover Art Archive: album art ---------------------------------------
+// Covers come from the Cover Art Archive (coverartarchive.org, keyed by MusicBrainz release or
+// release group), not Deezer, whose terms don't allow storing its images. Why, and what was
+// measured: .mind/cover-art-source.md.
+// The first choice is the earliest studio album the song is on (the cover people know: Nevermind,
+// not MTV Unplugged), found by a recording search limited to official albums. Then the song's
+// canonical release, the one MusicBrainz's canonical dump lists for it (generated/cover-releases.json,
+// written by pipeline/search/cover-releases.mjs) and that release's group, unless it is a
+// compilation, a live album or a bootleg, in which case a single the song is on is tried first.
+const CAA_BASE = 'https://coverartarchive.org';
+const COVER_RELEASES_FILE = join(GENERATED, 'cover-releases.json');
+const COVER_RELEASES = existsSync(COVER_RELEASES_FILE) ? JSON.parse(readFileSync(COVER_RELEASES_FILE, 'utf8')) : {};
+const COVER_TRIES = 8;              // releases / release groups to try per song
+// 0 studio album, 1 single or EP, 2 other (soundtrack, remix…), 3 compilation, live and the like
+function releaseGroupKind(rg) {
+  const s = rg?.['secondary-types'] || [];
+  if (s.some((x) => ['Compilation', 'Live', 'DJ-mix', 'Mixtape/Street', 'Interview', 'Demo'].includes(x))) return 3;
+  if (s.length) return 2;
+  const p = rg?.['primary-type'];
+  return p === 'Album' ? 0 : (p === 'Single' || p === 'EP') ? 1 : 2;
+}
+// Official release groups the song's recordings are on, best kind first, earliest first within a kind.
+// With `artist`, only releases credited to that artist: not a soundtrack, a various-artists album
+// or another act's record that happens to carry the recording.
+function releaseGroups(recordings, artist) {
+  const want = artist && norm(artist);
+  const groups = new Map();           // release group id -> { id, kind, date }
+  for (const r of recordings) {
+    for (const rel of r.releases || []) {
+      const rg = rel['release-group'];
+      if (!rg?.id || (rel.status && rel.status !== 'Official')) continue;
+      if (want) {
+        const a = norm((rel['artist-credit'] || []).map((x) => x.name).join(' '));
+        if (!a || !(a.includes(want) || want.includes(a))) continue;
+      }
+      const date = rel.date || '9999', g = groups.get(rg.id);
+      if (!g) groups.set(rg.id, { id: rg.id, kind: releaseGroupKind(rg), date });
+      else if (date < g.date) g.date = date;
+    }
+  }
+  return [...groups.values()]
+    .sort((x, y) => x.kind - y.kind || (x.date < y.date ? -1 : x.date > y.date ? 1 : 0))
+    .map((g) => ({ type: 'release-group', id: g.id, kind: g.kind }));
+}
+async function coverCandidates(c) {
+  const albums = releaseGroups(await mbRecordings(c, ' AND primarytype:album AND status:official', 100), c.artist).filter((g) => g.kind === 0);
+  const byGroup = releaseGroups(await mbRecordings(c));
+  const canon = [];
+  let canonPlain = true, official = true;
+  const release = COVER_RELEASES[key(c.artist, c.title)];
+  if (release) {
+    canon.push({ type: 'release', id: release });
+    const info = await getJson(`${MB_BASE}/release/${release}?inc=release-groups&fmt=json`, { headers: { 'User-Agent': MB_UA }, pace: 1100 });
+    const rg = info?.['release-group'];
+    if (rg?.id) canon.push({ type: 'release-group', id: rg.id });
+    official = !info?.status || info.status === 'Official';
+    if (info) canonPlain = official && releaseGroupKind(rg) <= 1;
+  }
+  // a bootleg or promo canonical release goes last: any official release the song is on beats it
+  const rest = canonPlain ? [...canon, ...byGroup]
+    : official ? [...byGroup.filter((g) => g.kind <= 1), ...canon, ...byGroup.filter((g) => g.kind > 1)]
+    : [...byGroup, ...canon];
+  const seen = new Set();
+  return [...albums.slice(0, 3), ...rest].filter((x) => !seen.has(x.id) && seen.add(x.id)).slice(0, COVER_TRIES);
+}
+// The archive answers 404 when it has no front cover; remembered in the cache so a rebuild doesn't
+// ask again. Existing files are never re-fetched.
+const CAA_SEEN_FILE = join(CACHE, 'caa-front.json');
+const caaSeen = existsSync(CAA_SEEN_FILE) ? JSON.parse(readFileSync(CAA_SEEN_FILE, 'utf8')) : {};
+async function caaCover(c) {
+  for (const cand of await coverCandidates(c)) {
+    const k = `${cand.type}/${cand.id}`, file = `${cand.id}.jpg`, dest = join(COVERS, file);
+    if (existsSync(dest)) return `covers/${file}`;
+    if (caaSeen[k] === false) continue;
+    for (let attempt = 0; attempt < MAX_FETCH_ATTEMPTS; attempt++) {
+      try {
+        const res = await fetch(`${CAA_BASE}/${k}/front-500`, { headers: { 'User-Agent': MB_UA } });
+        if (res.status === 404) { caaSeen[k] = false; break; }
+        if (!res.ok) { await sleep(2000 * (attempt + 1)); continue; }
+        const buf = Buffer.from(await res.arrayBuffer());
+        if (buf.length < 1000) { await sleep(1000 * (attempt + 1)); continue; }   // an error body, not art
+        writeFileSync(dest, buf);
+        caaSeen[k] = true;
+        await sleep(DEFAULT_PACE_MS);
+        return `covers/${file}`;
+      } catch { await sleep(1500 * (attempt + 1)); }
+    }
+  }
+  return null;
 }
 
 // ---- YouTube: view count as a breadth (recognizability) signal ---------
@@ -470,9 +539,9 @@ async function enrichCandidate(c, overrides) {
     genre: c.genre,
     year: mb.year ?? fallbackYear,
     isrc: enr?.isrc ?? null,
-    // album cover: Deezer's hotlink URL by default; the ENABLE_COVERS pass (step 3c) rewrites this
-    // to a local covers/<md5>.jpg once self-hosted. null when Deezer had no match (front-end -> placeholder).
-    cover: enr?.cover ?? null,
+    // album cover: set by the ENABLE_COVERS pass (step 3c) to a local covers/<id>.jpg; null when
+    // that is off or the Cover Art Archive has nothing (front-end -> placeholder).
+    cover: null,
     // canonical YouTube video id for the best-matching upload (from the popularity search) — a
     // "listen/watch" link + the review tool's full-song embed. https://youtube.com/watch?v=<id>.
     youtube_id: yt?.id || null,
@@ -485,9 +554,7 @@ async function enrichCandidate(c, overrides) {
   // the YouTube id (full-song embed) — held in a side map (like raw signals) and written to
   // pipeline/generated/review.json for the curation tool. Never shipped. See .mind/reference/felt-bpm.md.
   const review = { deezer_bpm: dzBpm, gsb_bpm: gsbBpm, ab_bpm: ab, override: ov ?? null, preview: enr?.preview ?? null, youtube_id: yt?.id || null };
-  // cover_id (md5_image) is the self-host FILENAME key, not shipped data — kept off the record like
-  // raw signals. The caller stashes it in a side map keyed by the record (see the enrich loop).
-  return { record, raw, review, coverId: enr?.cover_id ?? null, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
+  return { record, raw, review, yearSource: mb.year ? 'musicbrainz' : (fallbackYear ? 'deezer' : null) };
 }
 
 // Load bpm_overrides.json into a normalized { "norm-artist|norm-title": bpm } map.
@@ -616,9 +683,6 @@ async function main() {
   // record -> { deezer_bpm, gsb_bpm, ab_bpm, override, preview }: per-source tempo readings + the
   // preview clip, written to review.json for the curation tool (never shipped). See enrichCandidate.
   const reviewData = new Map();
-  // record -> md5_image: the self-host cover filename key, kept OFF the shipped record (see
-  // enrichCandidate). Consumed only by the ENABLE_COVERS download pass (step 3c).
-  const coverIds = new Map();
   let i = 0;
   let yearFromMB = 0, yearFromDeezer = 0; // year-source tally (for the build summary)
   for (const c of catalogue) {
@@ -634,7 +698,6 @@ async function main() {
       out.push(enriched.record);
       rawSignals.set(enriched.record, enriched.raw);
       reviewData.set(enriched.record, enriched.review);
-      coverIds.set(enriched.record, enriched.coverId);
       if (enriched.yearSource === 'musicbrainz') yearFromMB++;
       else if (enriched.yearSource === 'deezer') yearFromDeezer++;
     }
@@ -699,23 +762,22 @@ async function main() {
     console.error(`Dumped ${dump.length} raw-signal rows -> pipeline/cache/signals.json (gitignored).`);
   }
 
-  // 3c. album covers (dormant unless ENABLE_COVERS=1): self-host Deezer's art so the shipped site
-  // never hotlinks a third-party CDN. Records already carry the Deezer cover URL (deezerEnrich);
-  // this downloads each to public/covers/<md5_image>.jpg — content-addressed, so songs sharing an
-  // album share one file — and rewrites record.cover to that local path. A failed download keeps
-  // the remote URL (graceful degradation). Runs post-dedup so only shipped songs are fetched.
+  // 3c. album covers (dormant unless ENABLE_COVERS=1): each song's cover is downloaded from the
+  // Cover Art Archive to public/covers/<release or release-group id>.jpg (songs off one album share
+  // a file) and record.cover set to that local path, so the shipped site hotlinks nothing. A song
+  // the archive has no cover for ships without one. Runs post-dedup so only shipped songs are fetched.
   let coversSaved = 0;
   if (ENABLE_COVERS) {
     if (!existsSync(COVERS)) mkdirSync(COVERS, { recursive: true });
     let n = 0;
+    const none = [];
     for (const r of deduped) {
-      if (!r.cover) continue;               // no Deezer match -> no art to fetch
-      const id = coverIds.get(r);
-      if (!id) continue;                    // no md5 key -> leave the hotlink URL as-is
-      if (await saveImage(r.cover, join(COVERS, `${id}.jpg`))) { r.cover = `covers/${id}.jpg`; coversSaved++; }
-      if (++n % 50 === 0) console.error(`  covers [${n}/${deduped.length}]`);
+      r.cover = await caaCover(r);
+      if (r.cover) coversSaved++; else none.push(`${r.artist} — ${r.title}`);
+      if (++n % 50 === 0) { console.error(`  covers [${n}/${deduped.length}]`); writeFileSync(CAA_SEEN_FILE, JSON.stringify(caaSeen)); }
     }
-    console.error(`Covers: ${coversSaved} self-hosted -> public/covers/ (rest keep Deezer hotlink URLs).`);
+    writeFileSync(CAA_SEEN_FILE, JSON.stringify(caaSeen));
+    console.error(`Covers: ${coversSaved} self-hosted -> public/covers/ (Cover Art Archive).${none.length ? ` None for: ${none.join('; ')}.` : ''}`);
   }
 
   deduped.sort((a, b) => a.felt_bpm - b.felt_bpm || b.popularity - a.popularity);
@@ -750,7 +812,7 @@ async function main() {
     built: new Date().toISOString().slice(0, 10),
     songs: deduped.length,
     year_sources: { musicbrainz: yearFromMB, deezer: yearFromDeezer },
-    covers: { enabled: ENABLE_COVERS, with_art: coversWithArt, self_hosted: coversSaved },
+    covers: { enabled: ENABLE_COVERS, source: 'coverartarchive.org', with_art: coversWithArt, self_hosted: coversSaved },
     popularity: { method: 'percentile-blend', weights: POP_WEIGHTS, youtube: { enabled: YT_ON, coverage: ytCovered } },
     excluded: excluded.length,
     bpm_gaps: gaps.length,
